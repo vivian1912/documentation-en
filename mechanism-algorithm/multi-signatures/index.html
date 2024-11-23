@@ -1,318 +1,214 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Multi-Signature - TRON Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Multi-Signature";
-    var mkdocs_page_input_path = "mechanism-algorithm/multi-signatures.md";
-    var mkdocs_page_url = "/documentation-en/mechanism-algorithm/multi-signatures/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Multi-Signature - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Multi-Signature";
+        var mkdocs_page_input_path = "mechanism-algorithm/multi-signatures.md";
+        var mkdocs_page_url = "/documentation-en/mechanism-algorithm/multi-signatures/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TRON Documentation</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/http/">HTTP API</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/rpc/">RPC API</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../dex/">Decentralized Exchange</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Multi-Signature</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#multi-signature">Multi-signature</a></li>
-    
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../system-contracts/">System Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Multi-Signature</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#background">Background</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#concept">Concept</a>
         <ul>
-        
-            <li><a class="toctree-l4" href="#background">Background</a></li>
-        
-            <li><a class="toctree-l4" href="#concept">Concept</a></li>
-        
-            <li><a class="toctree-l4" href="#api">API</a></li>
-        
-            <li><a class="toctree-l4" href="#others">Others</a></li>
-        
-            <li><a class="toctree-l4" href="#fees">Fees</a></li>
-        
+    <li class="toctree-l3"><a class="reference internal" href="#protocol-definition">Protocol Definition</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#account">Account</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#contracttype">ContractType</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#accountpermissionupdatecontract">AccountPermissionUpdateContract</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#permission">Permission</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#key">Key</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#transaction">Transaction</a>
+    </li>
         </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../shielded-transaction/">Shielded Transaction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/deployment/">Deployment</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/run-in-idea/">Run FullNode in IDEA</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/litefullnode/">Run Lite FullNode</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/incentives/">Incentive Policy</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#owner-permission">Owner Permission</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#witness-permission">Witness Permission</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#active-permission">Active Permission</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fee">Fee</a>
+    </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api">API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#change-permission">Change Permission</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#calculate-the-active-permissions-operations">Calculate the Active Permission's Operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contract-execution">Contract Execution</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#other-apis">Other APIs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#others">Others</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fees">Fees</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
+                </li>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TRON Documentation</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Mechanism & Algorithm &raquo;</li>
-        
-      
-    
-    <li>Multi-Signature</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Core Protocol &raquo;</li><li>Multi-Signature</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/mechanism-algorithm/multi-signatures.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="multi-signature">Multi-signature<a class="headerlink" href="#multi-signature" title="Permanent link">&para;</a></h1>
 <h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
@@ -325,59 +221,59 @@
 <p>There are three types of permission: owner、witness and active. Owner permission has the right to execute all the contracts. Witness permission is for SR. Active permission contains a set of contracts selected execution permissions.</p>
 <h3 id="protocol-definition">Protocol Definition<a class="headerlink" href="#protocol-definition" title="Permanent link">&para;</a></h3>
 <h4 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Account</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
-  <span class="n">Permission</span> <span class="na">owner_permission</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">witness_permission</span> <span class="o">=</span> <span class="mi">32</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">active_permission</span> <span class="o">=</span> <span class="mi">33</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Account</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">active_permission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Three attributes are added, owner_permission、witness_permission and active_permission. active_permission is a list, the length can not be bigger than 8.</p>
 <h4 id="contracttype">ContractType<a class="headerlink" href="#contracttype" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
-  <span class="kd">message</span> <span class="nc">Contract</span> <span class="p">{</span>
-    <span class="kd">enum</span> <span class="n">ContractType</span> <span class="p">{</span>
-      <span class="na">AccountCreateContract</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-      <span class="c1">// ...</span>
-      <span class="na">AccountPermissionUpdateContract</span> <span class="o">=</span> <span class="mi">46</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">message</span><span class="w"> </span><span class="nc">Contract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">enum</span><span class="w"> </span><span class="n">ContractType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">AccountCreateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">      </span><span class="c1">// ...</span>
+<span class="w">      </span><span class="na">AccountPermissionUpdateContract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">46</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>AccountPermissionUpdateContract is a new contract type used to update the account permission.</p>
 <h4 id="accountpermissionupdatecontract">AccountPermissionUpdateContract<a class="headerlink" href="#accountpermissionupdatecontract" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">AccountPermissionUpdateContract</span> <span class="p">{</span>
-  <span class="kt">bytes</span> <span class="na">owner_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">owner</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="n">Permission</span> <span class="na">witness</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Permission</span> <span class="na">actives</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">AccountPermissionUpdateContract</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">owner_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Permission</span><span class="w"> </span><span class="na">witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="na">actives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>owner_address</code>: The account applys multi-signatures</li>
+<li><code>owner_address</code>: The account applies multi-signatures</li>
 <li><code>owner</code>: Owner permission</li>
 <li><code>witness</code>: Witness permission (if is witness)</li>
 <li><code>actives</code>: Active permission</li>
 </ul>
 <p>This will override the Original account permission.</p>
 <h4 id="permission">Permission<a class="headerlink" href="#permission" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Permission</span> <span class="p">{</span>
-  <span class="kd">enum</span> <span class="n">PermissionType</span> <span class="p">{</span>
-    <span class="na">Owner</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="na">Witness</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="na">Active</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="n">PermissionType</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">int32</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="kt">string</span> <span class="na">permission_name</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-  <span class="kt">int64</span> <span class="na">threshold</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-  <span class="kt">int32</span> <span class="na">parent_id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-  <span class="kt">bytes</span> <span class="na">operations</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
-  <span class="k">repeated</span> <span class="n">Key</span> <span class="na">keys</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Permission</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PermissionType</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">Owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="na">Witness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="na">Active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">PermissionType</span><span class="w"> </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="na">permission_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">parent_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="na">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
-<li><code>PermissionType</code>: Pemission type</li>
+<li><code>PermissionType</code>: Permission type</li>
 <li><code>id</code>: Generated by system. Owner id=0, Witness id=1, Active id increases from 2. Specifying using which permission to execute a contract by setting id. For instance, using owner permission, set id=0</li>
 <li><code>permission_name</code>: Permission name, 32 bytes length limit</li>
 <li><code>threshold</code>: The threshold of the signature weight</li>
@@ -391,9 +287,9 @@
 </li>
 </ul>
 <h4 id="key">Key<a class="headerlink" href="#key" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Key</span> <span class="p">{</span>
-  <span class="kt">bytes</span> <span class="na">address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kt">int64</span> <span class="na">weight</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">bytes</span><span class="w"> </span><span class="na">address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int64</span><span class="w"> </span><span class="na">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <ul>
@@ -401,9 +297,9 @@
 <li><code>weight</code>: The signature weight</li>
 </ul>
 <h4 id="transaction">Transaction<a class="headerlink" href="#transaction" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">message</span> <span class="nc">Transaction</span> <span class="p">{</span>
-  <span class="c1">// ...</span>
-  <span class="kt">int32</span> <span class="na">Permission_id</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kd">message</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="kt">int32</span><span class="w"> </span><span class="na">Permission_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><code>Permission_id</code> is added. It is corresponding to <code>Permission.id</code>
@@ -415,7 +311,7 @@
 <li>The account that has owner permission can change the owner permission</li>
 <li>When owner permission is null, the default owner of the account owns the owner permission</li>
 <li>When you create a new account, the address will be insert into owner permission automatically, default weight is 1, keys field only contains this address and also weight is 1.</li>
-<li>If a permissionId is not specified when a contract is executed, using owner permission by defualt.</li>
+<li>If a permissionId is not specified when a contract is executed, using owner permission by default.</li>
 </ol>
 <h3 id="witness-permission">Witness Permission<a class="headerlink" href="#witness-permission" title="Permanent link">&para;</a></h3>
 <p>Super representatives can use this permission to manage block producing. Only witness account has this permission.</p>
@@ -441,7 +337,7 @@ localwitness = [
 ]
 </code></pre></div>
 <h3 id="active-permission">Active Permission<a class="headerlink" href="#active-permission" title="Permanent link">&para;</a></h3>
-<p>Active permission is composed of a set of contract execution permission, like creating an account, trnasfer function, etc.</p>
+<p>Active permission is composed of a set of contract execution permission, like creating an account, transfer function, etc.</p>
 <p>Active permission's features:</p>
 <ol>
 <li>the account owns owner permission can change active permission</li>
@@ -523,20 +419,20 @@ localwitness = [
 <span class="go">}</span>
 </code></pre></div>
 <h4 id="calculate-the-active-permissions-operations">Calculate the Active Permission's Operations<a class="headerlink" href="#calculate-the-active-permissions-operations" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
-  <span class="c1">//you need to specify the id of the contract you need to give permission to by referring to the definition of Transaction.ContractType in proto to get the id of the contract, below includes all the contract except AccountPermissionUpdateContract(id=46)</span>
+<span class="w">  </span><span class="c1">//you need to specify the id of the contract you need to give permission to by referring to the definition of Transaction.ContractType in proto to get the id of the contract, below includes all the contract except AccountPermissionUpdateContract(id=46)</span>
 
-  <span class="n">Integer</span><span class="o">[]</span> <span class="n">contractId</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span>
-      <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">};</span>
-  <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">contractId</span><span class="p">));</span>
-  <span class="kt">byte</span><span class="o">[]</span> <span class="n">operations</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span><span class="p">;</span>
-  <span class="n">list</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="p">{</span>
-    <span class="n">operations</span><span class="o">[</span><span class="n">e</span> <span class="o">/</span> <span class="mi">8</span><span class="o">]</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">%</span> <span class="mi">8</span><span class="p">);</span>
-  <span class="p">});</span>
+<span class="w">  </span><span class="n">Integer</span><span class="o">[]</span><span class="w"> </span><span class="n">contractId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span>
+<span class="w">      </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">};</span>
+<span class="w">  </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">contractId</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">operations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">byte</span><span class="o">[</span><span class="mi">32</span><span class="o">]</span><span class="p">;</span>
+<span class="w">  </span><span class="n">list</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">operations</span><span class="o">[</span><span class="n">e</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="o">]</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 
-  <span class="c1">//7fff1fc0033e0000000000000000000000000000000000000000000000000000</span>
-  <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ByteArray</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">operations</span><span class="p">));</span>
+<span class="w">  </span><span class="c1">//7fff1fc0033e0000000000000000000000000000000000000000000000000000</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">ByteArray</span><span class="p">.</span><span class="na">toHexString</span><span class="p">(</span><span class="n">operations</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="contract-execution">Contract Execution<a class="headerlink" href="#contract-execution" title="Permanent link">&para;</a></h3>
@@ -552,25 +448,17 @@ localwitness = [
 <p>Please refer to <a href="../../api/http/">HTTP API</a> and <a href="../../api/rpc/">RPC API</a> for more information.</p>
 <ol>
 <li>
-<p>add signature</p>
-<div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/addtransactionsign -d &#39;</span>
-<span class="go">  {&quot;transaction&quot;: &quot;TransferContract&quot;, &quot;privateKey&quot;: &quot;permissionkey1&quot;}&#39;</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">AddSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
-</code></pre></div>
-</li>
-<li>
 <p>query the addresses that already signed a transaction</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getapprovedlist -d &#39;{&quot;transaction&quot;}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionApprovedList</span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionApprovedList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 </li>
 <li>
-<p>query the signature weigth of a transaction</p>
+<p>query the signature weight of a transaction</p>
 <div class="highlight"><pre><span></span><code><span class="go">&gt; curl -X POST http://127.0.0.1:8090/wallet/getsignweight -d &#39;{&quot;transaction&quot;}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionSignWeight</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionSignWeight</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionSignWeight</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 </li>
 </ol>
@@ -584,29 +472,21 @@ After V3.5, if there is a new system contract, the default operations value of t
 <p>If a transaction is signed by more than 1 account, the fee is 1 TRX.</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../shielded-transaction/" class="btn btn-neutral float-right" title="Shielded Transaction">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../dex/" class="btn btn-neutral" title="Decentralized Exchange"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dex/" class="btn btn-neutral float-left" title="Decentralized Exchange"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../developers/java-tron/" class="btn btn-neutral float-right" title="Developer Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -614,23 +494,31 @@ After V3.5, if there is a new system contract, the default operations value of t
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../dex/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../shielded-transaction/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../dex/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../developers/java-tron/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

@@ -1,312 +1,163 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Incentive Policy - TRON Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Incentive Policy";
-    var mkdocs_page_input_path = "developers/incentives.md";
-    var mkdocs_page_url = "/documentation-en/developers/incentives/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/incentives/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Community Developers Incentives Programme - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Community Developers Incentives Programme";
+        var mkdocs_page_input_path = "developers/incentives.md";
+        var mkdocs_page_url = "/documentation-en/developers/incentives/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TRON Documentation</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite FullNode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../code-structure/">Core Modules</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/http/">HTTP API</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/rpc/">RPC API</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../deployment/">Deployment</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../run-in-idea/">Run FullNode in IDEA</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../litefullnode/">Run Lite FullNode</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../contribution/">Contribution</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Incentive Policy</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#community-developers-incentives-programme">Community Developers Incentives Programme</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#non-code-related">Non-code Related</a></li>
-        
-            <li><a class="toctree-l4" href="#code-related">Code Related</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
-        </ul>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TRON Documentation</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Developers &raquo;</li>
-        
-      
-    
-    <li>Incentive Policy</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Community Developers Incentives Programme</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/incentives.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="community-developers-incentives-programme">Community Developers Incentives Programme<a class="headerlink" href="#community-developers-incentives-programme" title="Permanent link">&para;</a></h1>
 <p>Bonus point applies in TRON incentives programme. Developers can earn points by contributing to TRON.</p>
@@ -338,10 +189,10 @@
 </tbody>
 </table>
 <p>Reward 2:</p>
-<p>Every developer who participates java-tron's developement will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.</p>
+<p>Every developer who participates java-tron's development will be honored with a TRON Honorary Developer Certificate. And we will give a vote of thanks to the developers on TRON official website.</p>
 <p>The following shows the content you can contribute to.</p>
 <h2 id="non-code-related">Non-code Related<a class="headerlink" href="#non-code-related" title="Permanent link">&para;</a></h2>
-<p><strong> 1. TIP </strong></p>
+<p>** 1. TIP **</p>
 <p>Description: TRON Improvement Proposal(TIP)
 Scope: Any improvement related to TRON ecosystem, like a new feature, TRC, protocol improvement, programming tool, etc.
 Points:</p>
@@ -363,7 +214,7 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<p><strong> 2. Documentation  </strong></p>
+<p>** 2. Documentation  **</p>
 <p>Description: To revise, update and add technical documentation related to TRON network.
 Scope: mechanism and algorithm, network architecture and database, contracts and other technical documentation
 Points:</p>
@@ -385,7 +236,7 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<p><strong> 3. Issue </strong></p>
+<p>** 3. Issue **</p>
 <p>Description: Create a topic about a question, enhancement, bug or feature and so on to discuss
 Scope: java-tron, TRON ecosystem
 Points:</p>
@@ -408,7 +259,7 @@ Points:</p>
 </tbody>
 </table>
 <h2 id="code-related">Code Related<a class="headerlink" href="#code-related" title="Permanent link">&para;</a></h2>
-<p><strong> 1. Feature Development </strong></p>
+<p>** 1. Feature Development **</p>
 <p>Description: To add new features to TRON network
 Scope: java-tron, wallet-cli
 Points:</p>
@@ -430,7 +281,7 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<p><strong> 2. Bug Report </strong></p>
+<p>** 2. Bug Report **</p>
 <p>Description: To report bugs in online TRON network
 Scope: java-tron, wallet-cli
 Points:</p>
@@ -518,33 +369,21 @@ Points:</p>
 </tr>
 </tbody>
 </table>
-<p>In order to get 5 (or more) points, the content of a PR should be creative, pratical, critical or can reflect significant workload.</p>
+<p>In order to get 5 (or more) points, the content of a PR should be creative, practical, critical or can reflect significant workload.</p>
 <p>One PR should aim at solving one type of problems, so do not break one type of PR into many small PRs.</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../java-tron/" class="btn btn-neutral float-right" title="Java-Tron">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../contribution/" class="btn btn-neutral" title="Contribution"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
+          </div><footer>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -552,23 +391,27 @@ Points:</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../contribution/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../java-tron/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

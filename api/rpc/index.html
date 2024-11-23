@@ -1,304 +1,166 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>RPC API - TRON Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "RPC API";
-    var mkdocs_page_input_path = "api/rpc.md";
-    var mkdocs_page_url = "/documentation-en/api/rpc/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/api/rpc/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>gRPC API - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "gRPC API";
+        var mkdocs_page_input_path = "api/rpc.md";
+        var mkdocs_page_url = "/documentation-en/api/rpc/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TRON Documentation</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">gRPC API</a>
+    <ul class="current">
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../http/">HTTP API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
                 </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">RPC API</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#rpc-list">RPC List</a></li>
-    
-
-    </ul>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../developers/official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/deployment/">Deployment</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/run-in-idea/">Run FullNode in IDEA</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/litefullnode/">Run Lite FullNode</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/incentives/">Incentive Policy</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../developers/gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
-        </ul>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TRON Documentation</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>API &raquo;</li>
-        
-      
-    
-    <li>RPC API</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>API &raquo;</li><li>gRPC API</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/api/rpc.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="rpc-list">RPC List<a class="headerlink" href="#rpc-list" title="Permanent link">&para;</a></h1>
 <p><strong>For the specific definition of API, please refer to the following link:</strong>
@@ -309,337 +171,367 @@
 <p>SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
 </div>
 <p><strong>1.&nbsp;Get account information</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAccount</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="p">{}</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: Fullnode and SolidityNode</p>
 <p><strong>2.&nbsp;TRX transfer</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateTransaction</span> <span class="p">(</span><span class="n">TransferContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">TransferContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: Fullnode</p>
 <p><strong>3.&nbsp;Broadcast transaction</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">BroadcastTransaction</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Return</span><span class="p">)</span> <span class="p">{}</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">BroadcastTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Return</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: Fullnode</p>
 <p>Description:
 Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after witness verification.</p>
 <p><strong>4.&nbsp;Create an account</strong></p>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateAccount</span> <span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>5.&nbsp;Account name update</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateAccount</span> <span class="p">(</span><span class="n">AccountUpdateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: Fullnode</p>
 <p><strong>6.&nbsp;Vote for super representative candidates</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">VoteWitnessAccount</span> <span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">VoteWitnessAccount</span><span class="w"> </span><span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>7.&nbsp;Query the ratio of brokerage of the witness</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetBrokerageInfo</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBrokerageInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>8.&nbsp;Query unclaimed reward</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetRewardInfo</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetRewardInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>9.&nbsp;Update the ratio of brokerage</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateBrokerage</span> <span class="p">(</span><span class="n">UpdateBrokerageContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateBrokerage</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateBrokerageContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>10.&nbsp;Issue a token</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateAssetIssue</span> <span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>11.&nbsp;Query of list of super representative candidates</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ListWitnesses</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListWitnesses</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>12.&nbsp;Application for super representative</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateWitness</span> <span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p>Description:
 To apply to become TRON’s Super Representative candidate.</p>
 <p><strong>13.&nbsp;Information update of Super Representative candidates</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateWitness</span> <span class="p">(</span><span class="n">WitnessUpdateContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p>Description: Update the website url of the SR.</p>
 <p><strong>14.&nbsp;Token transfer</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">TransferAsset</span> <span class="p">(</span><span class="n">TransferAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">){}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TransferAsset</span><span class="w"> </span><span class="p">(</span><span class="n">TransferAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">){}</span>
 </code></pre></div>
 Node: FullNode</p>
 <p><strong>15.&nbsp;Participate a token</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ParticipateAssetIssue</span> <span class="p">(</span><span class="n">ParticipateAssetIssueContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ParticipateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">ParticipateAssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>16.&nbsp;Query the list of nodes connected to the ip of the api</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ListNodes</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NodeList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListNodes</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NodeList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>17.&nbsp;Query the list of all issued tokens</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAssetIssueList</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>18.&nbsp;Query the token issued by a given account</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAssetIssueByAccount</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>19.&nbsp;Query the token information by token name</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAssetIssueByName</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByName</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and Soliditynode</p>
 <p><strong>20.&nbsp;Query the list of tokens by timestamp</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAssetIssueListByTimestamp</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">){}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueListByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">){}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>21.&nbsp;Get current block information</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetNowBlock</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNowBlock</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>22.&nbsp;Get a block by block height</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetBlockByNum</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockByNum</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>23.&nbsp;Get the total number of transactions</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">TotalTransaction</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TotalTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
 <p><strong>24.&nbsp;Query the transaction by transaction id</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">getTransactionById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>25.&nbsp;Query the transaction by timestamp</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">getTransactionsByTimestamp</span> <span class="p">(</span><span class="n">TimeMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionsByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">TimeMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>26.&nbsp;Query the transactions initiated by an account</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">getTransactionsFromThis</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionsFromThis</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>27.&nbsp;Query the transactions received by an account</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">getTransactionsToThis</span> <span class="p">(</span><span class="n">Account</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionsToThis</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
-<p><strong>28.&nbsp;Freeze TRX</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">FreezeBalance</span> <span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>28.&nbsp;Stake TRX</strong>
+This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>29.&nbsp;Unfreeze TRX</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UnfreezeBalance</span> <span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>29.&nbsp;Unstake TRX</strong>
+Unstake the TRX staked during Stake1.0.
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>30.&nbsp;Block producing reward redemption</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">WithdrawBalance</span> <span class="p">(</span><span class="n">WithdrawBalanceContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawBalance</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>31.&nbsp;Unfreeze token balance</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UnfreezeAsset</span> <span class="p">(</span><span class="n">UnfreezeAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>31.&nbsp;Unstake token balance</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>32.&nbsp;Query the next maintenance time</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetNextMaintenanceTime</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNextMaintenanceTime</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>33.&nbsp;Query the transaction fee &amp; block information</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionInfoById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionInfo</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionInfoById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: SolidityNode</p>
 <p><strong>34.&nbsp;Query block information by block id</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetBlockById</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Block</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
 <p><strong>35.&nbsp;Update token information</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">UpdateAsset</span> <span class="p">(</span><span class="n">UpdateAssetContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: Fullnode</p>
 <p>Description:
 Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.</p>
 <p><strong>36.&nbsp;Query the list of all the tokens by pagination</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetPaginatedAssetIssueList</span> <span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetPaginatedAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
-<p><strong>37.&nbsp;To sign a transaction</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetTransactionSign</span> <span class="p">(</span><span class="n">TransactionSign</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<p><strong>38.&nbsp;Address and private key creation</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateAdresss</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<p><strong>39.&nbsp;TRX easy transfer</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">EasyTransfer</span> <span class="p">(</span><span class="n">EasyTransferMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">EasyTransferResponse</span><span class="p">)</span> <span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<p><strong>40.&nbsp;Deploy a smart contract</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">DeployContract</span> <span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>37.&nbsp;Deploy a smart contract</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DeployContract</span><span class="w"> </span><span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode and SolidityNode</p>
-<p><strong>41.&nbsp;Trigger a smart contract</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">TriggerContract</span> <span class="p">(</span><span class="n">TriggerSmartContract</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>38.&nbsp;Trigger a smart contract</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TriggerContract</span><span class="w"> </span><span class="p">(</span><span class="n">TriggerSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>42.&nbsp;Create a shielded transaction</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedTransaction</span> <span class="p">(</span><span class="n">PrivateParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>39.&nbsp;Create a shielded transaction</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateShieldedTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">PrivateParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>43.&nbsp;Get a Merkle tree information of a note</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetMerkleTreeVoucherInfo</span> <span class="p">(</span><span class="n">OutputPointInfo</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">IncrementalMerkleVoucherInfo</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>40.&nbsp;Get a Merkle tree information of a note</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetMerkleTreeVoucherInfo</span><span class="w"> </span><span class="p">(</span><span class="n">OutputPointInfo</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">IncrementalMerkleVoucherInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>44.&nbsp;Scan note by ivk</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanNoteByIvk</span> <span class="p">(</span><span class="n">IvkDecryptParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>41.&nbsp;Scan note by ivk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ScanNoteByIvk</span><span class="w"> </span><span class="p">(</span><span class="n">IvkDecryptParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>45.&nbsp;Scan note by ovk</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanNoteByOvk</span> <span class="p">(</span><span class="n">OvkDecryptParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>42.&nbsp;Scan note by ovk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ScanNoteByOvk</span><span class="w"> </span><span class="p">(</span><span class="n">OvkDecryptParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DecryptNotes</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>46.&nbsp;Get spending key</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetSpendingKey</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>43.&nbsp;Get spending key</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetSpendingKey</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>47.&nbsp;Get expanded spending key</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetExpandedSpendingKey</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ExpandedSpendingKeyMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>44.&nbsp;Get expanded spending key</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetExpandedSpendingKey</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">ExpandedSpendingKeyMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>48.&nbsp;Get ak from ask</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetAkFromAsk</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>45.&nbsp;Get ak from ask</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAkFromAsk</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>49.&nbsp;Get nk from nsk</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetNkFromNsk</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>46.&nbsp;Get nk from nsk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNkFromNsk</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>50.&nbsp;Get incoming viewing key</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetIncomingViewingKey</span> <span class="p">(</span><span class="n">ViewingKeyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">IncomingViewingKeyMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>47.&nbsp;Get incoming viewing key</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetIncomingViewingKey</span><span class="w"> </span><span class="p">(</span><span class="n">ViewingKeyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">IncomingViewingKeyMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>51.&nbsp;Get diversifier</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetDiversifier</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DiversifierMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>48.&nbsp;Get diversifier</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetDiversifier</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DiversifierMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>52.&nbsp;Get zen payment address</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetZenPaymentAddress</span> <span class="p">(</span><span class="n">IncomingViewingKeyDiversifierMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">PaymentAddressMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>49.&nbsp;Get zen payment address</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetZenPaymentAddress</span><span class="w"> </span><span class="p">(</span><span class="n">IncomingViewingKeyDiversifierMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PaymentAddressMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>53.&nbsp;Get rcm</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetRcm</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>50.&nbsp;Get rcm</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetRcm</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>54.&nbsp;Get a note status of is spent or not</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">IsSpend</span> <span class="p">(</span><span class="n">NoteParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">SpendResult</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>51.&nbsp;Get a note status of is spent or not</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">IsSpend</span><span class="w"> </span><span class="p">(</span><span class="n">NoteParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">SpendResult</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>55.&nbsp;Create a shielded transaction without using ask</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedTransactionWithoutSpendAuthSig</span> <span class="p">(</span><span class="n">PrivateParametersWithoutAsk</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>52.&nbsp;Create a shielded transaction without using ask</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateShieldedTransactionWithoutSpendAuthSig</span><span class="w"> </span><span class="p">(</span><span class="n">PrivateParametersWithoutAsk</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>56.&nbsp;Create a shielded transaction hash</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetShieldTransactionHash</span> <span class="p">(</span><span class="n">Transaction</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>53.&nbsp;Create a shielded transaction hash</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetShieldTransactionHash</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>57.&nbsp;Create a signature for a shielded transaction</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateSpendAuthSig</span> <span class="p">(</span><span class="n">SpendAuthSigParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>54.&nbsp;Create a signature for a shielded transaction</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateSpendAuthSig</span><span class="w"> </span><span class="p">(</span><span class="n">SpendAuthSigParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>58.&nbsp;Create a shield nullifier</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldNullifier</span> <span class="p">(</span><span class="n">NfParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>55.&nbsp;Create a shield nullifier</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateShieldNullifier</span><span class="w"> </span><span class="p">(</span><span class="n">NfParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>59.&nbsp;Get new shielded address</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">GetNewShieldedAddress</span> <span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedAddressInfo</span><span class="p">){}</span>
+<p><strong>56.&nbsp;Get new shielded address</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNewShieldedAddress</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">ShieldedAddressInfo</span><span class="p">){}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>60.&nbsp;Create shielded contract parameters</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedContractParameters</span> <span class="p">(</span><span class="n">PrivateShieldedTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>57.&nbsp;Create shielded contract parameters</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateShieldedContractParameters</span><span class="w"> </span><span class="p">(</span><span class="n">PrivateShieldedTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>61.&nbsp;Create shielded contract parameters without ask</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">CreateShieldedContractParametersWithoutAsk</span> <span class="p">(</span><span class="n">PrivateShieldedTRC20ParametersWithoutAsk</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>58.&nbsp;Create shielded contract parameters without ask</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateShieldedContractParametersWithoutAsk</span><span class="w"> </span><span class="p">(</span><span class="n">PrivateShieldedTRC20ParametersWithoutAsk</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">ShieldedTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>62.&nbsp;Scan shielded TRC20 notes by ivk</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanShieldedTRC20NotesbyIvk</span> <span class="p">(</span><span class="n">IvkDecryptTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>59.&nbsp;Scan shielded TRC20 notes by ivk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ScanShieldedTRC20NotesbyIvk</span><span class="w"> </span><span class="p">(</span><span class="n">IvkDecryptTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode, SolidityNode</p>
-<p><strong>63.&nbsp;Scan shielded TRC20 notes by ovk</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">ScanShieldedTRC20NotesbyOvk</span> <span class="p">(</span><span class="n">OvkDecryptTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>60.&nbsp;Scan shielded TRC20 notes by ovk</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ScanShieldedTRC20NotesbyOvk</span><span class="w"> </span><span class="p">(</span><span class="n">OvkDecryptTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">DecryptNotesTRC20</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode, SolidityNode</p>
-<p><strong>64.&nbsp;Get the status of shielded TRC20 note of spent or not</strong>
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span> <span class="n">IsShieldedTRC20ContractNoteSpent</span> <span class="p">(</span><span class="n">NfTRC20Parameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">NullifierResult</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>61.&nbsp;Get the status of shielded TRC20 note of spent or not</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">IsShieldedTRC20ContractNoteSpent</span><span class="w"> </span><span class="p">(</span><span class="n">NfTRC20Parameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NullifierResult</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode, SolidityNode</p>
-<p><strong>65.&nbsp;Get the trigger input for the shielded TRC20</strong>
-<div class="highlight"><pre><span></span><code>  <span class="k">rpc</span> <span class="n">GetTriggerInputForShieldedTRC20Contract</span> <span class="p">(</span><span class="n">ShieldedTRC20TriggerContractParameters</span><span class="p">)</span> <span class="k">returns</span> <span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span> <span class="p">{}</span>
+<p><strong>62.&nbsp;Get the trigger input for the shielded TRC20</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">rpc</span><span class="w"> </span><span class="n">GetTriggerInputForShieldedTRC20Contract</span><span class="w"> </span><span class="p">(</span><span class="n">ShieldedTRC20TriggerContractParameters</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 Nodes: FullNode</p>
-<p><strong>66.&nbsp;Create an market order</strong>    <br />
-Interface statement:  <br />
-rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+<p><strong>63.&nbsp;Create an market order</strong>     <br />
+<div class="highlight"><pre><span></span><code>rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+</code></pre></div>
 Nodes: FullNode</p>
-<p><strong>67.&nbsp;Cancel the order</strong>    <br />
-Interface statement:  <br />
-rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+<p><strong>64.&nbsp;Cancel the order</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>68.&nbsp;Get all orders for the account</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+<p><strong>65.&nbsp;Get all orders for the account</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>69.&nbsp;Get all trading pairs</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+<p><strong>66.&nbsp;Get all trading pairs</strong>       <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>70.&nbsp;Get all orders for the trading pair</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+<p><strong>67.&nbsp;Get all orders for the trading pair</strong>     <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>71.&nbsp;Get all prices for the trading pair</strong>    <br />
-Interface statement:  <br />
-rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+<p><strong>68.&nbsp;Get all prices for the trading pair</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>72.&nbsp;Get order by id</strong>    <br />
-Interface statement: 
-rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+<p><strong>69.&nbsp;Get order by id</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>73.&nbsp;perform a historical balance lookup</strong>    <br />
-Interface statement:<br />
-rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+<p><strong>70.&nbsp;perform a historical balance lookup</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>74.&nbsp;fetch all balance-changing transactions in a block</strong>    <br />
-Interface statement:<br />
-rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+<p><strong>71.&nbsp;fetch all balance-changing transactions in a block</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
+</code></pre></div>
 Nodes: FullNode </p>
-<p><strong>75.&nbsp;get the burn trx amount</strong>    <br />
-Interface statement:<br />
-rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+<p><strong>72.&nbsp;get the burn trx amount</strong>    <br />
+<div class="highlight"><pre><span></span><code>rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
+</code></pre></div>
 Nodes: FullNode and SolidityNode</p>
+<p><strong>73.&nbsp;Freeze TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>74.&nbsp;UnFreeze TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>75.&nbsp;Withdraw Staked TRX</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawExpireUnfreeze</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawExpireUnfreezeContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>76.&nbsp;Delegate Resource</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">DelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>77.&nbsp;UnDelegate Resource</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnDelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">UnDelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>78.&nbsp;Query transaction information in the pending pool</strong>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>79.&nbsp;Query the pending pool transaction id list</strong>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>80.&nbsp;Query the size of the pending pool</strong>
+<div class="highlight"><pre><span></span><code>rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
+Nodes: FullNode
+</code></pre></div>
+<strong>81.&nbsp; Cancel UnFreeze</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CancelAllUnfreezeV2</span><span class="w"> </span><span class="p">(</span><span class="n">CancelAllUnfreezeV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>82.&nbsp; Get bandwidth unit price</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBandwidthPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>83.&nbsp; Get energy unit price</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetEnergyPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNode</p>
+<p><strong>84.&nbsp; Get transaction memo fee</strong>
+<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetMemoFee</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+Nodes: FullNodes</p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../mechanism-algorithm/sr/" class="btn btn-neutral float-right" title="SR and Committee">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../http/" class="btn btn-neutral" title="HTTP API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../http/" class="btn btn-neutral float-left" title="HTTP API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../introduction/dpos/" class="btn btn-neutral float-right" title="DPoS">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -647,23 +539,31 @@ Nodes: FullNode and SolidityNode</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../http/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../../mechanism-algorithm/sr/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../http/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../introduction/dpos/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

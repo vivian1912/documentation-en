@@ -1,326 +1,163 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Deployment - TRON Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Deployment";
-    var mkdocs_page_input_path = "developers/deployment.md";
-    var mkdocs_page_url = "/documentation-en/developers/deployment/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/deployment/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Deployment - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Deployment";
+        var mkdocs_page_input_path = "developers/deployment.md";
+        var mkdocs_page_url = "/documentation-en/developers/deployment/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TRON Documentation</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite FullNode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../run-in-idea/">Configure the IDE</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../code-structure/">Core Modules</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/http/">HTTP API</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../api/rpc/">RPC API</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Deployment</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#deployment">Deployment</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#premise">Premise</a></li>
-        
-            <li><a class="toctree-l4" href="#deployment-guide">Deployment Guide</a></li>
-        
-            <li><a class="toctree-l4" href="#logging-and-network-connection-verification">Logging and Network Connection Verification</a></li>
-        
-            <li><a class="toctree-l4" href="#stop-node-gracefully">Stop Node Gracefully</a></li>
-        
-            <li><a class="toctree-l4" href="#fullnode-and-soliditynode-fast-deployment">FullNode and SolidityNode Fast Deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#grpc-gateway-deployment">Grpc Gateway Deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#event-subscribe-plugin-deployment">Event Subscribe plugin Deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#event-query-service-deployment">Event query service deployment</a></li>
-        
-            <li><a class="toctree-l4" href="#advanced-configurations">Advanced Configurations</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../run-in-idea/">Run FullNode in IDEA</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../litefullnode/">Run Lite FullNode</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../incentives/">Incentive Policy</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
-        </ul>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TRON Documentation</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Developers &raquo;</li>
-        
-      
-    
-    <li>Deployment</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Deployment</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/deployment.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
                 <h1 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h1>
 <h2 id="premise">Premise<a class="headerlink" href="#premise" title="Permanent link">&para;</a></h2>
@@ -353,7 +190,7 @@ New developers should deploy FullNode only.</p>
 
 main_net_config.conf is the configuration for MainNet, and test_net_config.conf is the configuration for TestNet.
 
-please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SoliditNode.
+please rename the configuration file to `config.conf` and use this config.conf to start FullNode and SolidityNode.
 
 cp build/libs/FullNode.jar ../fullnode
 
@@ -400,11 +237,11 @@ java -jar FullNode.jar -p 650950B193DDDDB35B6E48912DD28F7AB0E7140C1BFDEFD493348F
 <div class="highlight"><pre><span></span><code>12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 </code></pre></div></p>
 <h2 id="stop-node-gracefully">Stop Node Gracefully<a class="headerlink" href="#stop-node-gracefully" title="Permanent link">&para;</a></h2>
-<p>Create file stop.sh，use kill -15 to close java-tron.jar(or FullNode.jar、SolidityNode.jar).
-You need to modify pid=<code>ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.
+<p>Create file stop.sh，use kill -15 to close FullNode.jar(or SolidityNode.jar).
+You need to modify pid=<code>ps -ef |grep FullNode.jar |grep -v grep |awk '{print $2}'</code> to find the correct pid.
 <div class="highlight"><pre><span></span><code>#!/bin/bash
 while true; do
-  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk &#39;{print $2}&#39;`
+  pid=`ps -ef |grep FullNode.jar |grep -v grep |awk &#39;{print $2}&#39;`
   if [ -n &quot;$pid&quot; ]; then
     kill -15 $pid
     echo &quot;The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently...&quot;
@@ -423,39 +260,39 @@ done
 Just Support FullNode and SolidityNode.</p>
 <h3>Download and run script</h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
 </code></pre></div>
 <h3>Parameter Illustration</h3>
 
-<div class="highlight"><pre><span></span><code>bash deploy_tron.sh --app <span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span> --net <span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span> --db <span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span> --heap-size &lt;heapsize&gt;
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span><span class="o">[</span>FullNode<span class="p">|</span>SolidityNode<span class="o">]</span><span class="w"> </span>--net<span class="w"> </span><span class="o">[</span>mainnet<span class="p">|</span>testnet<span class="p">|</span>privatenet<span class="o">]</span><span class="w"> </span>--db<span class="w"> </span><span class="o">[</span>keep<span class="p">|</span>remove<span class="p">|</span>backup<span class="o">]</span><span class="w"> </span>--heap-size<span class="w"> </span>&lt;heapsize&gt;
 
---app Optional, Running application. The default node is Fullnode and it could be FullNode or SolidityNode.
---net Optional, Connecting network. The default network is mainnet and it could be mainnet, testnet.
---db  Optional, The way of data processing could be keep, remove and backup. Default is keep. If you launch two different networks, like from mainnet to testnet or from testnet to mainnet, you need to delete database.
---trust-node  Optional, It only works when deploying SolidityNode. Default is <span class="m">127</span>.0.0.1:50051. The specified gRPC service of Fullnode, like <span class="m">127</span>.0.0.1:50051 or <span class="m">13</span>.125.249.129:50051.
---rpc-port  Optional, Port of grpc. Default is <span class="m">50051</span>. If you deploy SolidityNode and FullNode on the same host，you need to configure different ports.
---commit  Optional, commitid of project.
---branch  Optional, branch of project.  Mainnet default is latest release and Testnet default is master.
---heap-size  Optional, jvm option: Xmx. The default heap-size is <span class="m">0</span>.8 * memory size.
---work_space  Optional, default is current directory.
+--app<span class="w"> </span>Optional,<span class="w"> </span>Running<span class="w"> </span>application.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>node<span class="w"> </span>is<span class="w"> </span>Fullnode<span class="w"> </span>and<span class="w"> </span>it<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>FullNode<span class="w"> </span>or<span class="w"> </span>SolidityNode.
+--net<span class="w"> </span>Optional,<span class="w"> </span>Connecting<span class="w"> </span>network.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>network<span class="w"> </span>is<span class="w"> </span>mainnet<span class="w"> </span>and<span class="w"> </span>it<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>mainnet,<span class="w"> </span>testnet.
+--db<span class="w">  </span>Optional,<span class="w"> </span>The<span class="w"> </span>way<span class="w"> </span>of<span class="w"> </span>data<span class="w"> </span>processing<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>keep,<span class="w"> </span>remove<span class="w"> </span>and<span class="w"> </span>backup.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span>keep.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>launch<span class="w"> </span>two<span class="w"> </span>different<span class="w"> </span>networks,<span class="w"> </span>like<span class="w"> </span>from<span class="w"> </span>mainnet<span class="w"> </span>to<span class="w"> </span>testnet<span class="w"> </span>or<span class="w"> </span>from<span class="w"> </span>testnet<span class="w"> </span>to<span class="w"> </span>mainnet,<span class="w"> </span>you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>delete<span class="w"> </span>database.
+--trust-node<span class="w">  </span>Optional,<span class="w"> </span>It<span class="w"> </span>only<span class="w"> </span>works<span class="w"> </span>when<span class="w"> </span>deploying<span class="w"> </span>SolidityNode.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="m">127</span>.0.0.1:50051.<span class="w"> </span>The<span class="w"> </span>specified<span class="w"> </span>gRPC<span class="w"> </span>service<span class="w"> </span>of<span class="w"> </span>Fullnode,<span class="w"> </span>like<span class="w"> </span><span class="m">127</span>.0.0.1:50051<span class="w"> </span>or<span class="w"> </span><span class="m">13</span>.125.249.129:50051.
+--rpc-port<span class="w">  </span>Optional,<span class="w"> </span>Port<span class="w"> </span>of<span class="w"> </span>grpc.<span class="w"> </span>Default<span class="w"> </span>is<span class="w"> </span><span class="m">50051</span>.<span class="w"> </span>If<span class="w"> </span>you<span class="w"> </span>deploy<span class="w"> </span>SolidityNode<span class="w"> </span>and<span class="w"> </span>FullNode<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>host，you<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>configure<span class="w"> </span>different<span class="w"> </span>ports.
+--commit<span class="w">  </span>Optional,<span class="w"> </span>commitid<span class="w"> </span>of<span class="w"> </span>project.
+--branch<span class="w">  </span>Optional,<span class="w"> </span>branch<span class="w"> </span>of<span class="w"> </span>project.<span class="w">  </span>Mainnet<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>latest<span class="w"> </span>release<span class="w"> </span>and<span class="w"> </span>Testnet<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>master.
+--heap-size<span class="w">  </span>Optional,<span class="w"> </span>jvm<span class="w"> </span>option:<span class="w"> </span>Xmx.<span class="w"> </span>The<span class="w"> </span>default<span class="w"> </span>heap-size<span class="w"> </span>is<span class="w"> </span><span class="m">0</span>.8<span class="w"> </span>*<span class="w"> </span>memory<span class="w"> </span>size.
+--work_space<span class="w">  </span>Optional,<span class="w"> </span>default<span class="w"> </span>is<span class="w"> </span>current<span class="w"> </span>directory.
 </code></pre></div>
 <h3> Deployment of FullNode on the one host </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
+bash<span class="w"> </span>deploy_tron.sh
 </code></pre></div>
 <h3> Deployment of SolidityNode on the one host </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-<span class="c1"># User can self-configure the IP and Port of GRPC service in the turst-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
-bash deploy_tron.sh --app SolidityNode --trust-node &lt;grpc-ip:grpc-port&gt;
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
+<span class="c1"># User can self-configure the IP and Port of GRPC service in the trust-node field of SolidityNode. trust-node is the fullnode you just deploy.</span>
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>SolidityNode<span class="w"> </span>--trust-node<span class="w"> </span>&lt;grpc-ip:grpc-port&gt;
 </code></pre></div>
 <h3> Deployment of FullNode and SolidityNode on the same host </h3>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># You need to configure different gRPC ports on the same host because gRPC port is available on SolidityNode and FullNodeConfigure and it cannot be set as default value 50051. In this case the default value of rpc port is set as 50041.</span>
-wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh -O deploy_tron.sh
-bash deploy_tron.sh --app FullNode
-bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
+wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_tron.sh<span class="w"> </span>-O<span class="w"> </span>deploy_tron.sh
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>FullNode
+bash<span class="w"> </span>deploy_tron.sh<span class="w"> </span>--app<span class="w"> </span>SolidityNode<span class="w"> </span>--rpc-port<span class="w"> </span><span class="m">50041</span>
 </code></pre></div>
 <h2 id="grpc-gateway-deployment">Grpc Gateway Deployment<a class="headerlink" href="#grpc-gateway-deployment" title="Permanent link">&para;</a></h2>
 <h3> Summary </h3>
@@ -467,23 +304,23 @@ bash deploy_tron.sh --app SolidityNode --rpc-port <span class="m">50041</span>
 Install Golang, Protoc, and set $GOPATH environment variable according to your requirement.</p>
 <h3> Download and run script </h3>
 
-<div class="highlight"><pre><span></span><code>wget https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh -O deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://raw.githubusercontent.com/tronprotocol/TronDeployment/master/deploy_grpc_gateway.sh<span class="w"> </span>-O<span class="w"> </span>deploy_grpc_gateway.sh
 </code></pre></div>
 <h3> Parameter Illustration </h3>
 
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="o">[</span>rpc host ip<span class="o">]</span> --rpcport <span class="o">[</span>rpc port number<span class="o">]</span> --httpport <span class="o">[</span>http port number<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh<span class="w"> </span>--rpchost<span class="w"> </span><span class="o">[</span>rpc<span class="w"> </span>host<span class="w"> </span>ip<span class="o">]</span><span class="w"> </span>--rpcport<span class="w"> </span><span class="o">[</span>rpc<span class="w"> </span>port<span class="w"> </span>number<span class="o">]</span><span class="w"> </span>--httpport<span class="w"> </span><span class="o">[</span>http<span class="w"> </span>port<span class="w"> </span>number<span class="o">]</span>
 
---rpchost The fullnode or soliditynode IP where the grpc service is provided. Default value is <span class="s2">&quot;localhost&quot;</span>.
---rpcport The fullnode or soliditynode port number grpc service is consuming. Default value is <span class="m">50051</span>.
---httpport The port intends to provide http service provided by grpc gateway. Default value is <span class="m">18890</span>.
+--rpchost<span class="w"> </span>The<span class="w"> </span>fullnode<span class="w"> </span>or<span class="w"> </span>soliditynode<span class="w"> </span>IP<span class="w"> </span>where<span class="w"> </span>the<span class="w"> </span>grpc<span class="w"> </span>service<span class="w"> </span>is<span class="w"> </span>provided.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="s2">&quot;localhost&quot;</span>.
+--rpcport<span class="w"> </span>The<span class="w"> </span>fullnode<span class="w"> </span>or<span class="w"> </span>soliditynode<span class="w"> </span>port<span class="w"> </span>number<span class="w"> </span>grpc<span class="w"> </span>service<span class="w"> </span>is<span class="w"> </span>consuming.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="m">50051</span>.
+--httpport<span class="w"> </span>The<span class="w"> </span>port<span class="w"> </span>intends<span class="w"> </span>to<span class="w"> </span>provide<span class="w"> </span>http<span class="w"> </span>service<span class="w"> </span>provided<span class="w"> </span>by<span class="w"> </span>grpc<span class="w"> </span>gateway.<span class="w"> </span>Default<span class="w"> </span>value<span class="w"> </span>is<span class="w"> </span><span class="m">18890</span>.
 </code></pre></div>
 <h3> Example </h3>
 
 <p>Use default configuration：
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh
 </code></pre></div>
 Use customized configuration：
-<div class="highlight"><pre><span></span><code>bash deploy_grpc_gateway.sh --rpchost <span class="m">127</span>.0.0.1 --rpcport <span class="m">50052</span> --httpport <span class="m">18891</span>
+<div class="highlight"><pre><span></span><code>bash<span class="w"> </span>deploy_grpc_gateway.sh<span class="w"> </span>--rpchost<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span>--rpcport<span class="w"> </span><span class="m">50052</span><span class="w"> </span>--httpport<span class="w"> </span><span class="m">18891</span>
 </code></pre></div></p>
 <h2 id="event-subscribe-plugin-deployment">Event Subscribe plugin Deployment<a class="headerlink" href="#event-subscribe-plugin-deployment" title="Permanent link">&para;</a></h2>
 <p>This is an implementation of Tron eventsubscribe model.</p>
@@ -505,7 +342,7 @@ Use customized configuration：
 <p>This will produce one plugin zip, named <code>plugin-kafka-1.0.0.zip</code>, located in the <code>event-plugin/build/plugins/</code> directory.</p>
 </li>
 </ol>
-<h3> Edit **config.conf** of Java-tron， add the following fileds:</h3>
+<h3> Edit **config.conf** of Java-tron， add the following fields:</h3>
 
 <p><div class="highlight"><pre><span></span><code>event.subscribe = {
     path = &quot;&quot; // absolute path of plugin
@@ -638,7 +475,7 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 </code></pre></div></p>
 <h3 id="mongo"> Download and install MongoDB </h3>
 
-<p><strong> Suggested Configuration </strong></p>
+<p>** Suggested Configuration **</p>
 <ul>
 <li>CPU/ RAM: 16Core / 32G</li>
 <li>DISK: 500G</li>
@@ -651,10 +488,10 @@ kafka-console-consumer.sh --zookeeper localhost:2181 --topic contractevent
 <li>tar zxvf mongodb-linux-x86_64-4.0.4.tgz</li>
 <li>mv mongodb-linux-x86_64-4.0.4 mongodb</li>
 </ul>
-<p><strong> Set environment </strong>
+<p>** Set environment **
 - export MONGOPATH=/home/java-tron/mongodb/
-- export PATH=<span><span class="MathJax_Preview">PATH:</span><script type="math/tex">PATH:</script></span>MONGOPATH/bin</p>
-<p><strong> Create mongodb config </strong>
+- export PATH=<span class="arithmatex"><span class="MathJax_Preview">PATH:</span><script type="math/tex">PATH:</script></span>MONGOPATH/bin</p>
+<p>** Create mongodb config **
 The path is : /etc/mongodb/mgdb.conf</p>
 <ul>
 <li>cd /etc/mongodb</li>
@@ -662,7 +499,7 @@ The path is : /etc/mongodb/mgdb.conf</p>
 </ul>
 <p>Create data&amp;log folder for mongodb
 Create data, log subfolder in mongodb directory,  and add their absolute path to mgdb.conf</p>
-<p><strong> Example: </strong></p>
+<p>** Example: **</p>
 <ul>
 <li>dbpath=/home/java-tron/mongodb/data</li>
 <li>logpath=/home/java-tron/mongodb/log/mongodb.log</li>
@@ -673,16 +510,16 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <li>auth=true</li>
 <li>wiredTigerCacheSizeGB=2</li>
 </ul>
-<p><strong> Note: </strong>
+<p>** Note: **
 - bind_ip must be configured to 0.0.0.0，otherwise remote connection will be refused.
 - wiredTigerCacheSizeGB, must be configured to prevent OOM</p>
-<p><strong> Launch MongoDB </strong>
+<p>** Launch MongoDB **
   - mongod  --config /etc/mongodb/mgdb.conf</p>
-<p><strong> Create admin account: </strong>
+<p>** Create admin account: **
 - mongo
 - use admin
 - db.createUser({user:"root",pwd:"admin",roles:[{role:"root",db:"admin"}]})</p>
-<p><strong> Create eventlog and its owner account </strong></p>
+<p>** Create eventlog and its owner account **</p>
 <ul>
 <li>db.auth("root", "admin")</li>
 <li>use eventlog</li>
@@ -691,9 +528,9 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <blockquote>
 <p>database: eventlog, username:tron, password: 123456</p>
 </blockquote>
-<p><strong> Firewall rule: </strong>
+<p>** Firewall rule: **
 - iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 27017 -j ACCEPT</p>
-<p><strong> Remote connection via mongo: </strong></p>
+<p>** Remote connection via mongo: **</p>
 <ul>
 <li>mongo 47.90.245.68:27017</li>
 <li>use eventlog</li>
@@ -701,11 +538,11 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 <li>show collections</li>
 <li>db.block.find()</li>
 </ul>
-<p><strong> Query block trigger data: </strong></p>
+<p>** Query block trigger data: **</p>
 <ul>
 <li>db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000</li>
 </ul>
-<p><strong> Set database index to speedup query: </strong></p>
+<p>** Set database index to speedup query: **</p>
 <p>cd /{projectPath}
 sh insertIndex.sh</p>
 <h2 id="event-query-service-deployment">Event query service deployment<a class="headerlink" href="#event-query-service-deployment" title="Permanent link">&para;</a></h2>
@@ -743,29 +580,17 @@ cd troneventquery</p>
 <p>Read the <a href="../advanced-configuration/">Advanced Configuration</a></p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../run-in-idea/" class="btn btn-neutral float-right" title="Run FullNode in IDEA">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../official-public-nodes/" class="btn btn-neutral" title="Official Public Nodes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
+          </div><footer>
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -773,23 +598,27 @@ cd troneventquery</p>
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../official-public-nodes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../run-in-idea/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>

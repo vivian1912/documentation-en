@@ -1,384 +1,256 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Run FullNode in IDEA - TRON Documentation</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Run FullNode in IDEA";
-    var mkdocs_page_input_path = "developers/run-in-idea.md";
-    var mkdocs_page_url = "/documentation-en/developers/run-in-idea/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/run-in-idea/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Configure the IDE - Java Tron</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Configure the IDE";
+        var mkdocs_page_input_path = "developers/run-in-idea.md";
+        var mkdocs_page_url = "/documentation-en/developers/run-in-idea/";
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
-
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TRON Documentation</a>
-        <div role="search">
+          <a href="../.." class="icon icon-home"> Java Tron
+        </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../..">Home</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Introduction</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../introduction/">Repository</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/dpos/">DPoS</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../introduction/overview/">Overview</a>
-                </li>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with Java-tron</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Using Java-tron</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying Java-tron</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../litefullnode/">Lite FullNode</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Core Protocol</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../java-tron/">Developer Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tips/">TIPs Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../issue-workflow/">Issue Workflow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../governance/">Governance Workflow</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Configure the IDE</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#configure-intelij-idea">Configure InteliJ IDEA</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configure-the-code-style-check-plugin">Configure the code style check plugin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#compile-java-tron">Compile Java-tron</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#run-and-debug">Run and Debug</a>
+    </li>
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">API</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../api/http/">HTTP API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../demo/">Development Example</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../code-structure/">Core Modules</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Releases</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
                 </li>
-                <li class="">
-                    
-    <a class="" href="../../api/rpc/">RPC API</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Mechanism & Algorithm</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/sr/">SR and Committee</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/trc10/">TRC-10</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/account/">Account Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/shielded-transaction/">Shielded Transaction</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../mechanism-algorithm/system-contracts/">System Contracts</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Architecture</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../architecture/network/">Network</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/database/">Database</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../architecture/event/">Event Subsystem</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Smart Contract</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../contracts/tvm/">TVM</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/compiler/">Compiler</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/contract/">Contract</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../contracts/trc20/">TRC-20</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Developers</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../official-public-nodes/">Official Public Nodes</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../deployment/">Deployment</a>
-                </li>
-                <li class=" current">
-                    
-    <a class="current" href="./">Run FullNode in IDEA</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l3"><a href="#run-the-fullnode-with-idea">Run the FullNode with IDEA</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l4" href="#configure-idea">Configure IDEA</a></li>
-        
-            <li><a class="toctree-l4" href="#deployment-guide">Deployment guide</a></li>
-        
-        </ul>
-    
-
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../litefullnode/">Run Lite FullNode</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../resources/">Resources</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../contribution/">Contribution</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../incentives/">Incentive Policy</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../java-tron/">Java-Tron</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../tips/">TIPs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../advanced-configuration/">Advanced Configuration</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../gpg/">Contact Us (GPG Key)</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Clients</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../clients/wallet-cli/">Wallet-cli</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../clients/tron-grid/">TronGrid</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Releases</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../releases/">Binary Integrity Check</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../faq/">FAQ</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../glossary/">Glossary</a>
-	    </li>
-          
-        </ul>
+              </ul>
       </div>
-      &nbsp;
+    </div>
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TRON Documentation</a>
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Java Tron</a>
+        
       </nav>
-
-      
       <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Developers &raquo;</li>
-        
-      
-    
-    <li>Run FullNode in IDEA</li>
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>For Java-tron Developers &raquo;</li><li>Configure the IDE</li>
     <li class="wy-breadcrumbs-aside">
-      
         <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/developers/run-in-idea.md"
           class="icon icon-github"> Edit on GitHub</a>
-      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main">
-            <div class="section">
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
-                <h1 id="run-the-fullnode-with-idea">Run the FullNode with IDEA<a class="headerlink" href="#run-the-fullnode-with-idea" title="Permanent link">&para;</a></h1>
-<p>This document aims to facilitate developers with some experience to run the FullNode with IDEA.</p>
-<p><strong>The following is for the master branch of java-tron.</strong></p>
-<h2 id="configure-idea">Configure IDEA<a class="headerlink" href="#configure-idea" title="Permanent link">&para;</a></h2>
-<p><strong>The configuration of IDEA</strong></p>
+                <h1 id="configure-the-intellij-idea-ide">Configure the IntelliJ IDEA IDE<a class="headerlink" href="#configure-the-intellij-idea-ide" title="Permanent link">&para;</a></h1>
+<p>For Java development, in order to reduce development difficulty and improve development efficiency, developers should first select and configure a Java integrated development environment, such as IntelliJ IDEA, NetBeans or Eclipse, etc. This article will take InteliJ IDEA as an example to introduce how to configure Java-tron integration development environment.</p>
+<p>This article describes the configuration of the Java-tron integrated development environment in InteliJ IDEA. Java-tron nodes support to be deployed on <code>Linux</code> or <code>MacOS</code> operating systems, and rely on <code>Oracle JDK 1.8</code>, other versions of JDK are not supported. Before configuring the InteliJ IDE development environment, please ensure the following prerequisites:</p>
 <ul>
-<li>
-<p>Oracle JDK 1.8 <strong>OpenJDK is not currently supported</strong></p>
-</li>
+<li>Configure the development environment on <code>Linux</code> or <code>MacOS</code> operating system</li>
+<li><code>Oracle JDK 1.8</code>, <code>git</code>, <a href="https://www.jetbrains.com/idea/download/#section=mac">InteliJ IDEA</a> are installed </li>
+</ul>
+<h2 id="configure-intelij-idea">Configure InteliJ IDEA<a class="headerlink" href="#configure-intelij-idea" title="Permanent link">&para;</a></h2>
+<p>The IntelliJ IDEA configuration steps are as follows:</p>
+<ul>
 <li>
 <p>Install Lombok plugin</p>
+<p>Search for <code>lombok</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install <code>Lombok</code> plugin, <code>Lombok</code> makes Java-tron code more concise by adding annotations.</p>
+</li>
+<li>
+<p>Enable <code>Enable annotation processing</code> configuration item
+      <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_annotation.png" /></p>
+</li>
+<li>
+<p>Check the JDK version and make sure that <code>Oracle JDK 1.8</code> is used in IntelliJ IDEA
+      <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_JDK.png" /></p>
+</li>
+<li>
+<p>Download Java-tron source code</p>
+<p>Clone the Java-tron source code locally and switch to the <code>develop</code> branch.
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/tronprotocol/java-tron.git
+$ git checkout -t origin/develop
+</code></pre></div></p>
 </li>
 </ul>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/lombok.png" /></p>
+<h2 id="configure-the-code-style-check-plugin">Configure the code style check plugin<a class="headerlink" href="#configure-the-code-style-check-plugin" title="Permanent link">&para;</a></h2>
+<p>The Java-tron code style needs to meet the <code>Google check style</code> specification. In IDEA, you can use the <code>Checkstyle</code> plugin to check whether the code conforms to the <code>Google check style</code> specification. The installation and configuration process of the plugin is as follows:</p>
 <ul>
-<li>Tick Enable annotation processing</li>
+<li>
+<p>Search for <code>checkstyle</code> in [IDEA]-&gt;[Preferences]-&gt;[Plugins] to install the plugin
+    <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkstyle.png" /></p>
+</li>
+<li>
+<p>Code style configuration</p>
+<p>First, download the <a href="https://github.com/tronprotocol/java-tron/blob/develop/config/checkstyle/checkStyleAll.xml">Java-tron code style check configuration file</a>, then in the Checkstyle configuration page, click "+ ", choose to use the "checkStyleAll.xml" just downloaded, after adding that, you can see this file in the "Configuration Files" list, and finally click "Apply" to complete the configuration.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png" /></p>
+<p>After configuring the <code>Checkstyle</code> plugin, you can use <code>Checkstyle</code> to check the code. <code>Checkstyle</code> can check a module or the whole project, and can also check a single file. Select "Check Current File" in the right-click menu of the file editor, and Checkstyle will check the file. If a code problem is detected, you need to modify it according to the prompts. Code can only be submitted when there are no code problems.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_stylecheck.png" /></p>
+</li>
 </ul>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/annnotation.png" /></p>
-<h2 id="deployment-guide">Deployment guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
-<p><strong>1.Create a directory</strong>
-<em>/deploy</em></p>
-<div class="highlight"><pre><span></span><code>mkdir deploy
+<h2 id="compile-java-tron">Compile Java-tron<a class="headerlink" href="#compile-java-tron" title="Permanent link">&para;</a></h2>
+<p>You can use the terminal to compile Java-tron with the following command in the Java-tron project directory:</p>
+<p><div class="highlight"><pre><span></span><code>$ ./gradlew clean build
 </code></pre></div>
-<p><strong>2.Clone the latest code</strong></p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/java-tron
-</code></pre></div>
-<p><strong>3.Switch to the master branch</strong></p>
-<div class="highlight"><pre><span></span><code>cd java-tron
-git checkout -t origin/master
-</code></pre></div>
-<p><strong>4.Compile the code</strong></p>
-<p><div class="highlight"><pre><span></span><code>./gradlew build
-</code></pre></div>
-The compilation process may take some time, please be patient.
-If the compilation is successful, you can see the information similar to the following:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/build_success_test.png" /></p>
-<p>If you do not want to perform unit test tasks, you can run the following command:</p>
-<div class="highlight"><pre><span></span><code>./gradlew build -x test
-</code></pre></div>
-<p><strong>5.Start the FullNode</strong></p>
-<p>After compiling successfully, you can find the main function file through the path java-tron / src / main / java / org / tron / program / FullNode.java and then start a full node.</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start.png" /></p>
-<p>After starting, you can check the log to verify whether the startup is successful. The log path is: /deploy/java-tron/logs/tron.log. If the startup is successful, you can see the following logs:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_success.png" /></p>
-<p>Also,you can use this command like tail -f /logs/tron.log to view the real-time log, as follows:</p>
-<p><img alt="" src="https://raw.githubusercontent.com/cathy-lishipu/documentation-zh/idea_instruction/images/start_successed.png" /></p>
+The above compile command will execute all test cases, you can use <code>-x test</code> to skip the execution of test cases:
+<div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
+</code></pre></div></p>
+<p>You can also compile Java-tron in IDEA: Open the Java-tron project in IDEA and click "Build" -&gt; "Build Project" to compile the project.</p>
+<h2 id="run-and-debug">Run and Debug<a class="headerlink" href="#run-and-debug" title="Permanent link">&para;</a></h2>
+<p>Before running Java-tron, you need to create a working directory to store the database files and log files generated when the node is running.
+<div class="highlight"><pre><span></span><code>$ mkdir /Users/javatrondeploy
+</code></pre></div></p>
+<p>In the "Run/Debug Configurations" configuration panel, specify the JDK version running Java-tron as <code>java 8</code>, and then configure the command parameters for running Java-tron, for example, specify the node configuration file through the <code>-c</code> parameter as <code>config.conf</code>.</p>
+<p>"Working directory" is configured as the working directory of Java-tron created earlier. When Java-tron starts, it will look for the <code>config.conf</code> configuration file in this directory. Please make sure that <code>config.conf</code> has already been in this directory.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_RunDebug.png" /></p>
+<p>After the setting, click the "Apply" button to complete the configuration. Then you can click "Run"-&gt;"Run FullNode" in IDEA to start the Java-tron node or click "Run"-&gt;"Debug FullNode" to start the node in debug mode. After the node is started, Java-tron logs are stored in the working directory.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_runjavatron.png" /></p>
+<p>If you want to debug the Java-tron code, you can set breakpoints in the Java-tron code and start it in debug mode, so that you can trace the debug code line by line.
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png" /></p>
               
             </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../litefullnode/" class="btn btn-neutral float-right" title="Run Lite FullNode">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../deployment/" class="btn btn-neutral" title="Deployment"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../governance/" class="btn btn-neutral float-left" title="Governance Workflow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../demo/" class="btn btn-neutral float-right" title="Development Example">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
-    
   </div>
 
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
+          
         </div>
       </div>
 
@@ -386,23 +258,31 @@ If the compilation is successful, you can see the information similar to the fol
 
   </div>
 
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-          <a href="https://github.com/tronprotocol/documentation-en/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
-      
-      
-        <span><a href="../deployment/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../litefullnode/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../governance/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../demo/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
 </div>
     <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
     <script src="../../js/theme.js" defer></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
       <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
 
 </body>
 </html>
