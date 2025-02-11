@@ -89,7 +89,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Multi-Signature</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
@@ -540,7 +540,7 @@ GetAddress<span class="w"> </span>successful<span class="w"> </span>!!
 <h3 id="updateaccountpermission">UpdateAccountPermission<a class="headerlink" href="#updateaccountpermission" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code>wallet&gt;UpdateAccountPermission<span class="w"> </span><span class="o">[</span>ownerAddress<span class="o">]</span><span class="w"> </span><span class="o">[</span>permissions<span class="o">]</span>
 </code></pre></div>
-This command is used to assign permissions to other accounts, is utilized for <strong>multi-signature</strong> transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:</p>
+This command is used to manage account permissions, assign permissions to other accounts, is utilized for multi-signature transactions, which allows other users to access the account with paritcular permission in order to better manage it. There are three types of permissions:</p>
 <ul>
 <li>owner: access to the owner of account</li>
 <li>active: access to other features of accounts, and access that authorizes a certain feature. Block production authorization is not included if it's for SR purposes.</li>
@@ -1120,7 +1120,7 @@ A<code>permission_id</code> is always required, it is "0" by default, which mean
 <p>In the example, we picked the account <code>TB9qhqbev6DpX8mxdf3zDdtSQ6GC6Vb6Ej</code> to sign first,
 after that, it asks you if want to add another sign 
 ,enter y and pick the account <code>TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE</code> to finish multi-signing.</p>
-<p>The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This is how multiple accounts user multi-signature when using the same cli. </p>
+<p>The weight of each account is 1 and the granting threshold is 2. When the requirements are met, the transaction is done successfully! This example shows how to complete a multi-signed transaction using the same client. When using multiple clients, please refer to the following command.</p>
 <h3 id="addtransactionsign">AddTransactionSign<a class="headerlink" href="#addtransactionsign" title="Permanent link">&para;</a></h3>
 <p>Use the instruction addTransactionSign according to the obtained transaction hex string if signing at multiple cli.
 <div class="highlight"><pre><span></span><code>wallet&gt;<span class="w"> </span>addtransactionsign<span class="w"> </span>0a83010a0241aa2208b2d2c13c86e8bd884098acb1cf9a305a65080112610a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412300a1541babecec4d9f58f0df77f0728b9c53abb1f21d684121541e8bd653015895947cec33d1670a88cf67ab277b9180a70e8e1adcf9a30
