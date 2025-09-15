@@ -1,0 +1,72 @@
+:root {
+  --md-primary-fg-color: #ec0b2a;        /* Primary color */
+  --md-accent-fg-color: #ec0b2a;         /* Accent color */
+}
+
+/* Disable uppercase transformation for first-level menu items */
+.wy-menu-vertical p.caption {
+    text-transform: none;
+}
+
+.wy-dropdown-menu>dd.call-to-action {
+    text-transform: none;
+}
+
+/* Add arrow icon to links with submenu items */
+.md-nav__item.has-children > .md-nav__link {
+  position: relative;
+  padding-right: 20px; /* Reserve space for the icon */
+}
+
+.md-nav__item.has-children > .md-nav__link::after {
+  content: "⟩"; /* Use angle bracket */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  font-weight: 900;
+  transition: transform 0.2s ease; /* Add rotation animation */
+}
+
+/* Rotate 90 degrees when expanded */
+.md-nav__item.has-children.is-expanded > .md-nav__link::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/*Set the font color of the first-level navigation to increase the distinction from the second-level navigation*/
+.md-nav--primary .md-nav__item--section > .md-nav__link {
+    color: #000;
+    font-size: 1.1em;
+}
+
+/* Hide the duplicated site name in the left sidebar.*/
+.md-nav__title {
+    display: none;
+}
+
+.md-sidebar {
+    padding-top: 0; /* Remove top padding */
+}
+
+/*Hide Home nav-item*/
+.md-nav--primary > .md-nav__list > li:first-child {
+    display: none;
+}
+
+.md-footer {
+  background-color: var(--md-default-bg-color);
+}
+
+/* add flex alignment */
+.md-footer__link {
+  align-items: center; 
+}
+
+/* Override the responsive design part of the footer. */
+@media screen and (max-width: 44.984375em) {
+  .md-footer__link--prev .md-footer__title {
+    display: block;    
+  }
+}
+

@@ -1,206 +1,1817 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Network Configuration - java-tron</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Network Configuration";
-        var mkdocs_page_input_path = "using_javatron/connecting_to_tron.md";
-        var mkdocs_page_url = "/documentation-en/using_javatron/connecting_to_tron/";
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/connecting_to_tron/">
+      
+      
+        <link rel="prev" href="../../architecture/database/">
+      
+      
+        <link rel="next" href="../metrics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
-</head>
+    
+      
+        <title>Network Connection - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> java-tron
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Using java-tron</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../private_network/">Private Network</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Network Configuration</a>
-    <ul class="current">
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../toolkit/">Node Maintenance Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Core Protocol</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Releases</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
-                </li>
-              </ul>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#connect-to-tron-network" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network Connection
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">java-tron</a>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using java-tron &raquo;</li><li>Network Configuration</li>
-    <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/connecting_to_tron.md"
-          class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="connecting-to-the-tron-network">Connecting to the TRON network<a class="headerlink" href="#connecting-to-the-tron-network" title="Permanent link">&para;</a></h1>
-<p>The TRON network is mainly divided into the main network, the Shasta test network, the Nile test network and the private network. Therefore, for the java-tron client software, it can be connected to any TRON network by modifying the configuration items in the configuration file. At present, the Shasta testnet does not support adding a new node, but the Nile testnet supports it.</p>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#node-discovery" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Node Discovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node Discovery" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#enable-and-disable" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Enable and Disable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#boot-nodes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Boot Nodes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#node-connection" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Node Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node Connection" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#number-of-node-connections" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Number of Node Connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#active-connection" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Active Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#passive-connection" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Passive Connection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#log-and-network-connection-verification" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Log and network connection verification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#connection-problems" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Connection problems
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#connect-to-private-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Connect to private network
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="connect-to-tron-network">Connect to TRON network<a class="headerlink" href="#connect-to-tron-network" title="Permanent link">&para;</a></h1>
+<p>The TRON network is mainly divided into the Mainnet, Nile Testnet, Shasta Testnet and Private Network. Therefore, for the java-tron client, you can connect it to any TRON network by modifying the configuration items in the configuration file. Currently, among the testnets, the Shasta Testnet does not support node joining, while the Nile Testnet does.</p>
 <p>You need to set the following configuration items to connect java-tron to one of the TRON networks:</p>
 <ul>
-<li><code>node.p2p.version</code> : It is used to set the P2P network id. Only nodes with the same network id can shake hands successfully.<ul>
-<li>TRON mainnet: <code>node.p2p.version=11111</code></li>
-<li>Nile testnet: <code>node.p2p.version = 201910292</code></li>
-<li>Private network：set to other values</li>
-</ul>
-</li>
-<li><code>seed.node</code>: set seed node</li>
-<li><code>genesis.block</code>: Genesis block settings. To join a network, please ensure that the settings of the genesis block are the same as those of other nodes in the network, otherwise you cannot join the network.</li>
-</ul>
-<h1 id="finding-peers">Finding peers<a class="headerlink" href="#finding-peers" title="Permanent link">&para;</a></h1>
-<p>java-tron continuously attempts to connect to other nodes on the network until it has enough peers, at the same time, it will also accept connections from other nodes. java-tron finds peers using the discovery protocol. In the discovery protocol, nodes exchange connectivity details and then establish sessions and exchange TRON data. </p>
-<p>If you want java-tron node to do node discovery, you need to enable the node discovery service in the node configuration file first:</p>
-<p><div class="highlight"><pre><span></span><code>node.discovery = {
-  enable = true
+<li>
+<p>Network ID (<code>p2p.version</code>): Indicates the network you want to join. Relevant configuration item:
+<div class="highlight"><pre><span></span><code>node {
+  ...
+  p2p {
+    version = 11111
+  }
   ...
 }
 </code></pre></div>
-Then, for the new node that joins the TRON network, you can configure the <code>seed node</code> to make it easier for the current node to connect to the peer node, and then obtain the address information of other nodes through the peer node. Generally, the seed nodes are set as stable online fullnodes. For the TRON main network, community public nodes can be used as seed nodes, for example:</p>
+In particular:</p>
+<ul>
+<li>Mainnet: <code>version=11111</code></li>
+<li>Nile Testnet: <code>version = 201910292</code></li>
+<li>Private Network: Customize and set to other value</li>
+</ul>
+</li>
+<li>
+<p>Genesis Block: The settings of the genesis block must be consistent with those of other nodes in the network; otherwise, the connection to other nodes cannot be established. Relevant configuration item:
+<div class="highlight"><pre><span></span><code>genesis.block = {
+  # Reserve balance
+  assets = [
+    {
+      accountName = &quot;Zion&quot;
+      accountType = &quot;AssetIssue&quot;
+      address = &quot;TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm&quot;
+      balance = &quot;99000000000000000&quot;
+    },
+    {
+      accountName = &quot;Sun&quot;
+      accountType = &quot;AssetIssue&quot;
+      address = &quot;TXmVpin5vq5gdZsciyyjdZgKRUju4st1wM&quot;
+      balance = &quot;0&quot;
+    },
+    {
+      accountName = &quot;Blackhole&quot;
+      accountType = &quot;AssetIssue&quot;
+      address = &quot;TLsV52sRDL79HXGGm9yzwKibb6BeruhUzy&quot;
+      balance = &quot;-9223372036854775808&quot;
+    }
+  ]
+
+  witnesses = [
+    {
+      address: THKJYuUmMKKARNf7s2VT51g5uPY6KEqnat,
+      url = &quot;http://GR1.com&quot;,
+      voteCount = 100000026
+    },
+    {
+      address: TVDmPWGYxgi5DNeW8hXrzrhY8Y6zgxPNg4,
+      url = &quot;http://GR2.com&quot;,
+      voteCount = 100000025
+    },
+    {
+      address: TWKZN1JJPFydd5rMgMCV5aZTSiwmoksSZv,
+      url = &quot;http://GR3.com&quot;,
+      voteCount = 100000024
+    },
+    {
+      address: TDarXEG2rAD57oa7JTK785Yb2Et32UzY32,
+      url = &quot;http://GR4.com&quot;,
+      voteCount = 100000023
+    },
+    {
+      address: TAmFfS4Tmm8yKeoqZN8x51ASwdQBdnVizt,
+      url = &quot;http://GR5.com&quot;,
+      voteCount = 100000022
+    },
+    {
+      address: TK6V5Pw2UWQWpySnZyCDZaAvu1y48oRgXN,
+      url = &quot;http://GR6.com&quot;,
+      voteCount = 100000021
+    },
+    {
+      address: TGqFJPFiEqdZx52ZR4QcKHz4Zr3QXA24VL,
+      url = &quot;http://GR7.com&quot;,
+      voteCount = 100000020
+    },
+    {
+      address: TC1ZCj9Ne3j5v3TLx5ZCDLD55MU9g3XqQW,
+      url = &quot;http://GR8.com&quot;,
+      voteCount = 100000019
+    },
+    {
+      address: TWm3id3mrQ42guf7c4oVpYExyTYnEGy3JL,
+      url = &quot;http://GR9.com&quot;,
+      voteCount = 100000018
+    },
+    {
+      address: TCvwc3FV3ssq2rD82rMmjhT4PVXYTsFcKV,
+      url = &quot;http://GR10.com&quot;,
+      voteCount = 100000017
+    },
+    {
+      address: TFuC2Qge4GxA2U9abKxk1pw3YZvGM5XRir,
+      url = &quot;http://GR11.com&quot;,
+      voteCount = 100000016
+    },
+    {
+      address: TNGoca1VHC6Y5Jd2B1VFpFEhizVk92Rz85,
+      url = &quot;http://GR12.com&quot;,
+      voteCount = 100000015
+    },
+    {
+      address: TLCjmH6SqGK8twZ9XrBDWpBbfyvEXihhNS,
+      url = &quot;http://GR13.com&quot;,
+      voteCount = 100000014
+    },
+    {
+      address: TEEzguTtCihbRPfjf1CvW8Euxz1kKuvtR9,
+      url = &quot;http://GR14.com&quot;,
+      voteCount = 100000013
+    },
+    {
+      address: TZHvwiw9cehbMxrtTbmAexm9oPo4eFFvLS,
+      url = &quot;http://GR15.com&quot;,
+      voteCount = 100000012
+    },
+    {
+      address: TGK6iAKgBmHeQyp5hn3imB71EDnFPkXiPR,
+      url = &quot;http://GR16.com&quot;,
+      voteCount = 100000011
+    },
+    {
+      address: TLaqfGrxZ3dykAFps7M2B4gETTX1yixPgN,
+      url = &quot;http://GR17.com&quot;,
+      voteCount = 100000010
+    },
+    {
+      address: TX3ZceVew6yLC5hWTXnjrUFtiFfUDGKGty,
+      url = &quot;http://GR18.com&quot;,
+      voteCount = 100000009
+    },
+    {
+      address: TYednHaV9zXpnPchSywVpnseQxY9Pxw4do,
+      url = &quot;http://GR19.com&quot;,
+      voteCount = 100000008
+    },
+    {
+      address: TCf5cqLffPccEY7hcsabiFnMfdipfyryvr,
+      url = &quot;http://GR20.com&quot;,
+      voteCount = 100000007
+    },
+    {
+      address: TAa14iLEKPAetX49mzaxZmH6saRxcX7dT5,
+      url = &quot;http://GR21.com&quot;,
+      voteCount = 100000006
+    },
+    {
+      address: TBYsHxDmFaRmfCF3jZNmgeJE8sDnTNKHbz,
+      url = &quot;http://GR22.com&quot;,
+      voteCount = 100000005
+    },
+    {
+      address: TEVAq8dmSQyTYK7uP1ZnZpa6MBVR83GsV6,
+      url = &quot;http://GR23.com&quot;,
+      voteCount = 100000004
+    },
+    {
+      address: TRKJzrZxN34YyB8aBqqPDt7g4fv6sieemz,
+      url = &quot;http://GR24.com&quot;,
+      voteCount = 100000003
+    },
+    {
+      address: TRMP6SKeFUt5NtMLzJv8kdpYuHRnEGjGfe,
+      url = &quot;http://GR25.com&quot;,
+      voteCount = 100000002
+    },
+    {
+      address: TDbNE1VajxjpgM5p7FyGNDASt3UVoFbiD3,
+      url = &quot;http://GR26.com&quot;,
+      voteCount = 100000001
+    },
+    {
+      address: TLTDZBcPoJ8tZ6TTEeEqEvwYFk2wgotSfD,
+      url = &quot;http://GR27.com&quot;,
+      voteCount = 100000000
+    }
+  ]
+
+  timestamp = &quot;0&quot; #2017-8-26 12:00:00
+
+  parentHash = &quot;0xe58f33f9baf9305dc6f82b9f1934ea8f0ade2defb951258d50167028c780351f&quot;
+}
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="node-discovery">Node Discovery<a class="headerlink" href="#node-discovery" title="Permanent link">&para;</a></h2>
+<h3 id="enable-and-disable">Enable and Disable<a class="headerlink" href="#enable-and-disable" title="Permanent link">&para;</a></h3>
+<p>Node discovery is enabled or disabled through the configuration file, and it is usually enabled. The relevant configuration item is as follows:</p>
+<div class="highlight"><pre><span></span><code>node.discovery = {
+  ...
+  enable = true
+  ...  
+}
+</code></pre></div>
+<h3 id="boot-nodes">Boot Nodes<a class="headerlink" href="#boot-nodes" title="Permanent link">&para;</a></h3>
+<p>java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover other nodes. Node discovery requires boot nodes, with the help of which other nodes in the TRON network can be discovered. Boot nodes consist of two parts: one part is seed nodes, and the other part is configured active connection nodes. For details, see <a href="#active-connection">Active Connection</a>.</p>
+<p>Seed nodes also consist of two parts:</p>
+<ul>
+<li>
+<p>Configured seed.node:
 <div class="highlight"><pre><span></span><code>seed.node = {
   # List of the seed nodes
   # Seed nodes are stable full nodes
 
   ip.list = [
     &quot;3.225.171.164:18888&quot;,
-    &quot;52.53.189.99:18888&quot;,
-    &quot;18.196.99.16:18888&quot;,
-    &quot;34.253.187.192:18888&quot;,
+    &quot;52.8.46.215:18888&quot;,
+    &quot;3.79.71.167:18888&quot;,
+    &quot;108.128.110.16:18888&quot;,
     &quot;18.133.82.227:18888&quot;,
-    &quot;35.180.51.163:18888&quot;,
-    &quot;54.252.224.209:18888&quot;,
+    &quot;35.180.81.133:18888&quot;,
+    &quot;13.210.151.5:18888&quot;,
     &quot;18.231.27.82:18888&quot;,
-    &quot;52.15.93.92:18888&quot;,
-    &quot;34.220.77.106:18888&quot;,
+    &quot;3.12.212.122:18888&quot;,
+    &quot;52.24.128.7:18888&quot;,
     &quot;15.207.144.3:18888&quot;,
-    &quot;13.124.62.58:18888&quot;,    
+    &quot;3.39.38.55:18888&quot;,    
     &quot;54.151.226.240:18888&quot;,
     &quot;35.174.93.198:18888&quot;,
     &quot;18.210.241.149:18888&quot;,
@@ -219,19 +1830,91 @@ Then, for the new node that joins the TRON network, you can configure the <code>
     &quot;54.179.207.68:18888&quot;,
     &quot;18.142.82.44:18888&quot;,
     &quot;18.163.230.203:18888&quot;
+    #&quot;[2a05:d014:1f2f:2600:1b15:921:d60b:4c60]:18888&quot;, // use this if support ipv6
+    #&quot;[2600:1f18:7260:f400:8947:ebf3:78a0:282b]:18888&quot;, // use this if support ipv6
   ]
 }
 </code></pre></div>
-<p>There are scenarios where disabling the discovery process is useful, for example for running a local test node or an experimental test network with known, fixed nodes. This can be configured by <code>node.discovery.enable = false</code> to close the node discovery process.</p>
-<h1 id="connectivity-problems">Connectivity problems<a class="headerlink" href="#connectivity-problems" title="Permanent link">&para;</a></h1>
-<p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
-<ul>
-<li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
-<li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <a href="#active-and-passive-connections"><code>node.active</code></a> in the case of node discovery invalid.</li>
-<li>By configuring <a href="#active-and-passive-connections"><code>node.passive</code></a> to accept active connections from trusted nodes.</li>
-<li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
+If the network card supports IPv6, you can use the seed nodes in the IPv6 address format in the above list by removing the comment symbol <code>#</code>.
+To obtain the latest seed.node, you can check the official <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">configuration file</a>.</p>
+</li>
+<li>
+<p>Persistent nodes read from the database. Persistent nodes require enabling the node persistence service. If this service is enabled, the nodes in the <a href="https://en.wikipedia.org/wiki/Kademlia#Fixed-size_routing_tables">routing table</a> will be written into the database by a scheduled task. When a node starts based on this database, it will read these nodes from the database and use them as seed nodes. Relevant configuration item:
+<div class="highlight"><pre><span></span><code>node.discovery = {
+  ...
+  persist = true
+  ... 
+}
+</code></pre></div></p>
+</li>
 </ul>
-<h1 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h1>
+<p>Node discovery is based on the UDP protocol, and the default bound port is 18888 (other ports can also be bound). Relevant configuration item:
+<div class="highlight"><pre><span></span><code>node {
+  ...
+  listen.port = 18888
+  ...
+}
+</code></pre></div></p>
+<p>In some cases, node discovery does not need to be enabled (e.g., when running a local test node or deploying a test network with fixed nodes). At this time, you can disable node discovery by setting the configuration item to <code>node.discovery.enable = false</code>, or by closing the UDP 18888 port through the firewall.</p>
+<h2 id="node-connection">Node Connection<a class="headerlink" href="#node-connection" title="Permanent link">&para;</a></h2>
+<h3 id="number-of-node-connections">Number of Node Connections<a class="headerlink" href="#number-of-node-connections" title="Permanent link">&para;</a></h3>
+<p><code>node.maxConnections</code> indicates the maximum number of connections between the current node and other nodes, with a default value of 30. Setting a larger value allows the node to establish more connections, which improves the efficiency of joining the network and the efficiency of broadcasting. However, it also requires higher bandwidth for maintaining connections and leads to greater performance consumption. Therefore, please set this value according to actual conditions.<br />
+<div class="highlight"><pre><span></span><code>node {
+  ...
+  maxConnections = 30
+  ...
+}
+</code></pre></div></p>
+<h3 id="active-connection">Active Connection<a class="headerlink" href="#active-connection" title="Permanent link">&para;</a></h3>
+<p>The target nodes for active connection come from three parts:</p>
+<ul>
+<li>Configured active nodes (high priority): They do not depend on node discovery. Even if node discovery is not enabled, the current node will actively initiate connections to these nodes. Relevant configuration item:
+<div class="highlight"><pre><span></span><code>node {
+  ...
+  active = [
+    # Active establish connection in any case
+    # Sample entries:
+    # &quot;ip:port&quot;,
+    # &quot;ip:port&quot;
+  ]
+  ...
+ }
+</code></pre></div></li>
+<li>Connectable nodes obtained through node discovery (medium priority)</li>
+<li>DNS nodes (low priority): These are backup nodes obtained from the DNS tree. They require configuring treeUrls and are used only when the first three sources are insufficient (they are generally not used). Relevant configuration item (usually not configured):
+<div class="highlight"><pre><span></span><code>dns {
+  ...
+  # dns urls to get nodes, url format tree://{pubkey}@{domain}, default empty
+  treeUrls = [
+    #&quot;tree://AKMQMNAJJBL73LXWPXDI4I5ZWWIZ4AWO34DWQ636QOBBXNFXH3LQS@main.trondisco.net&quot;,
+  ]
+  ...
+}
+</code></pre></div>
+Compared with the traditional static seed node list, the DNS tree mechanism has advantages such as dynamic node update and resistance to attacks in terms of P2P network bootstrapping.</li>
+</ul>
+<p>It can be seen that currently, the target nodes for active connection only come from two categories: one is the configured active nodes, and the other is the connectable nodes obtained through node discovery.</p>
+<h3 id="passive-connection">Passive Connection<a class="headerlink" href="#passive-connection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Nodes configured in <code>node.passive</code>. When these nodes actively initiate a connection to the current node, the current node will accept the connection unconditionally.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>node {
+  ...
+  passive = [
+    # Passive accept connection in any case
+    # Sample entries:
+    # &quot;ip:port&quot;,
+    # &quot;ip:port&quot;
+  ]
+  ...
+ }
+</code></pre></div>
+<ul>
+<li>Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also actively initiate connections to the current node.</li>
+</ul>
+<p>Unlike node discovery (which is based on the UDP protocol), node connection is based on the TCP protocol. However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_topology.png" /></p>
+<h2 id="log-and-network-connection-verification">Log and network connection verification<a class="headerlink" href="#log-and-network-connection-verification" title="Permanent link">&para;</a></h2>
 <p>The java-tron node log is <code>/logs/tron.log</code> in the java-tron installation directory. Under the java-tron installation directory, you can use the following commands to view the latest log of the node and check the block synchronization status of the node:</p>
 <div class="highlight"><pre><span></span><code>$ tail -f /logs/tron.log/
 </code></pre></div>
@@ -276,86 +1959,113 @@ If no error messages are reported in the node logs, means everything is fine. Yo
 }
 </code></pre></div>
 In order for users to interact with the TRON network, the java-tron node must be running and in a normal state of synchronization. Whether the node is synchronized with other nodes in the network, you can query the current block height in Tronscan and compare it with the result of <code>/wallet/getnowblock</code> queried from the local java-tron node. If they are equal, it means that the synchronization status of the local node is normal.</p>
-<h1 id="private-network">Private network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
+<h2 id="connection-problems">Connection problems<a class="headerlink" href="#connection-problems" title="Permanent link">&para;</a></h2>
+<p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
+<ul>
+<li>Local time might be incorrect. An accurate clock is required to participate in the TRON network. The local clock can be resynchronized using commands such as <code>sudo ntpdate -s time.nist.gov</code>.</li>
+<li>Some firewall configurations can prohibit UDP traffic. But the node discovery service is based on the UDP protocol, so you can make it possible to let the node connect to the network by configuring <code>node.active</code> in the case of node discovery invalid.</li>
+<li>By configuring <code>node.passive</code> to accept active connections from trusted nodes.</li>
+<li>The Shasta testnet does not currently support nodes joining the network. If you need to run nodes to join the public testnet, you can choose the Nile testnet.</li>
+</ul>
+<h2 id="connect-to-private-network">Connect to private network<a class="headerlink" href="#connect-to-private-network" title="Permanent link">&para;</a></h2>
 <p>It is often useful for developers to connect to private test networks rather than public testnets or TRON mainnet. Because the private chain not only has no requirements for machine configuration, but also in the sandbox environment of the private chain network, it is easier to test various functions, and it gives freedom to break things without real-world consequences. </p>
 <p>The private chain network needs to configure the configuration item <code>node.p2p.version</code> in the <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private chain configuration file</a> to a value which is not used by any other existing public network (TRON mainnet, testnet). For detailed instructions on private chain construction, please refer to <a href="../private_network/">Private Chain Network</a>.</p>
-<h1 id="active-and-passive-connections">Active and passive connections<a class="headerlink" href="#active-and-passive-connections" title="Permanent link">&para;</a></h1>
-<p>java-tron supports setting its actively connected nodes <code>node.active</code> as well as passively connected nodes <code>node.passive</code>. Configuring <code>node.active</code> and <code>node.passive</code> can greatly help improve the stability of the network connection of the node.</p>
-<p>When java-tron starts, it will actively establish a connection with the peer node in <code>node.active</code>.</p>
-<div class="highlight"><pre><span></span><code>node {
-  active = [
-    # Active establish connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
- }
-</code></pre></div>
-<p>When a node in <code>node.passive</code> actively establishes a connection with the current node, the current node will accept it unconditionally.</p>
-<div class="highlight"><pre><span></span><code>node {
-  passive = [
-    # Passive accept connection in any case
-    # Sample entries:
-    # &quot;ip:port&quot;,
-    # &quot;ip:port&quot;
-  ]
- }
-</code></pre></div>
-<h1 id="peer-limit">Peer limit<a class="headerlink" href="#peer-limit" title="Permanent link">&para;</a></h1>
-<p><code>node.maxActiveNodes</code> indicates the maximum number of connections between the node and other nodes, the default value is 30. Setting a larger value can enable nodes to establish more connections, join the network more efficiently, and broadcast more efficiently. However, the bandwidth required to maintain the connection is also higher and the performance consumption is higher. Therefore, please set it according to the actual situation.</p>
-<div class="highlight"><pre><span></span><code>node {
-    maxActiveNodes = 30
-}
-</code></pre></div>
-              
-            </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../architecture/database/" class="btn btn-neutral float-left" title="Database Configuration"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../metrics/" class="btn btn-neutral float-right" title="Node Monitoring">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
-  <hr/>
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
+
+
+
+
+
+
+
+
+
+		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
+      	    	  <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
           
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+          <a href="../../architecture/database/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Database Configuration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Database Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../metrics/" class="md-footer__link md-footer__link--next" aria-label="Next: Node Monitoring">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Node Monitoring
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
-        <span>
-          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="../../architecture/database/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../metrics/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
-
-</body>
+      
+    </div>
+  </div-->
+</footer>
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/toc.js"></script>
+      
+        <script src="../../javascripts/nav-toc.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
 </html>

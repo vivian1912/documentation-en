@@ -1,385 +1,1762 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Private Network - java-tron</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Private Network";
-        var mkdocs_page_input_path = "using_javatron/private_network.md";
-        var mkdocs_page_url = "/documentation-en/using_javatron/private_network/";
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">
+      
+      
+        <link rel="prev" href="../litefullnode/">
+      
+      
+        <link rel="next" href="../../architecture/event/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> java-tron
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Using java-tron</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../installing_javatron/">Deploying java-tron</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../backup_restore/">Backup & Restore</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Private Network</a>
-    <ul class="current">
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../connecting_to_tron/">Network Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../metrics/">Node Monitoring</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../toolkit/">Node Maintenance Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Core Protocol</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Releases</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/upgrade-instruction/">Deployment Manual for the New Version</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/signature_verification/">Integrity Check</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../releases/history/">History</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
-                </li>
-              </ul>
-      </div>
-    </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">java-tron</a>
+    
+      
+        <title>Private Network - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
         
-      </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Using java-tron &raquo;</li><li>Private Network</li>
-    <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/using_javatron/private_network.md"
-          class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
-</div>
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
-              
-                <h1 id="private-network">Private Network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
-<p>To build a private chain, it is necessary to deploy at least one fullnode running by SR to produces blocks, and any number of fullnodes to synchronize blocks and broadcast transactions. Only one SR node and one fullnode are set up in this example. Before the deployment, please install the <code>Oracle JDK 1.8</code> first, and then you need to prepare at least two TRON network address and save the address and private key. You can use <a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> or <a href="https://www.tronlink.org/">Tronlink</a> to create address.</p>
-<h1 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h1>
-<p>The process of building a node on private chain is the same as that on mainnet. The difference is the content of the node configuration file. The most important step to build a private chain is to modify the configuration items in the configuration file, so that the nodes can form a private network for node discovery, block synchronization and broadcast transactions.</p>
-<ol>
-<li>
-<p>Create deployment directory</p>
-<p>Create deployment directory, it is recommended to put the two fullnodes in different directories.
-  <div class="highlight"><pre><span></span><code>$ mkdir SR
-$ mkdir FullNode
-</code></pre></div></p>
-</li>
-<li>
-<p>Obtain <a href="https://github.com/tronprotocol/java-tron/releases">FullNode.jar</a></p>
-<p>Obtain FullNode.jar, then put it into the SR and FullNode directories respectively.
- <div class="highlight"><pre><span></span><code>$ cp FullNode.jar ./SR
-$ cp FullNode.jar ./FullNode
-</code></pre></div></p>
-</li>
-<li>
-<p>Obtain the node's config file <a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private_net_config.conf</a></p>
-<p>Obtain the node's config file private_net_config.conf, then put it into the SR and FullNode directories respectively, and modify the file names respectively to supernode.conf, fullnode.conf.
-  <div class="highlight"><pre><span></span><code>$ cp private_net_config.conf ./SR/supernode.conf
-$ cp private_net_config.conf ./FullNode/fullnode.conf
-</code></pre></div></p>
-</li>
-<li>
-<p>Modify the configuration file of each node</p>
-<p>Please modify each configuration item of the node in turn according to the instructions in the following table:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Config Item</th>
-<th style="text-align: left;">SR Fullnode</th>
-<th style="text-align: left;">FullNode</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">localwitness</td>
-<td style="text-align: left;">The private key of witness address</td>
-<td style="text-align: left;">Please do not fill in data</td>
-<td style="text-align: left;">Generating blocks requires signing with a private key</td>
-</tr>
-<tr>
-<td style="text-align: left;">genesis.block.witnesses</td>
-<td style="text-align: left;">Witness address</td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">Genesis block related configuration</td>
-</tr>
-<tr>
-<td style="text-align: left;">genesis.block.Assets</td>
-<td style="text-align: left;">Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as needed</td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">Genesis block related configuration</td>
-</tr>
-<tr>
-<td style="text-align: left;">p2p.version</td>
-<td style="text-align: left;">any positive integer except for 11111</td>
-<td style="text-align: left;">the same as SR node's</td>
-<td style="text-align: left;">Only nodes of the same p2p version can shake hands successfully</td>
-</tr>
-<tr>
-<td style="text-align: left;">seed.node</td>
-<td style="text-align: left;">Please do not fill in data</td>
-<td style="text-align: left;">Change the seed.node ip.list in the configuration file to the IP address and the port (<code>listen.port</code>) of the SR</td>
-<td style="text-align: left;">Enables fullnode to establish connection with SR node and synchronize data</td>
-</tr>
-<tr>
-<td style="text-align: left;">needSyncCheck</td>
-<td style="text-align: left;">false</td>
-<td style="text-align: left;">true</td>
-<td style="text-align: left;">Set the first SR’s needSyncCheck to false, other SRs true</td>
-</tr>
-<tr>
-<td style="text-align: left;">node.discovery.enable</td>
-<td style="text-align: left;">true</td>
-<td style="text-align: left;">true</td>
-<td style="text-align: left;">If it is false, the current node will not be discovered by other nodes</td>
-</tr>
-<tr>
-<td style="text-align: left;">block.proposalExpireTime</td>
-<td style="text-align: left;">600000</td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms</td>
-</tr>
-<tr>
-<td style="text-align: left;">block.maintenanceTimeInterval</td>
-<td style="text-align: left;">300000</td>
-<td style="text-align: left;">The same as SR node's</td>
-<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.</td>
-</tr>
-<tr>
-<td style="text-align: left;">committee.allowSameTokenName</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Allow same token name</td>
-</tr>
-<tr>
-<td style="text-align: left;">committee.allowTvmTransferTrc10</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Allow tvm transfer TRC10</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>Modify the port in the configuration file, and configure the SR and FullNode with different port numbers. <strong>Note</strong>, this step is only required if SR and FullNode are running on the same machine, otherwise, this step can be skipped.</p>
-<ul>
-<li><code>listen.port</code> ： p2p listen port</li>
-<li><code>http</code> port： Http listen port</li>
-<li><code>rpc</code> port： rpc listen port</li>
-</ul>
-</li>
-<li>
-<p>Startup the node</p>
-<p>The fullnode that produces blocks has the different startup command with the fullnodes that do not produce blocks:</p>
-<ul>
-<li>Fullnode that produces blocks
-  <div class="highlight"><pre><span></span><code>$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
-</code></pre></div></li>
-<li>Fullnode
-  <div class="highlight"><pre><span></span><code>$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
-</code></pre></div></li>
-</ul>
-</li>
-<li>
-<p>Modify the dynamic parameters of the private chain</p>
-<p>In order to be the same as the main network environment, the dynamic parameters of the private chain need to be modified to be consistent with those of the main network. The modification of dynamic parameters can be done through proposals. The SR account can use <a href="https://github.com/tronprotocol/wallet-cli">wallet-cli</a> or fullnode http API  <a href="https://developers.tron.network/reference/proposalcreate"><code>wallet/proposalcreate</code></a>to create proposals, <a href="https://developers.tron.network/reference/proposalapprove"><code>wallet/proposalapprove</code></a> to approve proposals. </p>
-<p>The following are the dynamic parameters and values sorted out according to the proposals passed by the mainnet successively. SR can directly use the following commands to create proposals to complete the modification of all the dynamic parameters of the private chain. Due to the dependencies between some parameters, according to the current parameter values on the main network, the modification of all parameters of the private chain can be divided into two proposals. The first step, SR creates and votes the first proposal according to the following code:</p>
-<p><div class="highlight"><pre><span></span><code>var TronWeb = require(&#39;tronweb&#39;);
-var tronWeb = new TronWeb({
-    fullHost: &#39;http://localhost:16887&#39;,
-    privateKey: &#39;c741f5c0224020d7ccaf4617a33cc099ac13240f150cf35f496db5bfc7d220dc&#39;
-})
 
-// First proposal: &quot;key&quot;:30 and &quot;key&quot;:70 must be modified first
-var parametersForProposal1 = [{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1},{&quot;key&quot;:11,&quot;value&quot;:420},{&quot;key&quot;:19,&quot;value&quot;:90000000000},{&quot;key&quot;:15,&quot;value&quot;:1},{&quot;key&quot;:18,&quot;value&quot;:1},{&quot;key&quot;:16,&quot;value&quot;:1},{&quot;key&quot;:20,&quot;value&quot;:1},{&quot;key&quot;:26,&quot;value&quot;:1},{&quot;key&quot;:30,&quot;value&quot;:1},{&quot;key&quot;:5,&quot;value&quot;:16000000},{&quot;key&quot;:31,&quot;value&quot;:160000000},{&quot;key&quot;:32,&quot;value&quot;:1},{&quot;key&quot;:39,&quot;value&quot;:1},{&quot;key&quot;:41,&quot;value&quot;:1},{&quot;key&quot;:3,&quot;value&quot;:1000},{&quot;key&quot;:47,&quot;value&quot;:10000000000},{&quot;key&quot;:49,&quot;value&quot;:1},{&quot;key&quot;:13,&quot;value&quot;:80},{&quot;key&quot;:7,&quot;value&quot;:1000000},{&quot;key&quot;:61,&quot;value&quot;:600},{&quot;key&quot;:63,&quot;value&quot;:1},{&quot;key&quot;:65,&quot;value&quot;:1},{&quot;key&quot;:66,&quot;value&quot;:1},{&quot;key&quot;:67,&quot;value&quot;:1},{&quot;key&quot;:68,&quot;value&quot;:1000000},{&quot;key&quot;:69,&quot;value&quot;:1},{&quot;key&quot;:70,&quot;value&quot;:14},{&quot;key&quot;:71,&quot;value&quot;:1},{&quot;key&quot;:76,&quot;value&quot;:1}];
-var parametersForProposal2 = [{&quot;key&quot;:47,&quot;value&quot;:15000000000},{&quot;key&quot;:59,&quot;value&quot;:1},{&quot;key&quot;:72,&quot;value&quot;:1},{&quot;key&quot;:73,&quot;value&quot;:3000000000},{&quot;key&quot;:74,&quot;value&quot;:2000},{&quot;key&quot;:75,&quot;value&quot;:12000},{&quot;key&quot;:77,&quot;value&quot;:1},{&quot;key&quot;:78,&quot;value&quot;:864000}];
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-async function modifyChainParameters(parameters,proposalID){
-
-    parameters.sort((a, b) =&gt; {
-            return a.key.toString() &gt; b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
-        })
-    var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;)
-    var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
-    var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
-
-    setTimeout(async function() {
-        console.log(receipt1)
-        console.log(&quot;Vote proposal 1 !&quot;)
-        var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
-        var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
-        var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
-    }, 1000)
-
-}
-
-modifyChainParameters(parametersForProposal1, 1)
-</code></pre></div>
-After creating the proposal through the above code, you can query the proposal's effective time: "expiration_time" through the http://127.0.0.1:xxxx/wallet/listproposals interface. The timestamp is in milliseconds. After the effective time has passed, if the "state" in the return value of the interface is "APPROVED", it means that the proposal has been passed, and you can continue to the next step and create the second proposal. The sample code is as follows:</p>
-<div class="highlight"><pre><span></span><code>modifyChainParameters(parametersForProposal2, 2)
-</code></pre></div>
-<p>After the proposal takes effect, the dynamic parameters of the private chain will be consistent with the main network. You can query the chain parameters through the /wallet/getchainparameters API.</p>
-</li>
-</ol>
-              
-            </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../developers/litefullnode/" class="btn btn-neutral float-left" title="Lite FullNode"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../architecture/event/" class="btn btn-neutral float-right" title="Event Subscription">Next <span class="icon icon-circle-arrow-right"></span></a>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#private-network" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-  <hr/>
+  
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-          
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Private Network
+            
+          </span>
         </div>
       </div>
-
-    </section>
-
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
     
-        <span>
-          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
     
-    
-      <span><a href="../../developers/litefullnode/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../../architecture/event/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
     
   </span>
-</div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
+  
 
-</body>
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#prerequisites" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#deployment-guide" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Deployment Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="private-network">Private Network<a class="headerlink" href="#private-network" title="Permanent link">&para;</a></h1>
+<p>This document will guide you through setting up a basic TRON private network. This network will consist of one Super Representative (SR) node responsible for block production and one regular Fullnode used only for syncing block data and broadcasting transactions.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you begin, please ensure your development environment meets the following requirements:
+ - <strong>Java Development Kit (JDK)</strong>: You must have Oracle JDK 1.8 installed.
+ - <strong>TRON Accounts</strong>: You need to create at least two TRON network addresses in advance and securely store the addresses and their corresponding private keys. One address will serve as the initial SR node (Block Production), and the other will be a regular account.
+ - <strong>Address Creation Tools</strong>: You can use any of the following tools to generate and manage your TRON accounts:
+    - <a href="https://github.com/tronprotocol/wallet-cli">Wallet-cli</a>: An official command-line wallet tool, suitable for server environments.
+    - <a href="https://www.tronlink.org/">TronLink</a>: A multi-chain wallet that supports the TRON network, featuring a user-friendly graphical interface for easy address creation and management.
+    - <a href="https://tronweb.network/docu/docs/intro/">TronWeb</a>: A JavaScript library for developers to interact with the TRON network and build dApps.
+    - <a href="https://github.com/tronprotocol/trident">Trident</a>: A lightweight Java SDK designed to help developers easily and efficiently integrate TRON blockchain functionality into Java applications.</p>
+<h2 id="deployment-guide">Deployment Guide<a class="headerlink" href="#deployment-guide" title="Permanent link">&para;</a></h2>
+<p>The operational steps for deploying a private network node are fundamentally the same as deploying a Mainnet node. The primary difference lies in the node's configuration file. The most crucial part of setting up a private network is modifying the configuration items in this file to allow the nodes to form a private network, enabling network discovery, block synchronization, and transaction broadcasting.</p>
+<ol>
+<li>
+<p>Prepare Node Directories
+To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.
+      ```Shell
+      # Create the Super Representative (SR) node directory
+      $ mkdir SR</p>
+<p># Create the regular Fullnode directory
+  $ mkdir FullNode
+ <code>``
+2. Get the</code>java-tron<code>Client</code>java-tron` is the official Java implementation of the TRON network.</p>
+<ul>
+<li>Download the latest <code>FullNode.jar</code> from the <code>java-tron</code> <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</li>
+<li>Copy the downloaded <code>JAR</code> file into each of the two node directories:
+    <code>$ cp FullNode.jar ./SR
+     $ cp FullNode.jar ./FullNode</code></li>
+<li>Prepare Configuration Files</li>
+</ul>
+</li>
+<li>
+<p>Download the official private network configuration file template (<a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private_net_config.conf</a>).</p>
+</li>
+<li>
+<p>Copy it into each node directory and rename the files for distinction.
+   ```
+      # Configuration file for the SR node
+      $ cp private_net_config.conf ./SR/supernode.conf</p>
+<p>#  Configuration file for the regular Fullnode
+  $ cp private_net_config.conf ./FullNode/fullnode.conf
+  <code>``     
+4. Modify Node Configurations
+This is the most critical step in setting up a private network. Please edit the</code>supernode.conf<code>and</code>fullnode.conf<code>files according to the instructions in the table below.
+   | Config Item | SR Node (</code>supernode.conf<code>) | Fullnode (</code>fullnode.conf<code>) | Description |
+| :-------- | :-------- | :-------- | :-------- |
+|</code>localwitness<code>| The private key| Please do not fill in data     | Generating blocks requires signing with a private key    |
+|</code>genesis.block.witnesses<code>| SR address     | The same as SR node's | Genesis block related configuration     |
+|</code>genesis.block.Assets<code>| Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | The same as SR node's     | Genesis block related configuration     |
+|</code>p2p.version<code>| any positive integer except for 11111     | the same as SR node's     | Only nodes of the same p2p version can shake hands successfully    |
+|</code>seed.node<code>| Please do not fill in data     | Change the</code>seed.node<code></code>ip.list<code>in the configuration file to the IP address and the port (</code>listen.port<code>) of the SR     | Enables fullnode to establish connection with SR node and synchronize data     |
+|</code>needSyncCheck<code>|</code>false<code>|</code>true<code>| Set the first SR’s needSyncCheck to</code>false<code>, other SRs</code>true<code>|
+|</code>node.discovery.enable<code>|</code>true<code>|</code>true<code>| If it is</code>false<code>, the current node will not be discovered by other nodes    |
+|</code>block.proposalExpireTime<code>|</code>600000<code>|The same as SR node's |The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms|
+|</code>block.maintenanceTimeInterval<code>|</code>300000<code>| The same as SR node's | The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
+|</code>committee.allowSameTokenName<code>|</code>1<code>|</code>1<code>| Allow same token name|
+|</code>committee.allowTvmTransferTrc10<code>|</code>1<code>|</code>1`|Allow tvm transfer TRC-10|</p>
+</li>
+<li>
+<p>Adjust Network Ports (If Necessary)
+Modify the port numbers in the configuration files to be different for the SR and the Full Node. This step is only required when running multiple nodes on the same machine to avoid port conflicts. Otherwise, you can skip it.</p>
+<ul>
+<li><code>listen.port</code>: P2P listening port</li>
+<li><code>http port</code>: HTTP listening port</li>
+<li><code>rpc port</code>: RPC listening port</li>
+</ul>
+</li>
+<li>
+<p>Start the Nodes
+The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.</p>
+</li>
+<li>
+<p>Start the Super Representative (SR) Node:
+    <div class="highlight"><pre><span></span><code>$ cd SR
+$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
+</code></pre></div></p>
+</li>
+<li>
+<p>Start the regular Fullnode:</p>
+</li>
+</ol>
+<p><code>$ cd FullNode
+    $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+    # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.</code>  </p>
+<ol>
+<li>Advanced Operation: Modifying Dynamic Network Parameters</li>
+</ol>
+<p>Dynamic network parameters can be retrieved via the <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters API</a>. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN <a href="https://tronscan.org/#/sr/committee">Parameters &amp; Proposals page</a>. If you want your private network's dynamic parameters to match the Mainnet's, you can use the<a href="https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md"> dbfork tool</a>, which can capture the latest state of the Mainnet.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">After</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">running</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="n">certain</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">fees</span><span class="p">,</span><span class="w"> </span><span class="n">energy</span><span class="w"> </span><span class="n">price</span><span class="p">).</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">achieved</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">ways</span><span class="o">:</span>
+
+<span class="o">-</span><span class="w"> </span><span class="o">**</span><span class="n">Method</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">Configuration</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">(</span><span class="n">For</span><span class="w"> </span><span class="n">Initial</span><span class="w"> </span><span class="n">Deployment</span><span class="p">)</span><span class="o">**</span>
+
+<span class="w">  </span><span class="n">Some</span><span class="w"> </span><span class="n">dynamic</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="p">[</span><span class="n">here</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).</span>
+
+<span class="w">  </span><span class="nl">Example</span><span class="p">:</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="err">`</span><span class="n">committee</span><span class="err">`</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="err">`</span><span class="p">.</span><span class="n">conf</span><span class="err">`</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">multi</span><span class="o">-</span><span class="n">signature</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">creation</span><span class="p">.</span>
+
+<span class="w">  </span><span class="err">```</span>
+<span class="w">  </span><span class="n">committee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">allowCreationOfContracts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">allowAdaptiveEnergy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">allowMultiSign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">allowDelegateResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">allowSameTokenName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">allowTvmTransferTrc10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="err">```</span>
+
+<span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">**</span><span class="n">Method</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">Modify</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">On</span><span class="o">-</span><span class="n">Chain</span><span class="w"> </span><span class="n">Proposals</span><span class="w"> </span><span class="p">(</span><span class="n">For</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">Network</span><span class="p">)</span><span class="o">**</span>
+<span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">on</span><span class="o">-</span><span class="n">chain</span><span class="w"> </span><span class="n">governance</span><span class="p">.</span><span class="w"> </span><span class="n">Any</span><span class="w"> </span><span class="n">SR</span><span class="p">,</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">partner</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">Super</span><span class="w"> </span><span class="n">Representatives</span><span class="w"> </span><span class="p">(</span><span class="n">SRs</span><span class="p">)</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">vote</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">approval</span><span class="p">.</span>
+
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Proposal</span><span class="o">:</span><span class="w"> </span><span class="n">Any</span><span class="w"> </span><span class="n">SR</span><span class="p">,</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">partner</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="n">proposalcreate</span><span class="w"> </span><span class="n">API</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//developers.tron.network/reference/proposalcreate), specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Approve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Proposal</span><span class="o">:</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="n">proposalapprove</span><span class="w"> </span><span class="n">API</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//developers.tron.network/reference/proposalapprove) to vote on the proposal. (Only &#39;approve&#39; votes are supported; if an SR does not vote, it is considered a &#39;disapprove&#39;).</span>
+<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Related</span><span class="w"> </span><span class="n">APIs</span><span class="o">:</span>
+</code></pre></div>
+
+<p>Get all proposals: <a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a>
+Get a proposal by ID: <a href="https://developers.tron.network/reference/getproposalbyid">getproposalbyid</a></p>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="o">**</span><span class="n">Example</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="p">(</span><span class="k">using</span><span class="w"> </span><span class="n">TronWeb</span><span class="p">)</span><span class="err">:</span><span class="o">**</span>
+
+<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">snippet</span><span class="w"> </span><span class="n">demonstrates</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">vote</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="w"> </span><span class="ow">In</span><span class="w"> </span><span class="o">[</span><span class="n">proposalcreate</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">proposalcreate</span><span class="p">),</span><span class="w"> </span><span class="k">dynamic</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">represented</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">IDs</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="ow">between</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="n">IDs</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">names</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="k">found</span><span class="w"> </span><span class="o">[</span><span class="n">here</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">getchainparameters</span><span class="p">).</span>
+
+<span class="w">  </span><span class="err">```</span>
+<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">TronWeb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">tronWeb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TronWeb</span><span class="p">(</span><span class="err">{</span>
+<span class="w">      </span><span class="nl">fullHost</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:16887&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nl">privateKey</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;privateKey&#39;</span>
+<span class="w">  </span><span class="err">}</span><span class="p">)</span>
+
+<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">parametersForProposal1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1}</span><span class="o">]</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">async</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">modifyChainParameters</span><span class="p">(</span><span class="k">parameters</span><span class="p">,</span><span class="n">proposalID</span><span class="p">)</span><span class="err">{</span>
+
+<span class="w">      </span><span class="k">parameters</span><span class="p">.</span><span class="n">sort</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span>
+<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="vm">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="vm">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<span class="w">          </span><span class="err">}</span><span class="p">)</span>
+<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">unsignedProposal1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">transactionBuilder</span><span class="p">.</span><span class="n">createProposal</span><span class="p">(</span><span class="k">parameters</span><span class="p">,</span><span class="ss">&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">signedProposal1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">unsignedProposal1Txn</span><span class="p">);</span>
+<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">receipt1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">signedProposal1Txn</span><span class="p">);</span>
+
+<span class="w">      </span><span class="n">setTimeout</span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
+<span class="w">          </span><span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">receipt1</span><span class="p">)</span>
+<span class="w">          </span><span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="ss">&quot;Vote proposal 1 !&quot;</span><span class="p">)</span>
+<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">unsignedVoteP1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">transactionBuilder</span><span class="p">.</span><span class="n">voteProposal</span><span class="p">(</span><span class="n">proposalID</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">defaultAddress</span><span class="p">.</span><span class="n">hex</span><span class="p">)</span>
+<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">signedVoteP1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">unsignedVoteP1Txn</span><span class="p">);</span>
+<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">rtn1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">signedVoteP1Txn</span><span class="p">);</span>
+<span class="w">      </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="mi">4000</span><span class="p">)</span>
+
+<span class="w">  </span><span class="err">}</span>
+
+<span class="w">  </span><span class="n">modifyChainParameters</span><span class="p">(</span><span class="n">parametersForProposal1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>
+<span class="err">```</span>
+<span class="n">Once</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">approved</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">maintenance</span><span class="w"> </span><span class="n">period</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">passed</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="n">effect</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="o">[</span><span class="n">listproposals</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">listproposals</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="o">[</span><span class="n">getchainparameters</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">getchainparameters</span><span class="p">).</span>
+
+<span class="n">It</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">important</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">dynamic</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">interdependencies</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">included</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">proposal</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="n">approach</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">separate</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">proposals</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pay</span><span class="w"> </span><span class="n">attention</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">submission</span><span class="p">.</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
+      	    	  <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../litefullnode/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Lite FullNode">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Lite FullNode
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../architecture/event/" class="md-footer__link md-footer__link--next" aria-label="Next: Event Subscription">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Event Subscription
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/toc.js"></script>
+      
+        <script src="../../javascripts/nav-toc.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
 </html>

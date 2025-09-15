@@ -1,532 +1,2133 @@
-<!DOCTYPE html>
-<html class="writer-html5" lang="en" >
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/" />
-      <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Integrity Check - java-tron</title>
-    <link rel="stylesheet" href="../../css/theme.css" />
-    <link rel="stylesheet" href="../../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Integrity Check";
-        var mkdocs_page_input_path = "releases/signature_verification.md";
-        var mkdocs_page_url = "/documentation-en/releases/signature_verification/";
-      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">
+      
+      
+        <link rel="prev" href="../upgrade-instruction/">
+      
+      
+        <link rel="next" href="../history/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
-    <script src="../../js/jquery-3.6.0.min.js" defer></script>
-    <!--[if lt IE 9]>
-      <script src="../../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script> 
-</head>
+    
+      
+        <title>Integrity Check - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
 
-<body class="wy-body-for-nav" role="document">
 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-          <a href="../.." class="icon icon-home"> java-tron
-        </a><div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started_with_javatron/">Getting Started with java-tron</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Using java-tron</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/installing_javatron/">Deploying java-tron</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/backup_restore/">Backup & Restore</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/litefullnode/">Lite FullNode</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/private_network/">Private Network</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/event/">Event Subscription</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../architecture/database/">Database Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/connecting_to_tron/">Network Configuration</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/metrics/">Node Monitoring</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../using_javatron/toolkit/">Node Maintenance Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">API</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/http/">HTTP API</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../api/rpc/">gRPC API</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Core Protocol</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../introduction/dpos/">DPoS</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/sr/">Super Representative</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/account/">Account Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/resource/">Resource Model</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/contract/">Smart Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/system-contracts/">System Contract</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/dex/">Decentralized Exchange</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../mechanism-algorithm/multi-signatures/">Account Permission Management</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For Java-tron Developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/java-tron/">Developer Guide</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/tips/">TIPs Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/issue-workflow/">Issue Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/governance/">Governance Workflow</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/run-in-idea/">Configure the IDE</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/demo/">Development Example</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../developers/code-structure/">Core Modules</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">For DAPP developers</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../contracts/compiler/">Dapp Development Tool</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Wallet-cli</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli/">What is Wallet-CLI</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../clients/wallet-cli-command/">Wallet Commands</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Releases</span></p>
-              <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../upgrade-instruction/">Deployment Manual for the New Version</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Integrity Check</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#gpg-signature-verification-process">GPG signature verification process</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#install-gpg">Install GPG</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#import-public-key">Import public key</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#signature-verification">Signature verification</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#tron-address-signature-verification-process">TRON address signature verification process</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#install-tronweb">Install tronweb</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#verify-the-integrity-of-the-release-package">Verify the integrity of the release package</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#signature-verification_1">Signature verification</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#signatures-of-historical-versions">Signatures of historical versions</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../history/">History</a>
-                  </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../glossary/">Glossary</a>
-                </li>
-              </ul>
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#java-tron-release-package-signature-verification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Integrity Check
+            
+          </span>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../..">java-tron</a>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
         
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
       </nav>
-      <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Releases &raquo;</li><li>Integrity Check</li>
-    <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/tronprotocol/documentation-en/edit/master/docs/releases/signature_verification.md"
-          class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  </ul>
-  <hr/>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
               
-                <h1 id="signature-verification-of-java-tron-release-package">Signature Verification of java-tron Release Package<a class="headerlink" href="#signature-verification-of-java-tron-release-package" title="Permanent link">&para;</a></h1>
-<p>java-tron integrity verification is to check the reliability and integrity of the obtained java-tron executable file through signature verification. Signature verification needs to know three pieces of information: the executable file to be verified, the signature of the file, and the public key corresponding to the private key that signed the file. Signature verification is to reversely deduce the public key corresponding to the signature based on the content and signature of the executable file, and then compare it with the public key issued by TRON. If they are consistent, it means that the java-tron executable file you get is a complete file released by TRON.</p>
-<p>The version of java-tron released after January 3, 2023 adopts the GPG method for signature and verification, and the version released before January 3, 2023 used the public-private key of a specified TRON account for signature and verification.</p>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#gpg-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      GPG Signature Verification Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPG Signature Verification Process" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-install-gpg" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Install GPG
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-import-the-public-key" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. Import the Public Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-verify-the-signature" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. Verify the Signature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#tron-address-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      TRON Address Signature Verification Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TRON Address Signature Verification Process" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-install-tronweb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Install TronWeb
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-verify-the-release-packages-integrity" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. Verify the Release Package's Integrity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-check-the-release-package-signature" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. Check the Release Package Signature
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#historical-version-signature-information" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Historical Version Signature Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Historical Version Signature Information" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#odyssey-37" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Odyssey-3.7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-400" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-4.0.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-411" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-4.1.1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v412" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.1.2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v413thales" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.1.3(Thales)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v420plato" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.2.0(Plato)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v421origen" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.2.1(Origen)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v422lucretius" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.2.2(Lucretius)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v4221epictetus" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.2.2.1(Epictetus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v430bacon" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.3.0(Bacon)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v440rousseau" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.0(Rousseau)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v441protagoras" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.1(Protagoras)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v442augustinus" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.2(Augustinus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v443pythagoras" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.3(Pythagoras)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v444plotinus" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.4(Plotinus)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v445cicero" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.5(Cicero)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v446david" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.4.6(David)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v451tertullian" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.5.1(Tertullian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v452-aurelius" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.5.2 (Aurelius)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#greatvoyage-v460-socrates" class="md-nav__link" >
+    <span class="md-ellipsis">
+      GreatVoyage-v4.6.0 (Socrates)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="java-tron-release-package-signature-verification">java-tron Release Package Signature Verification<a class="headerlink" href="#java-tron-release-package-signature-verification" title="Permanent link">&para;</a></h1>
+<p>This document provides developers with instructions on how to verify the signature of the TRON java-tron executable file to ensure its <strong>authenticity</strong> and <strong>integrity</strong>. The signature verification process requires three key pieces of information: the executable file to be verified, its digital signature, and the public key corresponding to the private key used for signing. The verification principle is to use the content of the executable file and its signature to derive the signing public key and compare it with the public key officially released on the <a href="https://github.com/tronprotocol/java-tron">java-tron</a> GitHub repository. If they match, it confirms that the java-tron executable you obtained is consistent with the one published on GitHub and has not been tampered with.</p>
+<p>TRON's signing method for java-tron release packages has been adjusted:</p>
 <ul>
-<li>Versions released after January 3, 2023: <a href="#gpg-signature-verification-process">GPG Signature Verification Process</a></li>
-<li>Versions released before January 3, 2023: <a href="#tron-address-signature-verification-process">TRON Address Signature Verification Process</a></li>
+<li><strong>For new versions released on or after January 3, 2023</strong>: <strong>GPG</strong> is used for signing and verification.</li>
+<li><strong>For versions released before January 3, 2023</strong>: A <strong>specific TRON account's public and private keys</strong> were used for signing and verification.</li>
 </ul>
-<h2 id="gpg-signature-verification-process">GPG signature verification process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>The java-tron executable file and its signature file are released together, you can get it at <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, please follow the below process to verify the signature of the java-tron which released after January 3, 2023.</p>
-<h3 id="install-gpg">Install GPG<a class="headerlink" href="#install-gpg" title="Permanent link">&para;</a></h3>
-<p>If you have already installed GPG, please skip this step. If not, please refer to the following command to install it on MacOS:
-<div class="highlight"><pre><span></span><code>$ brew install gpg
+<p>This document will detail both of these signature verification processes.</p>
+<h2 id="gpg-signature-verification-process">GPG Signature Verification Process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
+<p>For <code>java-tron</code> versions released after January 3, 2023, you must use GPG for signature verification. The <code>java-tron</code> executable and its corresponding signature file are published together on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>. Please follow the steps below to perform GPG signature verification.</p>
+<h3 id="1-install-gpg">1. Install GPG<a class="headerlink" href="#1-install-gpg" title="Permanent link">&para;</a></h3>
+<p>If you have already installed GPG, you can skip this step. Otherwise, install it using the command for your operating system:</p>
+<p><div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>gpg
 </code></pre></div>
-On Debian, Ubuntu and other Linux distributions:
-<div class="highlight"><pre><span></span><code>$ sudo apt install gpg
+* <strong>Debian, Ubuntu, or other Linux distributions</strong>:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gpg
 </code></pre></div></p>
-<h3 id="import-public-key">Import public key<a class="headerlink" href="#import-public-key" title="Permanent link">&para;</a></h3>
-<p>If you have imported the public key before, please skip this step, just import the public key once.</p>
-<p>Please first obtain the public key Hash and uid of the GPG signature of the java-tron release package from <a href="https://github.com/tronprotocol/java-tron">here</a>.</p>
-<p><div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
+<h3 id="2-import-the-public-key">2. Import the Public Key<a class="headerlink" href="#2-import-the-public-key" title="Permanent link">&para;</a></h3>
+<p>If you have previously imported the public key, you can skip this step, as it only needs to be imported once.</p>
+<p>First, get the <strong>public key hash</strong> and <strong>UID</strong> of the <code>java-tron</code> release package GPG signature from the <a href="https://github.com/tronprotocol/java-tron?tab=readme-ov-file#integrity-check">java-tron GitHub repository</a>. For example:</p>
+<div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
 uid: build@tron.network
 </code></pre></div>
-Import the public key from the GPG public key server to the local according to the public key Hash, the command is:
-<div class="highlight"><pre><span></span><code>$ gpg --keyserver hkp://keys.openpgp.org --recv-keys &quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;
+<p>Then, import the public key from the GPG public key server to your local machine using the public key hash:</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--recv-keys<span class="w"> </span><span class="s2">&quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;</span>
 </code></pre></div>
-If the import was successful, you will see the return result like this:
-<div class="highlight"><pre><span></span><code>gpg: key 785FB96D2C7C3CA5: public key “build_tron &lt;build@tron.network&gt;” imported
+<p>If the public key import is successful, you will see output similar to this:</p>
+<div class="highlight"><pre><span></span><code>gpg: key 785FB96D2C7C3CA5: &quot;build_tron &lt;build@tron.network&gt;&quot; public key imported
 gpg: Total number processed: 1
-gpg:        imported: 1
-</code></pre></div></p>
-<h3 id="signature-verification">Signature verification<a class="headerlink" href="#signature-verification" title="Permanent link">&para;</a></h3>
-<p>For example, if the executable file of a certain version is <code>FullNode.jar</code> and the signature file is <code>FullNode.jar.sig</code>, the signature verification command is:</p>
-<p><div class="highlight"><pre><span></span><code>$ gpg --verify FullNode.jar.sig FullNode.jar
+gpg:               imported: 1
 </code></pre></div>
-If the signature verification is passed, the following will be returned:
-<div class="highlight"><pre><span></span><code>gpg: Signature made Fri. 1/ 6 12:21:51 2023 CST
-gpg:        using RSA key 1254F859D2B1BD9F66E7107DF859BCB44A28290B
-gpg: Good signature from “build_tron &lt;build@tron.network&gt;” [unknown]
+<h3 id="3-verify-the-signature">3. Verify the Signature<a class="headerlink" href="#3-verify-the-signature" title="Permanent link">&para;</a></h3>
+<p>Assuming the executable you want to verify is <code>FullNode.jar</code> and its corresponding signature file is <code>FullNode.jar.sig</code>, run the following command to verify the signature:</p>
+<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--verify<span class="w"> </span>FullNode.jar.sig<span class="w"> </span>FullNode.jar
+</code></pre></div>
+<p>If the signature verification passes, you will see the following text:</p>
+<div class="highlight"><pre><span></span><code>gpg: Signature made Wed Jan  6 12:21:51 2023 CST
+gpg:                using RSA key 1254F859D2B1BD9F66E7107D F859BCB44A28290B
+gpg: Good signature from &quot;build_tron &lt;build@tron.network&gt;&quot; [unknown]
 gpg: WARNING: This key is not certified with a trusted signature!
-gpg:     There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A 42DE 785F B96D 2C7C 3CA5
-Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A  42DE 785F B96D 2C7C 3CA5
+Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
 </code></pre></div>
-If the verification fails, it will display the words <code>gpg: BAD signature from “build_tron &lt;build@tron.network&gt;”</code>.</p>
-<h2 id="tron-address-signature-verification-process">TRON address signature verification process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>The java-tron version released before January 3, 2023 is signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing steps are as follows: first generate a sha256 hash value for the executable file of the release package, and then use the private key of the TRON account to sign the sha256 hash value. The sha256 hash value can be viewed in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter, or in the <a href="https://github.com/tronprotocol/java-tron/releases">https://github.com/tronprotocol/java-tron/releases</a> page; the signature result please check in the <a href="#signatures-of-historical-versions">Signatures of historical versions</a> chapter.</p>
-<p><a href="https://developers.tron.network/docs/tronweb-1">tronweb</a> provides the <code>Trx.verifySignature</code> interface to verify the signature. If the verification is passed, it will return true, otherwise, it will return false. Please follow the below process to verify.</p>
-<h3 id="install-tronweb">Install tronweb<a class="headerlink" href="#install-tronweb" title="Permanent link">&para;</a></h3>
-<p>If you have already installed tronweb, please skip this step, if not, please refer to the following command to install.</p>
-<div class="highlight"><pre><span></span><code>npm install -g tronweb
+<p>If the verification fails, it will display text like <code>Bad signature from "build_tron &lt;build@tron.network&gt;"</code>.</p>
+<h2 id="tron-address-signature-verification-process">TRON Address Signature Verification Process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
+<p>For <code>java-tron</code> versions released before January 3, 2023, the release packages were signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing process is as follows:</p>
+<ol>
+<li>First, the SHA256 hash of the executable file is calculated.</li>
+<li>Then, the SHA256 hash is signed with the private key of the TRON account.</li>
+</ol>
+<p>The SHA256 hash and signature result for the release packages can be found in the <strong>Historical Version Signature Information</strong> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
+<p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">tronweb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
+<h3 id="1-install-tronweb">1. Install TronWeb<a class="headerlink" href="#1-install-tronweb" title="Permanent link">&para;</a></h3>
+<p>If you have already installed TronWeb, you can skip this step. Otherwise, install it using the following command:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>tronweb
 </code></pre></div>
-<h3 id="verify-the-integrity-of-the-release-package">Verify the integrity of the release package<a class="headerlink" href="#verify-the-integrity-of-the-release-package" title="Permanent link">&para;</a></h3>
-<p>Confirm the integrity of the release package by comparing the Hash value of the executable file and the hash value in the release information. Take <a href="https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v3.7">Odyssey-3.7</a> version as an example:</p>
+<h3 id="2-verify-the-release-packages-integrity">2. Verify the Release Package's Integrity<a class="headerlink" href="#2-verify-the-release-packages-integrity" title="Permanent link">&para;</a></h3>
+<p>To ensure the integrity of the release package, you need to check if its SHA256 hash matches the hash provided in the release information.</p>
+<p>For the <code>Odyssey-3.7</code> version, for example:</p>
 <ul>
-<li>The release package file name: <code>FullNode.jar</code> </li>
-<li>The SHA256 value of the release package: <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code></li>
-<li>Signature：  <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code></li>
+<li>The release package file name is: <code>FullNode.jar</code></li>
+<li>The release package's SHA256 is: <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code></li>
+<li>The signature is: <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code></li>
 </ul>
-<p>Execute the following command for verification under MacOS system:
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sha256sum<span class="w"> </span>FullNode.jar<span class="w">  </span>
+<p>On your system, execute the following command to calculate the SHA256 hash of <code>FullNode.jar</code>:</p>
+<ul>
+<li><strong>macOS</strong>:
+<div class="highlight"><pre><span></span><code>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>FullNode.jar
+</code></pre></div></li>
+<li><strong>Debian, Ubuntu, and other Debian-derived systems</strong>:
+<div class="highlight"><pre><span></span><code>sha256sum FullNode.jar
 </code></pre></div>
-Execute the following command for verification under Debian, Ubuntu and other Linux distributions:
-<div class="highlight"><pre><span></span><code>$ shasum -a 256 FullNode.jar (macOS)
-</code></pre></div></p>
-<h3 id="signature-verification_1">Signature verification<a class="headerlink" href="#signature-verification_1" title="Permanent link">&para;</a></h3>
-<p>Execute the following command to verify the signature of the release package:
+Compare the hash value from the command's output with the hash provided in the release information.</li>
+</ul>
+<h3 id="3-check-the-release-package-signature">3. Check the Release Package Signature<a class="headerlink" href="#3-check-the-release-package-signature" title="Permanent link">&para;</a></h3>
+<p>Use the <code>tronweb</code>'s <code>Trx.verifySignature</code> interface to verify the release package's signature. Execute the following JavaScript code in your command line:</p>
 <div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span><span class="w"> </span><span class="nx">ADDRESS</span><span class="p">,</span><span class="w"> </span><span class="nx">SIGNATURE</span><span class="p">));</span>
 <span class="nx">node</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s1">&#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(</span>
 <span class="s1">    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,</span>
 <span class="s1">    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,</span>
 <span class="s1">    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;</span>
-<span class="s1">  ))&#39;</span>
-</code></pre></div></p>
-<h3 id="signatures-of-historical-versions">Signatures of historical versions<a class="headerlink" href="#signatures-of-historical-versions" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Odyssey-3.7</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:<span class="w"> </span>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e
-FullNode<span class="w"> </span>signature:<span class="w"> </span>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b
-SolidityNode<span class="w"> </span>sha256sum:<span class="w"> </span>fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc
-SolidityNode<span class="w"> </span>signature:<span class="w"> </span>6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c
+<span class="s1">))&#39;</span>
 </code></pre></div>
-<ul>
-<li>GreatVoyage-4.0.0</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:<span class="w"> </span>d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d
-FullNode<span class="w"> </span>signature:<span class="w"> </span>e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c
-SolidityNode<span class="w"> </span>sha256sum:<span class="w"> </span>adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6
-SolidityNode<span class="w"> </span>signature:<span class="w"> </span>e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b
+<p>If the signature verification passes, it will output <code>true</code>; otherwise, it will output <code>false</code>.</p>
+<h2 id="historical-version-signature-information">Historical Version Signature Information<a class="headerlink" href="#historical-version-signature-information" title="Permanent link">&para;</a></h2>
+<h3 id="odyssey-37">Odyssey-3.7<a class="headerlink" href="#odyssey-37" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e
+FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b
+SolidityNode sha256sum: fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc
+SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-4.1.1</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:<span class="w"> </span>30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe
-FullNode<span class="w"> </span>signature:<span class="w"> </span>5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b
-SolidityNode<span class="w"> </span>sha256sum:<span class="w"> </span>10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44
-SolidityNode<span class="w"> </span>signature:<span class="w"> </span>1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b
+<h3 id="greatvoyage-400">GreatVoyage-4.0.0<a class="headerlink" href="#greatvoyage-400" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d
+FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c
+SolidityNode sha256sum: adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6
+SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.1.2</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:<span class="w"> </span>4ded44b6c1a3dbd25212e14ab413142b5463dcbf30a528f83ded529048542547
-FullNode<span class="w"> </span>signature:<span class="w"> </span>57a094c1b8a5ec301ef913eb718de2498b5695eb999530863df05252ba8919ba6866c8490e29d36f7dbf34537c898ece5ef0111efb134419c3a5fd6fc9ec03b81c
-SolidityNode<span class="w"> </span>sha256sum:<span class="w"> </span>3db36cadbd1f7641aafc8164983f28df4b7ceff8174e090327ed407012cf12cb
-SolidityNode<span class="w"> </span>signature:<span class="w"> </span>d07604f6811cbed628dd6e5c07880c2fdd3025848fd5365925531c7748467d5228fea2e18326864acc27f3b51c73b364fa44c450d8ec4b5080a7ddb7566724701c
+<h3 id="greatvoyage-411">GreatVoyage-4.1.1<a class="headerlink" href="#greatvoyage-411" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe
+FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b
+SolidityNode sha256sum: 10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44
+SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.1.3(Thales)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:<span class="w"> </span>c5fb99ad5b024bb7877118f30fb6065f6e6febd11a3cfa241521cbed73cca181
-FullNode<span class="w"> </span>signature:<span class="w"> </span>d80ec371e791c4316925d80ff3400cf51b14c8a4d4c696b7817c517eb094823622932b45b9b37f9e9657513c3eddb1134fbbb1ee56727c0957e8a3b40c67409b1c
-SolidityNode<span class="w"> </span>sha256sum:<span class="w"> </span>4b941d71b561a8b2e0b97d7498823d900eaf287910eea1eaafc649f5aad14036
-SolidityNode<span class="w"> </span>signature:<span class="w"> </span>f8a8e8d411b009d02986cad1e19e745f8107384a274f146bcae60c570111b13556ff9ab528eb5d1fb4734bd4ef488ade4038781d06ab6420e35f28be6135fe9b1c
+<h3 id="greatvoyage-v412">GreatVoyage-v4.1.2<a class="headerlink" href="#greatvoyage-v412" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum: 4ded44b6c1a3dbd25212e14ab413142b5463dcbf30a528f83ded529048542547
+FullNode signature: 57a094c1b8a5ec301ef913eb718de2498b5695eb999530863df05252ba8919ba6866c8490e29d36f7dbf34537c898ece5ef0111efb134419c3a5fd6fc9ec03b81c
+SolidityNode sha256sum: 3db36cadbd1f7641aafc8164983f28df4b7ceff8174e090327ed407012cf12cb
+SolidityNode signature: d07604f6811cbed628dd6e5c07880c2fdd3025848fd5365925531c7748467d5228fea2e18326864acc27f3b51c73b364fa44c450d8ec4b5080a7ddb7566724701c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.2.0(Plato)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v413thales">GreatVoyage-v4.1.3(Thales)<a class="headerlink" href="#greatvoyage-v413thales" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum: c5fb99ad5b024bb7877118f30fb6065f6e6febd11a3cfa241521cbed73cca181
+FullNode signature: d80ec371e791c4316925d80ff3400cf51b14c8a4d4c696b7817c517eb094823622932b45b9b37f9e9657513c3eddb1134fbbb1ee56727c0957e8a3b40c67409b1c
+SolidityNode sha256sum: 4b941d71b561a8b2e0b97d7498823d900eaf287910eea1eaafc649f5aad14036
+SolidityNode signature: f8a8e8d411b009d02986cad1e19e745f8107384a274f146bcae60c570111b13556ff9ab528eb5d1fb4734bd4ef488ade4038781d06ab6420e35f28be6135fe9b1c
+</code></pre></div>
+<h3 id="greatvoyage-v420plato">GreatVoyage-v4.2.0(Plato)<a class="headerlink" href="#greatvoyage-v420plato" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 bbf103432be016b582452137b4862140af15ccf7c5daa9be738450705317fdb8
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 326701699a5eb8d497eb454b5b74c1559961417fb6f262b4e6314052d73f5977312e0450937fa485236f51f706b434acf8659ce1325d704097c5748629e736ef1c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 1db544cbca9dc814683ccf9bef28f7d6ca4469289052230394aaf4e3bcd08615
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 47fea27df940db0d2a4c0abf6d06969882c027bc4f17449205a28ae5cd25b8ba5339e21f105fe1c25e799d0f4ffea64a15046b9baf5b54341411b5180da439011b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.2.1(Origen)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v421origen">GreatVoyage-v4.2.1(Origen)<a class="headerlink" href="#greatvoyage-v421origen" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 9888710c915a4027f1bc3dcb1d5d983e0c00d4c438f6fa307d412f62ff6862ea
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 6e7d8ef9d033ebf9213118b7511f4ecc5def97442844fbd34de3ef76dd417a0d45da3e2e70fc213475d7fc0a44df1c54732874d858ec980159c5dbffc975680a1c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 c70edffa3022e9c25bf845ee978e3500c3ada89b473d895a715acf1738b83f10
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 0e366acce33bb7c6b02fa143a57d9380c94d3513a9fba8692efe2862a8f7df93156edbddd075f1844f2f81398b14f2db6a03e21f0f6b8ab25649fae4dc16ae731b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.2.2(Lucretius)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v422lucretius">GreatVoyage-v4.2.2(Lucretius)<a class="headerlink" href="#greatvoyage-v422lucretius" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 8a7f8143b3351ea6b5d8e3dfc857b09256d363d4907ba3ab0288f67f77c2a58f
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 71c6300ace5cbf16d78a32aa4602c3f129cb768e32acffaecd17b4134b5955bf37efda1d27025e894e521184a21174e5eddf4e7d1f86761657827795cbddfcfd1c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 2d0d5334a232b7b74df8ed3211d9e0ac957894f81e9172010732f2159da261ad
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 0696f8cb3c65324c4b04f9ecf89d939bf7e1b955144e3fe75eeca6bd4c639e463afbe24e31ae38a6889d4d0649ae03fafeeb7c337b34a36fbac33962f64651671b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.2.2.1(Epictetus)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v4221epictetus">GreatVoyage-v4.2.2.1(Epictetus)<a class="headerlink" href="#greatvoyage-v4221epictetus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 8bd040a8db16ccba3e957ed3558b82d145928153a53f9688302849658a72f9bc
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 3137a8ba8fa5556e4c4a7597aec8f5f46ebb79a64edcf9e2925d2e3314afde3e0f42fd4080e5e4f4d3d1eff263d30478b0322e6dbcc71c43b534f614004b5c561b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 ee8abd39732e4901828a61124880f1d2eab62f7f3d97150f1e1921bf7da10e54
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 092b08184677449dd283a31cc486f994166cd9f5ad312a9c80d3e06689ec540774ac9a1334dffeb6412039ed70ee912ead39c4025dd69b688ea9df4dd831b5771c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.3.0(Bacon)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v430bacon">GreatVoyage-v4.3.0(Bacon)<a class="headerlink" href="#greatvoyage-v430bacon" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 b5e993800cea5ca040758dd6b3c7438def03cbf1358468beb76ea45399a59298
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 8da6ac58129d78d948810e4bc7372dd8aef5232bfbc4c33ad8fb21e88314e3d97dd77509e0f03a98da32679495152ccd4a9d07541589822e5cf5d3d4f61877191b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 446a4736901958a450e4e95aaca99a63957163854fb32d25eed84600e6996668
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 c27ffde8ce88ee14689e15a9d5c3fb2d2a9d180ea43b45046131df8ac5481fae2588621b395ad7031ed49d65ddd020b3ce084537e3f527d8a5a979f8c65265561c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.0(Rousseau)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v440rousseau">GreatVoyage-v4.4.0(Rousseau)<a class="headerlink" href="#greatvoyage-v440rousseau" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 bf7f962846f75139dd89ac6da32074cad33b2e172c0749abbed8773cc1ab1a37
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 56ed97f3451e3d731f799bad952750d56aa78a9a91a2688b4d6b956328ede7e01bae78037ad6ef1f9c682b566e954dfb958271f006e5cf0dcace5768d76fda6e1b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 9dac37763ddf75c07335ec070f837b63ee46b698066dd25c4756ad40f8750d5f
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 cc4325c085719e3e5045b5c6c2553d7adc9c735419618f7afad06c3a532da0ed46906ae9b2dadb15d7f94150268d5ecdc7fd2741693991586d50da30a8d917071b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.1(Protagoras)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v441protagoras">GreatVoyage-v4.4.1(Protagoras)<a class="headerlink" href="#greatvoyage-v441protagoras" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 4a32918849dc8a7fedcb637ff4939389363726cb16c6a581e39253260668ee04
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 fd747f61705ef045143bd2d55b278ca347904323711e2e86b11cf1dd203f198443ab1a399767a570005bd5b2ea283187ccc41557ffb79c959b018e8d798b96f81c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 b6a06d3b19f41591bd8c01f35e78b316ab8e9ad4c0740128fc95ba52d3106f34
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 d2836bda30fd25c89494ae7a12b5357bc9e725c9e2c655fb0a9158a4bee881693ea869defe650b0b4f190458a5268f1c121e73c8305cc81a408e62fca0d234c51b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.2(Augustinus)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v442augustinus">GreatVoyage-v4.4.2(Augustinus)<a class="headerlink" href="#greatvoyage-v442augustinus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 70eba12350fa21e1b261927093090e7bdf0765592d19433c594149bd3707ef0a
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 14430f463e6fab3dd247aca6267b6aaf2f1869b455d95aee297208bd1561c6c67559d9c535e63e74bbef604141cc4ceec78367a75e6ca4d4ceb6513019329c9b1b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 f08438e093cc1091859f0ee9dbc7e79b0d5d9068facd4e6485374baa3acf59d1
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 f3935dfe4af9601cf102c975ed2eebbd4b42160e8746c0d0b21ffbd2fbd4b6f374257b1bc0e948909a9ef343d2cc70671961c8f7a992b6cd123f9ad3c8c323391c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.3(Pythagoras)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v443pythagoras">GreatVoyage-v4.4.3(Pythagoras)<a class="headerlink" href="#greatvoyage-v443pythagoras" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 c07637a1a4a9a289218554f4714caef90032e267b068411c7dd818d4af45e39f
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 2bf8d65adf556fe2c04b739c1f4e6e73058914cf642a7806ff85e57be2ff122e35cbf3d67b0bc8bad4fb827198ffd8e06f60111a167ecb0b3db0d8e571b8c67b1c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 64f4614160b9330d0a9e984686b66fa16e9aecf7ae16e32b8cc7c32f52694eef
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 dc0f910555a23667d682a6775588de90592ede44f76a32b12ea8f89fa7dcc937274cc3a44b20da49726323cc9f476d42caa318c338858474f02bf98cc398bca81c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.4(Plotinus)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v444plotinus">GreatVoyage-v4.4.4(Plotinus)<a class="headerlink" href="#greatvoyage-v444plotinus" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 0264d382489dae5bf1d340030c1892b0a7aeb9364cb9380c034e159c9eb9a269
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 70cdece8c3510ce4d7d84d5d2c8b53895397c0134d73d681b6b41d4de80d74ce2c2760fdf080ff0ce8c0989246377fca529cb1a2e85e1936755abef4be64f0971b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 b58e7b8b0f97eb2a7a0ce5c5aeb2ce070192ca82c96adc8568aabe4f3407d873
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 26da2e507bbd7e82e0170039cc1c0e42332fb2dfc755aeb385240f0a93125b6c0f1e943ccf1a4e9bfec7fdd4d8a26375a38e030e0b8b69af3e2c181bf08444111b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.5(Cicero)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v445cicero">GreatVoyage-v4.4.5(Cicero)<a class="headerlink" href="#greatvoyage-v445cicero" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 8115e887e5af5768e8ab967f8e7bc024af94bda31be7f3dbc30934b42489d988
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 1a02f26eb6065efe5697123528f32ea352d813f9e5acf5936407ad8899c4019539e31b257cafe34b9f8045602f5a4f381b3dd8252a30bb9daf52aeeb078b54711b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 95884a07dcbb1531ec7ae20b7162cab3bb9c4bd2e300447c01c4772e02b24a20
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 8adab9501bbb2a3d9f3055c91e819f86081df9b92228a86afb7f0a27165a42690dbeb50f0f1fd1f7180b51809a291c5ff3860e49f888cf0ba87b401d3dda6e271c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.4.6(David)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v446david">GreatVoyage-v4.4.6(David)<a class="headerlink" href="#greatvoyage-v446david" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 eaf213f6e6cd9913f9f27bf72a42209c1a0f0fce9841c1d6bd680d879d7d6f85
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 064abe833436b3a2e9b66406abf81d12a20f9d28ef669abe7c87c0d750e58cf10c1e65de6fbd0fc368022f93e4c330b42ea9775ead91962480436985c90ad3b11c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 c3e9ccc1a4d2aac4c081ae01db86a0901b6f3506e3f8a953315e47ae274a98c1
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 a03d5d6f0e6c6b869f2e545d8c3ff8a4fed569508e9abe4219271d8bf25dfb015e242add8fd2ab6b8b412dd6b393639517957877e8eb7c07ff43a1351a88d62f1b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.5.1(Tertullian)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)<a class="headerlink" href="#greatvoyage-v451tertullian" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 db3c75d7854dcf241558c2942b9a582f478c00a88b6f7a7e5ff8a653a8d4c59a
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 61ba205f28c3bc7fa228c27e4e3b4d460ef4fad75ca1d38d82540d45eea2d3d720196b607cd45c560db7a749d05bfe8089c61fba5843e98d61fec90f1591f2861b
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 537a81bd781d416229de5e0875247160f2569c378c8eed703203d0acca5be5f1
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 a736f9de5425562a2af188c547245f9b4da6d793728bc767242e3df75fa104f61ce978b62fc5cea7f6008bdb51faa9510ff5633702cdb1ddca29cb06a18920d21c
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.5.2 (Aurelius)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v452-aurelius">GreatVoyage-v4.5.2 (Aurelius)<a class="headerlink" href="#greatvoyage-v452-aurelius" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 60e959ccde3ff90c10b503bb25edf37684845e358df2ad64b2b330712b30c177
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 f2f4b6050e639047857c5b5331eb006dcc9c1e0427bac4ae3d934f7436080785472ead691aa16e6a5aed3c2932fb279ce8ab3580449071b878e0d31fdf01f0371c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 4783b8abef12a6c7b8319f3e8960c1d3126edcc521ac1fc3429fe2870cab91b0
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 afb5db2467ce9f5445679df53e2fecfaed3c4a2d0ca2ba88b65e621aa2d37a9e6aab06b30052a9381087d0164cb5c347d710b2b1c59e6f7c7107deacfd1cfc961b
 </code></pre></div>
-<ul>
-<li>GreatVoyage-v4.6.0 (Socrates)</li>
-</ul>
-<div class="highlight"><pre><span></span><code>FullNode<span class="w"> </span>sha256sum:
+<h3 id="greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)<a class="headerlink" href="#greatvoyage-v460-socrates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>FullNode sha256sum:
 598589d428085e25c838552970844b0ba00248ad92873bd2ad25b35f37db7a5b
-FullNode<span class="w"> </span>signature:
+FullNode signature:
 d3bcfa1bea64b7e58cb94603563cb0c5e47bc20316f61b0dfc966fb64ae846f21b8f917a63328416993f524f4de55ddf5083f163b1fe1b811a9a6f4532725c8e1c
-SolidityNode<span class="w"> </span>sha256sum:
+SolidityNode sha256sum:
 ee37a425a84677063b6ea44ed073b8260e336586a61debc10ce0b1544bf7db6a
-SolidityNode<span class="w"> </span>signature:
+SolidityNode signature:
 332c273ef1cdae8dc39c76a83b38750a74b3dd1b915e49698e4ae6870cfed49a1449e8d8db995c7a6be2295e2603efedb0f3e8e906ac7681583c5023b28a521d1b
 </code></pre></div>
-              
-            </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../upgrade-instruction/" class="btn btn-neutral float-left" title="Deployment Manual for the New Version"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../history/" class="btn btn-neutral float-right" title="History">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
-  <hr/>
 
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-  </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
+
+
+
+
+
+
+
+
+
+		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
+      	    	  <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
           
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
+          <a href="../upgrade-instruction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment Manual for the New Version">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Deployment Manual for the New Version
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../history/" class="md-footer__link md-footer__link--next" aria-label="Next: History">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                History
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
-        <span>
-          <a href="https://github.com/tronprotocol/documentation-en" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
-        </span>
-    
-    
-      <span><a href="../upgrade-instruction/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../history/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
 </div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme_extra.js" defer></script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
-
-</body>
+      
+    </div>
+  </div-->
+</footer>
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/toc.js"></script>
+      
+        <script src="../../javascripts/nav-toc.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
 </html>
