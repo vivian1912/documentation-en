@@ -1817,7 +1817,7 @@ Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
 <li>First, the SHA256 hash of the executable file is calculated.</li>
 <li>Then, the SHA256 hash is signed with the private key of the TRON account.</li>
 </ol>
-<p>The SHA256 hash and signature result for the release packages can be found in the <strong>Historical Version Signature Information</strong> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
+<p>The SHA256 hash and signature result for the release packages can be found in the <a href="#historical-version-signature-information">Historical Version Signature Information</a> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
 <p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">tronweb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
 <h3 id="1-install-tronweb">1. Install TronWeb<a class="headerlink" href="#1-install-tronweb" title="Permanent link">&para;</a></h3>
 <p>If you have already installed TronWeb, you can skip this step. Otherwise, install it using the following command:</p>

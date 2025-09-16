@@ -1520,53 +1520,126 @@
 <p>The operational steps for deploying a private network node are fundamentally the same as deploying a Mainnet node. The primary difference lies in the node's configuration file. The most crucial part of setting up a private network is modifying the configuration items in this file to allow the nodes to form a private network, enabling network discovery, block synchronization, and transaction broadcasting.</p>
 <ol>
 <li>
-<p>Prepare Node Directories
-To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.
-      ```Shell
-      # Create the Super Representative (SR) node directory
-      $ mkdir SR</p>
-<p># Create the regular Fullnode directory
-  $ mkdir FullNode
- <code>``
-2. Get the</code>java-tron<code>Client</code>java-tron` is the official Java implementation of the TRON network.</p>
+<p>Prepare Node Directories</p>
+<p>To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create the Super Representative (SR) node directory</span>
+$<span class="w"> </span>mkdir<span class="w"> </span>SR
+
+<span class="c1"># Create the regular Fullnode directory</span>
+$<span class="w"> </span>mkdir<span class="w"> </span>FullNode
+</code></pre></div>
+</li>
+<li>
+<p>Get the <code>java-tron</code> Client</p>
+<p><code>java-tron</code> is the official Java implementation of the TRON network.</p>
 <ul>
 <li>Download the latest <code>FullNode.jar</code> from the <code>java-tron</code> <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</li>
-<li>Copy the downloaded <code>JAR</code> file into each of the two node directories:
-    <code>$ cp FullNode.jar ./SR
-     $ cp FullNode.jar ./FullNode</code></li>
-<li>Prepare Configuration Files</li>
+<li>
+<p>Copy the downloaded <code>JAR</code> file into each of the two node directories:</p>
+<div class="highlight"><pre><span></span><code>$ cp FullNode.jar ./SR
+$ cp FullNode.jar ./FullNode
+</code></pre></div>
+</li>
 </ul>
 </li>
 <li>
-<p>Download the official private network configuration file template (<a href="https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf">private_net_config.conf</a>).</p>
+<p>Prepare Configuration Files</p>
+<ul>
+<li>Download the official configuration file template (<a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">config.conf</a>) and change the <code>p2p.version</code> to any value other than <strong>11111</strong> or <strong>20180622</strong>.</li>
+<li>Copy it into each node directory and rename the files for distinction.
+    <div class="highlight"><pre><span></span><code># Configuration file for the SR node
+$ cp private_net_config.conf ./SR/supernode.conf
+
+#  Configuration file for the regular Fullnode
+$ cp private_net_config.conf ./FullNode/fullnode.conf
+</code></pre></div></li>
+</ul>
 </li>
 <li>
-<p>Copy it into each node directory and rename the files for distinction.
-   ```
-      # Configuration file for the SR node
-      $ cp private_net_config.conf ./SR/supernode.conf</p>
-<p>#  Configuration file for the regular Fullnode
-  $ cp private_net_config.conf ./FullNode/fullnode.conf
-  <code>``     
-4. Modify Node Configurations
-This is the most critical step in setting up a private network. Please edit the</code>supernode.conf<code>and</code>fullnode.conf<code>files according to the instructions in the table below.
-   | Config Item | SR Node (</code>supernode.conf<code>) | Fullnode (</code>fullnode.conf<code>) | Description |
-| :-------- | :-------- | :-------- | :-------- |
-|</code>localwitness<code>| The private key| Please do not fill in data     | Generating blocks requires signing with a private key    |
-|</code>genesis.block.witnesses<code>| SR address     | The same as SR node's | Genesis block related configuration     |
-|</code>genesis.block.Assets<code>| Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required    | The same as SR node's     | Genesis block related configuration     |
-|</code>p2p.version<code>| any positive integer except for 11111     | the same as SR node's     | Only nodes of the same p2p version can shake hands successfully    |
-|</code>seed.node<code>| Please do not fill in data     | Change the</code>seed.node<code></code>ip.list<code>in the configuration file to the IP address and the port (</code>listen.port<code>) of the SR     | Enables fullnode to establish connection with SR node and synchronize data     |
-|</code>needSyncCheck<code>|</code>false<code>|</code>true<code>| Set the first SR’s needSyncCheck to</code>false<code>, other SRs</code>true<code>|
-|</code>node.discovery.enable<code>|</code>true<code>|</code>true<code>| If it is</code>false<code>, the current node will not be discovered by other nodes    |
-|</code>block.proposalExpireTime<code>|</code>600000<code>|The same as SR node's |The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms|
-|</code>block.maintenanceTimeInterval<code>|</code>300000<code>| The same as SR node's | The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.|
-|</code>committee.allowSameTokenName<code>|</code>1<code>|</code>1<code>| Allow same token name|
-|</code>committee.allowTvmTransferTrc10<code>|</code>1<code>|</code>1`|Allow tvm transfer TRC-10|</p>
+<p>Modify Node Configurations</p>
+<p>This is the most critical step in setting up a private network. Please edit the <code>supernode.conf</code> and <code>fullnode.conf</code> files according to the instructions in the table below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Config Item</th>
+<th style="text-align: left;">SR Node (<code>supernode.conf</code>)</th>
+<th style="text-align: left;">Fullnode (<code>fullnode.conf</code>)</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>localwitness</code></td>
+<td style="text-align: left;">The private key</td>
+<td style="text-align: left;">Please do not fill in data</td>
+<td style="text-align: left;">Generating blocks requires signing with a private key</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>genesis.block.witnesses</code></td>
+<td style="text-align: left;">SR address</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">Genesis block related configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>genesis.block.Assets</code></td>
+<td style="text-align: left;">Preset TRX for specific accounts. Add the pre-prepared address to the end and specify its TRX balance as required</td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">Genesis block related configuration</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>p2p.version</code></td>
+<td style="text-align: left;">any positive integer except for 11111</td>
+<td style="text-align: left;">the same as SR node's</td>
+<td style="text-align: left;">Only nodes of the same p2p version can shake hands successfully</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>seed.node</code></td>
+<td style="text-align: left;">Please do not fill in data</td>
+<td style="text-align: left;">Change the <code>seed.node</code> <code>ip.list</code> in the configuration file to the IP address and the port (<code>listen.port</code>) of the SR</td>
+<td style="text-align: left;">Enables fullnode to establish connection with SR node and synchronize data</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>needSyncCheck</code></td>
+<td style="text-align: left;"><code>false</code></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">Set the first SR’s needSyncCheck to <code>false</code>, other SRs <code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>node.discovery.enable</code></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;"><code>true</code></td>
+<td style="text-align: left;">If it is <code>false</code>, the current node will not be discovered by other nodes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>block.proposalExpireTime</code></td>
+<td style="text-align: left;"><code>600000</code></td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">The default proposal effective time is 3 days: 259200000 (ms), if you want to quickly pass the proposal, you can set this item to a smaller value, such as 10 minutes, that is, 600000ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>block.maintenanceTimeInterval</code></td>
+<td style="text-align: left;"><code>300000</code></td>
+<td style="text-align: left;">The same as SR node's</td>
+<td style="text-align: left;">The default maintenance time interval is 6 hours: 21600000 (ms), if you want to pass the proposal quickly, you can set this item to a smaller value, such as five minutes, that is, 300000ms.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>committee.allowSameTokenName</code></td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Allow same token name</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>committee.allowTvmTransferTrc10</code></td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Allow tvm transfer TRC-10</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
-<p>Adjust Network Ports (If Necessary)
-Modify the port numbers in the configuration files to be different for the SR and the Full Node. This step is only required when running multiple nodes on the same machine to avoid port conflicts. Otherwise, you can skip it.</p>
+<p>Adjust Network Ports (If Necessary)</p>
+<p>Modify the port numbers in the configuration files to be different for the SR and the Full Node. This step is only required when running multiple nodes on the same machine to avoid port conflicts. Otherwise, you can skip it.</p>
 <ul>
 <li><code>listen.port</code>: P2P listening port</li>
 <li><code>http port</code>: HTTP listening port</li>
@@ -1574,93 +1647,92 @@ Modify the port numbers in the configuration files to be different for the SR an
 </ul>
 </li>
 <li>
-<p>Start the Nodes
-The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.</p>
-</li>
+<p>Start the Nodes</p>
+<p>The startup commands for the Super Representative (block-producing node) and the regular Full Node are slightly different.</p>
+<ul>
 <li>
 <p>Start the Super Representative (SR) Node:
-    <div class="highlight"><pre><span></span><code>$ cd SR
+ <div class="highlight"><pre><span></span><code>$ cd SR
 $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c supernode.conf
 </code></pre></div></p>
 </li>
 <li>
-<p>Start the regular Fullnode:</p>
+<p>Start the regular Fullnode:
+  <div class="highlight"><pre><span></span><code>$ cd FullNode
+$ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
+# After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.
+</code></pre></div></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Advanced Operation: Modifying Dynamic Network Parameters</p>
+<p>Dynamic network parameters can be retrieved via the <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters API</a>. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN <a href="https://tronscan.org/#/sr/committee">Parameters &amp; Proposals page</a>. If you want your private network's dynamic parameters to match the Mainnet's, you can use the<a href="https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md"> dbfork tool</a>, which can capture the latest state of the Mainnet.</p>
+<p>After your private network is running, you may need to adjust certain network parameters (e.g., transaction fees, energy price). This can be achieved in two ways:</p>
+<ul>
+<li>
+<p><strong>Method 1: Set via Configuration File (For Initial Deployment)</strong></p>
+<p>Some dynamic parameters can be set directly in the configuration file. You can find a list of these parameters <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java">here</a>.</p>
+<p>Example: Add the following <code>committee</code> block to your <code>.conf</code> file to enable multi-signature and contract creation.</p>
+<div class="highlight"><pre><span></span><code>committee = {
+  allowCreationOfContracts = 1
+  allowAdaptiveEnergy = 0
+  allowMultiSign = 1
+  allowDelegateResource = 1
+  allowSameTokenName = 0
+  allowTvmTransferTrc10 = 1
+ }
+</code></pre></div>
+</li>
+<li>
+<p><strong>Method 2: Modify via On-Chain Proposals (For a Running Network)</strong></p>
+<p>This is the standard method for on-chain governance. Any SR, SR partner, or SR candidate has the right to create a proposal, but only Super Representatives (SRs) have the right to vote for its approval.</p>
+<ul>
+<li>Create a Proposal: Any SR, SR partner, or SR candidate uses the <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate API</a>, specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</li>
+<li>Approve a Proposal: An SR uses the <a href="https://developers.tron.network/reference/proposalapprove">proposalapprove API</a> to vote on the proposal. (Only 'approve' votes are supported; if an SR does not vote, it is considered a 'disapprove').</li>
+<li>Related APIs:<ul>
+<li>Get all proposals: <a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a></li>
+<li>Get a proposal by ID: <a href="https://developers.tron.network/reference/getproposalbyid">getproposalbyid</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example Code (using TronWeb):</strong></p>
+<p>The following code snippet demonstrates how to create a proposal to modify two network parameters and then vote on it. In <a href="https://developers.tron.network/reference/proposalcreate">proposalcreate</a>, dynamic parameters are represented by their IDs. The mapping between parameter IDs and names can be found <a href="https://developers.tron.network/reference/wallet-getchainparameters">here</a>.</p>
+<div class="highlight"><pre><span></span><code>var TronWeb = require(&#39;tronweb&#39;);
+var tronWeb = new TronWeb({
+    fullHost: &#39;http://localhost:16887&#39;,
+    privateKey: &#39;privateKey&#39;
+})
+
+var parametersForProposal1 = [{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1}];
+
+async function modifyChainParameters(parameters,proposalID){
+
+    parameters.sort((a, b) =&gt; {
+            return a.key.toString() &gt; b.key.toString() ? 1 : a.key.toString() === b.key.toString() ? 0 : -1;
+        })
+   var unsignedProposal1Txn = await tronWeb.transactionBuilder.createProposal(parameters,&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;);
+    var signedProposal1Txn = await tronWeb.trx.sign(unsignedProposal1Txn);
+    var receipt1 = await tronWeb.trx.sendRawTransaction(signedProposal1Txn);
+
+    setTimeout(async function() {
+        console.log(receipt1)
+        console.log(&quot;Vote proposal 1 !&quot;)
+        var unsignedVoteP1Txn = await tronWeb.transactionBuilder.voteProposal(proposalID, true, tronWeb.defaultAddress.hex)
+        var signedVoteP1Txn = await tronWeb.trx.sign(unsignedVoteP1Txn);
+        var rtn1 = await tronWeb.trx.sendRawTransaction(signedVoteP1Txn);
+    }, 4000)
+
+}
+
+modifyChainParameters(parametersForProposal1, 1) 
+</code></pre></div>
+<p>Once the proposal is approved and the maintenance period has passed, the new network parameters will take effect. You can verify the changes using <a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a> or <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters</a>.</p>
+<p>It is important to note that dynamic parameters with interdependencies cannot be included in the same proposal. The correct approach is to separate them into different proposals and pay attention to their order of submission.</p>
+</li>
+</ul>
 </li>
 </ol>
-<p><code>$ cd FullNode
-    $ java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  -c fullnode.conf
-    # After starting, monitor the console logs to ensure the Full Node successfully connects to the SR node and begins syncing blocks.</code>  </p>
-<ol>
-<li>Advanced Operation: Modifying Dynamic Network Parameters</li>
-</ol>
-<p>Dynamic network parameters can be retrieved via the <a href="https://developers.tron.network/reference/wallet-getchainparameters">getchainparameters API</a>. The current Mainnet dynamic parameters and related proposals can be viewed on the TRONSCAN <a href="https://tronscan.org/#/sr/committee">Parameters &amp; Proposals page</a>. If you want your private network's dynamic parameters to match the Mainnet's, you can use the<a href="https://github.com/tronprotocol/tron-docker/blob/main/tools/toolkit/DBFork.md"> dbfork tool</a>, which can capture the latest state of the Mainnet.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">After</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">private</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">running</span><span class="p">,</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="n">certain</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">fees</span><span class="p">,</span><span class="w"> </span><span class="n">energy</span><span class="w"> </span><span class="n">price</span><span class="p">).</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">achieved</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">ways</span><span class="o">:</span>
-
-<span class="o">-</span><span class="w"> </span><span class="o">**</span><span class="n">Method</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">Set</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">Configuration</span><span class="w"> </span><span class="n">File</span><span class="w"> </span><span class="p">(</span><span class="n">For</span><span class="w"> </span><span class="n">Initial</span><span class="w"> </span><span class="n">Deployment</span><span class="p">)</span><span class="o">**</span>
-
-<span class="w">  </span><span class="n">Some</span><span class="w"> </span><span class="n">dynamic</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">directly</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">these</span><span class="w"> </span><span class="n">parameters</span><span class="w"> </span><span class="p">[</span><span class="n">here</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/core/Constant.java).</span>
-
-<span class="w">  </span><span class="nl">Example</span><span class="p">:</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="err">`</span><span class="n">committee</span><span class="err">`</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="err">`</span><span class="p">.</span><span class="n">conf</span><span class="err">`</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">enable</span><span class="w"> </span><span class="n">multi</span><span class="o">-</span><span class="n">signature</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">creation</span><span class="p">.</span>
-
-<span class="w">  </span><span class="err">```</span>
-<span class="w">  </span><span class="n">committee</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">allowCreationOfContracts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">allowAdaptiveEnergy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">    </span><span class="n">allowMultiSign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">allowDelegateResource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="n">allowSameTokenName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="w">    </span><span class="n">allowTvmTransferTrc10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="err">```</span>
-
-<span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="o">**</span><span class="n">Method</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">Modify</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">On</span><span class="o">-</span><span class="n">Chain</span><span class="w"> </span><span class="n">Proposals</span><span class="w"> </span><span class="p">(</span><span class="n">For</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Running</span><span class="w"> </span><span class="n">Network</span><span class="p">)</span><span class="o">**</span>
-<span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">standard</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">on</span><span class="o">-</span><span class="n">chain</span><span class="w"> </span><span class="n">governance</span><span class="p">.</span><span class="w"> </span><span class="n">Any</span><span class="w"> </span><span class="n">SR</span><span class="p">,</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">partner</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="p">,</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">only</span><span class="w"> </span><span class="n">Super</span><span class="w"> </span><span class="n">Representatives</span><span class="w"> </span><span class="p">(</span><span class="n">SRs</span><span class="p">)</span><span class="w"> </span><span class="n">have</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">vote</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">approval</span><span class="p">.</span>
-
-<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Proposal</span><span class="o">:</span><span class="w"> </span><span class="n">Any</span><span class="w"> </span><span class="n">SR</span><span class="p">,</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">partner</span><span class="p">,</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">candidate</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="n">proposalcreate</span><span class="w"> </span><span class="n">API</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//developers.tron.network/reference/proposalcreate), specifying the parameter to be modified by its ID and the new value. (List of parameter IDs).</span>
-<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Approve</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Proposal</span><span class="o">:</span><span class="w"> </span><span class="n">An</span><span class="w"> </span><span class="n">SR</span><span class="w"> </span><span class="n">uses</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="p">[</span><span class="n">proposalapprove</span><span class="w"> </span><span class="n">API</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//developers.tron.network/reference/proposalapprove) to vote on the proposal. (Only &#39;approve&#39; votes are supported; if an SR does not vote, it is considered a &#39;disapprove&#39;).</span>
-<span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Related</span><span class="w"> </span><span class="n">APIs</span><span class="o">:</span>
-</code></pre></div>
-
-<p>Get all proposals: <a href="https://developers.tron.network/reference/wallet-listproposals">listproposals</a>
-Get a proposal by ID: <a href="https://developers.tron.network/reference/getproposalbyid">getproposalbyid</a></p>
-<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="o">**</span><span class="n">Example</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="p">(</span><span class="k">using</span><span class="w"> </span><span class="n">TronWeb</span><span class="p">)</span><span class="err">:</span><span class="o">**</span>
-
-<span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">following</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">snippet</span><span class="w"> </span><span class="n">demonstrates</span><span class="w"> </span><span class="n">how</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">modify</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">vote</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">it</span><span class="p">.</span><span class="w"> </span><span class="ow">In</span><span class="w"> </span><span class="o">[</span><span class="n">proposalcreate</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">proposalcreate</span><span class="p">),</span><span class="w"> </span><span class="k">dynamic</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">represented</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="n">IDs</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">mapping</span><span class="w"> </span><span class="ow">between</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="n">IDs</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">names</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="k">found</span><span class="w"> </span><span class="o">[</span><span class="n">here</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">getchainparameters</span><span class="p">).</span>
-
-<span class="w">  </span><span class="err">```</span>
-<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">TronWeb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">require</span><span class="p">(</span><span class="s1">&#39;tronweb&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">tronWeb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TronWeb</span><span class="p">(</span><span class="err">{</span>
-<span class="w">      </span><span class="nl">fullHost</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;http://localhost:16887&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="nl">privateKey</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;privateKey&#39;</span>
-<span class="w">  </span><span class="err">}</span><span class="p">)</span>
-
-<span class="w">  </span><span class="nf">var</span><span class="w"> </span><span class="n">parametersForProposal1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="n">{&quot;key&quot;:9,&quot;value&quot;:1},{&quot;key&quot;:10,&quot;value&quot;:1}</span><span class="o">]</span><span class="p">;</span>
-
-<span class="w">  </span><span class="n">async</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">modifyChainParameters</span><span class="p">(</span><span class="k">parameters</span><span class="p">,</span><span class="n">proposalID</span><span class="p">)</span><span class="err">{</span>
-
-<span class="w">      </span><span class="k">parameters</span><span class="p">.</span><span class="n">sort</span><span class="p">((</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span>
-<span class="w">              </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="vm">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="k">key</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="w"> </span><span class="vm">?</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-<span class="w">          </span><span class="err">}</span><span class="p">)</span>
-<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">unsignedProposal1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">transactionBuilder</span><span class="p">.</span><span class="n">createProposal</span><span class="p">(</span><span class="k">parameters</span><span class="p">,</span><span class="ss">&quot;41D0B69631440F0A494BB51F7EEE68FF5C593C00F0&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">signedProposal1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">unsignedProposal1Txn</span><span class="p">);</span>
-<span class="w">      </span><span class="nf">var</span><span class="w"> </span><span class="n">receipt1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">signedProposal1Txn</span><span class="p">);</span>
-
-<span class="w">      </span><span class="n">setTimeout</span><span class="p">(</span><span class="n">async</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="err">{</span>
-<span class="w">          </span><span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">receipt1</span><span class="p">)</span>
-<span class="w">          </span><span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="ss">&quot;Vote proposal 1 !&quot;</span><span class="p">)</span>
-<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">unsignedVoteP1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">transactionBuilder</span><span class="p">.</span><span class="n">voteProposal</span><span class="p">(</span><span class="n">proposalID</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="p">,</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">defaultAddress</span><span class="p">.</span><span class="n">hex</span><span class="p">)</span>
-<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">signedVoteP1Txn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="n">unsignedVoteP1Txn</span><span class="p">);</span>
-<span class="w">          </span><span class="nf">var</span><span class="w"> </span><span class="n">rtn1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">await</span><span class="w"> </span><span class="n">tronWeb</span><span class="p">.</span><span class="n">trx</span><span class="p">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">signedVoteP1Txn</span><span class="p">);</span>
-<span class="w">      </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="mi">4000</span><span class="p">)</span>
-
-<span class="w">  </span><span class="err">}</span>
-
-<span class="w">  </span><span class="n">modifyChainParameters</span><span class="p">(</span><span class="n">parametersForProposal1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span>
-<span class="err">```</span>
-<span class="n">Once</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">approved</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">maintenance</span><span class="w"> </span><span class="n">period</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">passed</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="n">will</span><span class="w"> </span><span class="n">take</span><span class="w"> </span><span class="n">effect</span><span class="p">.</span><span class="w"> </span><span class="n">You</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">verify</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">changes</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="o">[</span><span class="n">listproposals</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">listproposals</span><span class="p">)</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="o">[</span><span class="n">getchainparameters</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="p">.</span><span class="n">tron</span><span class="p">.</span><span class="n">network</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">wallet</span><span class="o">-</span><span class="n">getchainparameters</span><span class="p">).</span>
-
-<span class="n">It</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">important</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">note</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">dynamic</span><span class="w"> </span><span class="k">parameters</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">interdependencies</span><span class="w"> </span><span class="n">cannot</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">included</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">proposal</span><span class="p">.</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">correct</span><span class="w"> </span><span class="n">approach</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">separate</span><span class="w"> </span><span class="n">them</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="n">proposals</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">pay</span><span class="w"> </span><span class="n">attention</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">their</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">submission</span><span class="p">.</span>
-</code></pre></div>
 
 
 
