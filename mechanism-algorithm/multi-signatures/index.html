@@ -1706,7 +1706,7 @@
 <p>Account permission management allows:</p>
 <ul>
 <li>Setting permission levels for an account;</li>
-<li>Each permission corresponding to a group of addresses and weights;</li>
+<li>Associating each permission with a group of addresses and weights;</li>
 <li>Implementing permission control through a threshold mechanism;</li>
 <li>Flexibly configuring which addresses can execute which contract types.</li>
 </ul>
@@ -1773,7 +1773,7 @@
 <li><code>id</code>: Permission ID, automatically assigned by the system;</li>
 <li><code>owner</code> = 0, <code>witness</code> = 1, <code>active</code> starts from 2 and increments;</li>
 <li><code>permission_name</code>: Permission name, maximum 32 bytes;</li>
-<li><code>threshold</code>: Permission threshold, operation is allowed only when the total key weight ≥ this value;</li>
+<li><code>threshold</code>: Permission threshold, operation is allowed only when the combined weight of the signing key ≥ this value;</li>
 <li><code>operations</code>: Used only for Active permissions, specifies executable contract types;</li>
 <li><code>keys</code>: Addresses and weights with this permission (up to 5).</li>
 </ul>
@@ -1797,7 +1797,7 @@
 </code></pre></div>
 <ul>
 <li>This contract is used to <strong>update all account permission structures at once</strong>;</li>
-<li>Even if only one permission is modified, the remaining fields must be fully set.</li>
+<li>Even if only one permission is modified, all other existing permissions must be fully specified in the contract.</li>
 </ul>
 <h3 id="5-contract-type-enumeration-contracttype">5. Contract Type Enumeration: <code>ContractType</code><a class="headerlink" href="#5-contract-type-enumeration-contracttype" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>enum ContractType {
@@ -1817,21 +1817,21 @@
 </ul>
 <h3 id="witness-permission-block-production-permission"><code>witness</code> Permission (Block Production Permission)<a class="headerlink" href="#witness-permission-block-production-permission" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Available only for Super Representative accounts;</li>
+<li>Available only for Super Representative， Super Representative Partner and Super Representative Candidate accounts;</li>
 <li>Controls block-producing nodes, does not have permissions for fund transfers or other operations;</li>
 <li>Can delegate block production permission to other addresses to enhance account security.</li>
 </ul>
 <h4 id="super-representative-node-configuration-example">Super Representative Node Configuration Example:<a class="headerlink" href="#super-representative-node-configuration-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code># config.conf
-//localWitnessAccountAddress =
+//localWitnessAccountAddress = TMK5c1jd...m6FXFXEz  # TRON Address
 localwitness = [
-  xxx  # Private key of the authorized address
+  xxx  # Private key of TMK5c1jd...m6FXFXEz
 ]
 </code></pre></div>
 <p>If the <code>witness</code> permission is modified, then:</p>
-<div class="highlight"><pre><span></span><code>localWitnessAccountAddress = &lt;witness account address&gt;
+<div class="highlight"><pre><span></span><code>localWitnessAccountAddress = TSMC4YzU...PBebBk2E
 localwitness = [
-  yyy  # Private key of the authorized account
+  yyy  # Private key of TSMC4YzU...PBebBk2E
 ]
 </code></pre></div>
 <blockquote>
@@ -1924,7 +1924,7 @@ System.out.println(ByteArray.toHexString(operations));
 <li>The node verifies if the total signature weight ≥ <code>threshold</code>; if yes, accepts the transaction.</li>
 </ol>
 <blockquote>
-<p>Example code reference: <a href="https://github.com/tronprotocol/wallet-cli/commit/ff9122f2236f1ce19cbb9ba9f0494c8923a3d10c#diff-a63fa7484f62fe1d8fb27276c991a4e3R211">wallet-cli Example</a></p>
+<p>Example code reference: <a href="https://github.com/tronprotocol/wallet-cli/blob/develop/src/main/java/org/tron/common/utils/TransactionUtils.java">wallet-cli Example</a></p>
 </blockquote>
 <h2 id="auxiliary-interfaces">Auxiliary Interfaces<a class="headerlink" href="#auxiliary-interfaces" title="Permanent link">&para;</a></h2>
 <h3 id="query-signed-addresses">Query Signed Addresses<a class="headerlink" href="#query-signed-addresses" title="Permanent link">&para;</a></h3>

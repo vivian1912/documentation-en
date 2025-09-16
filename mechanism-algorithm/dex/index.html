@@ -1770,7 +1770,7 @@ Upon successful transaction, the trading pair will lose 1,000,000 abc and the co
 <p><strong>1. Query all trading pair information:</strong> <code>ListExchanges</code>
 <strong>2. Paginated query of trading pair list:</strong> <code>GetPaginatedExchangeList</code>
 <strong>3. Query details of a specific trading pair:</strong> <code>GetExchangeById</code></p>
-<p>For detailed API documentation, refer to <a href="https://github.com/tronprotocol/documentation-en/blob/master/docs/api/rpc.md">TRON RPC-API Documentation</a>.</p>
+<p>For detailed API documentation, refer to <a href="https://tronprotocol.github.io/documentation-en/api/rpc/">RPC-API </a>.</p>
 <h3 id="price-calculation">Price Calculation<a class="headerlink" href="#price-calculation" title="Permanent link">&para;</a></h3>
 <p>Suppose in a trading pair:</p>
 <ul>
@@ -1789,7 +1789,7 @@ Upon successful transaction, the trading pair will lose 1,000,000 abc and the co
 <li><code>sellTokenQuant</code>: The quantity of <code>first_token</code> to be sold;</li>
 <li><code>buyTokenQuant</code>: The quantity of <code>second_token</code> obtained through exchange;</li>
 <li><code>balance</code>: The current balance of <code>second_token</code> in the trading pair;</li>
-<li><code>supply = 1,000,000,000,000,000,000L</code></li>
+<li><code>supply</code>: A fixed constant of <code>10^18</code> used in the Bancor protocol formula.</li>
 </ul>
 <p>The calculation process is as follows:</p>
 <div class="highlight"><pre><span></span><code>supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant / (firstTokenBalance + sellTokenQuant), 0.0005));
@@ -1798,7 +1798,7 @@ buyTokenQuant = (long)(balance * (Math.pow(1.0 + (double) supplyQuant / supply, 
 <blockquote>
 <p><strong>Note</strong>: Market prices may fluctuate in real-time due to other trading activities on the network.</p>
 </blockquote>
-<p>For more interface details, refer to: <a href="https://github.com/tronprotocol/documentation-zh/blob/master/docs/api/http.md">HTTP API Documentation</a>.</p>
+<p>For more interface details, refer to: <a href="https://tronprotocol.github.io/documentation-en/api/http/">HTTP API Documentation</a>.</p>
 
 
 

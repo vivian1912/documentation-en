@@ -1609,8 +1609,8 @@ java -jar build/libs/Toolkit.jar db convert    # Perform data conversion
 <h3 id="2-optional-parameter-descriptions">2. Optional Parameter Descriptions<a class="headerlink" href="#2-optional-parameter-descriptions" title="Permanent link">&para;</a></h3>
 <p>If your node uses a custom data directory, you can include the following parameters when running the conversion script:</p>
 <ul>
-<li><code>src_db_path</code>: LevelDB database path (default: output-directory/database)</li>
-<li><code>dst_db_path</code>: RocksDB database storage path (default: output-directory-dst/database)</li>
+<li><code>src_db_path</code>: LevelDB database path (default: <code>output-directory/database</code>)</li>
+<li><code>dst_db_path</code>: RocksDB database storage path (default: <code>output-directory-dst/database</code>)</li>
 </ul>
 <p>For example, if the node is run as follows:
 <div class="highlight"><pre><span></span><code>nohup java -jar FullNode.jar -d your_database_dir &amp;

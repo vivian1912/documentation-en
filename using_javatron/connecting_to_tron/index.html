@@ -1734,7 +1734,7 @@
 </ul>
 <p>This guide explains how to configure the java-tron client to connect to these networks, covering basic network configuration, node discovery, node connection, log and node status verification, and how to troubleshoot connection issues.</p>
 <h2 id="basic-network-configuration">Basic Network Configuration<a class="headerlink" href="#basic-network-configuration" title="Permanent link">&para;</a></h2>
-<p>You can connect a java-tron node to a specific network by modifying the following key items in the <a href="(https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf)">config file</a>:</p>
+<p>You can connect a java-tron node to a specific network by modifying the following key items in the <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">config file</a>:</p>
 <h3 id="network-id">Network ID<a class="headerlink" href="#network-id" title="Permanent link">&para;</a></h3>
 <p>The P2P Network ID(<code>p2p.version</code>) specifies the network you want to join. Mainnet configuration:</p>
 <div class="highlight"><pre><span></span><code>node {
@@ -2018,7 +2018,7 @@ treeUrls = [
 <ul>
 <li>Other nodes: While a node is discovering other nodes, it will also be discovered by other nodes, and these nodes may also initiate connections to the current node actively.</li>
 </ul>
-<p>Unlike node discovery, which uses UDP, peer connections use TCP on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:</p>
+<p>Unlike node discovery, which uses UDP, peer connections use Transmission Control Protocol (TCP) on the same port (18888 by default). However, the port number bound for passive connection is the same as that bound for node discovery. If a node does not want to accept passive connections for security reasons, it can close the TCP 18888 port through the firewall. If a node disables passive connections, the entire network topology will be as shown in the figure below:</p>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/network_topology.png" /></p>
 <h2 id="logs-and-node-status-verification">Logs and Node Status Verification<a class="headerlink" href="#logs-and-node-status-verification" title="Permanent link">&para;</a></h2>
 <h3 id="view-sync-logs">View Sync Logs<a class="headerlink" href="#view-sync-logs" title="Permanent link">&para;</a></h3>
