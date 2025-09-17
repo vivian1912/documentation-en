@@ -1749,6 +1749,7 @@
 <ul>
 <li>Mainnet: version = <code>11111</code></li>
 <li>Nile Testnet: version = <code>201910292</code></li>
+<li>Shasta Testnet: version = <code>1</code></li>
 <li>Private Network: Custom value (set to a different ID)</li>
 </ul>
 <h3 id="genesis-block">Genesis Block<a class="headerlink" href="#genesis-block" title="Permanent link">&para;</a></h3>
@@ -1926,7 +1927,7 @@
 }
 </code></pre></div>
 <h3 id="boot-nodes">Boot Nodes<a class="headerlink" href="#boot-nodes" title="Permanent link">&para;</a></h3>
-<p>Java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers.</p>
+<p>Java-tron uses the <a href="https://en.wikipedia.org/wiki/Kademlia">Kademlia</a> protocol to discover peers. Discovery requires boot nodes, which consist of seed nodes and actively configured peers, see <a href="#active-connection-active-peers">Active Connection (Active Peers)</a>. </p>
 <h3 id="seednode">seed.node<a class="headerlink" href="#seednode" title="Permanent link">&para;</a></h3>
 <p><code>seed.node</code> is used to initialize connections. It should point to online and stable Fullnode:</p>
 <p><div class="highlight"><pre><span></span><code>seed.node = {
@@ -2074,15 +2075,15 @@ If the heights match, synchronization is normal.</p>
 <p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
 <ul>
 <li><strong>Local clock offset</strong>
-Sync system time with:
-  <div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
+    Sync system time with:
+    <div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
 </code></pre></div></li>
 <li><strong>UDP blocked by firewall</strong>
-Use <code>node.active</code> to specify fixed peers.</li>
+    Use <code>node.active</code> to specify fixed peers.</li>
 <li><strong>Not accepting inbound connections</strong>
-Configure <code>node.passive</code> to accept connections from trusted peers.</li>
+    Configure <code>node.passive</code> to accept connections from trusted peers.</li>
 <li><strong>Shasta Testnet unsupported</strong>
-Use Nile Testnet instead.</li>
+    Use Nile Testnet instead.</li>
 </ul>
 <h2 id="connecting-to-a-private-network">Connecting to a Private Network<a class="headerlink" href="#connecting-to-a-private-network" title="Permanent link">&para;</a></h2>
 <p>Developers can deploy a private instance of the TRON network.</p>
@@ -2092,7 +2093,7 @@ Use Nile Testnet instead.</li>
 </ul>
 <h3 id="reference-guide">Reference Guide:<a class="headerlink" href="#reference-guide" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Please refer to <a href="https://github.com/tronprotocol/documentation-zh/blob/master/docs/using_javatron/private_network.md">Private Network Setup Guide</a> for full instructions.</li>
+<li>Please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a> for full instructions.</li>
 </ul>
 
 
