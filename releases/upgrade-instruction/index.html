@@ -1596,7 +1596,7 @@ $ cd java-tron
 $ git checkout -b release_vx.x.x
 </code></pre></div>
 2. Run the build command. Upon successful compilation, the new executable file, <code>FullNode.jar</code>, will be generated in the <code>build/libs/</code> directory.
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./gradlew<span class="w"> </span>clean<span class="w"> </span>build<span class="w"> </span>-x<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span><code>$ ./gradlew clean build -x test
 </code></pre></div></p>
 </li>
 </ol>
@@ -1652,7 +1652,7 @@ $ git checkout -b release_vx.x.x
 <ul>
 <li>
 <p><strong>Super Representative (Block-Producing Node)</strong></p>
-<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx24g<span class="w"> </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-jar<span class="w"> </span>FullNode.jar<span class="w">  </span>-p<span class="w"> </span>&lt;your<span class="w"> </span>private<span class="w"> </span>key&gt;<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>config.conf<span class="w"> </span>&lt;/dev/null<span class="w"> </span><span class="p">&amp;</span>&gt;/dev/null<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar  -p &lt;your private key&gt; --witness -c config.conf &lt;/dev/null &amp;&gt;/dev/null &amp;
 </code></pre></div>
 <blockquote>
 <p><strong>Note</strong>: We recommend managing your private key using a <code>keystore</code> file or within the configuration file, rather than passing it directly as a command-line argument.</p>

@@ -1657,7 +1657,7 @@
 <p>Before you begin, please ensure your development environment meets the following requirements:</p>
 <ul>
 <li>Operating System: <code>Linux</code> or <code>MacOS</code></li>
-<li><strong>Oracle JDK 1.8</strong> is installed</li>
+<li>Oracle JDK 1.8 is installed</li>
 <li><code>git</code> is installed</li>
 <li><a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a> is installed</li>
 </ul>
@@ -1667,14 +1667,14 @@
 <ol>
 <li>Open IntelliJ IDEA and navigate to <code>Preferences</code> -&gt; <code>Plugins</code>.</li>
 <li>In the Marketplace tab, search for <code>Lombok</code>.</li>
-<li>Click <code>Install</code> and restart the IDE when prompted.</li>
+<li>Click "Install" and restart the IDE when prompted.</li>
 </ol>
 <h3 id="step-2-enable-annotation-processing">Step 2: Enable Annotation Processing<a class="headerlink" href="#step-2-enable-annotation-processing" title="Permanent link">&para;</a></h3>
 <p>To ensure Lombok's annotations work correctly, you must enable the annotation processor.</p>
 <ol>
 <li>Navigate to <code>Preferences</code> -&gt; <code>Build, Execution, Deployment</code> -&gt; <code>Compiler</code> -&gt; <code>Annotation Processors</code>.</li>
 <li>Select the <code>Enable annotation processing</code> checkbox.</li>
-<li>Click <strong>Apply</strong> to save the settings.</li>
+<li>Click "Apply" to save the settings.</li>
 </ol>
 <p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_annotation.png" /></p>
 <h3 id="step-3-verify-and-unify-the-jdk-version">Step 3: Verify and Unify the JDK Version<a class="headerlink" href="#step-3-verify-and-unify-the-jdk-version" title="Permanent link">&para;</a></h3>
@@ -1734,7 +1734,7 @@ To speed up the compilation process by skipping unit tests, you can use the <cod
 <li>In the <code>Configuration File</code> panel, click the <code>+</code> icon to add a new configuration.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_checkStyleAll.png" /></li>
 <li>In the dialog that appears, set the  <code>Description</code> to <code>tron-checkstyle</code> and select the <code>checkStyleAll.xml</code> file you just obtained.</li>
-<li>Select the checkbox for the newly added <code>tron-checkstyle</code> rule and click <strong>Apply</strong> and <strong>OK</strong>.</li>
+<li>Select the checkbox for the newly added <code>tron-checkstyle</code> rule and click "Apply" and "OK".</li>
 </ol>
 <p>Once configured, you can use the <code>Checkstyle</code> plugin to check your code style. It supports various scopes, allowing you to analyze the entire project, a single module, or the file you are currently editing. The most common operation is to check the current file:</p>
 <ol>
@@ -1753,27 +1753,27 @@ To speed up the compilation process by skipping unit tests, you can use the <cod
 <p><strong>Important Note</strong>: java-tron will look for the <code>config.conf</code> file in this directory. Before starting the node, ensure you have placed the correct configuration file in this directory.</p>
 </blockquote>
 <h3 id="step-2-configure-rundebug-options">Step 2: Configure Run/Debug Options<a class="headerlink" href="#step-2-configure-rundebug-options" title="Permanent link">&para;</a></h3>
-<p>Next, create a new run configuration in IntelliJ IDEA to define how the IDE launches the java-tron application.</p>
+<p>Next, create a new run configuration in IntelliJ IDEA to define how it launches the java-tron application.</p>
 <ol>
 <li>In the top-right corner of IDEA, click <code>Add Configuration...</code>.</li>
 <li>Click <code>+</code> -&gt; <code>Application</code> to create a new run configuration.</li>
 <li>Find and set the following options in order:<ul>
-<li><strong>Name:</strong> Give the configuration a name, e.g. <code>Fullnode</code>.</li>
+<li><strong>Name:</strong> Give the configuration a name, e.g., <code>Fullnode</code>.</li>
 <li><strong>JDK</strong>: Ensure you select <code>java 8 1.8</code>.</li>
 <li><strong>Main Class:</strong> Set to <code>org.tron.program.FullNode</code>.</li>
 <li><strong>Program Arguments:</strong> Enter the node startup arguments. For example, use <code>-c config.conf</code> to specify the configuration file.</li>
-<li><strong>Working Directory:</strong> Set this to the directory you created in <a href="#rndstep1">Step 1</a>, e.g. <code>/Users/javatrondeploy</code>。
+<li><strong>Working Directory:</strong> Set this to the directory you created in <a href="#rndstep1">Step 1</a>, e.g., <code>/Users/javatrondeploy</code>。
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_RunDebug.png" /></li>
 </ul>
 </li>
-<li>Click <strong>Apply</strong> to save the configuration.</li>
+<li>Click “Apply” to save the configuration.</li>
 </ol>
 <h3 id="step-3-start-the-node">Step 3: Start the Node<a class="headerlink" href="#step-3-start-the-node" title="Permanent link">&para;</a></h3>
 <p>Now you can start the java-tron node from within IDEA:</p>
 <ul>
 <li><strong>Run the node:</strong> Click <code>Run</code> -&gt; <code>Run 'FullNode'</code> in the top menu bar.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-zh/master/images/IDE_runjavatron.png" /></li>
-<li><strong>Debug the node:</strong> Set breakpoints in your code, then click <code>Run</code> -&gt; <code>Debug 'FullNode'</code>. The program will pause at the breakpoints, allowing you to perform step-by-step debugging.
+<li><strong>Debug the node:</strong> Set breakpoints in your code, then click <code>Run</code> -&gt; <code>Debug 'FullNode'</code>. The program will pause at the breakpoints, which allows you to perform step-by-step debugging.
 <img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/IDE_debug.png" /></li>
 </ul>
 <p>After the node starts, relevant log files will be written to the <code>Working directory</code> you configured.</p>
