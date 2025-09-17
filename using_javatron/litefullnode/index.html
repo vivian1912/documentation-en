@@ -1537,9 +1537,11 @@
 </ul>
 <p>Therefore, if developers only need to use a node for block synchronization, processing, and broadcasting transactions, a Lite Fullnode is a better choice.</p>
 <h2 id="lite-fullnode-deployment">Lite Fullnode Deployment<a class="headerlink" href="#lite-fullnode-deployment" title="Permanent link">&para;</a></h2>
-<p>The deployment steps, configuration file, and startup command for a Lite Fullnode are the same as a Fullnode's. Please refer to the <a href="../installing_javatron/">Deployment Guide</a> to deploy a Lite Fullnode. The only difference is the database. You have two ways to obtain the required Lite Fullnode database:
- - Download the Lite Fullnode data snapshot from the <a href="../backup_restore/#lite-fullnode">Public Backup Data</a> and use it directly.
- - Use the <a href="../toolkit/#_6">Lite Fullnode Pruning Tool</a> to convert a Fullnode's database into a Lite Fullnode's database.</p>
+<p>The deployment steps, configuration file, and startup command for a Lite Fullnode are the same as a Fullnode's. Please refer to the <a href="../installing_javatron/">Deployment Guide</a> to deploy a Lite Fullnode. The only difference is the database. You have two ways to obtain the required Lite Fullnode database:</p>
+<ul>
+<li>Download the Lite Fullnode data snapshot from the <a href="../backup_restore/#lite-fullnode">Public Backup Data</a> and use it directly.</li>
+<li>Use the <a href="../toolkit/#_6">Lite Fullnode Pruning Tool</a> to convert a Fullnode's database into a Lite Fullnode's database.</li>
+</ul>
 <h2 id="lite-fullnode-maintenance">Lite Fullnode Maintenance<a class="headerlink" href="#lite-fullnode-maintenance" title="Permanent link">&para;</a></h2>
 <p>Although a Lite Fullnode starts with a very small amount of data, it will continuously sync and save new block data just like a Fullnode after it's running. As a result, its data expansion rate is the same as a Fullnode's, and its disk usage will grow over time.</p>
 <p>To manage disk space, you can perform periodic maintenance (pruning) on the Lite Fullnode's data. This maintenance is also done using the Lite Fullnode Pruning Tool, which re-prunes the current node data into a new snapshot dataset containing only the latest state.</p>
