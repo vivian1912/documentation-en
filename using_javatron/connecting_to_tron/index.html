@@ -2074,16 +2074,18 @@ If the heights match, synchronization is normal.</p>
 <h2 id="troubleshooting-common-connection-issues">Troubleshooting Common Connection Issues<a class="headerlink" href="#troubleshooting-common-connection-issues" title="Permanent link">&para;</a></h2>
 <p>There are occasions when java-tron simply fails to connect to peers. The common reasons for this are:</p>
 <ul>
-<li><strong>Local clock offset</strong>
-    Sync system time with:
-    <div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
-</code></pre></div></li>
-<li><strong>UDP blocked by firewall</strong>
-    Use <code>node.active</code> to specify fixed peers.</li>
-<li><strong>Not accepting inbound connections</strong>
-    Configure <code>node.passive</code> to accept connections from trusted peers.</li>
-<li><strong>Shasta Testnet unsupported</strong>
-    Use Nile Testnet instead.</li>
+<li>
+<p><strong>Local clock offset</strong></p>
+<p>Sync system time with:
+<div class="highlight"><pre><span></span><code>sudo ntpdate -s time.nist.gov
+</code></pre></div>
+- <strong>UDP blocked by firewall</strong></p>
+<p>Use <code>node.active</code> to specify fixed peers.
+- <strong>Not accepting inbound connections</strong></p>
+<p>Configure <code>node.passive</code> to accept connections from trusted peers.
+- <strong>Shasta Testnet unsupported</strong></p>
+<p>Use Nile Testnet instead.</p>
+</li>
 </ul>
 <h2 id="connecting-to-a-private-network">Connecting to a Private Network<a class="headerlink" href="#connecting-to-a-private-network" title="Permanent link">&para;</a></h2>
 <p>Developers can deploy a private instance of the TRON network.</p>
