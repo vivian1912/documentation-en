@@ -19,24 +19,24 @@ node.jsonrpc {
 ## HEX value encoding
 In JSON-RPC interactions, all binary data is passed as hexadecimal strings, which follow two distinct formatting rules:
 
-* **QUANTITIES (Numerical Types)**
+- **QUANTITIES (Numerical Types)**
    - Description: Used to represent integers, such as block numbers, balances, and counts.
    - Format: A hexadecimal string with a `0x` prefix, using the most compact representation (i.e., with no leading zeros). The only exception is zero itself, which must be represented as `0x0`.
    - Examples:
-      * `0x41` (65 in decimal)
-      * `0x400` (1024 in decimal)
-      * Incorrect: `0x0400` (leading zeros are not allowed)
-      * Incorrect: `ff` (must have a `0x` prefix)
+      - `0x41` (65 in decimal)
+      - `0x400` (1024 in decimal)
+      - Incorrect: `0x0400` (leading zeros are not allowed)
+      - Incorrect: `ff` (must have a `0x` prefix)
 
-* **UNFORMATTED DATA (Byte Arrays)**
+- **UNFORMATTED DATA (Byte Arrays)**
    - Description: Used to represent byte arrays, such as addresses, hashes, and bytecode.
-   - Format: A hexadecimal string with a 0x prefix, where each byte is represented by two hex characters.
+   - Format: A hexadecimal string with a `0x` prefix, where each byte is represented by two hex characters.
    - Examples:
-      - 0x41 (1-byte data)
-      - 0x004200 (3-byte data)
-      - 0x (0-byte data)
-      - Incorrect: 0xf0f0f (must have an even number of digits)
-      - Incorrect: 004200 (must have a 0x prefix)
+      - `0x41` (1-byte data)
+      - `0x004200` (3-byte data)
+      - `0x` (0-byte data)
+      - Incorrect: `0xf0f0f` (must have an even number of digits)
+      - Incorrect: `004200` (must have a 0x prefix)
 
 ## eth
 
@@ -48,7 +48,7 @@ In JSON-RPC interactions, all binary data is passed as hexadecimal strings, whic
 **Note:** Unlike Ethereum clients such as Geth, TRON nodes do not manage private keys or accounts. Therefore, this interface exists for compatibility purposes only and has no real functionality.
 
 **Example**
-``` curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '
 {"jsonrpc": "2.0", "id": 1, "method": "eth_accounts", "params": []}'
 
@@ -77,19 +77,19 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **Parameters:**
 
-1. Object - The transaction call object, containing the following fields:
+1. `Object` - The transaction call object, containing the following fields:
 
-| Field Name | Data Type      | Description                                                   |
-| :-------- | :------------- | :------------------------------------------------------------ |
-| from      | DATA, 20 Bytes | The caller's address. For Ethereum compatibility, all addresses can be either TRON hex addresses or Ethereum addresses.    |
-| to        | DATA, 20 Bytes | The contract address. |
-| gas       | QUANTITY       | Not supported. The value should be 0x0                               |
-| gasPrice  | QUANTITY       | Not supported. The value should be 0x0                             |
-| value     | QUANTITY       | Not supported. The value should be 0x0                              |
-| data      | DATA           | The hash of the method signature and encoded parameters.          |
-2. QUANTITY|TAG - The block identifier. Currently, only "latest" is supported
+    | Field Name | Data Type      | Description                                                   |
+    | :-------- | :------------- | :------------------------------------------------------------ |
+    | `from`      | DATA, 20 Bytes | The caller's address. For Ethereum compatibility, all addresses can be either TRON hex addresses or Ethereum addresses.    |
+    | `to`        | DATA, 20 Bytes | The contract address. |
+    | `gas`       | QUANTITY       | Not supported. The value should be `0x0`                               |
+    | `gasPrice`  | QUANTITY       | Not supported. The value should be `0x0`                             |
+    | `value`     | QUANTITY       | Not supported. The value should be `0x0`                              |
+    | `data`      | DATA           | The hash of the method signature and encoded parameters.          |
+2. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is supported
 
-**Return Value:** DATA - The ABI-encoded return value of the executed contract function.
+**Return Value:** `DATA` - The ABI-encoded return value of the executed contract function.
 
 **Example**
 ```
@@ -112,11 +112,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_chainId
-*Returns the chainId of the TRON network, which is derived from the last four bytes of the genesis block hash.*
+
+*Returns the `chainId` of the TRON network, which is derived from the last four bytes of the genesis block hash.*
 
 **Parameters:** None
 
-**Return Value:** DATA - The chainId of the TRON network.
+**Return Value:** `DATA` - The `chainId` of the TRON network.
 
 **Example**
 
@@ -133,7 +134,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 **Parameters:** None
 
-**Return Value:** DATA - The node's Super Representative address. (Note: If multiple SR addresses are configured, it returns the first one. If no valid address is configured or the address has not produced any blocks, it returns an error with the message "etherbase must be explicitly specified".)
+**Return Value:** `DATA` - The node's Super Representative address. (Note: If multiple SR addresses are configured, it returns the first one. If no valid address is configured or the address has not produced any blocks, it returns an error with the message "etherbase must be explicitly specified".)
 
 **Example**
 ```
@@ -144,22 +145,23 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 ```
 
 ### eth_estimateGas
+
 *Estimates the amount of Energy required to execute a transaction.*
 
 **Parameters:**
-1. Object - The transaction call object, containing the following fields:
+1. `Object` - The transaction call object, containing the following fields:
 
 | Field Name | Data Type | Description |
 | :--- | :--- | :--- |
-| from | DATA, 20 Bytes | The sender's address. |
-| to | DATA, 20 Bytes | The receiver's address or contract address. |
-| gas | QUANTITY | Unused. |
-| gasPrice | QUANTITY | Unused. |
-| value | QUANTITY | The amount of TRX sent with the transaction (in SUN). |
-| data | DATA | The hash of the method signature and encoded parameters. |
+| `from` | DATA, 20 Bytes | The sender's address. |
+| `to` | DATA, 20 Bytes | The receiver's address or contract address. |
+| `gas` | QUANTITY | Unused. |
+| `gasPrice` | QUANTITY | Unused. |
+| `value` | QUANTITY | The amount of TRX sent with the transaction (in sun). |
+| `data` | DATA | The hash of the method signature and encoded parameters. |
 
 
-**Return Value:** QUANTITY - The estimated amount of Energy that will be consumed.
+**Return Value:** `QUANTITY` - The estimated amount of Energy that will be consumed.
 
 **Example**
 
@@ -184,11 +186,11 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_gasPrice
 
-*Returns the current price of Energy on the network (in SUN).*
+*Returns the current price of Energy on the network (in sun).*
 
 **Parameters:** None
 
-**Return Value:** QUANTITY - The current Energy price, in SUN.
+**Return Value:** `QUANTITY` - The current Energy price, in sun.
 
 **Example**
 
@@ -199,14 +201,15 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 {"jsonrpc":"2.0","id":1,"result":"0x8c"}
 ```
 ### eth_getBalance
+
 *Returns the TRX balance of a specified address.*
 
 **Parameters:**
 
-1. DATA, 20 Bytes - The account address to query.
-2. QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.
+1. `DATA`, 20 Bytes - The account address to query.
+2. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is supported.
 
-**Return Value:** QUANTITY - The TRX balance of the address, in SUN.
+**Return Value:** `QUANTITY` - The TRX balance of the address, in sun.
 
 **Example**
 ```
@@ -226,33 +229,34 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **Parameters:**
 
-1. DATA, 32 Bytes - The hash of the block.
-2. Boolean - If true, it returns a list of full transaction objects; if false, it returns only the transaction hashes.
+1. `DATA`, 32 Bytes - The hash of the block.
+2. `Boolean` - If `true`, it returns a list of full transaction objects; if `false`, it returns only the transaction hashes.
 
-**Return Value:** Object - A block object. Returns null if the block is not found.
+**Return Value:** `Object` - A block object. Returns null if the block is not found.
 The block object contains the following fields:
 
-| Field Name       | Data Type       | Description                                                                                         |
-| :--------------- | :-------------- | :-------------------------------------------------------------------------------------------------- |
-| number           | QUANTITY        | The block number.                                                                                        |
-| hash             | DATA, 32 Bytes  | The hash of the block.                                                                                   |
-| parentHash       | DATA, 32 Bytes  | The hash of the parent block.                                                                           |
-| nonce            | QUANTITY        | Unused.                                                                                             |
-| sha3Uncles       | DATA, 32 Bytes  | Exists for Ethereum JSON-RPC compatibility; has no real meaning. |
-| logsBloom        | DATA, 256 Bytes | Exists for Ethereum JSON-RPC compatibility; has no real meaning.                |
-| transactionsRoot | DATA, 32 Bytes  | The root of the block's transaction tree.                                                       |
-| stateRoot        | DATA, 32 Bytes  | Currently has no real meaning.                                                      |
-| receiptsRoot     | DATA, 32 Bytes  | Currently has no real meaning.                                                     |
-| miner            | DATA, 20 Bytes  | The address of the SR that produced this block.                               |
-| difficulty       | QUANTITY        | Currently has no real meaning.                                                                                  |
-| totalDifficulty  | QUANTITY        | Currently has no real meaning.                                                               |
-| extraData        | DATA            | Currently has no real meaning.                                                                                           |
-| size             | QUANTITY        | The size of the block in bytes.                          |
-| gasLimit         | QUANTITY        | The maximum gas allowed in this block.                                          |
-| gasUsed          | QUANTITY        | The total gas used by all transactions in this block.               |
-| timestamp        | QUANTITY        | The Unix timestamp of the block's creation, in seconds.     |
-| transactions     | Array           | An array of transaction objects or 32-byte transaction hashes, depending on the second parameter. |
-| uncles           | Array           | Currently has no real meaning.                                                                            |
+| Field Name       | Data Type       | Description                                                                                          |
+| :--------------- | :-------------- | :--------------------------------------------------------------------------------------------------- |
+| `number`         | QUANTITY        | The block number.                                                                                    |
+| `hash`           | DATA, 32 Bytes  | The hash of the block.                                                                               |
+| `parentHash`     | DATA, 32 Bytes  | The hash of the parent block.                                                                        |
+| `nonce`          | QUANTITY        | Unused.                                                                                              |
+| `sha3Uncles`     | DATA, 32 Bytes  | Exists for Ethereum JSON-RPC compatibility; has no real meaning.                                     |
+| `logsBloom`      | DATA, 256 Bytes | Exists for Ethereum JSON-RPC compatibility; has no real meaning.                                     |
+| `transactionsRoot` | DATA, 32 Bytes  | The root of the block's transaction tree.                                                            |
+| `stateRoot`      | DATA, 32 Bytes  | Currently has no real meaning.                                                                       |
+| `receiptsRoot`   | DATA, 32 Bytes  | Currently has no real meaning.                                                                       |
+| `miner`          | DATA, 20 Bytes  | The address of the SR that produced this block.                                                      |
+| `difficulty`     | QUANTITY        | Currently has no real meaning.                                                                       |
+| `totalDifficulty`| QUANTITY        | Currently has no real meaning.                                                                       |
+| `extraData`      | DATA            | Currently has no real meaning.                                                                       |
+| `size`           | QUANTITY        | The size of the block in bytes.                                                                      |
+| `gasLimit`       | QUANTITY        | The maximum gas allowed in this block.                                                               |
+| `gasUsed`        | QUANTITY        | The total gas used by all transactions in this block.                                                |
+| `timestamp`      | QUANTITY        | The Unix timestamp of the block's creation, in seconds.                                              |
+| `transactions`   | Array           | An array of transaction objects or 32-byte transaction hashes, depending on the second parameter.    |
+| `uncles`         | Array           | Currently has no real meaning.                                                                       |
+
 
 **Example**
 ```
@@ -272,10 +276,10 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **Parameters:**
 
-1. QUANTITY|TAG - The block number, or the tag "earliest" or "latest".
-2. Boolean - If true, it returns a list of full transaction objects; if false, it returns only the transaction hashes.
+1. `QUANTITY|TAG` - The block number, or the tag "earliest" or "latest".
+2. `Boolean` - If `true`, it returns a list of full transaction objects; if `false`, it returns only the transaction hashes.
 
-**Return Value:** Object - A block object. Returns null if the block is not found. The structure is the same as in [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash).
+**Return Value:** `Object` - A block object. Returns null if the block is not found. The structure is the same as in [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash).
 
 **Example**
 ```
@@ -294,9 +298,9 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 *Returns the number of transactions in a block by its hash.*
 
-**Parameters:** DATA, 32 Bytes - The hash of the block.
+**Parameters:** `DATA`, 32 Bytes - The hash of the block.
 
-**Return Value:** QUANTITY - The number of transactions in the block.
+**Return Value:** `QUANTITY` - The number of transactions in the block.
 
 **Example**
 
@@ -316,9 +320,9 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 *Returns the number of transactions in a block by its number.*
 
-**Parameters:** QUANTITY|TAG - The block number, or the tag "earliest" or "latest".
+**Parameters:** `QUANTITY|TAG` - The block number, or the tag "earliest" or "latest".
 
-**Return Value:** QUANTITY - The number of transactions in the block.
+**Return Value:** `QUANTITY` - The number of transactions in the block.
 
 **Example**
 ```
@@ -338,10 +342,10 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **Parameters:**
 
-1. DATA, 20 Bytes - The contract address.
-2. QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.
+1. `DATA`, 20 Bytes - The contract address.
+2. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is supported.
 
-**Return Value:** DATA - The runtime bytecode. Returns 0x if the address is not a contract.
+**Return Value:** `DATA` - The runtime bytecode. Returns `0x` if the address is not a contract.
 
 **Example**
 
@@ -358,16 +362,16 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getStorageAt
-*Returns the value from a storage position at a given address. This can be used to query the value of variables in a contract.*
 
+*Returns the value from a storage position at a given address. This can be used to query the value of variables in a contract.*
 
 **Parameters:**
 
-1. DATA, 20 Bytes - The contract address.
-2. QUANTITY - The index of the storage slot.
-3. QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.
+1. `DATA`, 20 Bytes - The contract address.
+2. `QUANTITY` - The index of the storage slot.
+3. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is supported.
 
-**Return Value:** DATA - The 32-byte value at that storage slot.
+**Return Value:** `DATA` - The 32-byte value at that storage slot.
 
 **Example**
 
@@ -384,39 +388,38 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getTransactionByBlockHashAndIndex
+
 *Returns detailed information about a transaction by its block hash and index.*
 
 **Parameters:**
 
-1. DATA, 32 Bytes - The hash of the block.
-2. QUANTITY - The index of the transaction within the block.
+1. `DATA`, 32 Bytes - The hash of the block.
+2. `QUANTITY` - The index of the transaction within the block.
 3. 
-**Return Value: **Object - A transaction object. Returns null if not found.
+**Return Value: **`Object` - A transaction object. Returns `null` if not found.
 The transaction object contains the following fields:
 
-
-| Field Name        | Data Type      | Description                                             |
-| :--------------- | :------------- | :------------------------------------------------------ |
-| blockHash        | DATA, 32 Bytes | hash of the block where this transaction was in.        |
-| blockNumber      | QUANTITY       | block number where this transaction was in.             |
-| from             | DATA, 20 Bytes | address of the sender                                  |
-| gas              | QUANTITY       | The Energy consumed by the transaction                                             |
-| gasPrice         | QUANTITY       | The price of Energy.                                            |
-| hash             | DATA, 32 Bytes | hash of the transaction                                 |
-| input            | DATA           | the data sent along with the transaction                |
-| nonce            | QUANTITY       | unused                                                  |
-| to               | DATA, 20 Bytes | address of the receiver                                 |
-| transactionIndex | QUANTITY       | The index of the transaction in the block |
-| type | QUANTITY       | The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0 |
-| value            | QUANTITY       | value transferred in sun                                |
-| v                | QUANTITY       | ECDSA recovery id                                       |
-| r                | DATA, 32 Bytes | ECDSA signature r                                       |
-| s                | DATA, 32 Bytes | ECDSA signature s                                       |
+| Field Name         | Data Type      | Description                                                                                              |
+| :----------------- | :------------- | :------------------------------------------------------------------------------------------------------- |
+| `blockHash`        | DATA, 32 Bytes | hash of the block where this transaction was in.                                                         |
+| `blockNumber`      | QUANTITY       | block number where this transaction was in.                                                              |
+| `from`             | DATA, 20 Bytes | address of the sender                                                                                    |
+| `gas`              | QUANTITY       | The Energy consumed by the transaction                                                                   |
+| `gasPrice`         | QUANTITY       | The price of Energy.                                                                                     |
+| `hash`             | DATA, 32 Bytes | hash of the transaction                                                                                  |
+| `input`            | DATA           | the data sent along with the transaction                                                                 |
+| `nonce`            | QUANTITY       | unused                                                                                                   |
+| `to`               | DATA, 20 Bytes | address of the receiver                                                                                  |
+| `transactionIndex` | QUANTITY       | The index of the transaction in the block                                                                |
+| `type`             | QUANTITY       | The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0 |
+| `value`            | QUANTITY       | value transferred in sun                                                                                 |
+| `v`                | QUANTITY       | ECDSA recovery id                                                                                        |
+| `r`                | DATA, 32 Bytes | ECDSA signature r                                                                                        |
+| `s`                | DATA, 32 Bytes | ECDSA signature s                                                                                        |
 
 **Example**
 
 ```
-
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getTransactionByBlockHashAndIndex",
@@ -449,14 +452,15 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getTransactionByBlockNumberAndIndex
+
 *Returns detailed information about a transaction by its block number and index.*
 
 **Parameters:**
 
-1. QUANTITY|TAG - The block number, or the tag "earliest" or "latest".
-2. QUANTITY - The index of the transaction within the block.
+1. `QUANTITY|TAG` - The block number, or the tag "earliest" or "latest".
+2. `QUANTITY` - The index of the transaction within the block.
 
-**Return Value:** Object - A transaction object. Returns null if not found. The structure is the same as in [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex).
+**Return Value:** `Object` - A transaction object. Returns `null` if not found. The structure is the same as in [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex).
 
 **Example**
 ```
@@ -474,9 +478,9 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ### eth_getTransactionByHash
 *Returns detailed information about a transaction by its hash.*
 
-**Parameters:** DATA, 32 Bytes - The hash of the transaction.
+**Parameters:** `DATA`, 32 Bytes - The hash of the transaction.
 
-**Return Value:** Object - A transaction object. Returns null if not found. The structure is the same as in [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex).
+**Return Value:** `Object` - A transaction object. Returns `null` if not found. The structure is the same as in [eth_getTransactionByBlockHashAndIndex](#eth_gettransactionbyblockhashandindex).
 
 **Example**
 ```
@@ -512,32 +516,31 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getTransactionReceipt
+
 *Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: [wallet/gettransactioninfobyid](#walletgettransactioninfobyid).*
 
-**Parameters:** DATA, 32 Bytes - The hash of the transaction.
+**Parameters:** `DATA`, 32 Bytes - The hash of the transaction.
 
-**Return Value:** Object - A transaction receipt object. Returns null if the transaction is unconfirmed or not found.
+**Return Value:** `Object` - A transaction receipt object. Returns `null` if the transaction is unconfirmed or not found.
 
 The transaction receipt object contains the following fields:
 
-
-| Field Name         | Data Type       | Description                                                                              |
+| Field Name        | Data Type       | Description                                                                               |
 | :---------------- | :-------------- | :---------------------------------------------------------------------------------------- |
-| transactionHash   | DATA, 32 Bytes  | hash of the transaction                                                                   |
-| transactionIndex  | QUANTITY        | integer of the transactions index position in the block                                 |
-| blockHash         | DATA, 32 Bytes  | hash of the block where this transaction was in.                                          |
-| blockNumber       | QUANTITY        | block number where this transaction was in.                                          |
-| from              | DATA, 20 Bytes  | address of the sender                                                                     |
-| to                | DATA, 20 Bytes  | address of the receiver                                                                  |
-| cumulativeGasUsed | QUANTITY        | The total amount of gas used when this transaction was executed in the block.          |
-| gasUsed           | QUANTITY        | The amount of gas used by this specific transaction alone.   |
-| contractAddress   | DATA, 20 Bytes  | The contract address created, if the transaction was a contract creation, otherwise null. |
-| logs              | Array           | Array of log objects, which this transaction generated.                  |
-| logsBloom         | DATA, 256 Bytes | Bloom filter for light clients to quickly retrieve related logs.                      |
-| root              | DATA            | 32 bytes of post-transaction stateroot (pre Byzantium)                                   |
-| status            | QUANTITY        | either 1 (success) or 0 (failure)                                      |
-| type            | QUANTITY        | The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0.    |
-
+| `transactionHash`   | DATA, 32 Bytes  | hash of the transaction                                                                   |
+| `transactionIndex`  | QUANTITY        | integer of the transaction's index position in the block                                   |
+| `blockHash`         | DATA, 32 Bytes  | hash of the block where this transaction was in.                                          |
+| `blockNumber`       | QUANTITY        | block number where this transaction was in.                                               |
+| `from`              | DATA, 20 Bytes  | address of the sender                                                                     |
+| `to`                | DATA, 20 Bytes  | address of the receiver                                                                   |
+| `cumulativeGasUsed` | QUANTITY        | The total amount of gas used when this transaction was executed in the block.             |
+| `gasUsed`           | QUANTITY        | The amount of gas used by this specific transaction alone.                                |
+| `contractAddress`   | DATA, 20 Bytes  | The contract address created, if the transaction was a contract creation, otherwise null. |
+| `logs`              | Array           | Array of log objects, which this transaction generated.                                   |
+| `logsBloom`         | DATA, 256 Bytes | Bloom filter for light clients to quickly retrieve related logs.                          |
+| `root`              | DATA            | 32 bytes of post-transaction stateroot (pre Byzantium)                                    |
+| `status`            | QUANTITY        | either 1 (success) or 0 (failure)                                                         |
+| `type`              | QUANTITY        | The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0. |
 
 
 **Example**
@@ -574,15 +577,16 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getWork
+
 *Returns the hash of the current block.*
 
 **Parameters:** None
 
-**Return Value: **Array - An array with three elements, where only the first element (the block hash) is relevant.
+**Return Value: **`Array` - An array with three elements, where only the first element (the block hash) is relevant.
 
 **Example**
 
-``` curl
+```
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 	"jsonrpc": "2.0",
 	"method": "eth_getWork",
@@ -599,11 +603,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_protocolVersion
+
 *Returns the TRON protocol version of the node.*
 
 **Parameters:** None
 
-**Return Value:** String - The current protocol version number.
+**Return Value:** `String` - The current protocol version number.
 
 **Example**
 
@@ -615,19 +620,21 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ```
 
 ### eth_syncing
+
 *Returns the synchronization status of the node.*
 
 **Parameters:** None
 
-**Return Value:** Object or Boolean - If the node is syncing, it returns an object with `startingBlock`, `currentBlock`, and `highestBlock`. If it is fully synced, it returns false.
+**Return Value:** `Object` or `Boolean` - If the node is syncing, it returns an object with `startingBlock`, `currentBlock`, and `highestBlock`. If it is fully synced, it returns `false`.
+
 The fields are described below:
 
 
 |     Field Name          |   Data Type       |  Description                                                                                           |
 | :------------ | :------- | :------------------------------------------------------------------------------------------ |
-| startingBlock | QUANTITY | The starting block for current synchronization |
-| currentBlock  | QUANTITY | The current block                                                                          |
-| highestBlock  | QUANTITY | The estimated highest block                                                                |
+| `startingBlock` | QUANTITY | The starting block for current synchronization |
+| `currentBlock`  | QUANTITY | The current block                                                                          |
+| `highestBlock`  | QUANTITY | The estimated highest block                                                                |
 
 **Example**
 
@@ -647,6 +654,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ```
 
 ### eth_newFilter
+
 *Creates a filter to listen for event logs.*
 
 **Parameters:**
@@ -655,16 +663,15 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 | Field     | Type                  | Description                                                               |
 | :-------- | :-------------------- | :------------------------------------------------------------------------ |
-| fromBlock | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                        |
-| toBlock   | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                   |
-| address   | DATA\|Array, 20 Bytes | Contract address or a list of addresses from which logs should originate. |
-| topics    | Array of DATA         |An array of 32-byte DATA topics to filter events. The order is significant. Each topic position can also be an array of DATA, representing an "OR" condition.                                                                 |
+| `fromBlock` | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                        |
+| `toBlock`   | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                   |
+| `address`   | DATA\|Array, 20 Bytes | Contract address or a list of addresses from which logs should originate. |
+| `topics`    | Array of DATA         |An array of 32-byte DATA topics to filter events. The order is significant. Each topic position can also be an array of DATA, representing an "OR" condition.                                                                 |
 
-**Return Value:** QUANTITY - The newly created filter ID.
+**Return Value:** `QUANTITY` - The newly created filter ID.
 
 **Example**
 ```
-
 curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","method":"eth_newFilter","params":[{"address":["cc2e32f2388f0096fae9b055acffd76d4b3e5532","E518C608A37E2A262050E10BE0C9D03C7A0877F3"],"fromBlock":"0x989680","toBlock":"0x9959d0","topics":["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",null,["0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7","0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758"]]}],"id":1}'
 
 # Returns
@@ -672,11 +679,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ```
 
 ### eth_newBlockFilter
+
 *Creates a filter to listen for new blocks.*
 
 **Parameters: **None
 
-**Return Value:** QUANTITY - The newly created filter ID.
+**Return Value:** `QUANTITY` - The newly created filter ID.
 
 **Example**
 ```
@@ -687,27 +695,27 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ```
 
 ### eth_getFilterChanges
+
 *Polls a filter and returns an array of logs or blocks that have occurred since the last poll.*
 
-**Parameters: **QUANTITY - The ID of the filter created by eth_newFilter or eth_newBlockFilter.
+**Parameters: **`QUANTITY` - The ID of the filter created by `eth_newFilter` or `eth_newBlockFilter`.
 
 **Return Value:**
- - For filters created with eth_newFilter, it returns a list of log objects. Each log object includes:
-
+ - For filters created with `eth_newFilter`, it returns a list of log objects. Each log object includes:
 
 | Field            | Type           | Description                                                                                 |
 | :--------------- | :------------- | :------------------------------------------------------------------------------------------ |
-| removed          | TAG            | true when the log was removed, due to a chain reorganization. false if its a valid log. |
-| logIndex         | QUANTITY       | Integer of the log index position in the block. null when its pending log.           |
-| transactionIndex | QUANTITY       | Integer of the transactions index position log was created from. null when its pending log. |
-| transactionHash  | DATA, 32Bytes  | Hash of the transactions this log was created from.                                         |
-| blockHash        | DATA, 32 Bytes | Hash of the block where this log was in. null when its pending.                 |
-| blockNumber      | QUANTITY       | The block number where this log was in.                                                     |
-| address          | DATA, 32 Bytes | Address from which this log originated.                                                    |
-| data             | DATA           | Contains one or more 32 Bytes non-indexed arguments of the log.                           |
-| topics           | DATA\[]        | Event topic and indexed arguments.                                                          |
+| `removed`          | TAG            | true when the log was removed, due to a chain reorganization. false if its a valid log. |
+| `logIndex`         | QUANTITY       | Integer of the log index position in the block. null when its pending log.                  |
+| `transactionIndex` | QUANTITY       | Integer of the transactions index position log was created from. null when its pending log. |
+| `transactionHash`  | DATA, 32Bytes  | Hash of the transactions this log was created from.                                         |
+| `blockHash`        | DATA, 32 Bytes | Hash of the block where this log was in. null when its pending.                             |
+| `blockNumber`      | QUANTITY       | The block number where this log was in.                                                     |
+| `address`          | DATA, 32 Bytes | Address from which this log originated.                                                     |
+| `data`             | DATA           | Contains one or more 32 Bytes non-indexed arguments of the log.                             |
+| `topics`           | DATA[]         | Event topic and indexed arguments.                                                          |
 
- - For filters created with eth_newBlockFilter, it returns a list of block hashes.
+ - For filters created with `eth_newBlockFilter`, it returns a list of block hashes.
 
 
 **Example**
@@ -734,12 +742,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_getFilterLogs
+
 *Returns an array of all logs matching a given filter ID.*
 
+**Parameters:** `QUANTITY` - The ID of the filter created by `eth_newFilter`.
 
-**Parameters:** QUANTITY - The ID of the filter created by eth_newFilter.
-
-**Return Value:** Array - An array of log objects. See eth_getFilterChanges for the structure.
+**Return Value:** `Array` - An array of log objects. See `eth_getFilterChanges` for the structure.
 
 **Example**
 
@@ -765,11 +773,12 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 ```
 
 ### eth_uninstallFilter
-*Uninstalls a filter with the given ID. This should always be called when you are done watching. Also, filters time out if they are not requested with eth_getFilterChanges for a period of time.*
 
-**Parameters:** QUANTITY - The ID of the filter to uninstall.
+*Uninstalls a filter with the given ID. This should always be called when you are done watching. Also, filters time out if they are not requested with `eth_getFilterChanges` for a period of time.*
 
-**Return Value:** Boolean - true if the filter was successfully uninstalled, false otherwise.
+**Parameters:** `QUANTITY` - The ID of the filter to uninstall.
+
+**Return Value:** `Boolean` - `true` if the filter was successfully uninstalled, `false` otherwise.
 
 **Example**
 
@@ -794,15 +803,16 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 *Returns an array of all logs matching a given filter object.*
 
 **Parameters:** Object - The filter options object, same as eth_newFilter, but can additionally include a blockhash field to query a specific block.
+
 | Field     | Type                  | Description                                                                                                                      |
 | :-------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| fromBlock | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                        |
-| toBlock   | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                          |
-| address   | DATA\|Array, 20 Bytes | (optional) Contract address or a list of addresses from which logs should originate.                       |
-| topics    | Array of DATA         | (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options. |
-| blockhash | DATA, 32 Bytes        | (Optional) The block hash. Note: blockHash and fromBlock/toBlock cannot be specified at the same time, or it will result in an error: `"cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other"`.                                                                                                         |
+| `fromBlock` | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                        |
+| `toBlock`   | QUANTITY\|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                          |
+| `address`   | DATA\|Array, 20 Bytes | (optional) Contract address or a list of addresses from which logs should originate.                       |
+| `topics`    | Array of DATA         | (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options. |
+| `blockhash` | DATA, 32 Bytes        | (Optional) The block hash. Note: `blockHash` and `fromBlock/toBlock` cannot be specified at the same time, or it will result in an error: `"cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other"`.                                                                                                         |
 
-**Return Value:** Array - An array of log objects. See [eth_getFilterChanges](#eth_getfilterchanges) for the structure.
+**Return Value:** `Array` - An array of log objects. See [eth_getFilterChanges](#eth_getfilterchanges) for the structure.
 
 **Example**
 
@@ -820,10 +830,10 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ## net
 
 ### net_listening
-*Returns true if the client is actively listening for network connections.*
+*Returns `true` if the client is actively listening for network connections.*
 
 **Parameters:** None
-**Return Value:** Boolean - true if listening, false otherwise.
+**Return Value:** `Boolean` - `true` if listening, `false` otherwise.
 
 **Example**
 
@@ -833,12 +843,14 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 # Returns
 {"jsonrpc":"2.0","id":64,"result":true}
 ```
+
 ### net_peerCount
+
 **Returns the number of peers currently connected to the client.**
 
 **Parameters:** None
 
-**Return Value:** QUANTITY - The integer number of connected peers.
+**Return Value:** `QUANTITY` - The integer number of connected peers.
 
 **Example**
 ```
@@ -849,10 +861,11 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 ```
 
 ### net_version
+
 *Returns the genesis block hash.*
 
 **Parameters:** None
-**Return Value:** String - The network ID (Chain ID).
+**Return Value:** `String` - The network ID (Chain ID).
 
 **Example**
 
@@ -884,8 +897,8 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 ### web3_sha3
 *Returns the Keccak-256 hash (not the standardized SHA3-256) of the given data.*
 
-**Parameters:** DATA - The data to be hashed.
-**Return Value:** DATA - The 32-byte Keccak-256 hash result.
+**Parameters:** `DATA` - The data to be hashed.
+**Return Value:** `DATA` - The 32-byte Keccak-256 hash result.
 
 **Example**
 ```
@@ -900,15 +913,16 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 
 ### TransferContract (TRX Transfer)
 **Parameters:** 
+
 `Object` - with the following fields:
 | Param Name | Type      | Description                                |
 | :--------- | :------------- | :------------------------------------------ |
-| from       | DATA, 20  Bytes | The address the transaction is sent from.   |
-| to         | DATA, 20  Bytes | The address the transaction is directed to.|
-| value      | DATA           |  the transfer amount                        |
+| `from`       | DATA, 20 Bytes | The address the transaction is sent from.   |
+| `to`         | DATA, 20 Bytes | The address the transaction is directed to.|
+| `value`      | DATA           |  the transfer amount                        |
 
 **Return Value:** 
-*Object* - An object containing the unsigned TransferContract transaction.
+`Object` - An object containing the unsigned TransferContract transaction.
 
 **Example**
 
@@ -929,20 +943,19 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ```
 
-### TransferAssetContract (TRC10 Transfer)
+### TransferAssetContract (TRC-10 Transfer)
 **Parameters:** 
 `Object` - with the following fields:
 
-
 | Param Name | Type      | Description                                |
 | :--------- | :------------- | :----------------------------------------- |
-| from       | DATA, 20 Bytes | The address the transaction is sent from  |
-| to         | DATA, 20 Bytes | The address the transaction is directed to |
-| tokenId    | QUANTITY       | Token ID                                   |
-| tokenValue | QUANTITY       | The transfer amount of TRC10               |
+| `from`       | DATA, 20 Bytes | The address the transaction is sent from  |
+| `to`         | DATA, 20 Bytes | The address the transaction is directed to |
+| `tokenId`    | QUANTITY       | Token ID                                   |
+| `tokenValue` | QUANTITY       | The transfer amount of TRC-10               |
 
 **Return Value:** 
-`Object` - An object containing the unsigned TransferAssetContract transaction.
+`Object` - An object containing the unsigned `TransferAssetContract` transaction.
 
 **Example**
 
@@ -968,22 +981,24 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 **Parameters:** 
 `Object` - with the following fields:
-| Param Name | Type      | Description                                |
-| :------------------------- | :------------- | :--------------------------------------- |
-| from                       | DATA, Bytes | The address the transaction is sent from |
-| name                       | DATA           | The name of the smart contract         |
-| gas                        | DATA           | Fee limit                                |
-| abi                        | DATA           | The ABI of the smart contract |
-| data                       | DATA           | The byte code of the smart contract    |
-| consumeUserResourcePercent | QUANTITY       | The consume user resource percent   |
-| originEnergyLimit          | QUANTITY       | The origin Energy limit|
-| value                      | DATA           | The Amount of TRX transferred to the contract |
-| tokenId                    | QUANTITY       | Token ID                                 |
-| tokenValue                 | QUANTITY       | The transfer amount of TRC10             |
+
+| Param Name                 | Type          | Description                                   |
+| :------------------------- | :------------ | :-------------------------------------------- |
+| `from`                     | DATA, Bytes   | The address the transaction is sent from      |
+| `name`                     | DATA          | The name of the smart contract                |
+| `gas`                      | DATA          | Fee limit                                     |
+| `abi`                      | DATA          | The ABI of the smart contract                 |
+| `data`                     | DATA          | The byte code of the smart contract           |
+| `consumeUserResourcePercent` | QUANTITY      | The consume user resource percent             |
+| `originEnergyLimit`        | QUANTITY      | The origin Energy limit                       |
+| `value`                    | DATA          | The Amount of TRX transferred to the contract |
+| `tokenId`                  | QUANTITY      | Token ID                                      |
+| `tokenValue`               | QUANTITY      | The transfer amount of TRC-10                  |
+
 
 **Returns**
 
-Object - transaction of CreateSmartContract or an error
+`Object` - transaction of `CreateSmartContract` or an error
 
 **Example**
 ```
@@ -1019,16 +1034,16 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 | Param Name | Type      | Description                                |
 | :------------------------- | :------------- | :--------------------------------------- |
-| from | DATA, 20 Bytes | The address the transaction is sent from |
-| to | DATA, 20 Bytes | The address of the smart contract |
-| data | DATA | The invoked contract function and parameters|
-| gas | DATA | Fee limit|
-| value | DATA | The Amount of TRX transferred to the contract |
-| tokenId | QUANTITY | The token ID. |
-| tokenValue | QUANTITY | The transfer amount of TRC10 |
+| `from` | DATA, 20 Bytes | The address the transaction is sent from |
+| `to` | DATA, 20 Bytes | The address of the smart contract |
+| `data` | DATA | The invoked contract function and parameters|
+| `gas` | DATA | Fee limit|
+| `value` | DATA | The Amount of TRX transferred to the contract |
+| `tokenId` | QUANTITY | The token ID. |
+| `tokenValue` | QUANTITY | The transfer amount of TRC-10 |
 
 **Return Value:** 
-`Object` - TriggerSmartContract transaction or an error.
+`Object` - `TriggerSmartContract` transaction or an error.
 
 **Example**
 
