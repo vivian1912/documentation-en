@@ -1082,9 +1082,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#transferassetcontract-trc10-transfer" class="md-nav__link" >
+  <a href="#transferassetcontract-trc-10-transfer" class="md-nav__link" >
     <span class="md-ellipsis">
-      TransferAssetContract (TRC10 Transfer)
+      TransferAssetContract (TRC-10 Transfer)
     </span>
   </a>
   
@@ -1930,13 +1930,13 @@
 <p><strong>UNFORMATTED DATA (Byte Arrays)</strong></p>
 </li>
 <li>Description: Used to represent byte arrays, such as addresses, hashes, and bytecode.</li>
-<li>Format: A hexadecimal string with a 0x prefix, where each byte is represented by two hex characters.</li>
+<li>Format: A hexadecimal string with a <code>0x</code> prefix, where each byte is represented by two hex characters.</li>
 <li>Examples:<ul>
-<li>0x41 (1-byte data)</li>
-<li>0x004200 (3-byte data)</li>
-<li>0x (0-byte data)</li>
-<li>Incorrect: 0xf0f0f (must have an even number of digits)</li>
-<li>Incorrect: 004200 (must have a 0x prefix)</li>
+<li><code>0x41</code> (1-byte data)</li>
+<li><code>0x004200</code> (3-byte data)</li>
+<li><code>0x</code> (0-byte data)</li>
+<li>Incorrect: <code>0xf0f0f</code> (must have an even number of digits)</li>
+<li>Incorrect: <code>004200</code> (must have a 0x prefix)</li>
 </ul>
 </li>
 </ul>
@@ -1967,8 +1967,8 @@
 <p><em>Executes a message call transaction locally on the node without broadcasting it to the blockchain. This is primarily used to call view or pure functions in smart contracts or to estimate the outcome of a transaction before sending it.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>Object - The transaction call object, containing the following fields:</li>
-</ol>
+<li>
+<p><code>Object</code> - The transaction call object, containing the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -1979,43 +1979,45 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The caller's address. For Ethereum compatibility, all addresses can be either TRON hex addresses or Ethereum addresses.</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The contract address.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">Not supported. The value should be 0x0</td>
+<td style="text-align: left;">Not supported. The value should be <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">Not supported. The value should be 0x0</td>
+<td style="text-align: left;">Not supported. The value should be <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">Not supported. The value should be 0x0</td>
+<td style="text-align: left;">Not supported. The value should be <code>0x0</code></td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">The hash of the method signature and encoded parameters.</td>
 </tr>
 <tr>
-<td style="text-align: left;">2. QUANTITY</td>
-<td style="text-align: left;">TAG - The block identifier. Currently, only "latest" is supported</td>
+<td style="text-align: left;">2. <code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is supported</td>
+<td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return Value:</strong> DATA - The ABI-encoded return value of the executed contract function.</p>
+</li>
+</ol>
+<p><strong>Return Value:</strong> <code>DATA</code> - The ABI-encoded return value of the executed contract function.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2035,9 +2037,9 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x&quot;}
 </code></pre></div></p>
 <h3 id="eth_chainid">eth_chainId<a class="headerlink" href="#eth_chainid" title="Permanent link">&para;</a></h3>
-<p><em>Returns the chainId of the TRON network, which is derived from the last four bytes of the genesis block hash.</em></p>
+<p><em>Returns the <code>chainId</code> of the TRON network, which is derived from the last four bytes of the genesis block hash.</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> DATA - The chainId of the TRON network.</p>
+<p><strong>Return Value:</strong> <code>DATA</code> - The <code>chainId</code> of the TRON network.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_chainId&quot;,&quot;params&quot;:[],&quot;id&quot;:79}&#39;
 
@@ -2047,7 +2049,7 @@
 <h3 id="eth_coinbase">eth_coinbase<a class="headerlink" href="#eth_coinbase" title="Permanent link">&para;</a></h3>
 <p><em>Returns the Super Representative address of the current node.</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> DATA - The node's Super Representative address. (Note: If multiple SR addresses are configured, it returns the first one. If no valid address is configured or the address has not produced any blocks, it returns an error with the message "etherbase must be explicitly specified".)</p>
+<p><strong>Return Value:</strong> <code>DATA</code> - The node's Super Representative address. (Note: If multiple SR addresses are configured, it returns the first one. If no valid address is configured or the address has not produced any blocks, it returns an error with the message "etherbase must be explicitly specified".)</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_coinbase&quot;, &quot;params&quot;: []}&#39;
 
@@ -2057,7 +2059,7 @@
 <h3 id="eth_estimategas">eth_estimateGas<a class="headerlink" href="#eth_estimategas" title="Permanent link">&para;</a></h3>
 <p><em>Estimates the amount of Energy required to execute a transaction.</em></p>
 <p><strong>Parameters:</strong>
-1. Object - The transaction call object, containing the following fields:</p>
+1. <code>Object</code> - The transaction call object, containing the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -2068,38 +2070,38 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The sender's address.</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The receiver's address or contract address.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Unused.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Unused.</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">The amount of TRX sent with the transaction (in SUN).</td>
+<td style="text-align: left;">The amount of TRX sent with the transaction (in sun).</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">The hash of the method signature and encoded parameters.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return Value:</strong> QUANTITY - The estimated amount of Energy that will be consumed.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The estimated amount of Energy that will be consumed.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2119,9 +2121,9 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x0&quot;}
 </code></pre></div>
 <h3 id="eth_gasprice">eth_gasPrice<a class="headerlink" href="#eth_gasprice" title="Permanent link">&para;</a></h3>
-<p><em>Returns the current price of Energy on the network (in SUN).</em></p>
+<p><em>Returns the current price of Energy on the network (in sun).</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> QUANTITY - The current Energy price, in SUN.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The current Energy price, in sun.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_gasPrice&quot;, &quot;params&quot;: []}&#39;
 
@@ -2132,10 +2134,10 @@
 <p><em>Returns the TRX balance of a specified address.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>DATA, 20 Bytes - The account address to query.</li>
-<li>QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.</li>
+<li><code>DATA</code>, 20 Bytes - The account address to query.</li>
+<li><code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is supported.</li>
 </ol>
-<p><strong>Return Value:</strong> QUANTITY - The TRX balance of the address, in SUN.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The TRX balance of the address, in sun.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2151,10 +2153,10 @@
 <p><em>Returns detailed information about a block by its hash.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>DATA, 32 Bytes - The hash of the block.</li>
-<li>Boolean - If true, it returns a list of full transaction objects; if false, it returns only the transaction hashes.</li>
+<li><code>DATA</code>, 32 Bytes - The hash of the block.</li>
+<li><code>Boolean</code> - If <code>true</code>, it returns a list of full transaction objects; if <code>false</code>, it returns only the transaction hashes.</li>
 </ol>
-<p><strong>Return Value:</strong> Object - A block object. Returns null if the block is not found.
+<p><strong>Return Value:</strong> <code>Object</code> - A block object. Returns null if the block is not found.
 The block object contains the following fields:</p>
 <table>
 <thead>
@@ -2166,97 +2168,97 @@ The block object contains the following fields:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">number</td>
+<td style="text-align: left;"><code>number</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The block number.</td>
 </tr>
 <tr>
-<td style="text-align: left;">hash</td>
+<td style="text-align: left;"><code>hash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">The hash of the block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">parentHash</td>
+<td style="text-align: left;"><code>parentHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">The hash of the parent block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">nonce</td>
+<td style="text-align: left;"><code>nonce</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Unused.</td>
 </tr>
 <tr>
-<td style="text-align: left;">sha3Uncles</td>
+<td style="text-align: left;"><code>sha3Uncles</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">Exists for Ethereum JSON-RPC compatibility; has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;"><code>logsBloom</code></td>
 <td style="text-align: left;">DATA, 256 Bytes</td>
 <td style="text-align: left;">Exists for Ethereum JSON-RPC compatibility; has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionsRoot</td>
+<td style="text-align: left;"><code>transactionsRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">The root of the block's transaction tree.</td>
 </tr>
 <tr>
-<td style="text-align: left;">stateRoot</td>
+<td style="text-align: left;"><code>stateRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">receiptsRoot</td>
+<td style="text-align: left;"><code>receiptsRoot</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">miner</td>
+<td style="text-align: left;"><code>miner</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The address of the SR that produced this block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">difficulty</td>
+<td style="text-align: left;"><code>difficulty</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">totalDifficulty</td>
+<td style="text-align: left;"><code>totalDifficulty</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">extraData</td>
+<td style="text-align: left;"><code>extraData</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
 <tr>
-<td style="text-align: left;">size</td>
+<td style="text-align: left;"><code>size</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The size of the block in bytes.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasLimit</td>
+<td style="text-align: left;"><code>gasLimit</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The maximum gas allowed in this block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;"><code>gasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The total gas used by all transactions in this block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">timestamp</td>
+<td style="text-align: left;"><code>timestamp</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The Unix timestamp of the block's creation, in seconds.</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactions</td>
+<td style="text-align: left;"><code>transactions</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">An array of transaction objects or 32-byte transaction hashes, depending on the second parameter.</td>
 </tr>
 <tr>
-<td style="text-align: left;">uncles</td>
+<td style="text-align: left;"><code>uncles</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">Currently has no real meaning.</td>
 </tr>
@@ -2277,10 +2279,10 @@ The block object contains the following fields:</p>
 <p><em>Returns detailed information about a block by its number.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>QUANTITY|TAG - The block number, or the tag "earliest" or "latest".</li>
-<li>Boolean - If true, it returns a list of full transaction objects; if false, it returns only the transaction hashes.</li>
+<li><code>QUANTITY|TAG</code> - The block number, or the tag "earliest" or "latest".</li>
+<li><code>Boolean</code> - If <code>true</code>, it returns a list of full transaction objects; if <code>false</code>, it returns only the transaction hashes.</li>
 </ol>
-<p><strong>Return Value:</strong> Object - A block object. Returns null if the block is not found. The structure is the same as in <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a>.</p>
+<p><strong>Return Value:</strong> <code>Object</code> - A block object. Returns null if the block is not found. The structure is the same as in <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a>.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2294,8 +2296,8 @@ The block object contains the following fields:</p>
 </code></pre></div></p>
 <h3 id="eth_getblocktransactioncountbyhash">eth_getBlockTransactionCountByHash<a class="headerlink" href="#eth_getblocktransactioncountbyhash" title="Permanent link">&para;</a></h3>
 <p><em>Returns the number of transactions in a block by its hash.</em></p>
-<p><strong>Parameters:</strong> DATA, 32 Bytes - The hash of the block.</p>
-<p><strong>Return Value:</strong> QUANTITY - The number of transactions in the block.</p>
+<p><strong>Parameters:</strong> <code>DATA</code>, 32 Bytes - The hash of the block.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The number of transactions in the block.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2309,8 +2311,8 @@ The block object contains the following fields:</p>
 </code></pre></div>
 <h3 id="eth_getblocktransactioncountbynumber">eth_getBlockTransactionCountByNumber<a class="headerlink" href="#eth_getblocktransactioncountbynumber" title="Permanent link">&para;</a></h3>
 <p><em>Returns the number of transactions in a block by its number.</em></p>
-<p><strong>Parameters:</strong> QUANTITY|TAG - The block number, or the tag "earliest" or "latest".</p>
-<p><strong>Return Value:</strong> QUANTITY - The number of transactions in the block.</p>
+<p><strong>Parameters:</strong> <code>QUANTITY|TAG</code> - The block number, or the tag "earliest" or "latest".</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The number of transactions in the block.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2326,10 +2328,10 @@ The block object contains the following fields:</p>
 <p><em>Returns the runtime bytecode of a specified contract address.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>DATA, 20 Bytes - The contract address.</li>
-<li>QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.</li>
+<li><code>DATA</code>, 20 Bytes - The contract address.</li>
+<li><code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is supported.</li>
 </ol>
-<p><strong>Return Value:</strong> DATA - The runtime bytecode. Returns 0x if the address is not a contract.</p>
+<p><strong>Return Value:</strong> <code>DATA</code> - The runtime bytecode. Returns <code>0x</code> if the address is not a contract.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2345,11 +2347,11 @@ The block object contains the following fields:</p>
 <p><em>Returns the value from a storage position at a given address. This can be used to query the value of variables in a contract.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>DATA, 20 Bytes - The contract address.</li>
-<li>QUANTITY - The index of the storage slot.</li>
-<li>QUANTITY|TAG - The block identifier. Currently, only "latest" is supported.</li>
+<li><code>DATA</code>, 20 Bytes - The contract address.</li>
+<li><code>QUANTITY</code> - The index of the storage slot.</li>
+<li><code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is supported.</li>
 </ol>
-<p><strong>Return Value:</strong> DATA - The 32-byte value at that storage slot.</p>
+<p><strong>Return Value:</strong> <code>DATA</code> - The 32-byte value at that storage slot.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2365,9 +2367,9 @@ The block object contains the following fields:</p>
 <p><em>Returns detailed information about a transaction by its block hash and index.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>DATA, 32 Bytes - The hash of the block.</li>
-<li>QUANTITY - The index of the transaction within the block.</li>
-<li><strong>Return Value: </strong>Object - A transaction object. Returns null if not found.
+<li><code>DATA</code>, 32 Bytes - The hash of the block.</li>
+<li><code>QUANTITY</code> - The index of the transaction within the block.</li>
+<li><strong>Return Value: </strong><code>Object</code> - A transaction object. Returns <code>null</code> if not found.
 The transaction object contains the following fields:</li>
 </ol>
 <table>
@@ -2380,77 +2382,77 @@ The transaction object contains the following fields:</li>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">hash of the block where this transaction was in.</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">block number where this transaction was in.</td>
 </tr>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">address of the sender</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The Energy consumed by the transaction</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasPrice</td>
+<td style="text-align: left;"><code>gasPrice</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The price of Energy.</td>
 </tr>
 <tr>
-<td style="text-align: left;">hash</td>
+<td style="text-align: left;"><code>hash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">hash of the transaction</td>
 </tr>
 <tr>
-<td style="text-align: left;">input</td>
+<td style="text-align: left;"><code>input</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">the data sent along with the transaction</td>
 </tr>
 <tr>
-<td style="text-align: left;">nonce</td>
+<td style="text-align: left;"><code>nonce</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">unused</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">address of the receiver</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The index of the transaction in the block</td>
 </tr>
 <tr>
-<td style="text-align: left;">type</td>
+<td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">value transferred in sun</td>
 </tr>
 <tr>
-<td style="text-align: left;">v</td>
+<td style="text-align: left;"><code>v</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">ECDSA recovery id</td>
 </tr>
 <tr>
-<td style="text-align: left;">r</td>
+<td style="text-align: left;"><code>r</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">ECDSA signature r</td>
 </tr>
 <tr>
-<td style="text-align: left;">s</td>
+<td style="text-align: left;"><code>s</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">ECDSA signature s</td>
 </tr>
@@ -2491,10 +2493,10 @@ The transaction object contains the following fields:</li>
 <p><em>Returns detailed information about a transaction by its block number and index.</em></p>
 <p><strong>Parameters:</strong></p>
 <ol>
-<li>QUANTITY|TAG - The block number, or the tag "earliest" or "latest".</li>
-<li>QUANTITY - The index of the transaction within the block.</li>
+<li><code>QUANTITY|TAG</code> - The block number, or the tag "earliest" or "latest".</li>
+<li><code>QUANTITY</code> - The index of the transaction within the block.</li>
 </ol>
-<p><strong>Return Value:</strong> Object - A transaction object. Returns null if not found. The structure is the same as in <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>.</p>
+<p><strong>Return Value:</strong> <code>Object</code> - A transaction object. Returns <code>null</code> if not found. The structure is the same as in <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2508,8 +2510,8 @@ The transaction object contains the following fields:</li>
 </code></pre></div></p>
 <h3 id="eth_gettransactionbyhash">eth_getTransactionByHash<a class="headerlink" href="#eth_gettransactionbyhash" title="Permanent link">&para;</a></h3>
 <p><em>Returns detailed information about a transaction by its hash.</em></p>
-<p><strong>Parameters:</strong> DATA, 32 Bytes - The hash of the transaction.</p>
-<p><strong>Return Value:</strong> Object - A transaction object. Returns null if not found. The structure is the same as in <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>.</p>
+<p><strong>Parameters:</strong> <code>DATA</code>, 32 Bytes - The hash of the transaction.</p>
+<p><strong>Return Value:</strong> <code>Object</code> - A transaction object. Returns <code>null</code> if not found. The structure is the same as in <a href="#eth_gettransactionbyblockhashandindex">eth_getTransactionByBlockHashAndIndex</a>.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2543,8 +2545,8 @@ The transaction object contains the following fields:</li>
 </code></pre></div></p>
 <h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
 <p><em>Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: <a href="#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a>.</em></p>
-<p><strong>Parameters:</strong> DATA, 32 Bytes - The hash of the transaction.</p>
-<p><strong>Return Value:</strong> Object - A transaction receipt object. Returns null if the transaction is unconfirmed or not found.</p>
+<p><strong>Parameters:</strong> <code>DATA</code>, 32 Bytes - The hash of the transaction.</p>
+<p><strong>Return Value:</strong> <code>Object</code> - A transaction receipt object. Returns <code>null</code> if the transaction is unconfirmed or not found.</p>
 <p>The transaction receipt object contains the following fields:</p>
 <table>
 <thead>
@@ -2556,72 +2558,72 @@ The transaction object contains the following fields:</li>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;"><code>transactionHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">hash of the transaction</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">integer of the transactions index position in the block</td>
+<td style="text-align: left;">integer of the transaction's index position in the block</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">hash of the block where this transaction was in.</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">block number where this transaction was in.</td>
 </tr>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">address of the sender</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">address of the receiver</td>
 </tr>
 <tr>
-<td style="text-align: left;">cumulativeGasUsed</td>
+<td style="text-align: left;"><code>cumulativeGasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The total amount of gas used when this transaction was executed in the block.</td>
 </tr>
 <tr>
-<td style="text-align: left;">gasUsed</td>
+<td style="text-align: left;"><code>gasUsed</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The amount of gas used by this specific transaction alone.</td>
 </tr>
 <tr>
-<td style="text-align: left;">contractAddress</td>
+<td style="text-align: left;"><code>contractAddress</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The contract address created, if the transaction was a contract creation, otherwise null.</td>
 </tr>
 <tr>
-<td style="text-align: left;">logs</td>
+<td style="text-align: left;"><code>logs</code></td>
 <td style="text-align: left;">Array</td>
 <td style="text-align: left;">Array of log objects, which this transaction generated.</td>
 </tr>
 <tr>
-<td style="text-align: left;">logsBloom</td>
+<td style="text-align: left;"><code>logsBloom</code></td>
 <td style="text-align: left;">DATA, 256 Bytes</td>
 <td style="text-align: left;">Bloom filter for light clients to quickly retrieve related logs.</td>
 </tr>
 <tr>
-<td style="text-align: left;">root</td>
+<td style="text-align: left;"><code>root</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">32 bytes of post-transaction stateroot (pre Byzantium)</td>
 </tr>
 <tr>
-<td style="text-align: left;">status</td>
+<td style="text-align: left;"><code>status</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">either 1 (success) or 0 (failure)</td>
 </tr>
 <tr>
-<td style="text-align: left;">type</td>
+<td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0.</td>
 </tr>
@@ -2660,7 +2662,7 @@ The transaction object contains the following fields:</li>
 <h3 id="eth_getwork">eth_getWork<a class="headerlink" href="#eth_getwork" title="Permanent link">&para;</a></h3>
 <p><em>Returns the hash of the current block.</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value: </strong>Array - An array with three elements, where only the first element (the block hash) is relevant.</p>
+<p><strong>Return Value: </strong><code>Array</code> - An array with three elements, where only the first element (the block hash) is relevant.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2679,7 +2681,7 @@ The transaction object contains the following fields:</li>
 <h3 id="eth_protocolversion">eth_protocolVersion<a class="headerlink" href="#eth_protocolversion" title="Permanent link">&para;</a></h3>
 <p><em>Returns the TRON protocol version of the node.</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> String - The current protocol version number.</p>
+<p><strong>Return Value:</strong> <code>String</code> - The current protocol version number.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_protocolVersion&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2689,8 +2691,8 @@ The transaction object contains the following fields:</li>
 <h3 id="eth_syncing">eth_syncing<a class="headerlink" href="#eth_syncing" title="Permanent link">&para;</a></h3>
 <p><em>Returns the synchronization status of the node.</em></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> Object or Boolean - If the node is syncing, it returns an object with <code>startingBlock</code>, <code>currentBlock</code>, and <code>highestBlock</code>. If it is fully synced, it returns false.
-The fields are described below:</p>
+<p><strong>Return Value:</strong> <code>Object</code> or <code>Boolean</code> - If the node is syncing, it returns an object with <code>startingBlock</code>, <code>currentBlock</code>, and <code>highestBlock</code>. If it is fully synced, it returns <code>false</code>.</p>
+<p>The fields are described below:</p>
 <table>
 <thead>
 <tr>
@@ -2701,17 +2703,17 @@ The fields are described below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">startingBlock</td>
+<td style="text-align: left;"><code>startingBlock</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The starting block for current synchronization</td>
 </tr>
 <tr>
-<td style="text-align: left;">currentBlock</td>
+<td style="text-align: left;"><code>currentBlock</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The current block</td>
 </tr>
 <tr>
-<td style="text-align: left;">highestBlock</td>
+<td style="text-align: left;"><code>highestBlock</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The estimated highest block</td>
 </tr>
@@ -2747,28 +2749,28 @@ The fields are described below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">fromBlock</td>
+<td style="text-align: left;"><code>fromBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">Integer block number, or "latest",or "earliest"</td>
 </tr>
 <tr>
-<td style="text-align: left;">toBlock</td>
+<td style="text-align: left;"><code>toBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
 <td style="text-align: left;">Integer block number, or "latest",or "earliest"</td>
 </tr>
 <tr>
-<td style="text-align: left;">address</td>
+<td style="text-align: left;"><code>address</code></td>
 <td style="text-align: left;">DATA|Array, 20 Bytes</td>
 <td style="text-align: left;">Contract address or a list of addresses from which logs should originate.</td>
 </tr>
 <tr>
-<td style="text-align: left;">topics</td>
+<td style="text-align: left;"><code>topics</code></td>
 <td style="text-align: left;">Array of DATA</td>
 <td style="text-align: left;">An array of 32-byte DATA topics to filter events. The order is significant. Each topic position can also be an array of DATA, representing an "OR" condition.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Return Value:</strong> QUANTITY - The newly created filter ID.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The newly created filter ID.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newFilter&quot;,&quot;params&quot;:[{&quot;address&quot;:[&quot;cc2e32f2388f0096fae9b055acffd76d4b3e5532&quot;,&quot;E518C608A37E2A262050E10BE0C9D03C7A0877F3&quot;],&quot;fromBlock&quot;:&quot;0x989680&quot;,&quot;toBlock&quot;:&quot;0x9959d0&quot;,&quot;topics&quot;:[&quot;0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&quot;,null,[&quot;0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7&quot;,&quot;0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758&quot;]]}],&quot;id&quot;:1}&#39;
 
@@ -2778,7 +2780,7 @@ The fields are described below:</p>
 <h3 id="eth_newblockfilter">eth_newBlockFilter<a class="headerlink" href="#eth_newblockfilter" title="Permanent link">&para;</a></h3>
 <p><em>Creates a filter to listen for new blocks.</em></p>
 <p><strong>Parameters: </strong>None</p>
-<p><strong>Return Value:</strong> QUANTITY - The newly created filter ID.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The newly created filter ID.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_newBlockFilter&quot;,&quot;params&quot;:[],&quot;id&quot;:1}&#39;
 
@@ -2787,9 +2789,9 @@ The fields are described below:</p>
 </code></pre></div></p>
 <h3 id="eth_getfilterchanges">eth_getFilterChanges<a class="headerlink" href="#eth_getfilterchanges" title="Permanent link">&para;</a></h3>
 <p><em>Polls a filter and returns an array of logs or blocks that have occurred since the last poll.</em></p>
-<p><strong>Parameters: </strong>QUANTITY - The ID of the filter created by eth_newFilter or eth_newBlockFilter.</p>
+<p><strong>Parameters: </strong><code>QUANTITY</code> - The ID of the filter created by <code>eth_newFilter</code> or <code>eth_newBlockFilter</code>.</p>
 <p><strong>Return Value:</strong>
- - For filters created with eth_newFilter, it returns a list of log objects. Each log object includes:</p>
+ - For filters created with <code>eth_newFilter</code>, it returns a list of log objects. Each log object includes:</p>
 <table>
 <thead>
 <tr>
@@ -2800,54 +2802,54 @@ The fields are described below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">removed</td>
+<td style="text-align: left;"><code>removed</code></td>
 <td style="text-align: left;">TAG</td>
 <td style="text-align: left;">true when the log was removed, due to a chain reorganization. false if its a valid log.</td>
 </tr>
 <tr>
-<td style="text-align: left;">logIndex</td>
+<td style="text-align: left;"><code>logIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Integer of the log index position in the block. null when its pending log.</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionIndex</td>
+<td style="text-align: left;"><code>transactionIndex</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Integer of the transactions index position log was created from. null when its pending log.</td>
 </tr>
 <tr>
-<td style="text-align: left;">transactionHash</td>
+<td style="text-align: left;"><code>transactionHash</code></td>
 <td style="text-align: left;">DATA, 32Bytes</td>
 <td style="text-align: left;">Hash of the transactions this log was created from.</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockHash</td>
+<td style="text-align: left;"><code>blockHash</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">Hash of the block where this log was in. null when its pending.</td>
 </tr>
 <tr>
-<td style="text-align: left;">blockNumber</td>
+<td style="text-align: left;"><code>blockNumber</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The block number where this log was in.</td>
 </tr>
 <tr>
-<td style="text-align: left;">address</td>
+<td style="text-align: left;"><code>address</code></td>
 <td style="text-align: left;">DATA, 32 Bytes</td>
 <td style="text-align: left;">Address from which this log originated.</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">Contains one or more 32 Bytes non-indexed arguments of the log.</td>
 </tr>
 <tr>
-<td style="text-align: left;">topics</td>
+<td style="text-align: left;"><code>topics</code></td>
 <td style="text-align: left;">DATA[]</td>
 <td style="text-align: left;">Event topic and indexed arguments.</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>For filters created with eth_newBlockFilter, it returns a list of block hashes.</li>
+<li>For filters created with <code>eth_newBlockFilter</code>, it returns a list of block hashes.</li>
 </ul>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
@@ -2871,8 +2873,8 @@ The fields are described below:</p>
 </code></pre></div>
 <h3 id="eth_getfilterlogs">eth_getFilterLogs<a class="headerlink" href="#eth_getfilterlogs" title="Permanent link">&para;</a></h3>
 <p><em>Returns an array of all logs matching a given filter ID.</em></p>
-<p><strong>Parameters:</strong> QUANTITY - The ID of the filter created by eth_newFilter.</p>
-<p><strong>Return Value:</strong> Array - An array of log objects. See eth_getFilterChanges for the structure.</p>
+<p><strong>Parameters:</strong> <code>QUANTITY</code> - The ID of the filter created by <code>eth_newFilter</code>.</p>
+<p><strong>Return Value:</strong> <code>Array</code> - An array of log objects. See <code>eth_getFilterChanges</code> for the structure.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2894,9 +2896,9 @@ The fields are described below:</p>
 }
 </code></pre></div>
 <h3 id="eth_uninstallfilter">eth_uninstallFilter<a class="headerlink" href="#eth_uninstallfilter" title="Permanent link">&para;</a></h3>
-<p><em>Uninstalls a filter with the given ID. This should always be called when you are done watching. Also, filters time out if they are not requested with eth_getFilterChanges for a period of time.</em></p>
-<p><strong>Parameters:</strong> QUANTITY - The ID of the filter to uninstall.</p>
-<p><strong>Return Value:</strong> Boolean - true if the filter was successfully uninstalled, false otherwise.</p>
+<p><em>Uninstalls a filter with the given ID. This should always be called when you are done watching. Also, filters time out if they are not requested with <code>eth_getFilterChanges</code> for a period of time.</em></p>
+<p><strong>Parameters:</strong> <code>QUANTITY</code> - The ID of the filter to uninstall.</p>
+<p><strong>Return Value:</strong> <code>Boolean</code> - <code>true</code> if the filter was successfully uninstalled, <code>false</code> otherwise.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2915,15 +2917,44 @@ The fields are described below:</p>
 </code></pre></div>
 <h3 id="eth_getlogs">eth_getLogs<a class="headerlink" href="#eth_getlogs" title="Permanent link">&para;</a></h3>
 <p><em>Returns an array of all logs matching a given filter object.</em></p>
-<p><strong>Parameters:</strong> Object - The filter options object, same as eth_newFilter, but can additionally include a blockhash field to query a specific block.
-| Field     | Type                  | Description                                                                                                                      |
-| :-------- | :-------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| fromBlock | QUANTITY|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                        |
-| toBlock   | QUANTITY|TAG         | (optional, default: "latest") Integer block number, or "latest" for the latest block                                          |
-| address   | DATA|Array, 20 Bytes | (optional) Contract address or a list of addresses from which logs should originate.                       |
-| topics    | Array of DATA         | (optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options. |
-| blockhash | DATA, 32 Bytes        | (Optional) The block hash. Note: blockHash and fromBlock/toBlock cannot be specified at the same time, or it will result in an error: <code>"cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other"</code>.                                                                                                         |</p>
-<p><strong>Return Value:</strong> Array - An array of log objects. See <a href="#eth_getfilterchanges">eth_getFilterChanges</a> for the structure.</p>
+<p><strong>Parameters:</strong> Object - The filter options object, same as eth_newFilter, but can additionally include a blockhash field to query a specific block.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>fromBlock</code></td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">(optional, default: "latest") Integer block number, or "latest" for the latest block</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>toBlock</code></td>
+<td style="text-align: left;">QUANTITY|TAG</td>
+<td style="text-align: left;">(optional, default: "latest") Integer block number, or "latest" for the latest block</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>address</code></td>
+<td style="text-align: left;">DATA|Array, 20 Bytes</td>
+<td style="text-align: left;">(optional) Contract address or a list of addresses from which logs should originate.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>topics</code></td>
+<td style="text-align: left;">Array of DATA</td>
+<td style="text-align: left;">(optional) Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with "or" options.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>blockhash</code></td>
+<td style="text-align: left;">DATA, 32 Bytes</td>
+<td style="text-align: left;">(Optional) The block hash. Note: <code>blockHash</code> and <code>fromBlock/toBlock</code> cannot be specified at the same time, or it will result in an error: <code>"cannot specify both BlockHash and FromBlock/ToBlock, choose one or the other"</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Return Value:</strong> <code>Array</code> - An array of log objects. See <a href="#eth_getfilterchanges">eth_getFilterChanges</a> for the structure.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;eth_getLogs&quot;,&quot;params&quot;:[{&quot;address&quot;:[&quot;cc2e32f2388f0096fae9b055acffd76d4b3e5532&quot;,&quot;E518C608A37E2A262050E10BE0C9D03C7A0877F3&quot;],&quot;fromBlock&quot;:&quot;0x989680&quot;,&quot;toBlock&quot;:&quot;0x9959d0&quot;,&quot;topics&quot;:[&quot;0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&quot;,null,[&quot;0x0000000000000000000000001806c11be0f9b9af9e626a58904f3e5827b67be7&quot;,&quot;0x0000000000000000000000003c8fb6d064ceffc0f045f7b4aee6b3a4cefb4758&quot;]]}],&quot;id&quot;:1}&#39;
 
@@ -2936,9 +2967,9 @@ The fields are described below:</p>
 </code></pre></div>
 <h2 id="net">net<a class="headerlink" href="#net" title="Permanent link">&para;</a></h2>
 <h3 id="net_listening">net_listening<a class="headerlink" href="#net_listening" title="Permanent link">&para;</a></h3>
-<p><em>Returns true if the client is actively listening for network connections.</em></p>
+<p><em>Returns <code>true</code> if the client is actively listening for network connections.</em></p>
 <p><strong>Parameters:</strong> None
-<strong>Return Value:</strong> Boolean - true if listening, false otherwise.</p>
+<strong>Return Value:</strong> <code>Boolean</code> - <code>true</code> if listening, <code>false</code> otherwise.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_listening&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2948,7 +2979,7 @@ The fields are described below:</p>
 <h3 id="net_peercount">net_peerCount<a class="headerlink" href="#net_peercount" title="Permanent link">&para;</a></h3>
 <p><strong>Returns the number of peers currently connected to the client.</strong></p>
 <p><strong>Parameters:</strong> None</p>
-<p><strong>Return Value:</strong> QUANTITY - The integer number of connected peers.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The integer number of connected peers.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_peerCount&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2958,7 +2989,7 @@ The fields are described below:</p>
 <h3 id="net_version">net_version<a class="headerlink" href="#net_version" title="Permanent link">&para;</a></h3>
 <p><em>Returns the genesis block hash.</em></p>
 <p><strong>Parameters:</strong> None
-<strong>Return Value:</strong> String - The network ID (Chain ID).</p>
+<strong>Return Value:</strong> <code>String</code> - The network ID (Chain ID).</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;net_version&quot;,&quot;params&quot;:[],&quot;id&quot;:64}&#39;
 
@@ -2978,8 +3009,8 @@ The fields are described below:</p>
 </code></pre></div>
 <h3 id="web3_sha3">web3_sha3<a class="headerlink" href="#web3_sha3" title="Permanent link">&para;</a></h3>
 <p><em>Returns the Keccak-256 hash (not the standardized SHA3-256) of the given data.</em></p>
-<p><strong>Parameters:</strong> DATA - The data to be hashed.
-<strong>Return Value:</strong> DATA - The 32-byte Keccak-256 hash result.</p>
+<p><strong>Parameters:</strong> <code>DATA</code> - The data to be hashed.
+<strong>Return Value:</strong> <code>DATA</code> - The 32-byte Keccak-256 hash result.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;web3_sha3&quot;, &quot;params&quot;: [&quot;0x68656c6c6f20776f726c64&quot;]}&#39;
 
@@ -2989,15 +3020,15 @@ The fields are described below:</p>
 <h2 id="buildtransaction">buildTransaction<a class="headerlink" href="#buildtransaction" title="Permanent link">&para;</a></h2>
 <p><em>This is a TRON-custom RPC method used to conveniently create native TRON transactions. It returns an unsigned transaction object. Different transaction types have different parameters.</em></p>
 <h3 id="transfercontract-trx-transfer">TransferContract (TRX Transfer)<a class="headerlink" href="#transfercontract-trx-transfer" title="Permanent link">&para;</a></h3>
-<p><strong>Parameters:</strong> 
-<code>Object</code> - with the following fields:
+<p><strong>Parameters:</strong> </p>
+<p><code>Object</code> - with the following fields:
 | Param Name | Type      | Description                                |
 | :--------- | :------------- | :------------------------------------------ |
-| from       | DATA, 20  Bytes | The address the transaction is sent from.   |
-| to         | DATA, 20  Bytes | The address the transaction is directed to.|
-| value      | DATA           |  the transfer amount                        |</p>
+| <code>from</code>       | DATA, 20 Bytes | The address the transaction is sent from.   |
+| <code>to</code>         | DATA, 20 Bytes | The address the transaction is directed to.|
+| <code>value</code>      | DATA           |  the transfer amount                        |</p>
 <p><strong>Return Value:</strong> 
-<em>Object</em> - An object containing the unsigned TransferContract transaction.</p>
+<code>Object</code> - An object containing the unsigned TransferContract transaction.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;id&quot;: 1337,
@@ -3013,7 +3044,7 @@ The fields are described below:</p>
 # Returns
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1337,&quot;result&quot;:{&quot;transaction&quot;:{&quot;visible&quot;:false,&quot;txID&quot;:&quot;ae02a80abd985a6f05478b9bbf04706f00cdbf71e38c77d21ed77e44c634cef9&quot;,&quot;raw_data&quot;:{&quot;contract&quot;:[{&quot;parameter&quot;:{&quot;value&quot;:{&quot;amount&quot;:500,&quot;owner_address&quot;:&quot;41c4db2c9dfbcb6aa344793f1dda7bd656598a06d8&quot;,&quot;to_address&quot;:&quot;4195fd23d3d2221cfef64167938de5e62074719e54&quot;},&quot;type_url&quot;:&quot;type.googleapis.com/protocol.TransferContract&quot;},&quot;type&quot;:&quot;TransferContract&quot;}],&quot;ref_block_bytes&quot;:&quot;957e&quot;,&quot;ref_block_hash&quot;:&quot;3922d8c0d28b5283&quot;,&quot;expiration&quot;:1684469286000,&quot;timestamp&quot;:1684469226841},&quot;raw_data_hex&quot;:&quot;0a02957e22083922d8c0d28b528340f088c69183315a66080112620a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412310a1541c4db2c9dfbcb6aa344793f1dda7bd656598a06d812154195fd23d3d2221cfef64167938de5e62074719e5418f40370d9bac2918331&quot;}}}
 </code></pre></div>
-<h3 id="transferassetcontract-trc10-transfer">TransferAssetContract (TRC10 Transfer)<a class="headerlink" href="#transferassetcontract-trc10-transfer" title="Permanent link">&para;</a></h3>
+<h3 id="transferassetcontract-trc-10-transfer">TransferAssetContract (TRC-10 Transfer)<a class="headerlink" href="#transferassetcontract-trc-10-transfer" title="Permanent link">&para;</a></h3>
 <p><strong>Parameters:</strong> 
 <code>Object</code> - with the following fields:</p>
 <table>
@@ -3026,29 +3057,29 @@ The fields are described below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The address the transaction is sent from</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The address the transaction is directed to</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;"><code>tokenId</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">Token ID</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;"><code>tokenValue</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">The transfer amount of TRC10</td>
+<td style="text-align: left;">The transfer amount of TRC-10</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Return Value:</strong> 
-<code>Object</code> - An object containing the unsigned TransferAssetContract transaction.</p>
+<code>Object</code> - An object containing the unsigned <code>TransferAssetContract</code> transaction.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;method&quot;: &quot;buildTransaction&quot;,
@@ -3069,21 +3100,70 @@ The fields are described below:</p>
 </code></pre></div>
 <h3 id="createsmartcontract-deploy-contract">CreateSmartContract (Deploy Contract)<a class="headerlink" href="#createsmartcontract-deploy-contract" title="Permanent link">&para;</a></h3>
 <p><strong>Parameters:</strong> 
-<code>Object</code> - with the following fields:
-| Param Name | Type      | Description                                |
-| :------------------------- | :------------- | :--------------------------------------- |
-| from                       | DATA, Bytes | The address the transaction is sent from |
-| name                       | DATA           | The name of the smart contract         |
-| gas                        | DATA           | Fee limit                                |
-| abi                        | DATA           | The ABI of the smart contract |
-| data                       | DATA           | The byte code of the smart contract    |
-| consumeUserResourcePercent | QUANTITY       | The consume user resource percent   |
-| originEnergyLimit          | QUANTITY       | The origin Energy limit|
-| value                      | DATA           | The Amount of TRX transferred to the contract |
-| tokenId                    | QUANTITY       | Token ID                                 |
-| tokenValue                 | QUANTITY       | The transfer amount of TRC10             |</p>
+<code>Object</code> - with the following fields:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Param Name</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>from</code></td>
+<td style="text-align: left;">DATA, Bytes</td>
+<td style="text-align: left;">The address the transaction is sent from</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>name</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The name of the smart contract</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gas</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">Fee limit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>abi</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The ABI of the smart contract</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>data</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The byte code of the smart contract</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>consumeUserResourcePercent</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The consume user resource percent</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>originEnergyLimit</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The origin Energy limit</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>value</code></td>
+<td style="text-align: left;">DATA</td>
+<td style="text-align: left;">The Amount of TRX transferred to the contract</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tokenId</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">Token ID</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tokenValue</code></td>
+<td style="text-align: left;">QUANTITY</td>
+<td style="text-align: left;">The transfer amount of TRC-10</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Returns</strong></p>
-<p>Object - transaction of CreateSmartContract or an error</p>
+<p><code>Object</code> - transaction of <code>CreateSmartContract</code> or an error</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;id&quot;: 1337,
@@ -3121,44 +3201,44 @@ The fields are described below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">from</td>
+<td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The address the transaction is sent from</td>
 </tr>
 <tr>
-<td style="text-align: left;">to</td>
+<td style="text-align: left;"><code>to</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
 <td style="text-align: left;">The address of the smart contract</td>
 </tr>
 <tr>
-<td style="text-align: left;">data</td>
+<td style="text-align: left;"><code>data</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">The invoked contract function and parameters</td>
 </tr>
 <tr>
-<td style="text-align: left;">gas</td>
+<td style="text-align: left;"><code>gas</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">Fee limit</td>
 </tr>
 <tr>
-<td style="text-align: left;">value</td>
+<td style="text-align: left;"><code>value</code></td>
 <td style="text-align: left;">DATA</td>
 <td style="text-align: left;">The Amount of TRX transferred to the contract</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenId</td>
+<td style="text-align: left;"><code>tokenId</code></td>
 <td style="text-align: left;">QUANTITY</td>
 <td style="text-align: left;">The token ID.</td>
 </tr>
 <tr>
-<td style="text-align: left;">tokenValue</td>
+<td style="text-align: left;"><code>tokenValue</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">The transfer amount of TRC10</td>
+<td style="text-align: left;">The transfer amount of TRC-10</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Return Value:</strong> 
-<code>Object</code> - TriggerSmartContract transaction or an error.</p>
+<code>Object</code> - <code>TriggerSmartContract</code> transaction or an error.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{&quot;id&quot;: 1337,
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
