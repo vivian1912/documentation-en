@@ -2,6 +2,15 @@
 
 This guide is designed to help developers quickly deploy and use the TRON MongoDB event subscription plugin to achieve real-time data capture, persistent storage, and querying of on-chain events. The document covers the entire process, including system environment configuration, plugin deployment, database installation, query service setup, and API usage.
 
+The main steps include:
+
+- [Checking System Configuration](#1)
+- [Understanding the System Architecture](#2)
+- [Deploying the Event Plugin](#3)
+- [Deploying the MongoDB](#4)
+- [Deploying the Event Query Service](#5)
+- [Starting and Verifing](#6)
+- [Using the TRON Event Query Service API](#7)
 
 <a id="1"></a>
 ## Recommended System Configuration
