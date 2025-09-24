@@ -1,17 +1,26 @@
-# Contract
+# Smart Contracts
 
-## Introduction
+## Overview
 
-Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
+A smart contract is a computational protocol that automates the execution of contractual terms. It defines the conditions and penalties for participants, much like a traditional contract. Once triggered, it self-executes according to the predefined terms and automatically verifies compliance with its coded logic.
 
-TRON smart contract support Solidity language in (Ethereum). You can find the latest solidity version in the [TRON solidity repository](https://github.com/tronprotocol/solidity/releases). Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+TRON is fully compatible with the Ethereum smart contract ecosystem and supports contracts written in the Solidity language. The development workflow is as follows:
 
-## Features
-TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
+1.  Write and compile a Solidity contract in a local or online IDE.
+2.  Deploy the contract to the TRON Mainnet.
+3.  Once deployed, the contract will be automatically executed on all nodes across the TRON network whenever it is triggered.
 
-### Defination of Smart Contract 
-TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
-``` solidity
+You can find the latest version in the [TRON Solidity repository](https://github.com/tronprotocol/solidity/releases).
+
+## TRON Smart Contract Features
+
+The TRON Virtual Machine (TVM) is based on the Ethereum Solidity language. While it is compatible with the features of the Ethereum Virtual Machine (EVM), there are some differences that align with TRON's unique characteristics.
+
+### Smart Contract Definition
+
+Smart contracts running on the TVM are compatible with Ethereum's contract features. The TRON protocol uses **Protocol Buffers** to encapsulate and describe a smart contract, with its data structure defined as follows:
+
+```
 message SmartContract {
   message ABI {
     message Entry {
@@ -61,141 +70,177 @@ message SmartContract {
 }
 ```
 
-- origin_address: smart contract creator address
-- contract_address: smart contract address
-- abi: the api information of all the function of the smart contract
-- bytecode: smart contract byte code
-- call_value: TRX transferred into smart contract while call the contract
-- consume_user_resource_percent: resource consumption percentage set by the developer
-- name: smart contract name
-- origin_energy_limit: energy consumption of the developer limit in one call, must be greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0)
+**Field Descriptions:**
 
-Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.
+  - `origin_address`: The address of the contract creator.
+  - `contract_address`: The address of the contract.
+  - `abi`: The interface information for all functions within the contract.
+  - `bytecode`: The contract's bytecode.
+  - `call_value`: The amount of TRX (in sun) passed when calling the contract.
+  - `consume_user_resource_percent`: The percentage of resource consumption that the caller is responsible for, as set by the developer.
+  - `name`: The name of the contract.
+  - `origin_energy_limit`: The maximum Energy that the deployer will provide for a single transaction, as set by the developer. This value must be greater than 0. For older contracts deployed without this parameter, `origin_energy_limit` is stored as `0`, but the system still processes them with an Energy limit of 10 million. Developers can later set this value explicitly by calling the `updateEnergyLimit` interface, and the new value must be greater than 0.
 
-### Usage of the Function of Smart Contract 
+Developers can create and trigger smart contracts using the `CreateSmartContract` and `TriggerSmartContract` gRPC message types.
 
-* **constant function and inconstant function**
+### Using Contract Functions
 
-There are two types of function according to whether any change will be made to the properties on the chain: constant function and inconstant function
-Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
-Inconstant function will be broadcasted in the form of a transaction while being called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
+#### Constant and Non-Constant Functions
 
-Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction.
+Contract functions can be categorized into two types based on whether they modify the on-chain state:
 
-* **message calls**
+  - **Constant Functions**: Functions decorated with `view`, `pure`, or `constant`. These calls are executed locally on the node and return a result directly without broadcasting a transaction.
+  - **Non-Constant Functions**: Functions that modify the on-chain state, such as performing a transfer or changing a contract's internal variables. These calls must be executed by submitting a transaction, which is then confirmed by network consensus.
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meantime, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
+> **Note**: If the `CREATE` instruction (for dynamically creating contracts) is used within a function, that function will be treated as non-constant and processed as a transaction, even if it is decorated with keywords like `view` or `pure`.
 
-* **delegate call/call code/library**
+#### Message Calls
 
-There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
+During contract execution, you can interact with other contracts or transfer TRX to any account (contract or non-contract) through message calls. Each message call includes attributes such as the sender, recipient, data, transfer amount, fees, and a return value. Message calls can also recursively generate new message calls.
 
-* **CREATE command**
+When a contract initiates an internal message call, it can flexibly control the Energy allocation:
 
-This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the definition of nonce is the contract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail.
-Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
+  * Specify a maximum Energy limit for the call.
+  * Reserve a portion of Energy for the subsequent execution of the current contract.
 
-* **built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)**
+Typically, the Energy limit for an internal call is set using the pattern `{gas: gasleft() - reserved_energy}`.
 
-```  
-1)TVM is compatible with solidity language's transfer format, including:
-- accompany with constructor to call transfer
-- accompany with internal function to call transfer
-- use transfer/send/call/callcode/delegatecall to call transfer
+If an exception occurs during the call (e.g., `OutOfEnergyException`):
 
-Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
+  * The call will return `false` but will not throw an exception.
+  * If an Energy limit was set for the call, it will consume at most the Energy allocated to it. If no limit was explicitly set, the call will consume all remaining Energy available to the executing contract.
 
-2)Different accounts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+#### Delegate Call / Code Call and Libraries (`delegatecall`/`callcode`/Library)
 
-3)SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+A `delegatecall` is a special type of message call. The key difference from a standard message call is that the code at the target address is executed in the **context of the calling contract**, and `msg.sender` and `msg.value` remain unchanged. This allows a contract to dynamically load code from an external address at runtime while ensuring its own storage, address, and balance point to the calling contract; only the code is fetched from the called address.
 
-4)SuperNode approves or disapproves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+This mechanism enables Solidity to implement **Libraries**. Developers can deploy reusable code as separate library contracts and then execute this code within the context of calling contracts via `delegatecall`. A typical application is using libraries to implement complex data structures (like linked lists or sets), allowing multiple main contracts to share the same functional logic while avoiding code redundancy.
 
-5)SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+#### `CREATE` Instruction
 
-6)SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+The `CREATE` instruction is used to dynamically create new contracts and generate new addresses by an existing contract. Unlike Ethereum, the TVM generates a new address based on a **hash combination of the current smart contract's transaction ID and an internal call counter (`nonce`)**. Here, `nonce` is defined as the **creation sequence number under the root call**. In a single contract execution, each use of the `CREATE` instruction generates an incrementing number: 1 for the first time, 2 for the second, and so on.
 
-7)TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+> **Note**: Contracts created via the `CREATE` instruction do not automatically save their ABI. If you need to record the ABI, you should deploy the contract using the `deploycontract` gRPC interface.
 
-8)TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+#### TVM Built-in Functions
 
-9)Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+TRON smart contracts include various built-in functions to support common on-chain operations. The most frequent is **transferring funds**, which can occur in different scenarios, such as:
 
-10)Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+  - Transferring TRX along with a transaction during the `constructor` execution.
+  - Transferring funds during the execution of a contract function.
+  - Using methods like `transfer`, `send`, `call`, `callcode`, and `delegatecall` to perform transfers.
 
-11)Compatible with all the built-in functions of Ethereum
+> **Note**: In TRON smart contracts, if a destination address for a transfer has not yet been activated, it cannot be activated through a smart contract transfer. This behavior differs from both Ethereum's handling and the logic of TRON's system contracts.
+
+In addition to transfers, contracts can perform more complex on-chain operations, including:
+
+  - Voting for Super Representatives
+  - Staking TRX
+  - Delegating resources
+
+The TVM also maintains compatibility with most of Ethereum's built-in functions, allowing developers to quickly migrate and develop contracts based on their existing experience.
+
+## TRON Address Usage in Solidity
+
+Correctly handling addresses in Solidity is crucial for developing smart contracts on TRON. The core concept to understand is the difference in byte length between TRON and Ethereum addresses, and the internal handling the TRON Virtual Machine (TVM) performs to maintain compatibility with Solidity.
+
+**Core Difference: 20 bytes vs. 21 bytes**
+
+  - **Ethereum Address**: A 20-byte value (40 hexadecimal characters).
+  - **TRON Address**: A 21-byte value. It consists of a one-byte address prefix (usually `0x41`) followed by the 20-byte core address.
+
+When handling TRON addresses in Solidity, you must follow these guidelines.
+
+#### Address Conversion
+
+When you need to pass a TRON address into a contract, the recommended practice is to pass it as a `uint256` integer and then cast it to the `address` type inside the contract.
+
 ```
-Note: Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
-
-### Contract Address Used in Solidity Language 
-
-Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
-
-* **address conversion**
-
-Need to convert TRON's address while using in solidity (recommended):
-```text
 /**
-     *  @dev    convert uint256 (HexString add 0x at beginning) TRON address to solidity address type
-     *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
-     *  @return Solidity address type
-*/
-
-function convertFromTronInt(uint256 tronAddress) public view returns(address){
-        return address(tronAddress);
+ * @dev Converts a TRON address in uint256 format to Solidity's address type.
+ * @param tronAddress The TRON address in uint256 format, starting with 0x followed by the HexString.
+ * @return address The Solidity address type.
+ */
+function convertFromTronInt(uint256 tronAddress) public view returns(address) {
+    return address(tronAddress);
 }
 ```
-This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
 
-* **address judgement**
+This syntax is identical to casting other types to `address` in Ethereum.
 
-Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-```text
-function compareAddress(address tronAddress) public view returns (uint256){
-        // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
-        if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
-            return 1;
-        } else {
-            return 0;
-        }
+#### Address Comparison
+
+When comparing an address to a literal constant in Solidity, you must use the 20-byte format; otherwise, it will result in a compiler error. The TVM automatically handles the `0x41` prefix during execution. For example:
+
+```
+function compareAddress(address tronAddress) public view returns (uint256) {
+    // Incorrect: Including the 0x41 prefix will cause a compiler error.
+    // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { ... }
+
+    // Correct: Use the 20-byte address format.
+    if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 ```
-But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
 
-* **variable assignment**
+> **Note**: Although the constant in the code is 20 bytes, the TVM can still perform the comparison correctly if a full 21-byte TRON address is passed in for the `tronAddress` parameter from an external source (like `wallet-cli`). The function will still correctly return `1`.
 
-Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
-```text
-function assignAddress() public view {
-        // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
-        address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
-        // do something
+#### Address Assignment
+
+Similar to address comparison, when assigning a literal constant to a variable of type `address`, you must also omit the `0x41` prefix and use the 20-byte format. For example:
+
+```
+function assignAddress() public pure {
+    // Incorrect: Including the 0x41 prefix will cause a compiler error.
+    // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c;
+
+    // Correct:
+    address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
+    // ... subsequent operations
 }
 ```
-If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
-### Special Constants Differ from Ethereum 
+> **Notes**:
+>
+>   - When the `newAddress` variable is used for on-chain operations like transfers, the TVM will automatically prepend the `0x41` prefix to form a valid TRON address.
+>   - Base58 formatted addresses like `TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm` are string addresses used by wallets and clients. They cannot be used directly in Solidity code and must first be decoded into a hexadecimal format (HexString).
 
-#### Currency
-Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.
-We recommend to use tron-studio instead of remix to build TRON smart contract.
+## Global Variables and Units
 
-#### Block Related
-- block.blockhash (uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded
-- block.coinbase (address): SuperNode address that produced the current block
-- block.difficulty (uint): current block difficulty, not recommended, set 0
-- block.gaslimit (uint): current block gas limit, not supported, set 0
-- block.number (uint): current block number
-- block.timestamp (uint): current block timestamp
-- gasleft() returns (uint256): remaining gas
-- msg.data (bytes): complete call data
-- msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()
-- msg.sender (address): message sender (current call)
-- msg.sig (bytes4): first 4 bytes of call data (function identifier)
-- msg.value (uint): the amount of SUN send with message
-- now (uint): current block timestamp (block.timestamp)
-- tx.gasprice (uint): the gas price of transaction, not recommended, set 0
-- tx.origin (address): transaction initiator
+In Solidity smart contracts, a series of global variables can be used to access information about the blockchain, transactions, and calls.
 
+#### Currency Units
 
-Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.
+Similar to Solidity's support for `ether`, the TVM natively supports two currency units: `trx` and `sun`, with the conversion rate of `1 trx = 1,000,000 sun`. Both units are lowercase and case-sensitive.
+
+  * We recommend using **TronIDE** or **TronBox** for TRON smart contract development, as both tools fully support the `trx` and `sun` units.
+
+#### Block and Transaction-Related Global Variables
+
+The following are commonly used global variables and functions in TRON smart contracts. The behavior of some of these variables differs from Ethereum.
+
+**Block Information**
+
+  - `block.blockhash(uint blockNumber) returns (bytes32)`: Returns the hash of the specified block. Only works for the 256 most recent blocks (not including the current block).
+  - `block.coinbase (address)`: The address of the Super Representative that produced the current block.
+  - `block.number (uint)`: The current block height (i.e., block number).
+  - `block.timestamp (uint)`: The current block's timestamp (in seconds).
+  - `now (uint)`: The current block's timestamp, equivalent to `block.timestamp`.
+
+**Call and Transaction Information**
+
+  - `msg.data (bytes)`: The complete calldata.
+  - `msg.sender (address)`: The sender of the message (the immediate caller).
+  - `msg.sig (bytes4)`: The first 4 bytes of the calldata, which is the function identifier.
+  - `msg.value (uint)`: The amount of `sun` sent with the message.
+  - `tx.origin (address)`: The original initiator of the transaction.
+
+**Gas and Special Variables**
+
+  - `gasleft() returns (uint256)`: The remaining gas.
+  - `block.difficulty (uint)`: The difficulty of the current block. On the TRON network, this value is always 0 and its use is not recommended.
+  - `block.gaslimit (uint)`: The gas limit of the current block. This is not supported on the TRON network and is temporarily set to 0.
+  - `tx.gasprice (uint)`: The gas price of the transaction. On the TRON network, this value is always 0 and its use is not recommended.
