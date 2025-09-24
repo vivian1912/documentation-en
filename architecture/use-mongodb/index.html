@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/releases/signature_verification/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/architecture/use-mongodb/">
       
       
-        <link rel="prev" href="../upgrade-instruction/">
+        <link rel="prev" href="../use-native-queue/">
       
       
-        <link rel="next" href="../history/">
+        <link rel="next" href="../use-kafka/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Integrity Check - java-tron</title>
+        <title>MongoDB Event Subscription Plugin - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#java-tron-release-package-signature-verification" class="md-skip">
+        <a href="#tron-mongodb-plugin-deployment-and-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Integrity Check
+              MongoDB Event Subscription Plugin
             
           </span>
         </div>
@@ -319,8 +319,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -330,11 +332,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -349,7 +351,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Using java-tron
@@ -448,6 +450,8 @@
                 
   
   
+    
+  
   
   
     
@@ -456,11 +460,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
@@ -475,7 +479,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             Event Subscription
@@ -489,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/event/" class="md-nav__link">
+      <a href="../event/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/use-native-queue/" class="md-nav__link">
+      <a href="../use-native-queue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -530,10 +534,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../architecture/use-mongodb/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MongoDB Event Subscription Plugin
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -543,6 +568,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item ">
+  <a href="#recommended-system-configuration" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Recommended System Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#system-architecture-and-workflow" class="md-nav__link" >
+    <span class="md-ellipsis">
+      System Architecture and Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#deploying-the-event-subscription-plugin" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Deploying the Event Subscription Plugin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying the Event Subscription Plugin" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#31-building-the-plugin" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.1 Building the Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#32-configuring-the-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3.2 Configuring the FullNode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#installing-and-configuring-mongodb" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Installing and Configuring MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing and Configuring MongoDB" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#41-installing-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.1 Installing MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#42-setting-environment-variables" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.2 Setting Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#43-configuring-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.3 Configuring MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#44-starting-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.4 Starting MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#45-creating-admin-and-database-users" class="md-nav__link" >
+    <span class="md-ellipsis">
+      4.5 Creating Admin and Database Users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#deploying-the-event-query-service" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Deploying the Event Query Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying the Event Query Service" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#51-downloading-the-source-code" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.1 Downloading the Source Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#52-building-the-service" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.2 Building the Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#53-starting-the-tron-event-query-service" class="md-nav__link" >
+    <span class="md-ellipsis">
+      5.3 Starting the TRON Event Query Service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#launch-and-verification" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Launch and Verification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Launch and Verification" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#61-starting-the-fullnode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.1 Starting the FullNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#62-verifying-plugin-load" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.2 Verifying Plugin Load
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#63-verifying-data-persistence-in-mongodb" class="md-nav__link" >
+    <span class="md-ellipsis">
+      6.3 Verifying Data Persistence in MongoDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#using-the-tron-event-query-service-api" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Using the TRON Event Query Service API
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -555,7 +804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/use-kafka/" class="md-nav__link">
+      <a href="../use-kafka/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -585,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/database/" class="md-nav__link">
+      <a href="../database/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1357,8 +1606,6 @@
       
   
   
-    
-  
   
   
     
@@ -1370,11 +1617,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
@@ -1389,7 +1636,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Releases
@@ -1403,7 +1650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../upgrade-instruction/" class="md-nav__link">
+      <a href="../../releases/upgrade-instruction/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1422,31 +1669,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Integrity Check
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../releases/signature_verification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1456,119 +1682,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item has-children">
-  <a href="#gpg-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      GPG Signature Verification Process
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GPG Signature Verification Process" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-install-gpg" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Install GPG
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-import-the-public-key" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. Import the Public Key
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-verify-the-signature" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Verify the Signature
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tron-address-signature-verification-process" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TRON Address Signature Verification Process
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TRON Address Signature Verification Process" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#1-install-tronweb" class="md-nav__link" >
-    <span class="md-ellipsis">
-      1. Install TronWeb
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#2-verify-the-release-packages-integrity" class="md-nav__link" >
-    <span class="md-ellipsis">
-      2. Verify the Release Package's Integrity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#3-check-the-release-package-signature" class="md-nav__link" >
-    <span class="md-ellipsis">
-      3. Check the Release Package Signature
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#historical-version-signature-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Historical Version Signature Information
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1581,7 +1694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../history/" class="md-nav__link">
+      <a href="../../releases/history/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,272 +1805,235 @@
   
 
 
-<h1 id="java-tron-release-package-signature-verification">java-tron Release Package Signature Verification<a class="headerlink" href="#java-tron-release-package-signature-verification" title="Permanent link">&para;</a></h1>
-<p>This document provides developers with instructions on how to verify the signature of the TRON java-tron executable file to ensure its <strong>authenticity</strong> and <strong>integrity</strong>. The signature verification process requires three key pieces of information: the executable file to be verified, its digital signature, and the public key corresponding to the private key used for signing. The verification principle is to use the content of the executable file and its signature to derive the signing public key and compare it with the public key officially released on the <a href="https://github.com/tronprotocol/java-tron">java-tron</a> GitHub repository. If they match, it confirms that the java-tron executable you obtained is consistent with the one published on GitHub and has not been tampered with.</p>
-<p>TRON's signing method for java-tron release packages has been adjusted:</p>
+<h1 id="tron-mongodb-plugin-deployment-and-usage">TRON MongoDB Plugin: Deployment and Usage<a class="headerlink" href="#tron-mongodb-plugin-deployment-and-usage" title="Permanent link">&para;</a></h1>
+<p>This guide is designed to help developers quickly deploy and use the TRON MongoDB event subscription plugin to achieve real-time data capture, persistent storage, and querying of on-chain events. The document covers the entire process, including system environment configuration, plugin deployment, database installation, query service setup, and API usage.</p>
+<p><a id="1"></a></p>
+<h2 id="recommended-system-configuration">Recommended System Configuration<a class="headerlink" href="#recommended-system-configuration" title="Permanent link">&para;</a></h2>
+<p>To ensure the efficient and stable operation of your TRON node and event service, the following configuration is recommended:</p>
 <ul>
-<li><strong>For new versions released on or after January 3, 2023</strong>: <strong>GPG</strong> is used for signing and verification.</li>
-<li><strong>For versions released before January 3, 2023</strong>: A <strong>specific TRON account's public and private keys</strong> were used for signing and verification.</li>
+<li><strong>CPU</strong>: 16 cores or more</li>
+<li><strong>RAM</strong>: 32 GB or higher</li>
+<li><strong>SSD</strong>: 2.5 TB or more</li>
+<li><strong>Operating System</strong>: Linux or macOS</li>
 </ul>
-<p>This document will detail both of these signature verification processes.</p>
-<h2 id="gpg-signature-verification-process">GPG Signature Verification Process<a class="headerlink" href="#gpg-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released after January 3, 2023, you must use GPG for signature verification. The <code>java-tron</code> executable and its corresponding signature file are published together on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>. Please follow the steps below to perform GPG signature verification.</p>
-<h3 id="1-install-gpg">1. Install GPG<a class="headerlink" href="#1-install-gpg" title="Permanent link">&para;</a></h3>
-<p>If you have already installed GPG, you can skip this step. Otherwise, install it using the command for your operating system:</p>
-<p><div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>gpg
-</code></pre></div>
-* <strong>Debian, Ubuntu, or other Linux distributions</strong>:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gpg
-</code></pre></div></p>
-<h3 id="2-import-the-public-key">2. Import the Public Key<a class="headerlink" href="#2-import-the-public-key" title="Permanent link">&para;</a></h3>
-<p>If you have previously imported the public key, you can skip this step, as it only needs to be imported once.</p>
-<p>First, get the <strong>public key hash</strong> and <strong>UID</strong> of the <code>java-tron</code> release package GPG signature from the <a href="https://github.com/tronprotocol/java-tron?tab=readme-ov-file#integrity-check">java-tron GitHub repository</a>. For example:</p>
-<div class="highlight"><pre><span></span><code>pub: 1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B
-uid: build@tron.network
-</code></pre></div>
-<p>Then, import the public key from the GPG public key server to your local machine using the public key hash:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--recv-keys<span class="w"> </span><span class="s2">&quot;1254 F859 D2B1 BD9F 66E7 107D F859 BCB4 4A28 290B&quot;</span>
-</code></pre></div>
-<p>If the public key import is successful, you will see output similar to this:</p>
-<div class="highlight"><pre><span></span><code>gpg: key 785FB96D2C7C3CA5: &quot;build_tron &lt;build@tron.network&gt;&quot; public key imported
-gpg: Total number processed: 1
-gpg:               imported: 1
-</code></pre></div>
-<h3 id="3-verify-the-signature">3. Verify the Signature<a class="headerlink" href="#3-verify-the-signature" title="Permanent link">&para;</a></h3>
-<p>Assuming the executable you want to verify is <code>FullNode.jar</code> and its corresponding signature file is <code>FullNode.jar.sig</code>, run the following command to verify the signature:</p>
-<div class="highlight"><pre><span></span><code>gpg<span class="w"> </span>--verify<span class="w"> </span>FullNode.jar.sig<span class="w"> </span>FullNode.jar
-</code></pre></div>
-<p>If the signature verification passes, you will see the following text:</p>
-<div class="highlight"><pre><span></span><code>gpg: Signature made Wed Jan  6 12:21:51 2023 CST
-gpg:                using RSA key 1254F859D2B1BD9F66E7107D F859BCB44A28290B
-gpg: Good signature from &quot;build_tron &lt;build@tron.network&gt;&quot; [unknown]
-gpg: WARNING: This key is not certified with a trusted signature!
-gpg:          There is no indication that the signature belongs to the owner.
-Primary key fingerprint: 07B2 3298 AEA4 E006 BD9A  42DE 785F B96D 2C7C 3CA5
-Subkey fingerprint: 1254 F859 D2B1 BD9F 66E7  107D F859 BCB4 4A28 290B
-</code></pre></div>
-<p>If the verification fails, it will display text like <code>Bad signature from "build_tron &lt;build@tron.network&gt;"</code>.</p>
-<h2 id="tron-address-signature-verification-process">TRON Address Signature Verification Process<a class="headerlink" href="#tron-address-signature-verification-process" title="Permanent link">&para;</a></h2>
-<p>For <code>java-tron</code> versions released before January 3, 2023, the release packages were signed by the TRON account <code>TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2</code>. The signing process is as follows:</p>
+<p><a id="2"></a></p>
+<h2 id="system-architecture-and-workflow">System Architecture and Workflow<a class="headerlink" href="#system-architecture-and-workflow" title="Permanent link">&para;</a></h2>
+<p>The TRON MongoDB event subscription system consists of three core modules:</p>
 <ol>
-<li>First, the SHA256 hash of the executable file is calculated.</li>
-<li>Then, the SHA256 hash is signed with the private key of the TRON account.</li>
+<li><strong>Event Subscription Plugin</strong>: Connects to a TRON node to capture event data and writes it to MongoDB.</li>
+<li><strong>MongoDB Database</strong>: The persistence layer for storing event data.</li>
+<li><strong>Event Query Service</strong>: Provides an HTTP API for external applications to query event data.</li>
 </ol>
-<p>The SHA256 hash and signature result for the release packages can be found in the <a href="#historical-version-signature-information">Historical Version Signature Information</a> section of this document or on the <a href="https://github.com/tronprotocol/java-tron/releases">GitHub Releases page</a>.</p>
-<p>Here, we will use the popular TRON JavaScript library, <a href="https://tronweb.network/docu/docs/intro/">tronweb</a>, to demonstrate the signature verification process. TronWeb provides the <code>Trx.verifySignature</code> interface to verify signatures. A successful verification will return <code>true</code>; otherwise, it returns <code>false</code>. Please follow the process below to verify.</p>
-<h3 id="1-install-tronweb">1. Install TronWeb<a class="headerlink" href="#1-install-tronweb" title="Permanent link">&para;</a></h3>
-<p>If you have already installed TronWeb, you can skip this step. Otherwise, install it using the following command:</p>
-<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>tronweb
+<p><a id="3"></a></p>
+<h2 id="deploying-the-event-subscription-plugin">Deploying the Event Subscription Plugin<a class="headerlink" href="#deploying-the-event-subscription-plugin" title="Permanent link">&para;</a></h2>
+<h3 id="31-building-the-plugin">3.1 Building the Plugin<a class="headerlink" href="#31-building-the-plugin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/event-plugin.git
+cd event-plugin
+./gradlew build
 </code></pre></div>
-<h3 id="2-verify-the-release-packages-integrity">2. Verify the Release Package's Integrity<a class="headerlink" href="#2-verify-the-release-packages-integrity" title="Permanent link">&para;</a></h3>
-<p>To ensure the integrity of the release package, you need to check if its SHA256 hash matches the hash provided in the release information.</p>
-<p>For the <code>Odyssey-3.7</code> version, for example:</p>
+<p>After the build is complete, the generated plugin file will be located at:</p>
+<div class="highlight"><pre><span></span><code>event-plugin/build/plugins/plugin-mongodb-*.zip
+</code></pre></div>
+<h3 id="32-configuring-the-fullnode">3.2 Configuring the FullNode<a class="headerlink" href="#32-configuring-the-fullnode" title="Permanent link">&para;</a></h3>
+<p>Add the following content to your FullNode's configuration file, <code>config.conf</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nx">event</span><span class="p">.</span><span class="nx">subscribe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">startSyncBlockNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span>
+
+<span class="w">  </span><span class="kr">native</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">useNativeQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:27017&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">dbconfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;eventlog|tron|123456&quot;</span><span class="w">  </span>
+<span class="w">  </span><span class="nx">topics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;block&quot;</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;transaction&quot;</span>
+<span class="w">      </span><span class="nx">solidified</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">ethCompatible</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;contractlog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w">  </span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidity&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;solidityevent&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">triggerName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">      </span><span class="nx">topic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;soliditylog&quot;</span>
+<span class="w">      </span><span class="nx">redundancy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+
+<span class="w">  </span><span class="nx">filter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fromblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">toblock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nx">contractAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="w">    </span><span class="nx">contractTopic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Field Descriptions</strong>:</p>
 <ul>
-<li>The release package file name is: <code>FullNode.jar</code></li>
-<li>The release package's SHA256 is: <code>2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e</code></li>
-<li>The signature is: <code>21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b</code></li>
+<li><code>version</code>: The version of the event service framework. <code>1</code> indicates V2.0, while <code>0</code> indicates V1.0. If not configured, it defaults to V1.0.</li>
+<li><code>startSyncBlockNum</code>: A feature introduced in V2.0 that allows processing and pushing events from historical blocks, satisfying the need for historical data subscriptions. If <code>startSyncBlockNum &lt;= 0</code>, this feature is disabled. If <code>startSyncBlockNum &gt; 0</code>, the feature is enabled, and historical event synchronization will begin from the specified block height. <strong>Note</strong>: It is recommended to use the latest version of the event plugin when enabling this feature.</li>
+<li><code>native.useNativeQueue</code>: Specifies whether to use the built-in message queue (ZeroMQ) for event subscriptions. <code>true</code> uses the built-in queue, while <code>false</code> uses the plugin. This must be set to <code>false</code>.</li>
+<li><code>path</code>: The absolute path to the plugin file, e.g., <code>"/deploy/fullnode/event-plugin/build/plugins/plugin-mongodb-1.0.0.zip"</code>.</li>
+<li><code>server</code>: The target server address, i.e., the address and port for MongoDB, e.g., <code>"127.0.0.1:27017"</code>.</li>
+<li><code>dbconfig</code>: The MongoDB database configuration in the format: <code>database_name|username|password</code>, e.g., <code>"eventlog|tron|123456"</code>.</li>
+<li><code>topics</code>: Seven event types are currently supported: <code>block</code>, <code>transaction</code>, <code>contractevent</code>, <code>contractlog</code>, <code>solidity</code>, <code>solidityevent</code>, and <code>soliditylog</code>. For more details, please refer to the <a href="../event/#event-types">Event Types</a> chapter.<ul>
+<li><code>triggerName</code>: The name of the trigger, which cannot be modified.</li>
+<li><code>enable</code>: Toggles the event subscription. <code>true</code> enables it, <code>false</code> disables it.</li>
+<li><code>topic</code>: The name of the collection in MongoDB that will receive the events. This can be modified.</li>
 </ul>
-<p>On your system, execute the following command to calculate the SHA256 hash of <code>FullNode.jar</code>:</p>
+</li>
+<li><code>filter</code>: The criteria for filtering events.<ul>
+<li><code>fromblock</code>: The starting block number of the query range. Can be <code>""</code>, <code>"earliest"</code> (to query from the genesis block), or a specific block number.</li>
+<li><code>toblock</code>: The ending block number of the query range. Can be <code>""</code>, <code>"latest"</code> (the most recent block), or a specific block number.</li>
+<li><code>contractAddress</code>: A list of contract addresses you wish to subscribe to. If set to an empty string, logs/events from all contract addresses will be received.</li>
+<li><code>contractTopic</code>: A list of contract topics you wish to subscribe to. If set to an empty string, logs/events for all contract topics will be received.</li>
+</ul>
+</li>
+</ul>
+<p><a id="4"></a></p>
+<h2 id="installing-and-configuring-mongodb">Installing and Configuring MongoDB<a class="headerlink" href="#installing-and-configuring-mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB will be used to store TRON event data. Please follow these steps to install and configure it:</p>
+<h3 id="41-installing-mongodb">4.1 Installing MongoDB<a class="headerlink" href="#41-installing-mongodb" title="Permanent link">&para;</a></h3>
+<p>First, create an installation directory for MongoDB, then download and extract the installation package:</p>
+<div class="highlight"><pre><span></span><code>mkdir /home/java-tron
+cd /home/java-tron
+curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.4.tgz
+tar zxvf mongodb-linux-x86_64-4.0.4.tgz
+mv mongodb-linux-x86_64-4.0.4 mongodb
+</code></pre></div>
+<h3 id="42-setting-environment-variables">4.2 Setting Environment Variables<a class="headerlink" href="#42-setting-environment-variables" title="Permanent link">&para;</a></h3>
+<p>To simplify subsequent operations, please set the environment variables for MongoDB:</p>
+<div class="highlight"><pre><span></span><code>export MONGOPATH=/home/java-tron/mongodb/
+export PATH=$PATH:$MONGOPATH/bin
+</code></pre></div>
+<h3 id="43-configuring-mongodb">4.3 Configuring MongoDB<a class="headerlink" href="#43-configuring-mongodb" title="Permanent link">&para;</a></h3>
+<p>Create the log and data directories for MongoDB and create the configuration file <code>mgdb.conf</code>:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p /home/java-tron/mongodb/{log,data}
+cd /home/java-tron/mongodb/log/ &amp;&amp; touch mongodb.log &amp;&amp; cd -
+vim /home/java-tron/mongodb/mgdb.conf
+</code></pre></div>
+<p>Write the following content into the <code>mgdb.conf</code> file. Ensure that <code>dbpath</code> and <code>logpath</code> use absolute paths:</p>
+<div class="highlight"><pre><span></span><code>dbpath=/home/java-tron/mongodb/data
+logpath=/home/java-tron/mongodb/log/mongodb.log
+port=27017
+logappend=true
+fork=true
+bind_ip=0.0.0.0
+auth=true
+wiredTigerCacheSizeGB=2
+</code></pre></div>
+<p><strong>Important Configuration Notes</strong>:</p>
 <ul>
-<li><strong>macOS</strong>:
-<div class="highlight"><pre><span></span><code>shasum<span class="w"> </span>-a<span class="w"> </span><span class="m">256</span><span class="w"> </span>FullNode.jar
-</code></pre></div></li>
-<li><strong>Debian, Ubuntu, and other Debian-derived systems</strong>:
-<div class="highlight"><pre><span></span><code>sha256sum FullNode.jar
-</code></pre></div>
-Compare the hash value from the command's output with the hash provided in the release information.</li>
+<li><code>bind_ip=0.0.0.0</code>: Must be configured to <code>0.0.0.0</code>; otherwise, remote connections will be rejected.</li>
+<li><code>wiredTigerCacheSizeGB</code>: This parameter must be configured to prevent Out Of Memory (OOM) issues.</li>
 </ul>
-<h3 id="3-check-the-release-package-signature">3. Check the Release Package Signature<a class="headerlink" href="#3-check-the-release-package-signature" title="Permanent link">&para;</a></h3>
-<p>Use the <code>tronweb</code>'s <code>Trx.verifySignature</code> interface to verify the release package's signature. Execute the following JavaScript code in your command line:</p>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Trx</span><span class="p">.</span><span class="nx">verifySignature</span><span class="p">(</span><span class="nx">SHA256</span><span class="p">,</span><span class="w"> </span><span class="nx">ADDRESS</span><span class="p">,</span><span class="w"> </span><span class="nx">SIGNATURE</span><span class="p">));</span>
-<span class="nx">node</span><span class="w"> </span><span class="o">-</span><span class="nx">e</span><span class="w"> </span><span class="s1">&#39;console.log(require(&quot;tronweb&quot;).Trx.verifySignature(</span>
-<span class="s1">    &quot;2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e&quot;,</span>
-<span class="s1">    &quot;TKeAcHxgErbVXrG3N3TZiSV6AT566BHTj2&quot;,</span>
-<span class="s1">    &quot;21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b&quot;</span>
-<span class="s1">))&#39;</span>
+<h3 id="44-starting-mongodb">4.4 Starting MongoDB<a class="headerlink" href="#44-starting-mongodb" title="Permanent link">&para;</a></h3>
+<p>Start the MongoDB service using the configuration file:</p>
+<div class="highlight"><pre><span></span><code>mongod --config /home/java-tron/mongodb/mgdb.conf &amp;
 </code></pre></div>
-<p>If the signature verification passes, it will output <code>true</code>; otherwise, it will output <code>false</code>.</p>
-<h3 id="historical-version-signature-information">Historical Version Signature Information<a class="headerlink" href="#historical-version-signature-information" title="Permanent link">&para;</a></h3>
-<h4 id="odyssey-37">Odyssey-3.7<a class="headerlink" href="#odyssey-37" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 2fca93b09da4ac62641e03838e77fce99b4711ddb0c09aa91656c80fc9556d2e
-FullNode signature: 21435e32131feb6d00ba8048df04e112e02569ec851064d8ecad2d4dd5da44b7628ddce16823dadfff6fd683fc58cee74964970621a845ee459e2c96a750de551b
-SolidityNode sha256sum: fcdea8b3e511306218ba442fb0828f0413574012d646c39c212a59f6ba5844bc
-SolidityNode signature: 6dcad6e02f17467e5cfebeefa0f9963da08e7da10feebefdec47d689fecc30f104c9b7f5e784b883e7ceb786fe55188356c42c306d727fb7819eed2a71f788361c
+<h3 id="45-creating-admin-and-database-users">4.5 Creating Admin and Database Users<a class="headerlink" href="#45-creating-admin-and-database-users" title="Permanent link">&para;</a></h3>
+<p>Connect to MongoDB to create an administrative user, then create the database and user for the event subscription service:</p>
+<div class="highlight"><pre><span></span><code>mongo
+use admin
+db.createUser({user:&quot;&lt;admin-username&gt;&quot;,pwd:&quot;&lt;admin-password&gt;&quot;,roles:[{role:&quot;root&quot;,db:&quot;admin&quot;}]})
+
+db.auth(&quot;&lt;admin-username&gt;&quot;, &quot;&lt;admin-password&gt;&quot;)
+use eventlog
+db.createUser({user:&quot;&lt;eventlog-username&gt;&quot;,pwd:&quot;&lt;eventlog-password&gt;&quot;,roles:[{role:&quot;dbOwner&quot;,db:&quot;eventlog&quot;}]})
 </code></pre></div>
-<h4 id="greatvoyage-400">GreatVoyage-4.0.0<a class="headerlink" href="#greatvoyage-400" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: d3f8f9fde64bdefaadae784d09de97172e5e8a3fe539217e12b89963983a530d
-FullNode signature: e788dbaf2fe35f099f65b2403cfb0d7cbe7f4611f8c5ff8151e4bd84ae468d2e541043c9cde9e74500003027ae9f25cdda81a9bcd60abb45ca7a69f965f4dcc71c
-SolidityNode sha256sum: adddf88423c6c31f1f25ed39b10779c24dd7cdcf37f2325c02b2f2ecfc97e1f6
-SolidityNode signature: e3b9859f178f7851dedb7a0a8deb715e5f1e3af10b1064c36f2727ec2b8825510df4fd7b09d7d049204e5df3e8d5b87778e83a15ca96ce786f7977a6cb48bca91b
+<p><a id="5"></a></p>
+<h2 id="deploying-the-event-query-service">Deploying the Event Query Service<a class="headerlink" href="#deploying-the-event-query-service" title="Permanent link">&para;</a></h2>
+<p>The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.</p>
+<p><strong>Note</strong>: Please ensure you are using <strong>Oracle JDK 8</strong>, not Open JDK 8.</p>
+<h3 id="51-downloading-the-source-code">5.1 Downloading the Source Code<a class="headerlink" href="#51-downloading-the-source-code" title="Permanent link">&para;</a></h3>
+<p>Clone the <code>tron-eventquery</code> project source code:</p>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/tronprotocol/tron-eventquery.git
+cd tron-eventquery
 </code></pre></div>
-<h4 id="greatvoyage-411">GreatVoyage-4.1.1<a class="headerlink" href="#greatvoyage-411" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 30e716b86b879af1e006c2b463903ae3835e239e32e2b01c2a1b903a153897fe
-FullNode signature: 5faee65a448bb9aa77835992ca3d24e50d8a76b7934f80664ad38e83179c8114278fdef4494de7231f8e40de86461676a7aa4a54c795f4c692e91d90e156ec471b
-SolidityNode sha256sum: 10a160181053b421109ecace74df5fc0f8860bc8a70181add65fd9a292c35a44
-SolidityNode signature: 1d1413b13adf7778f9a720294eca066ac728ad636d166505276f5ff1f63973c100c04778f937f240f10107edb7de477604857867fc4dbdb68238169c978fc3da1b
+<h3 id="52-building-the-service">5.2 Building the Service<a class="headerlink" href="#52-building-the-service" title="Permanent link">&para;</a></h3>
+<p>Download and use Maven to build the <code>tron-eventquery</code> service:</p>
+<div class="highlight"><pre><span></span><code>wget https://mirrors.cnnic.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz --no-check-certificate
+tar zxvf apache-maven-3.5.4-bin.tar.gz
+export M2_HOME=$HOME/maven/apache-maven-3.5.4
+export PATH=$PATH:$M2_HOME/bin
+mvn --version
+mvn package
 </code></pre></div>
-<h4 id="greatvoyage-v412">GreatVoyage-v4.1.2<a class="headerlink" href="#greatvoyage-v412" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: 4ded44b6c1a3dbd25212e14ab413142b5463dcbf30a528f83ded529048542547
-FullNode signature: 57a094c1b8a5ec301ef913eb718de2498b5695eb999530863df05252ba8919ba6866c8490e29d36f7dbf34537c898ece5ef0111efb134419c3a5fd6fc9ec03b81c
-SolidityNode sha256sum: 3db36cadbd1f7641aafc8164983f28df4b7ceff8174e090327ed407012cf12cb
-SolidityNode signature: d07604f6811cbed628dd6e5c07880c2fdd3025848fd5365925531c7748467d5228fea2e18326864acc27f3b51c73b364fa44c450d8ec4b5080a7ddb7566724701c
+<p>Upon successful execution, a JAR package will be generated in the <code>tron-eventquery/target</code> directory, and a <code>config.conf</code> file will be created in the <code>tron-eventquery/</code> directory. An example of the configuration file content is shown below:</p>
+<div class="highlight"><pre><span></span><code>mongo.host=IP
+mongo.port=27017
+mongo.dbname=eventlog
+mongo.username=tron
+mongo.password=123456
+mongo.connectionsPerHost=8
+mongo.threadsAllowedToBlockForConnectionMultiplier=4
 </code></pre></div>
-<h4 id="greatvoyage-v413thales">GreatVoyage-v4.1.3(Thales)<a class="headerlink" href="#greatvoyage-v413thales" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum: c5fb99ad5b024bb7877118f30fb6065f6e6febd11a3cfa241521cbed73cca181
-FullNode signature: d80ec371e791c4316925d80ff3400cf51b14c8a4d4c696b7817c517eb094823622932b45b9b37f9e9657513c3eddb1134fbbb1ee56727c0957e8a3b40c67409b1c
-SolidityNode sha256sum: 4b941d71b561a8b2e0b97d7498823d900eaf287910eea1eaafc649f5aad14036
-SolidityNode signature: f8a8e8d411b009d02986cad1e19e745f8107384a274f146bcae60c570111b13556ff9ab528eb5d1fb4734bd4ef488ade4038781d06ab6420e35f28be6135fe9b1c
+<p>Please modify <code>mongo.host</code>, <code>mongo.port</code>, <code>mongo.dbname</code>, <code>mongo.username</code>, and <code>mongo.password</code> according to your MongoDB configuration.</p>
+<h3 id="53-starting-the-tron-event-query-service">5.3 Starting the TRON Event Query Service<a class="headerlink" href="#53-starting-the-tron-event-query-service" title="Permanent link">&para;</a></h3>
+<p>Start the <code>tron-eventquery</code> service and insert the indexes:</p>
+<div class="highlight"><pre><span></span><code>sh deploy.sh
+sh insertIndex.sh
 </code></pre></div>
-<h4 id="greatvoyage-v420plato">GreatVoyage-v4.2.0(Plato)<a class="headerlink" href="#greatvoyage-v420plato" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-bbf103432be016b582452137b4862140af15ccf7c5daa9be738450705317fdb8
-FullNode signature:
-326701699a5eb8d497eb454b5b74c1559961417fb6f262b4e6314052d73f5977312e0450937fa485236f51f706b434acf8659ce1325d704097c5748629e736ef1c
-SolidityNode sha256sum:
-1db544cbca9dc814683ccf9bef28f7d6ca4469289052230394aaf4e3bcd08615
-SolidityNode signature:
-47fea27df940db0d2a4c0abf6d06969882c027bc4f17449205a28ae5cd25b8ba5339e21f105fe1c25e799d0f4ffea64a15046b9baf5b54341411b5180da439011b
+<p><strong>Note</strong>: The default port is <code>8080</code>. To change it, edit the <code>deploy.sh</code> script. For example:</p>
+<div class="highlight"><pre><span></span><code>nohup java -jar -Dserver.port=8081 target/troneventquery-1.0.0-SNAPSHOT.jar 2&gt;&amp;1 &amp;
 </code></pre></div>
-<h4 id="greatvoyage-v421origen">GreatVoyage-v4.2.1(Origen)<a class="headerlink" href="#greatvoyage-v421origen" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-9888710c915a4027f1bc3dcb1d5d983e0c00d4c438f6fa307d412f62ff6862ea
-FullNode signature:
-6e7d8ef9d033ebf9213118b7511f4ecc5def97442844fbd34de3ef76dd417a0d45da3e2e70fc213475d7fc0a44df1c54732874d858ec980159c5dbffc975680a1c
-SolidityNode sha256sum:
-c70edffa3022e9c25bf845ee978e3500c3ada89b473d895a715acf1738b83f10
-SolidityNode signature:
-0e366acce33bb7c6b02fa143a57d9380c94d3513a9fba8692efe2862a8f7df93156edbddd075f1844f2f81398b14f2db6a03e21f0f6b8ab25649fae4dc16ae731b
+<p><a id="6"></a></p>
+<h2 id="launch-and-verification">Launch and Verification<a class="headerlink" href="#launch-and-verification" title="Permanent link">&para;</a></h2>
+<p>After completing the deployment steps, you can start the TRON FullNode and verify that the event subscription service is working correctly.</p>
+<h3 id="61-starting-the-fullnode">6.1 Starting the FullNode<a class="headerlink" href="#61-starting-the-fullnode" title="Permanent link">&para;</a></h3>
+<p><strong>Important</strong>: Before starting the FullNode, ensure that the MongoDB service has been started successfully.</p>
+<p>The command to start the FullNode is as follows:</p>
+<div class="highlight"><pre><span></span><code>java -jar FullNode.jar -c config.conf --es
 </code></pre></div>
-<h4 id="greatvoyage-v422lucretius">GreatVoyage-v4.2.2(Lucretius)<a class="headerlink" href="#greatvoyage-v422lucretius" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8a7f8143b3351ea6b5d8e3dfc857b09256d363d4907ba3ab0288f67f77c2a58f
-FullNode signature:
-71c6300ace5cbf16d78a32aa4602c3f129cb768e32acffaecd17b4134b5955bf37efda1d27025e894e521184a21174e5eddf4e7d1f86761657827795cbddfcfd1c
-SolidityNode sha256sum:
-2d0d5334a232b7b74df8ed3211d9e0ac957894f81e9172010732f2159da261ad
-SolidityNode signature:
-0696f8cb3c65324c4b04f9ecf89d939bf7e1b955144e3fe75eeca6bd4c639e463afbe24e31ae38a6889d4d0649ae03fafeeb7c337b34a36fbac33962f64651671b
+<p>For information on installing a FullNode, please refer to the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/">Deploying a FullNode</a> documentation.</p>
+<h3 id="62-verifying-plugin-load">6.2 Verifying Plugin Load<a class="headerlink" href="#62-verifying-plugin-load" title="Permanent link">&para;</a></h3>
+<p>You can verify that the event plugin has loaded successfully by checking the FullNode logs:</p>
+<div class="highlight"><pre><span></span><code>tail -f logs/tron.log | grep -i eventplugin
 </code></pre></div>
-<h4 id="greatvoyage-v4221epictetus">GreatVoyage-v4.2.2.1(Epictetus)<a class="headerlink" href="#greatvoyage-v4221epictetus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8bd040a8db16ccba3e957ed3558b82d145928153a53f9688302849658a72f9bc
-FullNode signature:
-3137a8ba8fa5556e4c4a7597aec8f5f46ebb79a64edcf9e2925d2e3314afde3e0f42fd4080e5e4f4d3d1eff263d30478b0322e6dbcc71c43b534f614004b5c561b
-SolidityNode sha256sum:
-ee8abd39732e4901828a61124880f1d2eab62f7f3d97150f1e1921bf7da10e54
-SolidityNode signature:
-092b08184677449dd283a31cc486f994166cd9f5ad312a9c80d3e06689ec540774ac9a1334dffeb6412039ed70ee912ead39c4025dd69b688ea9df4dd831b5771c
+<p>If you see a message similar to the following, the plugin has loaded successfully:</p>
+<div class="highlight"><pre><span></span><code>o.t.c.l.EventPluginLoader &#39;your plugin path/plugin-kafka-1.0.0.zip&#39; loaded
 </code></pre></div>
-<h4 id="greatvoyage-v430bacon">GreatVoyage-v4.3.0(Bacon)<a class="headerlink" href="#greatvoyage-v430bacon" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-b5e993800cea5ca040758dd6b3c7438def03cbf1358468beb76ea45399a59298
-FullNode signature:
-8da6ac58129d78d948810e4bc7372dd8aef5232bfbc4c33ad8fb21e88314e3d97dd77509e0f03a98da32679495152ccd4a9d07541589822e5cf5d3d4f61877191b
-SolidityNode sha256sum:
-446a4736901958a450e4e95aaca99a63957163854fb32d25eed84600e6996668
-SolidityNode signature:
-c27ffde8ce88ee14689e15a9d5c3fb2d2a9d180ea43b45046131df8ac5481fae2588621b395ad7031ed49d65ddd020b3ce084537e3f527d8a5a979f8c65265561c
+<h3 id="63-verifying-data-persistence-in-mongodb">6.3 Verifying Data Persistence in MongoDB<a class="headerlink" href="#63-verifying-data-persistence-in-mongodb" title="Permanent link">&para;</a></h3>
+<p>Connect to MongoDB and query the data to verify that event data has been captured from the node and stored in the database via the event subscription:</p>
+<div class="highlight"><pre><span></span><code>mongo 47.90.245.68:27017
+use eventlog
+db.auth(&quot;tron&quot;, &quot;123456&quot;)
+show collections
+db.block.find()
 </code></pre></div>
-<h4 id="greatvoyage-v440rousseau">GreatVoyage-v4.4.0(Rousseau)<a class="headerlink" href="#greatvoyage-v440rousseau" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-bf7f962846f75139dd89ac6da32074cad33b2e172c0749abbed8773cc1ab1a37
-FullNode signature:
-56ed97f3451e3d731f799bad952750d56aa78a9a91a2688b4d6b956328ede7e01bae78037ad6ef1f9c682b566e954dfb958271f006e5cf0dcace5768d76fda6e1b
-SolidityNode sha256sum:
-9dac37763ddf75c07335ec070f837b63ee46b698066dd25c4756ad40f8750d5f
-SolidityNode signature:
-cc4325c085719e3e5045b5c6c2553d7adc9c735419618f7afad06c3a532da0ed46906ae9b2dadb15d7f94150268d5ecdc7fd2741693991586d50da30a8d917071b
-</code></pre></div>
-<h4 id="greatvoyage-v441protagoras">GreatVoyage-v4.4.1(Protagoras)<a class="headerlink" href="#greatvoyage-v441protagoras" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-4a32918849dc8a7fedcb637ff4939389363726cb16c6a581e39253260668ee04
-FullNode signature:
-fd747f61705ef045143bd2d55b278ca347904323711e2e86b11cf1dd203f198443ab1a399767a570005bd5b2ea283187ccc41557ffb79c959b018e8d798b96f81c
-SolidityNode sha256sum:
-b6a06d3b19f41591bd8c01f35e78b316ab8e9ad4c0740128fc95ba52d3106f34
-SolidityNode signature:
-d2836bda30fd25c89494ae7a12b5357bc9e725c9e2c655fb0a9158a4bee881693ea869defe650b0b4f190458a5268f1c121e73c8305cc81a408e62fca0d234c51b
-</code></pre></div>
-<h4 id="greatvoyage-v442augustinus">GreatVoyage-v4.4.2(Augustinus)<a class="headerlink" href="#greatvoyage-v442augustinus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-70eba12350fa21e1b261927093090e7bdf0765592d19433c594149bd3707ef0a
-FullNode signature:
-14430f463e6fab3dd247aca6267b6aaf2f1869b455d95aee297208bd1561c6c67559d9c535e63e74bbef604141cc4ceec78367a75e6ca4d4ceb6513019329c9b1b
-SolidityNode sha256sum:
-f08438e093cc1091859f0ee9dbc7e79b0d5d9068facd4e6485374baa3acf59d1
-SolidityNode signature:
-f3935dfe4af9601cf102c975ed2eebbd4b42160e8746c0d0b21ffbd2fbd4b6f374257b1bc0e948909a9ef343d2cc70671961c8f7a992b6cd123f9ad3c8c323391c
-</code></pre></div>
-<h4 id="greatvoyage-v443pythagoras">GreatVoyage-v4.4.3(Pythagoras)<a class="headerlink" href="#greatvoyage-v443pythagoras" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-c07637a1a4a9a289218554f4714caef90032e267b068411c7dd818d4af45e39f
-FullNode signature:
-2bf8d65adf556fe2c04b739c1f4e6e73058914cf642a7806ff85e57be2ff122e35cbf3d67b0bc8bad4fb827198ffd8e06f60111a167ecb0b3db0d8e571b8c67b1c
-SolidityNode sha256sum:
-64f4614160b9330d0a9e984686b66fa16e9aecf7ae16e32b8cc7c32f52694eef
-SolidityNode signature:
-dc0f910555a23667d682a6775588de90592ede44f76a32b12ea8f89fa7dcc937274cc3a44b20da49726323cc9f476d42caa318c338858474f02bf98cc398bca81c
-</code></pre></div>
-<h4 id="greatvoyage-v444plotinus">GreatVoyage-v4.4.4(Plotinus)<a class="headerlink" href="#greatvoyage-v444plotinus" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-0264d382489dae5bf1d340030c1892b0a7aeb9364cb9380c034e159c9eb9a269
-FullNode signature:
-70cdece8c3510ce4d7d84d5d2c8b53895397c0134d73d681b6b41d4de80d74ce2c2760fdf080ff0ce8c0989246377fca529cb1a2e85e1936755abef4be64f0971b
-SolidityNode sha256sum:
-b58e7b8b0f97eb2a7a0ce5c5aeb2ce070192ca82c96adc8568aabe4f3407d873
-SolidityNode signature:
-26da2e507bbd7e82e0170039cc1c0e42332fb2dfc755aeb385240f0a93125b6c0f1e943ccf1a4e9bfec7fdd4d8a26375a38e030e0b8b69af3e2c181bf08444111b
-</code></pre></div>
-<h4 id="greatvoyage-v445cicero">GreatVoyage-v4.4.5(Cicero)<a class="headerlink" href="#greatvoyage-v445cicero" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-8115e887e5af5768e8ab967f8e7bc024af94bda31be7f3dbc30934b42489d988
-FullNode signature:
-1a02f26eb6065efe5697123528f32ea352d813f9e5acf5936407ad8899c4019539e31b257cafe34b9f8045602f5a4f381b3dd8252a30bb9daf52aeeb078b54711b
-SolidityNode sha256sum:
-95884a07dcbb1531ec7ae20b7162cab3bb9c4bd2e300447c01c4772e02b24a20
-SolidityNode signature:
-8adab9501bbb2a3d9f3055c91e819f86081df9b92228a86afb7f0a27165a42690dbeb50f0f1fd1f7180b51809a291c5ff3860e49f888cf0ba87b401d3dda6e271c
-</code></pre></div>
-<h4 id="greatvoyage-v446david">GreatVoyage-v4.4.6(David)<a class="headerlink" href="#greatvoyage-v446david" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-eaf213f6e6cd9913f9f27bf72a42209c1a0f0fce9841c1d6bd680d879d7d6f85
-FullNode signature:
-064abe833436b3a2e9b66406abf81d12a20f9d28ef669abe7c87c0d750e58cf10c1e65de6fbd0fc368022f93e4c330b42ea9775ead91962480436985c90ad3b11c
-SolidityNode sha256sum:
-c3e9ccc1a4d2aac4c081ae01db86a0901b6f3506e3f8a953315e47ae274a98c1
-SolidityNode signature:
-a03d5d6f0e6c6b869f2e545d8c3ff8a4fed569508e9abe4219271d8bf25dfb015e242add8fd2ab6b8b412dd6b393639517957877e8eb7c07ff43a1351a88d62f1b
-</code></pre></div>
-<h4 id="greatvoyage-v451tertullian">GreatVoyage-v4.5.1(Tertullian)<a class="headerlink" href="#greatvoyage-v451tertullian" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-db3c75d7854dcf241558c2942b9a582f478c00a88b6f7a7e5ff8a653a8d4c59a
-FullNode signature:
-61ba205f28c3bc7fa228c27e4e3b4d460ef4fad75ca1d38d82540d45eea2d3d720196b607cd45c560db7a749d05bfe8089c61fba5843e98d61fec90f1591f2861b
-SolidityNode sha256sum:
-537a81bd781d416229de5e0875247160f2569c378c8eed703203d0acca5be5f1
-SolidityNode signature:
-a736f9de5425562a2af188c547245f9b4da6d793728bc767242e3df75fa104f61ce978b62fc5cea7f6008bdb51faa9510ff5633702cdb1ddca29cb06a18920d21c
-</code></pre></div>
-<h4 id="greatvoyage-v452-aurelius">GreatVoyage-v4.5.2 (Aurelius)<a class="headerlink" href="#greatvoyage-v452-aurelius" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-60e959ccde3ff90c10b503bb25edf37684845e358df2ad64b2b330712b30c177
-FullNode signature:
-f2f4b6050e639047857c5b5331eb006dcc9c1e0427bac4ae3d934f7436080785472ead691aa16e6a5aed3c2932fb279ce8ab3580449071b878e0d31fdf01f0371c
-SolidityNode sha256sum:
-4783b8abef12a6c7b8319f3e8960c1d3126edcc521ac1fc3429fe2870cab91b0
-SolidityNode signature:
-afb5db2467ce9f5445679df53e2fecfaed3c4a2d0ca2ba88b65e621aa2d37a9e6aab06b30052a9381087d0164cb5c347d710b2b1c59e6f7c7107deacfd1cfc961b
-</code></pre></div>
-<h4 id="greatvoyage-v460-socrates">GreatVoyage-v4.6.0 (Socrates)<a class="headerlink" href="#greatvoyage-v460-socrates" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>FullNode sha256sum:
-598589d428085e25c838552970844b0ba00248ad92873bd2ad25b35f37db7a5b
-FullNode signature:
-d3bcfa1bea64b7e58cb94603563cb0c5e47bc20316f61b0dfc966fb64ae846f21b8f917a63328416993f524f4de55ddf5083f163b1fe1b811a9a6f4532725c8e1c
-SolidityNode sha256sum:
-ee37a425a84677063b6ea44ed073b8260e336586a61debc10ce0b1544bf7db6a
-SolidityNode signature:
-332c273ef1cdae8dc39c76a83b38750a74b3dd1b915e49698e4ae6870cfed49a1449e8d8db995c7a6be2295e2603efedb0f3e8e906ac7681583c5023b28a521d1b
-</code></pre></div>
+<p>If data is returned, it means the data has been stored successfully. Otherwise, please review the FullNode logs to troubleshoot the issue.</p>
+<p><a id="7"></a></p>
+<h2 id="using-the-tron-event-query-service-api">Using the TRON Event Query Service API<a class="headerlink" href="#using-the-tron-event-query-service-api" title="Permanent link">&para;</a></h2>
+<p>The TRON Event Query Service provides a series of HTTP API endpoints for querying event data stored in MongoDB. For details on the specific APIs and their usage, please refer to the <a href="https://github.com/tronprotocol/tron-eventquery?tab=readme-ov-file#main-http-service">Event Query Service HTTP API documentation</a>.</p>
 
 
 
@@ -1978,7 +2054,7 @@ SolidityNode signature:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../upgrade-instruction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deployment Manual for the New Version">
+          <a href="../use-native-queue/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Built-in Message Queue Subscription">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1988,20 +2064,20 @@ SolidityNode signature:
                 Previous
               </span>
               <div class="md-ellipsis">
-                Deployment Manual for the New Version
+                Built-in Message Queue Subscription
               </div>
             </div>
           </a>
         
         
           
-          <a href="../history/" class="md-footer__link md-footer__link--next" aria-label="Next: History">
+          <a href="../use-kafka/" class="md-footer__link md-footer__link--next" aria-label="Next: Kafka Event Subscription Plugin">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                History
+                Kafka Event Subscription Plugin
               </div>
             </div>
             <div class="md-footer__button md-icon">

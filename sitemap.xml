@@ -29,6 +29,18 @@
          <lastmod>2025-09-24</lastmod>
     </url>
     <url>
+         <loc>https://tronprotocol.github.io/documentation-en/architecture/use-kafka/</loc>
+         <lastmod>2025-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://tronprotocol.github.io/documentation-en/architecture/use-mongodb/</loc>
+         <lastmod>2025-09-24</lastmod>
+    </url>
+    <url>
+         <loc>https://tronprotocol.github.io/documentation-en/architecture/use-native-queue/</loc>
+         <lastmod>2025-09-24</lastmod>
+    </url>
+    <url>
          <loc>https://tronprotocol.github.io/documentation-en/clients/wallet-cli/</loc>
          <lastmod>2025-09-24</lastmod>
     </url>
