@@ -1,556 +1,530 @@
-# System Contracts
-The TRON network supports many different types of transactions, such as TRX transfer transactions, TRC10 transfer transactions, creating smart contract transactions, triggering smart contract transactions, staking TRX transactions, and more. To create different types of transactions, you need to call different API. For example, the type of smart contract deployment transaction is `CreateSmartContract`, you need to call `wallet/deploycontractAPI` to create a transaction; the type of stake TRX transactions is `FreezeBalanceV2Contract`, you need to call` wallet/freezebalancev2API` to create transactions, we collectively refer to the implementation of these different transaction types as system contracts, the following are the types of system contracts and their contents:
+# System Contract
 
-## AccountCreateContract
-```
-    message AccountCreateContract {
-      bytes owner_address = 1;
-      bytes account_address = 2;
-      AccountType type = 3;
-    }
-```
+The TRON network supports a wide variety of transaction types, such as TRX transfers, TRC-10 token transfers, smart contract deployments and calls, and TRX staking. Each transaction type is defined and executed by a specific system contract. Developers can create these transactions by calling different API endpoints.
 
-- `owner_address`: The owner of the current account.
-- `account_address`: The target address to create.
-- `type`: Account type. 0 means normal account; 1 means the Genesis account; 2 means smart contract account.
+For example, deploying a smart contract requires calling the `wallet/deploycontract` endpoint, which corresponds to the `CreateSmartContract` type. Staking TRX for resources requires calling the `wallet/freezebalancev2` endpoint, corresponding to the `FreezeBalanceV2Contract` type.
 
-## TransferContract
-```
-    message TransferContract {
-      bytes owner_address = 1;
-      bytes to_address = 2;
-      int64 amount = 3;
-    }
-```
+This document will provide a detailed introduction to the main system contract types on the TRON network and their parameters.
 
-- `owner_address`: The owner of the current account.
-- `to_address`: The target address to transfer.
-- `amount`: The amount of TRX to transfer.
+## 1. Account Management Contracts
 
-## TransferAssetContract
-```
-    message TransferAssetContract {
-      bytes asset_name = 1;
-      bytes owner_address = 2;
-      bytes to_address = 3;
-      int64 amount = 4;
-    }
-```
+### AccountCreateContract
 
-- `asset_name`: The token id to transfer.
-- `owner_address`: The owner of the current account.
-- `to_address`: The target address to transfer.
-- `amount`: The amount of token to transfer.
-
-## VoteWitnessContract
-```
-    message VoteWitnessContract {
-      message Vote {
-        bytes vote_address = 1;
-        int64 vote_count = 2;
-      }
-      bytes owner_address = 1;
-      repeated Vote votes = 2;
-      bool support = 3;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `vote_address`: The SR or candidate's address.
-- `vote_count`: The votes number.
-- `support`: Constant true, not used.
-
-## WitnessCreateContract
-```
-    message WitnessCreateContract {
-      bytes owner_address = 1;
-      bytes url = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `url`: The website url of the witness.
-
-## AssetIssueContract
-```
-    message AssetIssueContract {
-      message FrozenSupply {
-        int64 frozen_amount = 1;
-        int64 frozen_days = 2;
-      }
-      bytes owner_address = 1;
-      bytes name = 2;
-      bytes abbr = 3;
-      int64 total_supply = 4;
-      repeated FrozenSupply frozen_supply = 5;
-      int32 trx_num = 6;
-      int32 num = 8;
-      int64 start_time = 9;
-      int64 end_time = 10;
-      int64 order = 11; // the order of tokens of the same name
-      int32 vote_score = 16;
-      bytes description = 20;
-      bytes url = 21;
-      int64 free_asset_net_limit = 22;
-      int64 public_free_asset_net_limit = 23;
-      int64 public_free_asset_net_usage = 24;
-      int64 public_latest_free_net_time = 25;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `name`: The token name to issue.
-- `abbr`: The abbreviation of the token name.
-- `total_supply`: The amount of token to issue.
-- `frozen_supply`: The amount of token and staked days to stake.
-- `trx_num`: trx_num/num defines the token price.
-- `num`: trx_num/num defines the token price.
-- `start_time`: ICO starts time.
-- `end_time`: ICO ends time.
-- `order`: Deprecated.
-- `vote_score`: Deprecated.
-- `description`: The description of the token.
-- `url`: The website url of the token.
-- `free_asset_net_limit`: The free bandwidth limit each account owns when transfers asset.
-- `public_free_asset_net_limit`: The free bandwidth limit all the accounts can use.
-- `public_free_asset_net_usage`: The free bandwidth usage of all the accounts.
-- `public_latest_free_net_time`: The latest bandwidth consumption time of token transfer.
-
-## WitnessUpdateContract
-```
-    message WitnessUpdateContract {
-      bytes owner_address = 1;
-      bytes update_url = 12;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `update_url`: The website url of the witness.
-
-## ParticipateAssetIssueContract
-```
-    message ParticipateAssetIssueContract {
-      bytes owner_address = 1;
-      bytes to_address = 2;
-      bytes asset_name = 3;
-      int64 amount = 4;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `to_address`: The token owner address.
-- `account_name`: The token id.
-- `amount`: The amount of token to purchase.
-
-## AccountUpdateContract
-```
-    // Update account name. Account name is unique now.
-    message AccountUpdateContract {
-      bytes account_name = 1;
-      bytes owner_address = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `account_name`: Account name.
-
-## (Deprecated)FreezeBalanceContract
-```
-    message FreezeBalanceContract {
-      bytes owner_address = 1;
-      int64 frozen_balance = 2;
-      int64 frozen_duration = 3;
-      ResourceCode resource = 10;
-      bytes receiver_address = 15;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `frozen_balance`: The amount of TRX to stake.
-- `frozen_duration`: The stake duration.
-- `resource`: The type of resource get by staking TRX.
-- `receiver_address`: The account address to receive resource.
-
-## UnfreezeBalanceContract
-```
-    message UnfreezeBalanceContract {
-      bytes owner_address = 1;
-      ResourceCode resource = 10;
-      bytes receiver_address = 13;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `resource`: The type of resource to unfree.
-- `receiver_address`: The account address to receive resource.
-
-## WithdrawBalanceContract
-```
-    message WithdrawBalanceContract {
-      bytes owner_address = 1;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-
-## UnfreezeAssetContract
-```
-    message UnfreezeAssetContract {
-      bytes owner_address = 1;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-
-## UpdateAssetContract
-```
-    message UpdateAssetContract {
-      bytes owner_address = 1;
-      bytes description = 2;
-      bytes url = 3;
-      int64 new_limit = 4;
-      int64 new_public_limit = 5;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `description`: The description of the token.
-- `url`: The website url of the token.
-- `new_limit`: The bandwidth consumption limit of each account when transfers asset.
-- `new_public_limit`: The bandwidth consumption limit of the accounts.
-
-## ProposalCreateContract
-```
-    message ProposalCreateContract {
-      bytes owner_address = 1;
-      map<int64, int64> parameters = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `parameters`: The proposal.
-
-## ProposalApproveContract
-```
-    message ProposalApproveContract {
-      bytes owner_address = 1;
-      int64 proposal_id = 2;
-      bool is_add_approval = 3; // add or remove approval
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `proposal_id`: The proposal id.
-- `is_add_approval`: Whether to approve.
-
-## ProposalDeleteContract
-```
-    message ProposalDeleteContract {
-      bytes owner_address = 1;
-      int64 proposal_id = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `proposal_id`: The proposal id.
-
-## SetAccountIdContract
-```
-    // Set account id if the account has no id. Account id is unique and case insensitive.
-    message SetAccountIdContract {
-      bytes account_id = 1;
-      bytes owner_address = 2;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `account_id`: The account id.
-
-## CreateSmartContract
-```
-    message CreateSmartContract {
-      bytes owner_address = 1;
-      SmartContract new_contract = 2;
-      int64 call_token_value = 5;
-      int64 token_id = 6;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `new_contract`: the smart contract.
-- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
-- `token_id` : The id of the TRC-10 token to be sent to the contract.
-
-## TriggerSmartContract
-```
-    message TriggerSmartContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-      int64 call_value = 3;
-      bytes data = 4;
-      int64 call_token_value = 5;
-      int64 token_id = 6;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `contract_address`: The contract address.
-- `call_value`: The amount of TRX to send to the contract when triggers.
-- `data`: The parameters to trigger the contract.
-- `call_token_value` : The amount of TRC-10 token to send to the contract when triggers.
-- `token_id` : The id of the TRC-10 token to be sent to the contract.
-
-## UpdateSettingContract
-```
-    message UpdateSettingContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-      int64 consume_user_resource_percent = 3;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `contract_address`: The address of the smart contract.
-- `consume_user_resource_percent`: The percentage of resource consumption ratio.
-
-## ExchangeCreateContract
-```
-    message ExchangeCreateContract {
-      bytes owner_address = 1;
-      bytes first_token_id = 2;
-      int64 first_token_balance = 3;
-      bytes second_token_id = 4;
-      int64 second_token_balance = 5;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `first_token_id`: First token id.
-- `first_token_balance`: First token balance.
-- `second_token_id`: Second token id.
-- `second_token_balance`: Second token balance.
-
-## ExchangeInjectContract
-```
-    message ExchangeInjectContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `exchange_id`: The token pair id.
-- `token_id`: The token id to inject.
-- `quant`: The token amount to inject.
-
-## ExchangeWithdrawContract
-```
-    message ExchangeWithdrawContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `exchange_id`: The token pair id.
-- `token_id`: The token id to withdraw.
-- `quant`: The token amount to withdraw.
-
-## ExchangeTransactionContract
-```
-    message ExchangeTransactionContract {
-      bytes owner_address = 1;
-      int64 exchange_id = 2;
-      bytes token_id = 3;
-      int64 quant = 4;
-      int64 expected = 5;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `exchange_id`: The token pair id.
-- `token_id`: The token id to sell.
-- `quant`: The token amount to sell.
-- `expected`: The expected token amount to buy, if the calculated actual token amount that can be bought is less than this value, the transaction will fail.
-
-## ShieldedTransferContract
-```
-    message ShieldedTransferContract {
-      bytes transparent_from_address = 1;
-      int64 from_amount = 2;
-      repeated SpendDescription spend_description = 3;
-      repeated ReceiveDescription receive_description = 4;
-      bytes binding_signature = 5;
-      bytes transparent_to_address = 6;
-      int64 to_amount = 7;
-    }
-```
-
-- `transparent_from_address`: The transparent address of the sender.
-- `from_amount`: The amount to send.
-- `spend_description`: Shielded spend information.
-- `receive_description`: Shielded receive information.
-- `binding_signature`: The binding signature.
-- `transparent_to_address`: The transparent address of the receiver.
-- `to_amount`: The amount to receive.
+*Creates a new account.*
 
 ```
-message SpendDescription {
-  bytes value_commitment = 1;
-  bytes anchor = 2;
-  bytes nullifier = 3;
-  bytes rk = 4;
-  bytes zkproof = 5;
-  bytes spend_authority_signature = 6;
+message AccountCreateContract {
+    bytes owner_address = 1;
+    bytes account_address = 2;
+    AccountType type = 3;
 }
 ```
 
-- `value_commitment`: _value commitment_ of spender's transfer amount.
-- `anchor`: root of the note commitment Merkle tree at some block.
-- `nullifier`: _nullifier_ of spender's note, to prevent double-spent.
-- `rk`: public key, to verify spender's _Spend Authorization Signature_.
-- `zkproof`: zero-knowledge proof of spender's note, prove that this note exists and could be spent.
-- `spend_authority_signature`: the spender's _Spend Authorization Signature_.
+  * `owner_address`: The address of the contract initiator.
+  * `account_address`: The address of the account to be created.
+  * `type`: The account type.
+      * `0`: Normal account.
+      * `1`: An initial account in the genesis block.
+      * `2`: Smart contract account.
+
+### AccountUpdateContract
+
+*Updates an account's name.*
 
 ```
-message ReceiveDescription {
-  bytes value_commitment = 1;
-  bytes note_commitment = 2;
-  bytes epk = 3;
-  bytes c_enc = 4;
-  bytes c_out = 5;
-  bytes zkproof = 6;
+// Update account name. Account name is unique now.
+message AccountUpdateContract {
+    bytes account_name = 1;
+    bytes owner_address = 2;
 }
 ```
 
-- `value_commitment`: _value commitment_ of receiver's transfer amount.
-- `note_commitment`: commitment of the receiver's not.
-- `epk`: ephemeral public key, in order to generate note's decryption key.
-- `c_enc`: part of note ciphertext, encryption of diversifier, receiver's transfer amount, rcm, and memo.
-- `c_out`: part of note ciphertext, encryption of the receiver's public key and ephemeral private key.
-- `zkproof`: zero-knowledge proof of the receiver's note.
+  * `owner_address`: The address of the contract initiator.
+  * `account_name`: The account name.
 
-## Account Permission Management
+### SetAccountIdContract
 
-[Account Permission Management](./multi-signatures.md)
+*Sets an account's ID.*
 
-## ClearABIContract
 ```
-    message ClearABIContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
+// Set account id if the account has no id. Account id is unique and case insensitive.
+message SetAccountIdContract {
+    bytes account_id = 1;
+    bytes owner_address = 2;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `account_id`: The account ID, which is unique and case-insensitive.
+
+## 2. TRX Transfer & Resource Contracts
+
+### TransferContract
+
+*Transfers TRX.*
+
+```
+message TransferContract {
+    bytes owner_address = 1;
+    bytes to_address = 2;
+    int64 amount = 3;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `to_address`: The destination account address.
+  * `amount`: The transfer amount, in **sun** (1 TRX = 1,000,000 sun).
+
+### FreezeBalanceV2Contract
+
+*Stakes TRX to obtain resources (Stake 2.0).*
+
+```
+message FreezeBalanceV2Contract {
+    bytes owner_address = 1;
+    int64 frozen_balance = 2;
+    ResourceCode resource = 3; // Type can be Bandwidth or Energy
+}
+```
+
+  * `owner_address`: The staker's address.
+  * `frozen_balance`: The amount of TRX to stake.
+  * `resource`: The type of resource to obtain by staking TRX.
+
+### UnfreezeBalanceV2Contract
+
+*Unstakes TRX (Stake 2.0).*
+
+```
+message UnfreezeBalanceV2Contract {
+    bytes owner_address = 1;
+    int64 unfreeze_balance = 2;
+    ResourceCode resource = 3;
+}
+```
+
+  * `owner_address`: The unstaker's address.
+  * `unfreeze_balance`: The amount of TRX to unstake.
+  * `resource`: The type of resource to unstake.
+
+### WithdrawExpireUnfreezeContract
+
+*Withdraws the principal of expired unstaked TRX.*
+
+```
+message WithdrawExpireUnfreezeContract {
+    bytes owner_address = 1;
+}
+```
+
+  * `owner_address`: The address of the account withdrawing the principal.
+
+### DelegateResourceContract
+
+*Delegates resources.*
+
+```
+message DelegateResourceContract {
+    bytes owner_address = 1;
+    ResourceCode resource = 2;
+    int64 balance = 3;
+    bytes receiver_address = 4;
+    bool  lock = 5;
+    int64 lock_period = 6;
+}
+```
+
+  * `owner_address`: The address of the resource delegator.
+  * `resource`: The type of resource to delegate.
+  * `balance`: The amount of resources to delegate, in **sun**.
+  * `receiver_address`: The address of the resource recipient.
+  * `lock`: Whether to lock the delegation for 3 days.
+  * `lock_period`: The lock period for the delegation, in number of blocks. Can be any value in the range (0, 86400]. This parameter is only effective when `lock` is `true`.
+
+### UnDelegateResourceContract
+
+*Undelegates resources.*
+
+```
+message UnDelegateResourceContract {
+    bytes owner_address = 1;
+    ResourceCode resource = 2;
+    int64 balance = 3;
+    bytes receiver_address = 4;
+}
+```
+
+  * `owner_address`: The address of the undelegation initiator.
+  * `resource`: The type of resource to undelegate.
+  * `balance`: The amount of resources to undelegate.
+  * `receiver_address`: The address of the resource recipient.
+
+### *(Deprecated)* FreezeBalanceContract
+
+*Stakes TRX to obtain resources (Stake 1.0).*
+
+```
+message FreezeBalanceContract {
+    bytes owner_address = 1;
+    int64 frozen_balance = 2;
+    int64 frozen_duration = 3;
+    ResourceCode resource = 10;
+    bytes receiver_address = 15;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `frozen_balance`: The amount of TRX to stake.
+  * `frozen_duration`: The staking duration (in days).
+  * `resource`: The type of resource to obtain by staking TRX.
+  * `receiver_address`: The address of the account that receives the resources.
+
+### *(Deprecated)* UnfreezeBalanceContract
+
+*Unstakes TRX (Stake 1.0).*
+
+```
+message UnfreezeBalanceContract {
+    bytes owner_address = 1;
+    ResourceCode resource = 10;
+    bytes receiver_address = 13;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `resource`: The type of resource to unstake.
+  * `receiver_address`: The address of the account that receives the resources.
+
+### WithdrawBalanceContract
+
+*Withdraws Super Representative rewards.*
+
+```
+message WithdrawBalanceContract {
+    bytes owner_address = 1;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+
+## 3. TRC-10 Token Contracts
+
+### TransferAssetContract
+
+*Transfers TRC-10 tokens.*
+
+```
+message TransferAssetContract {
+    bytes asset_name = 1;
+    bytes owner_address = 2;
+    bytes to_address = 3;
+    int64 amount = 4;
+}
+```
+
+  * `asset_name`: The TRC-10 token ID.
+  * `owner_address`: The address of the contract initiator.
+  * `to_address`: The destination account address.
+  * `amount`: The amount of tokens to transfer.
+
+### AssetIssueContract
+
+*Issues a TRC-10 token.*
+
+```
+message AssetIssueContract {
+    message FrozenSupply {
+      int64 frozen_amount = 1;
+      int64 frozen_days = 2;
     }
+    bytes owner_address = 1;
+    bytes name = 2;
+    bytes abbr = 3;
+    int64 total_supply = 4;
+    repeated FrozenSupply frozen_supply = 5;
+    int32 trx_num = 6;
+    int32 num = 8;
+    int64 start_time = 9;
+    int64 end_time = 10;
+    int64 order = 11; // the order of tokens of the same name
+    int32 vote_score = 16;
+    bytes description = 20;
+    bytes url = 21;
+    int64 free_asset_net_limit = 22;
+    int64 public_free_asset_net_limit = 23;
+    int64 public_free_asset_net_usage = 24;
+    int64 public_latest_free_net_time = 25;
+}
 ```
 
-- `owner_address`: The owner of the current account.
-- `account_address`: The target contract address to clear ABI.
+  * `owner_address`: The token issuer's address.
+  * `name`: The token's name.
+  * `abbr`: The token's abbreviation.
+  * `total_supply`: The total supply.
+  * `frozen_supply`: A list of frozen token amounts and their corresponding frozen days.
+  * `trx_num`: The number of tokens that can be exchanged for 1 TRX.
+  * `num`: The number of tokens required to exchange for 1 TRX.
+  * `start_time`: The ICO start time.
+  * `end_time`: The ICO end time.
+  * `order`: *(Deprecated)*.
+  * `vote_score`: *(Deprecated)*.
+  * `description`: The token's description.
+  * `url`: The token's official URL.
+  * `free_asset_net_limit`: The free Bandwidth limit for each account when using this token.
+  * `public_free_asset_net_limit`: The total free Bandwidth limit shared by all accounts.
+  * `public_free_asset_net_usage`: The amount of free Bandwidth used by all accounts.
+  * `public_latest_free_net_time`: The latest time the shared free Bandwidth was used.
 
-## UpdateBrokerageContract
+### ParticipateAssetIssueContract
+
+*Participates in a TRC-10 token ICO.*
+
 ```
-    message UpdateBrokerageContract {
-      bytes owner_address = 1;
-      int32 brokerage = 2;
+message ParticipateAssetIssueContract {
+    bytes owner_address = 1;
+    bytes to_address = 2;
+    bytes asset_name = 3;
+    int64 amount = 4;
+}
+```
+
+  * `owner_address`: The purchaser's address.
+  * `to_address`: The token issuer's address.
+  * `asset_name`: The token ID.
+  * `amount`: The amount of TRX used to purchase tokens, in **sun**.
+
+### UnfreezeAssetContract
+
+*Unfreezes staked tokens that have been issued.*
+
+```
+message UnfreezeAssetContract {
+    bytes owner_address = 1;
+}
+```
+
+  * `owner_address`: The token issuer's address.
+
+### UpdateAssetContract
+
+*Updates a token's parameters.*
+
+```
+message UpdateAssetContract {
+    bytes owner_address = 1;
+    bytes description = 2;
+    bytes url = 3;
+    int64 new_limit = 4;
+    int64 new_public_limit = 5;
+}
+```
+
+  * `owner_address`: The token issuer's address.
+  * `description`: The token's new description.
+  * `url`: The token's new URL.
+  * `new_limit`: The new Bandwidth limit for a single caller.
+  * `new_public_limit`: The new public Bandwidth limit for all callers.
+
+## 4. Super Representative & Voting Contracts
+
+### VoteWitnessContract
+
+*Votes for Super Representative candidates.*
+
+```
+message VoteWitnessContract {
+    message Vote {
+      bytes vote_address = 1;
+      int64 vote_count = 2;
     }
+    bytes owner_address = 1;
+    repeated Vote votes = 2;
+    bool support = 3;
+}
 ```
 
-- `owner_address`: The owner of the current account.
-- `brokerage`: Commission rate, from 0 to 100,1 mean 1%.
+  * `owner_address`: The voter's address.
+  * `votes`: A list of votes.
+      * `vote_address`: The Super Representative candidate's address.
+      * `vote_count`: The number of votes for this candidate.
+  * `support`: Whether to support. This parameter is currently always `true`.
 
-## UpdateEnergyLimitContract
+### WitnessCreateContract
+
+*Applies to become a Super Representative candidate.*
+
 ```
-    message UpdateEnergyLimitContract {
-      bytes owner_address = 1;
-      bytes contract_address = 2;
-      int64 origin_energy_limit = 3;
-    }
-```
-
-- `owner_address`: The owner of the current account.
-- `contract_address`: The contract address.
-- `origin_energy_limit`: The target energy limit to change.
-
-## FreezeBalanceV2Contract
-
-```protobuf
-     message FreezeBalanceV2Contract {
-      bytes owner_address = 1;
-      int64 frozen_balance = 2;
-      ResourceCode resource = 3;
-      }
+message WitnessCreateContract {
+    bytes owner_address = 1;
+    bytes url = 2;
+}
 ```
 
-* `owner_address`：Owner address
-* `frozen_balance`：TRX stake amount, the unit is sun
-* `resource`： Resource type
+  * `owner_address`: The candidate's address.
+  * `url`: The candidate's website URL.
 
-## UnfreezeBalanceV2Contract
+### WitnessUpdateContract
 
-```protobuf
-      message UnfreezeBalanceV2Contract {
-       bytes owner_address = 1;
-       int64 unfreeze_balance = 2;
-       ResourceCode resource = 3;
-      }
+*Updates a Super Representative candidate's URL.*
+
+```
+message WitnessUpdateContract {
+    bytes owner_address = 1;
+    bytes update_url = 12;
+}
 ```
 
-* `owner_address`：Owner address
-* `unfreeze_balance`：The amount of TRX to unstake, in sun
-* `resource`： Resource type
-   
+  * `owner_address`: The candidate's address.
+  * `update_url`: The new website URL.
 
-## WithdrawExpireUnfreezeContract
+## 5. Proposal & Governance Contracts
 
-```protobuf
-      message WithdrawExpireUnfreezeContract {
-        bytes owner_address = 1;
-      }
+### ProposalCreateContract
+
+*Creates a proposal.*
+
+```
+message ProposalCreateContract {
+    bytes owner_address = 1;
+    map<int64, int64> parameters = 2;
+}
 ```
 
-* `owner_address`：Owner address
-   
-## DelegateResourceContract
+  * `owner_address`: The proposer's address.
+  * `parameters`: The content of the proposal, represented as key-value pairs.
 
-```protobuf
-      message DelegateResourceContract {
-      bytes owner_address = 1;
-      ResourceCode resource = 2;
-      int64 balance = 3;
-      bytes receiver_address = 4;
-      bool  lock = 5;
-      }
+### ProposalApproveContract
+
+*Approves a proposal. Voting constitutes approval; not voting is considered disapproval.*
+
+```
+message ProposalApproveContract {
+    bytes owner_address = 1;
+    int64 proposal_id = 2;
+    bool is_add_approval = 3; // add or remove approval
+}
 ```
 
-* `owner_address`：Owner address
-* `resource`： Resource type
-* `balance`： Amount of TRX staked for resources to be delegated, unit is sun
-* `receiver_address`：Resource receiver address
-* `lock`：Whether it is locked, if it is set to true, the delegated resources cannot be undelegated within 3 days. When the lock time is not over, if the owner delegates the same type of resources using the lock to the same address, the lock time will be reset to 3 days
-   
-   
-## UnDelegateResourceContract
+  * `owner_address`: The voter's address.
+  * `proposal_id`: The proposal's ID.
+  * `is_add_approval`: Whether to approve the proposal. `true` for approval, `false` for canceling approval.
 
-```protobuf
-      message UnDelegateResourceContract {
-      bytes owner_address = 1;
-      ResourceCode resource = 2;
-      int64 balance = 3;
-      bytes receiver_address = 4;
-      }
+### ProposalDeleteContract
+
+*Deletes a proposal.*
+
+```
+message ProposalDeleteContract {
+    bytes owner_address = 1;
+    int64 proposal_id = 2;
+}
 ```
 
-* `owner_address`：Owner address
-* `resource`： Resource type
-* `balance`：undelegated TRX, unit is sun
-* `receiver_address`：Resource receiver address
-   
+  * `owner_address`: The address of the proposal deleter.
+  * `proposal_id`: The proposal's ID.
 
+## 6. Smart Contract Management Contracts
 
+### CreateSmartContract
 
+*Creates a smart contract.*
 
+```
+message CreateSmartContract {
+    bytes owner_address = 1;
+    SmartContract new_contract = 2;
+    int64 call_token_value = 3;
+    int64 token_id = 4;
+}
+```
 
+  * `owner_address`: The address of the contract initiator.
+  * `new_contract`: Information such as the smart contract's ABI and bytecode.
+  * `call_token_value`: The amount of TRC-10 tokens transferred with the contract deployment.
+  * `token_id`: The ID of the TRC-10 token being transferred.
 
+### TriggerSmartContract
 
+*Triggers a smart contract.*
+
+```
+message TriggerSmartContract {
+    bytes owner_address = 1;
+    bytes contract_address = 2;
+    int64 call_value = 3;
+    bytes data = 4;
+    int64 call_token_value = 5;
+    int64 token_id = 6;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `contract_address`: The target contract's address.
+  * `call_value`: The amount of TRX transferred with the contract call, in **sun**.
+  * `data`: The encoded parameters of the contract method.
+  * `call_token_value`: The amount of TRC-10 tokens transferred with the contract call.
+  * `token_id`: The ID of the TRC-10 token being transferred.
+
+### UpdateSettingContract
+
+*Updates a smart contract's resource consumption percentage.*
+
+```
+message UpdateSettingContract {
+    bytes owner_address = 1;
+    bytes contract_address = 2;
+    int64 consume_user_resource_percent = 3;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `contract_address`: The target contract's address.
+  * `consume_user_resource_percent`: The updated user resource consumption percentage.
+
+### UpdateEnergyLimitContract
+
+*Adjusts a smart contract's Energy limit.*
+
+```
+message UpdateEnergyLimitContract {
+    bytes owner_address = 1;
+    bytes contract_address = 2;
+    int64 origin_energy_limit = 3;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `contract_address`: The target contract's address.
+  * `origin_energy_limit`: The adjusted Energy limit provided by the contract deployer.
+
+### ClearABIContract
+
+*Clears a smart contract's ABI.*
+
+```
+message ClearABIContract {
+    bytes owner_address = 1;
+    bytes contract_address = 2;
+}
+```
+
+  * `owner_address`: The address of the contract initiator.
+  * `contract_address`: The address of the contract whose ABI is to be cleared.
+
+### UpdateBrokerageContract
+
+*Updates a Super Representative's commission rate.*
+
+```
+message UpdateBrokerageContract {
+    bytes owner_address = 1;
+    int32 brokerage = 2;
+}
+```
+
+  * `owner_address`: The Super Representative's address.
+  * `brokerage`: The new commission rate, ranging from 0 to 100, representing a percentage.
+
+## 7. Account Permission Management
+
+For detailed information on account permission management, please refer to [Account Permission Management](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/).
