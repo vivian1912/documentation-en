@@ -279,7 +279,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 1. `QUANTITY|TAG` - The block number, or the tag "earliest" or "latest".
 2. `Boolean` - If `true`, it returns a list of full transaction objects; if `false`, it returns only the transaction hashes.
 
-**Return Value:** `Object` - A block object. Returns null if the block is not found. The structure is the same as in [eth_getBlockByHash](https://developers.tron.network/reference#eth_getblockbyhash).
+**Return Value:** `Object` - A block object. Returns null if the block is not found. The structure is the same as in [eth_getBlockByHash](#eth_getblockbyhash).
 
 **Example**
 ```
@@ -517,7 +517,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_getTransactionReceipt
 
-*Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: [wallet/gettransactioninfobyid](#walletgettransactioninfobyid).*
+*Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid).*
 
 **Parameters:** `DATA`, 32 Bytes - The hash of the transaction.
 
