@@ -4,9 +4,19 @@ The TRON network supports a wide variety of transaction types, such as TRX trans
 
 For example, deploying a smart contract requires calling the `wallet/deploycontract` endpoint, which corresponds to the `CreateSmartContract` type. Staking TRX for resources requires calling the `wallet/freezebalancev2` endpoint, corresponding to the `FreezeBalanceV2Contract` type.
 
-This document will provide a detailed introduction to the main system contract types on the TRON network and their parameters.
+This document will provide a detailed introduction to the main system contract types on the TRON network and their parameters:
 
-## 1. Account Management Contracts
+* [**Account Management Contracts**](#account-contracts): Covers the creation and updating of accounts.
+* [**TRX Transfer & Resource Contracts**](#trx-resource-contracts): Handles transfers of the native TRX token and the staking and delegation of network resources like Bandwidth and Energy.
+* [**TRC-10 Token Contracts**](#trc10-token-contracts): Defines the rules for the issuance, transfer, and management of TRC-10 standard tokens.
+* [**Super Representative & Voting Contracts**](#sr-voting-contracts): Covers node election and voting operations within the TRON network's consensus mechanism.
+* [**Proposal & Governance Contracts**](#proposal-governance-contracts): For the on-chain governance mechanism used to modify network parameters.
+* [**Smart Contract Management Contracts**](#smart-contract-contracts): Supports the deployment, triggering, and configuration of TRC-20 and other smart contracts.
+* [**Account Permission Management**](#permission-management): Introduces permission settings for advanced account features, such as multi-signature.
+
+
+<a id="account-contracts"></a>
+## Account Management Contracts
 
 ### AccountCreateContract
 
@@ -57,7 +67,9 @@ message SetAccountIdContract {
   * `owner_address`: The address of the contract initiator.
   * `account_id`: The account ID, which is unique and case-insensitive.
 
-## 2. TRX Transfer & Resource Contracts
+
+<a id="trx-resource-contracts"></a>
+## TRX Transfer & Resource Contracts
 
 ### TransferContract
 
@@ -207,7 +219,8 @@ message WithdrawBalanceContract {
 
   * `owner_address`: The address of the contract initiator.
 
-## 3. TRC-10 Token Contracts
+<a id="trc10-token-contracts"></a>
+## TRC-10 Token Contracts
 
 ### TransferAssetContract
 
@@ -325,7 +338,8 @@ message UpdateAssetContract {
   * `new_limit`: The new Bandwidth limit for a single caller.
   * `new_public_limit`: The new public Bandwidth limit for all callers.
 
-## 4. Super Representative & Voting Contracts
+<a id="sr-voting-contracts"></a>
+## Super Representative & Voting Contracts
 
 ### VoteWitnessContract
 
@@ -377,7 +391,9 @@ message WitnessUpdateContract {
   * `owner_address`: The candidate's address.
   * `update_url`: The new website URL.
 
-## 5. Proposal & Governance Contracts
+
+<a id="proposal-governance-contracts"></a>
+## Proposal & Governance Contracts
 
 ### ProposalCreateContract
 
@@ -423,7 +439,9 @@ message ProposalDeleteContract {
   * `owner_address`: The address of the proposal deleter.
   * `proposal_id`: The proposal's ID.
 
-## 6. Smart Contract Management Contracts
+
+<a id="smart-contract-contracts"></a>
+## Smart Contract Management Contracts
 
 ### CreateSmartContract
 
@@ -525,6 +543,7 @@ message UpdateBrokerageContract {
   * `owner_address`: The Super Representative's address.
   * `brokerage`: The new commission rate, ranging from 0 to 100, representing a percentage.
 
-## 7. Account Permission Management
+<a id="permission-management"></a>
+## Account Permission Management
 
 For detailed information on account permission management, please refer to [Account Permission Management](https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/).
