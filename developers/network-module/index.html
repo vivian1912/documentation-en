@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/advanced-configuration/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/network-module/">
       
       
+        <link rel="prev" href="../chainbase-module/">
+      
+      
+        <link rel="next" href="../../contracts/tools/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Advanced Configurations - java-tron</title>
+        <title>Network - java-tron</title>
       
     
     
@@ -70,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#advanced-configurations" class="md-skip">
+        <a href="#trons-p2p-network-architecture-and-core-mechanisms" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced Configurations
+              Network
             
           </span>
         </div>
@@ -1011,8 +1015,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -1022,11 +1028,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1041,7 +1047,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             For java-tron Developers
@@ -1184,6 +1190,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1192,11 +1200,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -1211,7 +1219,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             Core Modules
@@ -1266,10 +1274,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../network-module/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1279,6 +1308,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item has-children">
+  <a href="#p2p-network-overview" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      P2P Network Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="P2P Network Overview" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#blockchain-and-p2p" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Blockchain and P2P
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#node-discovery" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Node Discovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node Discovery" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#kademlia-algorithm-principles" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Kademlia Algorithm Principles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#node-discovery-protocol-messages" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Node Discovery Protocol Messages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#node-discovery-process" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Node Discovery Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#node-connection" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Node Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Node Connection" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#node-classification" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Node Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#establishing-tcp-connections" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Establishing TCP Connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#handshake-and-keep-alive" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Handshake and Keep-Alive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#block-synchronization" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Block Synchronization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Synchronization" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#chain-summary-and-missing-block-inventory" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Chain Summary and Missing Block Inventory
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#block-and-transaction-broadcasting" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block and Transaction Broadcasting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item ">
+  <a href="#conclusion" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1642,108 +1841,192 @@
   
 
 
-<h1 id="advanced-configurations">Advanced Configurations<a class="headerlink" href="#advanced-configurations" title="Permanent link">&para;</a></h1>
-<p>we provide some configuration items for LevelDB and gRPC in <code>config.conf</code> file, for fine-grained performance tuning. <br />
-You may custom these items only if you have deep understanding on them, otherwise keep them as default.</p>
-<h2 id="leveldb">LevelDB<a class="headerlink" href="#leveldb" title="Permanent link">&para;</a></h2>
-<p>You can custom LevelDB options in the <code>storage</code> part of <code>config.conf</code>, which looks like:</p>
-<div class="highlight"><pre><span></span><code>storage {
-  # Directory for storing persistent data
-
-  db.directory = &quot;database&quot;,
-  index.directory = &quot;index&quot;,
-
-  # You can custom these 14 databases&#39; configs:
-
-  # account, account-index, asset-issue, block, block-index,
-  # block_KDB, peers, properties, recent-block, trans,
-  # utxo, votes, witness, witness_schedule.
-
-  # Otherwise, db configs will remain default and data will be stored in
-  # the path of &quot;output-directory&quot; or which is set by &quot;-d&quot; (&quot;--output-directory&quot;).
-
-  # Attention: name is a required field that must be set !!!
-  properties = [
-    {
-      name = &quot;account&quot;,
-      path = &quot;/path/to/account&quot;,   // relative or absolute path
-      createIfMissing = true,
-      paranoidChecks = true,
-      verifyChecksums = true,
-      compressionType = 1,        // 0 - no compression,  1 - compressed with snappy
-      blockSize = 4096,           // 4  KB =         4 * 1024 B
-      writeBufferSize = 10485760, // 10 MB = 10 * 1024 * 1024 B
-      cacheSize = 10485760,       // 10 MB = 10 * 1024 * 1024 B
-      maxOpenFiles = 100
-    }
-  ]
-
-}
-</code></pre></div>
-<p>As shown in the example above, the data of database <code>account</code> will be stored in the path of <code>/path/to/account/database</code> while the index be stored in <code>/path/to/account/index</code>. And, the example also shows our default value of LevelDB options from <code>createIfMissing</code> to <code>maxOpenFiles</code>. You can just refer to the docs of <a href="https://github.com/google/leveldb/blob/master/doc/index.md#performance">LevelDB</a> to figure out details of these options.</p>
-<h2 id="grpc">gRPC<a class="headerlink" href="#grpc" title="Permanent link">&para;</a></h2>
-<p>You can custom gPRC options in the <code>node.rpc</code> part of <code>config.conf</code>, which looks like:</p>
-<div class="highlight"><pre><span></span><code>node {
-  rpc {
-    port = 50051
-
-    # Number of gRPC thread, default availableProcessors / 2
-    # thread = 16
-
-    # The maximum number of concurrent calls permitted for each incoming connection
-    # maxConcurrentCallsPerConnection =
-
-    # The HTTP/2 flow control window, default 1MB
-    # flowControlWindow =
-
-    # Connection being idle for longer than which will be gracefully terminated
-    maxConnectionIdleInMillis = 60000
-
-    # Connection lasting longer than which will be gracefully terminated
-    # maxConnectionAgeInMillis =
-
-    # The maximum message size allowed to be received on the server, default 4MB
-    # maxMessageSize =
-
-    # The maximum size of header list allowed to be received, default 8192
-    # maxHeaderListSize =
-  }
-}
-</code></pre></div>
-<h2 id="backup">backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h2>
-<p>You can custom backup options in the <code>node.backup</code> part of <code>config.conf</code>, which looks like:
-<div class="highlight"><pre><span></span><code>node.backup {
-    # my priority, each member should use different priority
-    priority = 
-    # members should use same port
-    port = 
-    # peer&#39;s ip list, can&#39;t contain mine
-    members = []
-}
-</code></pre></div>
-policy: 
-1. the one which synchronized first will become master.
-2. if synchronization is completed at the same time, the one with big priority will become master.</p>
-<p>E.g. create backups for node A(192.168.0.100) and node B(192.168.0.100 ):
-node A's configuration:
-<div class="highlight"><pre><span></span><code>node.backup {
-    priority = 8 
-    port = 10001
-    members = [
-        &quot;192.168.0.101&quot;
-    ]
-}
-</code></pre></div>
-node B's configuration:
-<div class="highlight"><pre><span></span><code>node.backup {
-    priority = 5
-    port = 10001
-    members = [
-        &quot;192.168.0.100&quot;
-    ]
-}
-</code></pre></div></p>
-<p>You may refer to the source code of <code>io.grpc.netty.NettyServerBuilder</code> class to see details or just make a decision according to the brief comments above.  </p>
+<h1 id="trons-p2p-network-architecture-and-core-mechanisms">TRON's P2P Network Architecture and Core Mechanisms<a class="headerlink" href="#trons-p2p-network-architecture-and-core-mechanisms" title="Permanent link">&para;</a></h1>
+<p>At the heart of the TRON network lies its efficient, decentralized <strong>P2P (Peer-to-Peer) network</strong> architecture. As the foundational layer of the TRON blockchain, the design and implementation of the P2P network directly determine the stability and performance of the entire system. This document provides an in-depth analysis of the four core functions of the TRON P2P network: node discovery, node connection, block synchronization, and block and transaction broadcasting.</p>
+<h2 id="p2p-network-overview">P2P Network Overview<a class="headerlink" href="#p2p-network-overview" title="Permanent link">&para;</a></h2>
+<p>A P2P network is a type of distributed network where participants directly share hardware resources such as computing power, storage, and network connections without relying on a central server. In a P2P network, each node is both a provider and a consumer of information, a model that significantly enhances resource utilization and network robustness.</p>
+<h3 id="blockchain-and-p2p">Blockchain and P2P<a class="headerlink" href="#blockchain-and-p2p" title="Permanent link">&para;</a></h3>
+<p>P2P constitutes the <strong>network layer</strong> in the blockchain architecture. It provides the foundation for decentralized information dissemination, verification, and communication among nodes. Each node maintains a copy of the shared blockchain data to stay synchronized, thereby ensuring network-wide consensus.</p>
+<p>This decentralized P2P architecture offers significant advantages to the TRON network:</p>
+<ul>
+<li><strong>Prevents Single Points of Attack</strong>: The network has no central point of failure.</li>
+<li><strong>High Fault Tolerance</strong>: The network can continue to operate even if some nodes go offline.</li>
+<li><strong>Good Scalability</strong>: The network's ability to expand is not limited by a central server.</li>
+</ul>
+<p>The TRON architecture is illustrated below:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_architecture.png" /></p>
+<p>The P2P module of the TRON network can be divided into the following four main functions:</p>
+<ol>
+<li><a href="#node-discovery">Node Discovery</a></li>
+<li><a href="#node-connection">Node Connection</a></li>
+<li><a href="#block-sync">Block Synchronization</a></li>
+<li><a href="#broadcasting">Block and Transaction Broadcasting</a></li>
+</ol>
+<p><a id="node-discovery"></a></p>
+<h2 id="node-discovery">Node Discovery<a class="headerlink" href="#node-discovery" title="Permanent link">&para;</a></h2>
+<p>Node discovery is the first step for a new node to join the TRON network. TRON employs a structured P2P network based on the <strong>Kademlia algorithm</strong>. This algorithm allows nodes to quickly and efficiently find other nodes without a central directory.</p>
+<h3 id="kademlia-algorithm-principles">Kademlia Algorithm Principles<a class="headerlink" href="#kademlia-algorithm-principles" title="Permanent link">&para;</a></h3>
+<p>Kademlia is a Distributed Hash Table (<strong>DHT</strong>) implementation that organizes its routing table by calculating the "distance" between nodes using the XOR metric of their IDs.</p>
+<p>Key aspects of TRON's Kademlia implementation include:</p>
+<ul>
+<li><strong>Node ID</strong>: Each node generates a random 512-bit ID upon startup.</li>
+<li><strong>Node Distance</strong>: The distance between two nodes is calculated by performing an XOR operation on their IDs. The formula is: <code>Distance = 256 - number of leading zeros in the XOR result of the Node IDs</code>. If the result is negative, the distance is 0.</li>
+<li><strong>K-bucket</strong>: This is the node's routing table, used to store information about remote nodes. Remote nodes are organized into 256 "buckets" based on their distance from the local node, with each bucket holding a maximum of 16 nodes.</li>
+</ul>
+<h3 id="node-discovery-protocol-messages">Node Discovery Protocol Messages<a class="headerlink" href="#node-discovery-protocol-messages" title="Permanent link">&para;</a></h3>
+<p>The TRON node discovery protocol is based on <strong>UDP</strong> and uses the following four message types for communication:</p>
+<ul>
+<li><code>DISCOVER_PING</code>: Used to check if a target node is online.</li>
+<li><code>DISCOVER_PONG</code>: The response to a <code>DISCOVER_PING</code> message.</li>
+<li><code>DISCOVER_FIND_NODE</code>: Used to find nodes closest to a specific target ID.</li>
+<li><code>DISCOVER_NEIGHBORS</code>: The response to a <code>DISCOVER_FIND_NODE</code> message, returning up to 16 nodes.</li>
+</ul>
+<h3 id="node-discovery-process">Node Discovery Process<a class="headerlink" href="#node-discovery-process" title="Permanent link">&para;</a></h3>
+<h4 id="1-initialize-k-buckets">1. Initialize K-buckets<a class="headerlink" href="#1-initialize-k-buckets" title="Permanent link">&para;</a></h4>
+<p>Upon startup, a node reads the <code>seed nodes</code> from its configuration file and known peers from its database. It sends <code>DISCOVER_PING</code> messages to them. If it receives a <code>DISCOVER_PONG</code> response, it adds the responding node to the appropriate K-bucket. If the K-bucket is full, it will challenge the oldest node in the bucket and replace it with the new node upon success.</p>
+<h4 id="2-periodically-discover-more-nodes">2. Periodically Discover More Nodes<a class="headerlink" href="#2-periodically-discover-more-nodes" title="Permanent link">&para;</a></h4>
+<p>The TRON node discovery service periodically runs two scheduled tasks to continuously update its K-buckets:</p>
+<ul>
+<li><strong><code>DiscoverTask</code></strong>: Runs every <strong>30 seconds</strong> to discover more nodes that are closer to the local node. The process is shown in the figure below:
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_discovertask.png" /></li>
+<li><strong><code>RefreshTask</code></strong>: Runs every <strong>7.2 seconds</strong> to expand the local K-buckets by searching for nodes closest to a random ID. The process is shown in the figure below:
+<img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_refreshtask.png" /></li>
+</ul>
+<p>Each time these tasks run, they execute eight rounds of node discovery. In each round, a <code>DISCOVER_FIND_NODE</code> message is sent to the <strong>3</strong> nodes in the K-bucket closest to the target ID to request more neighbors.</p>
+<h4 id="3-receive-and-update-k-buckets">3. Receive and Update K-buckets<a class="headerlink" href="#3-receive-and-update-k-buckets" title="Permanent link">&para;</a></h4>
+<p>When a node receives a <code>DISCOVER_NEIGHBORS</code> message from a remote node, it sequentially sends <code>DISCOVER_PING</code> messages to the neighbors in the response. If it successfully receives a <code>DISCOVER_PONG</code> response, the node attempts to add this new node to the corresponding K-bucket. If the K-bucket is full, it will challenge a node in the bucket (by sending a <code>DISCOVER_PING</code>). If the challenge is successful (i.e., no <code>PONG</code> response is received), the old node is removed, and the new node is added.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_updatek.png" /></p>
+<p>Through these periodic tasks, each node continuously builds and maintains a dynamic and healthy routing table.</p>
+<p><a id="node-connection"></a></p>
+<h2 id="node-connection">Node Connection<a class="headerlink" href="#node-connection" title="Permanent link">&para;</a></h2>
+<p>After discovering potential nodes, the next step is to establish <strong>TCP connections</strong>. The TRON network categorizes nodes to manage connections efficiently and stably.</p>
+<h3 id="node-classification">Node Classification<a class="headerlink" href="#node-classification" title="Permanent link">&para;</a></h3>
+<p>TRON nodes classify their peers into the following categories:</p>
+<ul>
+<li><strong>Active Nodes</strong>: Specified in the configuration file. The node will proactively attempt to connect to them upon startup. If a connection fails, it will retry in every scheduled TCP connection task.</li>
+<li><strong>Passive Nodes</strong>: Specified in the configuration file. The node will passively accept connection requests from these nodes.</li>
+<li><strong>Trust Nodes</strong>: Includes both <code>Active</code> and <code>Passive</code> nodes. TRON prioritizes these nodes and may skip certain connection checks.</li>
+<li><strong>Bad Nodes</strong>: Nodes that have been blacklisted. When a node sends an abnormal protocol message, it is marked as a <code>badNode</code> for a period of <strong>1 hour</strong>.</li>
+<li><strong>Recently Disconnected Nodes</strong>: Nodes that have disconnected within the last 30 seconds, to prevent rapid reconnection attempts.</li>
+</ul>
+<h3 id="establishing-tcp-connections">Establishing TCP Connections<a class="headerlink" href="#establishing-tcp-connections" title="Permanent link">&para;</a></h3>
+<p>A TRON node periodically runs a scheduled task named <code>poolLoopExecutor</code> to establish TCP connections. Its workflow is as follows:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_connect.png" /></p>
+<ol>
+<li><strong>Determine Connection List</strong>: First, it checks for any <code>active nodes</code> that are not yet successfully connected and adds them to the list.</li>
+<li><strong>Filter Neighbor Nodes</strong>: It calculates the number of additional connections needed and selects the best nodes from the discovered neighbors list based on the <strong>node filtering strategy</strong> and <strong>node scoring strategy</strong>.</li>
+<li><strong>Establish Connections</strong>: It initiates TCP connections to the nodes in the final list.</li>
+</ol>
+<h4 id="1-node-filtering-strategy">1. Node Filtering Strategy<a class="headerlink" href="#1-node-filtering-strategy" title="Permanent link">&para;</a></h4>
+<p>Before attempting a connection, the node filters out unqualified candidates, including:</p>
+<ul>
+<li>The node itself.</li>
+<li>Nodes in the <code>recentlyDisconnectedNodes</code> or <code>badNodes</code> lists.</li>
+<li>Nodes that are already connected.</li>
+<li>Nodes from an IP that has reached the connection limit (<code>maxConnectionsWithSameIp</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: <code>trust nodes</code> bypass some filtering rules and are always prioritized for connection.</p>
+</blockquote>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_filterrule.png" /></p>
+<h4 id="2-node-scoring-strategy">2. Node Scoring Strategy<a class="headerlink" href="#2-node-scoring-strategy" title="Permanent link">&para;</a></h4>
+<p>Nodes are scored based on multiple criteria to determine connection priority. The higher the score, the higher the priority.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Dimension</th>
+<th style="text-align: left;">Scoring Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Packet Loss Rate</strong></td>
+<td style="text-align: left;">The lower the packet loss rate, the higher the score. Max <strong>100</strong> points.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Network Latency</strong></td>
+<td style="text-align: left;">The lower the latency, the higher the score. Max <strong>20</strong> points.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>TCP Traffic</strong></td>
+<td style="text-align: left;">The higher the traffic, the higher the score. Max <strong>20</strong> points.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Number of Disconnections</strong></td>
+<td style="text-align: left;">The more disconnections, the lower the score (negative points). Each disconnection deducts <strong>10</strong> points.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Successful Handshakes</strong></td>
+<td style="text-align: left;">A node that has successfully handshaken before gets <strong>20</strong> points; otherwise, <strong>0</strong>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Penalty Status</strong></td>
+<td style="text-align: left;">If a node is in a penalty state (e.g., disconnected less than 60 seconds ago, on the <code>badNodes</code> list, inconsistent chain info), it scores <strong>0</strong> points immediately.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="handshake-and-keep-alive">Handshake and Keep-Alive<a class="headerlink" href="#handshake-and-keep-alive" title="Permanent link">&para;</a></h3>
+<p>Once a TCP connection is successfully established, the two nodes perform a handshake by exchanging <code>P2P_HELLO</code> messages to verify each other's blockchain information (e.g., <code>p2p version</code>, <code>genesis block</code>). If all checks pass, the handshake is successful, and the connection proceeds to the block synchronization or data broadcasting stage. Otherwise, the connection is terminated.</p>
+<p>To keep the channel active, nodes periodically send <code>P2P_PING</code> messages. If a <code>P2P_PONG</code> response is not received within a timeout period, the connection is dropped.</p>
+<p><a id="block-sync"></a></p>
+<h2 id="block-synchronization">Block Synchronization<a class="headerlink" href="#block-synchronization" title="Permanent link">&para;</a></h2>
+<p>After a new node successfully connects and handshakes, if it discovers that a remote peer's blockchain is longer than its own, it will trigger the block synchronization process, <code>syncService.startSync</code>, based on the longest chain principle. The message exchange during synchronization is shown below:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_syncflow.png" /></p>
+<ol>
+<li><strong>Request Chain Summary</strong>: Node A sends a <code>SYNC_BLOCK_CHAIN</code> message to Node B, containing a summary of its local chain (e.g., highest solidified block, highest unsolidified block).</li>
+<li><strong>Return Missing Inventory</strong>: Upon receiving the summary, Node B compares it with its own chain, calculates a list of block IDs that Node A is missing, and sends it back in a <code>BLOCK_CHAIN_INVENTORY</code> message. Each message can carry up to <strong>2000</strong> block IDs.</li>
+<li><strong>Request Missing Blocks</strong>: After receiving the inventory, Node A asynchronously requests the missing blocks using a <code>FETCH_INV_DATA</code> message, requesting up to <strong>100</strong> blocks at a time. If more blocks remain, a new synchronization round is triggered.</li>
+<li><strong>Send Blocks</strong>: Node B receives the <code>FETCH_INV_DATA</code> request and sends the block data to Node A via <code>BLOCK</code> messages.</li>
+<li><strong>Process</strong>: Node A receives the <code>BLOCK</code> message and processes the block asynchronously.</li>
+</ol>
+<h3 id="chain-summary-and-missing-block-inventory">Chain Summary and Missing Block Inventory<a class="headerlink" href="#chain-summary-and-missing-block-inventory" title="Permanent link">&para;</a></h3>
+<p>During block synchronization, nodes use a <strong>chain summary</strong> and a <strong>missing block inventory</strong> to determine which blocks to fetch.</p>
+<ul>
+<li><strong>Chain Summary</strong>: Composed of an ordered set of block IDs, typically including the highest solidified block, the highest unsolidified block, and intermediate blocks selected via a binary search approach.</li>
+<li><strong>Missing Block Inventory</strong>: The neighbor node compares the chain summary with its own chain to identify the missing blocks and returns a list of consecutive block IDs and the count of remaining blocks.</li>
+</ul>
+<p>Below are several examples illustrating how the chain summary and missing block inventory are generated in different synchronization scenarios.</p>
+<h4 id="normal-scenario">Normal Scenario<a class="headerlink" href="#normal-scenario" title="Permanent link">&para;</a></h4>
+<p>The local head block height is <strong>1018</strong>, and the solidified block height is <strong>1000</strong>.
+Since this is the first connection between Node A and Node B, the common block height is <strong>0</strong>.
+Node A generates a chain summary via binary search: <code>1000, 1010, 1015, 1017, 1018</code>.</p>
+<p>Node B receives the summary, compares it with its own chain, and finds that Node A is missing blocks: <code>1018, 1019, 1020, 1021</code>.
+Subsequently, Node A uses the missing block inventory to request synchronization for <code>1019, 1020, 1021</code>.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_sync1.png" /></p>
+<h4 id="chain-fork-scenarios">Chain Fork Scenarios<a class="headerlink" href="#chain-fork-scenarios" title="Permanent link">&para;</a></h4>
+<p><strong>Scenario 1</strong>
+The local main chain head block height is <strong>1018</strong>, the solidified block height is <strong>1000</strong>, and the common block height is <strong>0</strong>.
+Node A's chain summary is: <code>1000, 1010, 1015, 1017, 1018</code>.</p>
+<p>Node B receives the summary, detects a chain fork, and after comparison, confirms the common block is <strong>1015</strong>.
+Therefore, the missing block inventory for Node A is: <code>1015, 1016', 1017', 1018', 1019'</code>.
+Node A then requests to sync <code>1018', 1019'</code>.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_sync2.png" /></p>
+<p><strong>Scenario 2</strong>
+The local main chain head block height is <strong>1018</strong>, the solidified block height is <strong>1000</strong>, and the common block height is <strong>1017'</strong> (on the fork).
+Node A's chain summary is: <code>1000, 1009, 1014, 1016', 1017'</code>.</p>
+<p>Node B compares the summaries and generates a missing block inventory: <code>1017', 1018', 1019'</code>.
+Node A then requests to sync <code>1018', 1019'</code>.</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_sync3.png" /></p>
+<p><a id="broadcasting"></a></p>
+<h2 id="block-and-transaction-broadcasting">Block and Transaction Broadcasting<a class="headerlink" href="#block-and-transaction-broadcasting" title="Permanent link">&para;</a></h2>
+<p>When a Super Representative node generates a new block, or when a node receives a new transaction, it initiates a broadcast process. The broadcasting and forwarding flows are largely identical. The message exchange is illustrated below:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/network_broadcastflow.png" /></p>
+<p>The message types involved include:</p>
+<ul>
+<li><code>INVENTORY</code>: A broadcast list containing block or transaction IDs.</li>
+<li><code>FETCH_INV_DATA</code>: A request to fetch the data listed in the inventory.</li>
+<li><code>BLOCK</code>: Block data.</li>
+<li><code>TRXS</code>: Transaction data.</li>
+</ul>
+<p>The specific process is as follows:</p>
+<ol>
+<li><strong>Send Inventory</strong>: Node A packages the IDs of the block or transactions to be broadcast into an <code>INVENTORY</code> message and sends it to its neighbor, Node B.</li>
+<li><strong>Place in Queue</strong>: When Node B receives the <code>INVENTORY</code>, it checks the status of Node A. If the message can be accepted, it places the block/transaction IDs from the inventory into a fetch queue called <code>invToFetch</code>. If it is a block inventory, it immediately sends a <code>FETCH_INV_DATA</code> message to request the data.</li>
+<li><strong>Send Data</strong>: Upon receiving <code>FETCH_INV_DATA</code>, Node A verifies that it has previously sent an inventory message to Node B. If so, it sends the specific block (<code>BLOCK</code>) or transaction (<code>TRXS</code>) data corresponding to the inventory.</li>
+<li><strong>Process and Forward</strong>: After receiving the data, Node B processes and validates it, then triggers a forwarding process to broadcast it to its own neighbors.</li>
+</ol>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>This article has provided a detailed overview of the underlying implementation of the TRON P2P network, covering the core mechanisms of node discovery, connection, block synchronization, and data broadcasting. Through a deep understanding of these modules, developers can better appreciate the robustness and efficiency of the <code>java-tron</code> network and build upon this foundation for further development and optimization.</p>
 
 
 
@@ -1759,6 +2042,44 @@ node B's configuration:
 		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
       	    	  <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chainbase-module/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chainbase">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chainbase
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../contracts/tools/" class="md-footer__link md-footer__link--next" aria-label="Next: Tools">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Tools
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <!--div class="md-footer-meta md-typeset">

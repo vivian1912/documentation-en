@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/code-structure/">
+        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/chainbase-module/">
       
       
-        <link rel="prev" href="../demo/">
+        <link rel="prev" href="../code-structure/">
       
       
-        <link rel="next" href="../chainbase-module/">
+        <link rel="next" href="../network-module/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Module Structure - java-tron</title>
+        <title>Chainbase - java-tron</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#java-tron-module-structure" class="md-skip">
+        <a href="#the-chainbase-module-a-deep-dive-into-trons-data-storage" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Module Structure
+              Chainbase
             
           </span>
         </div>
@@ -1230,6 +1230,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1246,7 +1268,7 @@
           
   
   <span class="md-ellipsis">
-    Module Structure
+    Chainbase
     
   </span>
   
@@ -1258,7 +1280,7 @@
         
   
   <span class="md-ellipsis">
-    Module Structure
+    Chainbase
     
   </span>
   
@@ -1281,63 +1303,159 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
-  <a href="#protocol-module" class="md-nav__link" >
+  <a href="#overview" class="md-nav__link" >
     <span class="md-ellipsis">
-      protocol Module
+      Overview
     </span>
   </a>
   
 </li>
       
-        <li class="md-nav__item ">
-  <a href="#common-module" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#prerequisites" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      common Module
+      Prerequisites
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prerequisites" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-persistent-storage" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Persistent Storage
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#chainbase-module" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#2-transaction-validation" class="md-nav__link" >
     <span class="md-ellipsis">
-      chainbase Module
+      2. Transaction Validation
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
-  <a href="#consensus-module" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#state-rollback" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      consensus Module
+      State Rollback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Rollback" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-state-rollback-upon-receiving-a-new-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. State Rollback Upon Receiving a New Block
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#actuator-module" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#2-state-rollback-after-producing-a-block" class="md-nav__link" >
     <span class="md-ellipsis">
-      actuator Module
+      2. State Rollback After Producing a Block
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#crypto-module" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#3-state-rollback-for-forked-chains" class="md-nav__link" >
     <span class="md-ellipsis">
-      crypto Module
+      3. State Rollback for Forked Chains
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#implementation-of-state-rollback" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Implementation of State Rollback
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation of State Rollback" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-transaction-reception" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Transaction Reception
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#2-state-rollback-when-a-new-block-is-received" class="md-nav__link" >
+    <span class="md-ellipsis">
+      2. State Rollback When a New Block is Received
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#3-state-rollback-when-producing-a-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      3. State Rollback When Producing a Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#block-persistence" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Block Persistence
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Block Persistence" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#1-database-atomicity" class="md-nav__link" >
+    <span class="md-ellipsis">
+      1. Database Atomicity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item ">
-  <a href="#framework-module" class="md-nav__link" >
+  <a href="#conclusion" class="md-nav__link" >
     <span class="md-ellipsis">
-      framework Module
+      Conclusion
     </span>
   </a>
   
@@ -1347,28 +1465,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chainbase-module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Chainbase
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1754,271 +1850,190 @@
   
 
 
-<h1 id="java-tron-module-structure">Java-tron Module Structure<a class="headerlink" href="#java-tron-module-structure" title="Permanent link">&para;</a></h1>
-<p><code>Java-tron</code> is the core client of the TRON network, written in Java. It implements all the core functionalities defined in the TRON whitepaper, including the consensus mechanism, cryptographic algorithms, database management, the TRON Virtual Machine (TVM), and network communication. Developers can quickly run a TRON network node by launching Java-tron.</p>
-<p>This article will systematically analyze the code structure of Java-tron, providing an in-depth look at the responsibilities and organization of each functional module to serve as a reference for developers for future source code analysis and functional extensions.</p>
-<p><code>Java-tron</code> adopts a modular design philosophy, ensuring the code's clarity, maintainability, and extensibility. Currently, <code>Java-tron</code> consists of the following seven core modules:</p>
+<h1 id="the-chainbase-module-a-deep-dive-into-trons-data-storage">The <code>ChainBase</code> Module: A Deep Dive into TRON's Data Storage<a class="headerlink" href="#the-chainbase-module-a-deep-dive-into-trons-data-storage" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>A blockchain is, in essence, an immutable distributed ledger, with its greatest value lying in solving the problem of trust. In real-world applications, blockchains are widely used for accounting and transactions. For instance, many applications leverage digital currencies like Bitcoin (BTC), Ethereum (ETH), and TRON (TRX) for economic activities to ensure the open and transparent flow of funds.</p>
+<p>However, implementing such an immutable distributed ledger is an extremely complex systems engineering challenge, involving numerous technical domains such as P2P networking, smart contracts, databases, cryptography, and consensus mechanisms. Among these, the database, as the core component of the underlying storage, directly determines the system's performance, scalability, and data consistency, making it a critical part of blockchain architecture design.</p>
+<p>In java-tron, the database module is called <code>ChainBase</code>. This article will focus on the <code>ChainBase</code> module, explaining the following core mechanisms:</p>
 <ul>
-<li><a href="#protocol-module">protocol</a></li>
-<li><a href="#common-module">common</a></li>
-<li><a href="#chainbase-module">chainbase</a></li>
-<li><a href="#consensus-module">consensus</a></li>
-<li><a href="#actuator-module">actuator</a></li>
-<li><a href="#crypto-module">crypto</a></li>
-<li><a href="#framework-module">framework</a></li>
+<li><a href="#rollback">State Rollback</a>: How data consistency is guaranteed in scenarios like block rollbacks and chain forks.</li>
+<li><a href="#rollback-implementation">Implementation of State Rollback</a>: How block rollbacks are implemented.</li>
+<li><a href="#solidifying-block">Block Persistence</a>: How on-chain data is efficiently and reliably written to the storage engine while ensuring data consistency.</li>
 </ul>
-<p>Next, we will introduce the functions and internal structures of these modules one by one.</p>
-<h2 id="protocol-module"><code>protocol</code> Module<a class="headerlink" href="#protocol-module" title="Permanent link">&para;</a></h2>
-<p>In a distributed network environment like a blockchain, concise and efficient data interaction protocols are crucial. The <code>protocol</code> module defines the key communication protocols within the <code>java-tron</code> client:</p>
+<p>The goal is to help developers better understand the design philosophy and implementation details of <code>ChainBase</code>, enabling them to be more proficient when developing applications within the TRON ecosystem.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>In a blockchain system, the database is one of the core components of the entire architecture, responsible for storing all on-chain data, including:</p>
 <ul>
-<li>Communication protocols between nodes</li>
-<li>Communication protocols between internal modules of a node</li>
-<li>Service protocols exposed to external clients</li>
+<li>Block data</li>
+<li>Transaction records</li>
+<li>Contract states</li>
+<li>Account information</li>
+<li>Events and logs</li>
 </ul>
-<p>These protocols uniformly use <a href="https://developers.google.com/protocol-buffers"><code>Google Protobuf</code></a> (Protocol Buffers) as the data interchange format. Compared to JSON and XML, Protobuf offers advantages such as smaller size, faster parsing, and better type safety, while also providing excellent structure definition capabilities and extensibility. With the help of the Protobuf compiler, serialization and deserialization code can be automatically generated for multiple languages (such as Java, C++, Python, etc.) based on the defined protocol files, facilitating cross-language integration. Protobuf is the core foundation for <code>java-tron</code>'s cross-platform, cross-language communication, supporting efficient data transmission between nodes, between modules, and for external service interfaces.</p>
-<p>The source code for the <code>protocol</code> module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/protocol">protocol directory of the java-tron repository</a>. Its core directory structure is as follows:</p>
-<div class="highlight"><pre><span></span><code>|-- protos
-    |-- api
-    |   |-- api.proto
-    |-- core
-        |-- Discover.proto
-        |-- Tron.proto
-        |-- TronInventoryItems.proto
-        |-- contract
-</code></pre></div>
+<p>Every TRON full node must maintain a complete copy of the data to ensure consistency across the decentralized network.</p>
+<h3 id="1-persistent-storage">1. Persistent Storage<a class="headerlink" href="#1-persistent-storage" title="Permanent link">&para;</a></h3>
+<p>Compared to traditional internet applications, blockchain database design has the following distinct features:</p>
 <ul>
-<li><code>protos/api/</code>: Defines the gRPC interfaces and related data structures exposed by a <code>java-tron</code> node.</li>
-<li><code>protos/core/</code>: Defines the data structures required for communication between nodes and between internal modules of a node.<ul>
-<li><code>Discover.proto</code>: Defines data structures related to the node discovery mechanism.</li>
-<li><code>TronInventoryItems.proto</code>: Defines data structures related to block and transaction transmission between nodes.</li>
-<li><code>contract/</code>: Defines data structures related to smart contracts.</li>
-<li><code>Tron.proto</code>: Defines other important core data structures, including those for accounts, blocks, transactions, resources (such as <strong>Bandwidth</strong> and <strong>Energy</strong>), Super Representatives, voting, and proposals.</li>
+<li><strong>High-frequency reads and writes:</strong> A large volume of Key-Value data access occurs on the chain.</li>
+<li><strong>Data immutability:</strong> Once historical data is on the chain, it cannot be modified.</li>
+<li><strong>High-performance requirements:</strong> Transaction volumes are large, demanding extremely high read and write performance.</li>
+<li><strong>Scalability:</strong> The system must adapt to networks and node deployment scenarios of varying scales and support flexible expansion and storage optimization strategies.</li>
+</ul>
+<p>Based on these characteristics, java-tron adopts an interface-oriented architecture in its database design. By using interface abstraction, it decouples the storage layer from the upper-level business logic. The advantage of this approach is that developers can flexibly switch between different underlying storage engines without modifying the upper-level logic.</p>
+<p>Currently, <code>ChainBase</code> supports the following two mainstream storage engines:</p>
+<ul>
+<li><strong>LevelDB:</strong> A lightweight, embedded Key-Value store.</li>
+<li><strong>RocksDB:</strong> A high-performance, high-concurrency Key-Value store.</li>
+</ul>
+<p>This architecture not only ensures system flexibility but also provides the capability to support more storage backends in the future.</p>
+<h3 id="2-transaction-validation">2. Transaction Validation<a class="headerlink" href="#2-transaction-validation" title="Permanent link">&para;</a></h3>
+<p>Before diving deep into the <code>chainbase</code> module, it is essential to first understand the transaction processing logic in java-tron.</p>
+<p><img alt="Transaction Validation Process" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_1.png" /></p>
+<p>Transactions are broadcast and distributed to various nodes through the network. Upon receiving a transaction, a node first verifies its signature. After successful verification, the transaction must also undergo <strong>pre-execution</strong> to determine its validity.</p>
+<p>For example, for a transaction where A transfers 100 TRX to B, the system needs to verify if A has a sufficient balance. After receiving the transaction, the system will attempt to execute the balance deduction (A - 100) and addition (B + 100) in its local database. If the operation succeeds, the transaction is considered valid in the current state and can proceed to the packaging process.</p>
+<p><a id="rollback"></a></p>
+<h2 id="state-rollback">State Rollback<a class="headerlink" href="#state-rollback" title="Permanent link">&para;</a></h2>
+<p>As mentioned earlier, java-tron uses <strong>pre-execution</strong> to validate the legitimacy of a transaction. However, the successful validation of a transaction on one node does not mean it has been successfully included on the chain. It has not yet been packaged into a block that has reached consensus, and therefore, there is a risk of it being rolled back.</p>
+<p>The consensus in java-tron follows a core principle: only transactions within a block acknowledged by over 2/3 of <strong>Super Representatives</strong> (<code>SR</code>s) are truly successful on-chain transactions. This can be understood as:</p>
+<ul>
+<li>The transaction is packaged into a block.</li>
+<li>This block is accepted by over 2/3 of the <code>SR</code>s.</li>
+</ul>
+<p>Only transactions that meet both criteria are considered successfully on-chain. In java-tron, a transaction goes through three stages to be finalized:</p>
+<ol>
+<li><strong>Transaction Validation:</strong> Preliminary verification of the transaction's legitimacy.</li>
+<li><strong>Transaction Packaging into a Block:</strong> The transaction is included in a block awaiting confirmation.</li>
+<li><strong>Block Reception and Application by the Majority of the Network:</strong> The block gains enough acknowledgments from <code>SR</code>s to become a solidified block.</li>
+</ol>
+<p>This raises a key question worth considering: after a node validates a transaction, it updates its local database. But if this transaction is not packaged into a block, or if the block it's in does not get confirmed by over 2/3 of the <code>SR</code>s, the node's state will be inconsistent with the rest of the network for a short period.</p>
+<p>Therefore, <strong>all state changes resulting from transaction processing may need to be rolled back, except for the transaction data in a block confirmed by more than two-thirds of the Super Representatives (SRs)</strong>. The main scenarios requiring a rollback are:</p>
+<ul>
+<li><strong><a href="#rollback-1">After receiving a new block</a></strong>, state changes from locally validated transactions must be rolled back.</li>
+<li><strong><a href="#rollback-2">After producing a new block</a></strong>, state changes from transaction validation must be rolled back.</li>
+<li><strong><a href="#rollback-3">When a chain fork occurs</a></strong>, blocks from the old main chain must be rolled back and blocks from the new main chain must be applied.</li>
+</ul>
+<p>Let's explore each of these in detail.</p>
+<p><a id="rollback-1"></a></p>
+<h3 id="1-state-rollback-upon-receiving-a-new-block">1. State Rollback Upon Receiving a New Block<a class="headerlink" href="#1-state-rollback-upon-receiving-a-new-block" title="Permanent link">&para;</a></h3>
+<p>When a node receives a new block, it needs to roll back its local state to what it was at the end of the previous block, undoing all state changes that resulted from transaction validations that occurred since. This is illustrated below:</p>
+<p><img alt="State Rollback Upon Receiving a New Block" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_2.png" /></p>
+<p>As shown in the figure:</p>
+<ul>
+<li>At block height 100, accountA has a balance of 100.</li>
+<li>The node pre-validates transaction t1: A transfers 100 to B, which executes successfully.</li>
+<li>Subsequently, it receives a new block, block101, which contains transaction t2: A transfers 50 to C.</li>
+<li>If t1 is not rolled back first, t2 will fail validation due to an insufficient balance.</li>
+</ul>
+<p>Therefore, the changes caused by t1 must be undone, reverting the state to the end of block 100, before executing block101.</p>
+<p><a id="rollback-2"></a></p>
+<h3 id="2-state-rollback-after-producing-a-block">2. State Rollback After Producing a Block<a class="headerlink" href="#2-state-rollback-after-producing-a-block" title="Permanent link">&para;</a></h3>
+<p>You might wonder: when producing a block, why not just package the already validated transactions directly? Why is a state rollback necessary before producing a block?</p>
+<p>java-tron performs a <strong>secondary validation</strong> on transactions when packaging them into a block. The reason for this secondary validation lies in the time-sensitive nature of transactions. Using the same example, after receiving block 101, transaction <code>t1</code> was rolled back, and <code>accountA</code>'s balance was reduced by 50. When it's this node's turn to produce a block, <code>t1</code> has now become an invalid transaction because <code>accountA</code>'s balance is no longer sufficient to cover the 100 TRX transfer. It would be incorrect to package <code>t1</code> into the new block, so the transaction must be re-validated. This is why the state must be rolled back before block production.</p>
+<p>After a block is successfully packaged, the node broadcasts it to the network and also <code>apply</code>s it locally. The <code>apply</code> logic will re-validate the transactions within the block. Therefore, even after packaging a block, a rollback operation is still necessary.</p>
+<p><a id="rollback-3"></a></p>
+<h3 id="3-state-rollback-for-forked-chains">3. State Rollback for Forked Chains<a class="headerlink" href="#3-state-rollback-for-forked-chains" title="Permanent link">&para;</a></h3>
+<p>Forks are an unavoidable occurrence in blockchain operation, especially in systems based on the DPoS consensus mechanism, which have fast block production times. When multiple candidate chains appear in the network, the system must choose one as the main chain according to consensus rules, while the other chains are rolled back and discarded.</p>
+<p>To achieve this, java-tron maintains a specific data structure in memory (as shown below) to track the current main chain, forked chains, and their corresponding state information.</p>
+<p><img alt="State Rollback for Forked Chains" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_3.png" /></p>
+<p>java-tron keeps all recent, not-yet-finalized blocks in memory. When a fork occurs, the system uses the <strong>longest chain rule</strong> to select the main chain: if a forked chain's block height surpasses that of the current main chain, the forked chain will become the new main chain.</p>
+<p>The switching process is as follows:</p>
+<ul>
+<li>Find the <strong>common parent block</strong> (i.e., the fork point) of the two chains.</li>
+<li>Roll back from the current main chain to the parent block, sequentially removing the main chain blocks that came after it.</li>
+<li>Starting from the parent block, <code>apply</code> the block data from the new main chain in order.</li>
+</ul>
+<p>As shown in the figure above, the red <code>Fork A</code> was originally the main chain. However, as <code>Fork B</code>'s height continued to grow, it eventually surpassed <code>Fork A</code>. At this point, the system will roll back blocks 103, 102, and 101 from <code>Fork A</code> and then sequentially <code>apply</code> blocks 101, 102, 103, and 104 from <code>Fork B</code>.</p>
+<p><a id="rollback-implementation"></a></p>
+<h2 id="implementation-of-state-rollback">Implementation of State Rollback<a class="headerlink" href="#implementation-of-state-rollback" title="Permanent link">&para;</a></h2>
+<p>This section will explain the processes of transaction reception, transaction validation, block generation, block validation, and block saving from a code-level perspective to further analyze the <code>chainbase</code> module.</p>
+<h3 id="1-transaction-reception">1. Transaction Reception<a class="headerlink" href="#1-transaction-reception" title="Permanent link">&para;</a></h3>
+<p><img alt="Transaction Reception Process" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_4.png" /></p>
+<ul>
+<li>When a node receives a broadcasted transaction, it accepts it through the <code>Manager.pushTransaction(final TransactionCapsule trx)</code> function: the transaction is placed in the local <code>pushTransactionQueue</code> cache, and simultaneously, it is validated.</li>
+<li>After passing validation, the transaction moves to the <code>pendingTransactionQueue</code>, to be used during block production.</li>
+<li>If the node is an SR, it will pull transactions from this queue to build a block.</li>
+</ul>
+<p>Handling Validation Failures:</p>
+<ul>
+<li>From API: Return an exception message to the user.</li>
+<li>From P2P Network: Log the error locally.</li>
+</ul>
+<h3 id="2-state-rollback-when-a-new-block-is-received">2. State Rollback When a New Block is Received<a class="headerlink" href="#2-state-rollback-when-a-new-block-is-received" title="Permanent link">&para;</a></h3>
+<p>Before a new block arrives, a node may have already received broadcasted transactions and validated them. The validation process temporarily modifies the node's state to determine if the transaction can be executed correctly.</p>
+<p>However, successful validation does not guarantee that the transaction will ultimately take effect, as it still needs to be packaged into a block and solidified. To ensure state consistency, when a new block arrives, the node rolls back the temporary state changes caused by transaction validation, retaining only the state changes generated during the block application process.</p>
+<p><img alt="State Rollback When a New Block is Received" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_5.png" /></p>
+<p>During the rollback, transactions from the <code>pendingTransactionQueue</code> must be moved to <code>rePushTransactions</code>, and the <code>pendingTransactionQueue</code> must be cleared. Please refer to the diagram above for a detailed explanation.</p>
+<p>Why is the <code>pendingTransactionQueue</code> cleared when a new block arrives? First, it's important to understand that the <code>pendingTransactionQueue</code> is responsible for providing transactions during block generation; it holds validated transactions ready for packaging. However, since the new block also alters account states, it might invalidate transactions in the <code>pendingTransactionQueue</code> that were previously validated. (A simple example: a transaction in the new block has account A spend some tokens, causing a subsequent transaction from account A in the queue to have an insufficient balance). After moving the transactions to <code>rePushTransactions</code>, a background thread is responsible for re-validating the transactions in that queue. If they are still valid, they are moved back to the <code>pendingTransactionQueue</code> to be available for block production.</p>
+<p>java-tron uses a <code>session</code> object, where one <code>session</code> represents the state changes caused by one block. The <code>session</code> object is primarily used for rollbacks, such as reverting the state to that of the previous block, as shown below:</p>
+<p><img alt="Session Object and Databases" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_6.png" /></p>
+<p>The figure shows that the persistent storage contains various types of databases, which together form a complete blockchain. For example, blocks are stored in <code>khasodb</code> and <code>blockStore</code>, while account information is stored in <code>accountStore</code>.</p>
+<p>A node maintains a linked list of <code>session</code>s, which stores the change information corresponding to blocks/transactions, allowing the node to revert using this information. In the figure, <code>session1</code> represents the state changes from the current highest block. When a transaction is received, a new <code>session2</code> is created. For each subsequent transaction received, a temporary <code>tmpSession</code> is generated. After the transaction is validated, <code>tmpSession</code> is immediately merged into <code>session2</code>. Before a new block arrives, all state changes from transaction validations are saved in <code>session2</code>. When a new block arrives, simply calling the <code>reset</code> method on <code>session2</code> will roll the state back to that of the previous block.</p>
+<h3 id="3-state-rollback-when-producing-a-block">3. State Rollback When Producing a Block<a class="headerlink" href="#3-state-rollback-when-producing-a-block" title="Permanent link">&para;</a></h3>
+<p>The reason an <code>SR</code> needs to roll back before producing a block is somewhat complex. Let's consider a scenario:</p>
+<ul>
+<li>The <code>pendingTransactionQueue</code> contains currently validated transactions. So, when an <code>SR</code> node produces a block, it could simply package transactions from the <code>pendingTransactionQueue</code>, and after packaging, roll back the state to that of the previous block.</li>
+</ul>
+<p>However, this approach has a problem: if the <code>SR</code> node has just received and <code>apply</code>ed a new block, we know from the previous section that <code>pendingTransactionQueue</code> will be cleared and its contents moved to <code>rePushTransactions</code>. If it's this SR's turn to produce a block right at that moment, its <code>pendingTransactionQueue</code> might not have enough transactions. Therefore, the actual implementation is that during block production, transactions are read not only from <code>pendingTransactionQueue</code> but also from <code>rePushTransactions</code> if the former has few transactions. And as we've analyzed, transactions in <code>rePushTransactions</code> may no longer be valid, so they need to be re-validated. It is this validation logic that necessitates a state rollback before producing a block.</p>
+<p><img alt="State Rollback When Producing a Block" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_7.png" /></p>
+<p>During block production, transactions are validated again, which causes state changes. But this is just block generation; the block still needs to be broadcast. Only the reception of a broadcasted block truly changes the state. Therefore, the state changes produced during block generation also need to be rolled back. As shown in the figure above, after block production is complete, <code>session2''</code> must also be rolled back.</p>
+<p><a id="solidifying-block"></a></p>
+<h2 id="block-persistence">Block Persistence<a class="headerlink" href="#block-persistence" title="Permanent link">&para;</a></h2>
+<p>java-tron uses a DPoS consensus mechanism, where 27 Super Representatives (SRs) are elected through voting to serve as block producers, responsible for producing and confirming blocks.</p>
+<p>When a block receives acknowledgment from over 2/3 of the SRs—meaning more than 2/3 of the Super Representatives have produced subsequent blocks based on it—the block is considered to have reached consensus and will no longer be rolled back. This is called a <strong>Solidified Block</strong>. Only solidified blocks are safely written to the database.</p>
+<p>In the <code>Chainbase</code> module, the <code>SnapshotManager</code> plays a central role. It acts as a unified entry point to the storage layer, managing and maintaining references to all business databases. These database references are stored in a list, and each database instance supports adding a temporary state set on top of itself, known as a <code>SnapshotImpl</code>.</p>
+<p>A <code>SnapshotImpl</code> is essentially an in-memory <code>HashMap</code>. Multiple <code>SnapshotImpl</code>s are linked together in a list structure. Each <code>SnapshotImpl</code> independently saves the data modifications related to a single state change, isolated from the others. This chained snapshot structure allows the system to manage and control rollbacks for different states independently, as shown below:</p>
+<p><img alt="SnapshotManager Structure" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_8.png" /></p>
+<p>In the figure, <code>SnapshotRoot</code> is a wrapper class for the underlying persistent database, responsible for storing all solidified data.</p>
+<p>We previously mentioned the concept of a <code>session</code>: one <code>session</code> represents the global state changes caused by a block. In reality, a <code>session</code> is composed of multiple <code>SnapshotImpl</code>s corresponding to different databases. For example, in the diagram, all the <code>SnapshotImpl</code>s corresponding to block 5 together form the set of state changes for block 5.</p>
+<p>When a node receives a new block, its state changes are not immediately written to persistent storage. Instead, they are first recorded in an in-memory <code>SnapshotImpl</code>. A new <code>SnapshotImpl</code> is generated for each received block. As blocks continue to arrive, the number of <code>SnapshotImpl</code>s grows.</p>
+<p>So, when are these in-memory snapshots (<code>SnapshotImpl</code>) actually written to persistent storage?</p>
+<p>There are two key variables in <code>SnapshotManager</code>:</p>
+<ul>
+<li><code>size</code>: Represents the current number of <code>SnapshotImpl</code> layers in memory.</li>
+<li><code>maxSize</code>: Represents the difference between the solidified block height and the latest block height.</li>
+</ul>
+<p>When <code>size</code> &gt; <code>maxSize</code>, it means that the first <code>size - maxSize</code> layers of <code>SnapshotImpl</code>s correspond to blocks that are now solidified and can be safely flushed to disk. At this point, <code>SnapshotManager</code> writes these <code>SnapshotImpl</code>s to the persistent database.</p>
+<p>This mechanism prevents the infinite accumulation of <code>SnapshotImpl</code>s, which would lead to excessive memory consumption, while also ensuring that solidified blocks are written to the database in a timely and reliable manner.</p>
+<h3 id="1-database-atomicity">1. Database Atomicity<a class="headerlink" href="#1-database-atomicity" title="Permanent link">&para;</a></h3>
+<p>The database storage design of java-tron differs from that of other public chains. Ethereum uses a single database instance at the persistence layer, distinguishing different data types with prefixes and storing everything in the same database. In contrast, java-tron adopts a <strong>multi-database instance</strong> design, storing data for different business logic in separate database instances.</p>
+<p>Both approaches have their pros and cons:</p>
+<ul>
+<li><strong>Single-instance database:</strong><ul>
+<li><strong>Pros:</strong> Simple maintenance, unified data writing.</li>
+<li><strong>Cons:</strong> The single database can grow continuously over time; high-frequency access to certain business data might affect the read/write performance of other services.</li>
+</ul>
+</li>
+<li><strong>Multi-instance database:</strong><ul>
+<li><strong>Pros:</strong> Data for different business logic does not interfere with each other. Parameters can be configured independently for databases with different data scales and access patterns, allowing for performance optimization. Large databases can also be split off to mitigate bloating issues.</li>
+<li><strong>Cons:</strong> Lacks native support for atomic writes across databases, which introduces challenges for transactional consistency.</li>
 </ul>
 </li>
 </ul>
-<h2 id="common-module"><code>common</code> Module<a class="headerlink" href="#common-module" title="Permanent link">&para;</a></h2>
-<p>The <code>common</code> module encapsulates commonly used public components and utility classes in <code>java-tron</code>, aiming to enhance code reusability and allow for uniform invocation by other modules. This module contains general-purpose functionalities like exception handling mechanisms and metrics monitoring tools.</p>
-<p>The source code is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/common">common directory of the java-tron repository</a>, and its core directory structure is as follows:</p>
-<div class="highlight"><pre><span></span><code>|-- /common/src/main/java/org/tron
-    |-- common
-    |   |-- args
-    |   |-- cache
-    |   |-- config
-    |   |-- cron
-    |   |-- entity
-    |   |-- es
-    |   |-- exit
-    |   |-- log
-    |   |-- logsfilter
-    |   |-- math
-    |   |-- parameter
-    |   |-- prometheus
-    |   |-- runtime/vm
-    |   |-- setting
-    |   |-- utils
-    |-- core
-        |-- config
-        |-- db
-        |-- db2
-        |-- exception
-        |-- vm/config
-        |-- Constant.java
-</code></pre></div>
+<p>To address the lack of atomic write support in a multi-database setup, java-tron introduces a <strong>checkpoint mechanism</strong>. Before writing data to multiple database instances, the system first records all data to be written into a <code>checkpoint</code>. If an exception occurs during the writing process, the node can restore a consistent data state from the <code>checkpoint</code> upon restart, thereby guaranteeing atomicity for the multi-instance writes.</p>
+<p>As mentioned in the previous section, the <code>SnapshotImpl</code>s corresponding to solidified blocks must eventually be written to the database. This process is divided into two main steps:</p>
+<ol>
+<li><strong>Create a <code>checkpoint</code></strong>
+    The <code>SnapshotImpl</code>s in memory that need to be flushed to disk are first persisted to a temporary database, <code>tmp</code>.</li>
+<li><strong>Perform the disk-writing operation</strong>
+    Only after the <code>checkpoint</code> is successfully created will the system formally write the corresponding <code>SnapshotImpl</code>s to their respective business database instances.</li>
+</ol>
+<p>During the multi-instance database write process, creating the <code>checkpoint</code> is a critical step. The purpose of the <code>checkpoint</code> is to first persist all the <code>SnapshotImpl</code>s from memory that are waiting to be written into a single temporary database (the <code>tmp</code> database) before the data is actually flushed to disk.</p>
+<p>Only after the <code>checkpoint</code> is successfully created does the system proceed with the operation of flushing the <code>SnapshotImpl</code>s to disk. If the node unexpectedly crashes during this flushing process, upon restart, the system will first check for the existence of <code>checkpoint</code> data in <code>tmp</code>:</p>
 <ul>
-<li><code>common/prometheus</code>: Integrates the Prometheus metrics monitoring tool to collect and expose runtime metrics of the <code>java-tron</code> node for system monitoring and performance analysis.</li>
-<li><code>common/utils</code>: Provides a series of wrapper classes for basic data types and utility methods (e.g., data conversion, formatting) to improve development efficiency and code readability.</li>
-<li><code>core/config</code>: Contains classes related to node configuration, responsible for managing and loading various runtime parameters of the <code>java-tron</code> node.</li>
-<li><code>core/exception</code>: Defines the exception handling mechanism for the TRON network, supporting unified error catching and feedback to enhance system robustness and maintainability.</li>
-<li><code>common/args</code>: Classes for defining basic node parameters.</li>
-<li><code>common/cache</code>: Classes related to database caching.</li>
-<li><code>common/config</code>: Configuration classes for database backups.</li>
-<li><code>common/es</code>: Service execution manager.</li>
-<li><code>common/cron</code>: Cron expression handling classes.</li>
-<li><code>common/entity</code>: Defines node and peer information.</li>
-<li><code>common/exit</code>: Service exit management classes.</li>
-<li><code>common/log</code>: Logging services.</li>
-<li><code>common/logsfilter</code>: Event plugin configuration classes and various event definition classes.</li>
-<li><code>common/math</code>: Wrapper classes for mathematical calculations.</li>
-<li><code>common/parameter</code>: Configuration classes for node startup parameters.</li>
-<li><code>common/runtime/vm</code>: Classes for handling TVM field types.</li>
-<li><code>common/setting</code>: RocksDB configuration classes.</li>
-<li><code>core/db</code> and <code>core/db2</code>: Basic classes related to the database.</li>
+<li>If it exists, the data from the <code>checkpoint</code> will be replayed into the <code>SnapshotRoot</code>, thus restoring a consistent database state.</li>
+<li>If it does not exist, it means the previous data was safely flushed to disk, and the node can continue its operations normally.</li>
 </ul>
-<h2 id="chainbase-module"><code>chainbase</code> Module<a class="headerlink" href="#chainbase-module" title="Permanent link">&para;</a></h2>
-<p>The <code>chainbase</code> module is <code>java-tron</code>'s abstraction layer for the database. Considering the possibility of chain forks in probability-based consensus algorithms like Proof of Work (PoW), Proof-of-Stake (PoS), and Delegated Proof-of-Stake (DPoS), <code>chainbase</code> provides a database interface standard that supports state rollbacks. This interface requires the underlying database to implement capabilities such as a state rollback mechanism and a Checkpoint disaster recovery mechanism to ensure data consistency and reliability when a chain reorganization occurs.</p>
-<p>Additionally, the <code>chainbase</code> module features a well-designed interface abstraction, allowing any database that conforms to this interface specification to serve as the underlying storage for the blockchain system, thereby providing developers with greater flexibility. Currently, <code>java-tron</code> provides two default implementations: LevelDB and RocksDB.</p>
-<p>The source code for the chainbase module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/chainbase">chainbase directory of the java-tron repository</a>, with the following core directory structure:</p>
-<div class="highlight"><pre><span></span><code>|-- chainbase.src.main.java.org.tron
-    |-- common
-    |   |-- bloom
-    |   |-- error
-    |   |-- overlay/message
-    |   |-- runtime
-    |   |-- storage
-    |   |   |-- leveldb
-    |   |   |-- rocksdb
-    |   |-- utils
-    |-- core
-        |-- actuator
-        |-- capsule
-        |-- config/args
-        |-- db
-        |   |-- RevokingDatabase.java
-        |   |-- TronStoreWithRevoking.java
-        |   |-- ......
-        |-- db2
-        |   |-- common
-        |   |-- core
-        |       |-- SnapshotManager.java
-        |       |-- ......
-        |-- net/message
-        |-- service
-        |-- store
-        |-- ChainBaseManager.java
-</code></pre></div>
+<p>The data structure of the <code>checkpoint</code> is as follows:</p>
+<p><img alt="image" src="https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_9.png" /></p>
+<p>The <code>checkpoint</code> stores all data related to a single state change in a temporary database, using prefixes to distinguish between different data types. To ensure that all data is completely written, the underlying database's <code>writeBatch()</code> method is used for atomic batch writes.</p>
+<p>The core idea of this mechanism can be summarized as:</p>
 <ul>
-<li><code>common/</code>: Encapsulates some common components, such as exception handling classes and utility classes.<ul>
-<li><code>storage/leveldb/</code>: Database storage logic implemented based on LevelDB.</li>
-<li><code>storage/rocksdb/</code>: Database storage logic implemented based on RocksDB.</li>
+<li>There is no guarantee of atomic writes across multiple database instances, but single-instance databases (most mainstream ones) typically support atomic writes.</li>
+<li>Therefore, the system first writes the dataset requiring atomic operations to a temporary database (guaranteeing atomicity), and then distributes the data from the temporary database to the individual database instances.</li>
+<li>If an exception occurs during the writing process, the node can rely on the data in the temporary database for recovery, thus ensuring the consistency and reliability of the overall write operation.</li>
 </ul>
-</li>
-<li><code>core/</code>: The core code of the <code>chainbase</code> module.<ul>
-<li><code>capsule/</code>: Encapsulates various core data structures (e.g., <code>AccountCapsule</code>, <code>BlockCapsule</code>) to provide read/write interfaces for objects like accounts and blocks.</li>
-<li><code>store/</code>: Implements various business-specific databases (e.g., <code>AccountStore</code> and <code>ProposalStore</code>).<ul>
-<li><code>AccountStore</code>: Account database, named <code>account</code>, used to store all account information.</li>
-<li><code>ProposalStore</code>: Proposal database, named <code>proposal</code>, used to store all proposal information.</li>
-</ul>
-</li>
-<li><code>db/</code> and <code>db2/</code>: Implements the revokable database.<ul>
-<li><code>db/</code>: Contains the early <code>AbstractRevokingStore</code>.</li>
-<li><code>db2/</code>: Contains the more stable and extensible <code>SnapshotManager</code>. It is the main rollback mechanism implementation currently in <code>java-tron</code>. Key classes and interfaces include:<ul>
-<li><code>RevokingDatabase.java</code>: A database container interface responsible for managing all revokable databases. <code>SnapshotManager</code> is a concrete implementation of this interface.</li>
-<li><code>TronStoreWithRevoking.java</code>: A generic base class for databases that support the rollback mechanism. Specific business databases like <code>BlockStore</code> and <code>TransactionStore</code> are implemented based on this class.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="consensus-module"><code>consensus</code> Module<a class="headerlink" href="#consensus-module" title="Permanent link">&para;</a></h2>
-<p>The consensus mechanism is a crucial core module in a blockchain system; it determines how nodes in the network reach an agreement on the validity of transactions and blocks. Common consensus algorithms include Proof of Work (PoW), Proof of Stake (PoS), Delegated Proof of Stake (DPoS), and Practical Byzantine Fault Tolerance (PBFT). In consortium chains or permissioned networks, consistency algorithms like Paxos and Raft are also commonly used.</p>
-<p>The choice of a consensus mechanism should match the specific business scenario. For example, real-time games that are sensitive to consensus efficiency are not suitable for PoW, whereas PBFT might be the preferred choice for exchanges with extremely high real-time requirements. Therefore, supporting pluggable consensus mechanisms is essential, and it is also a vital part of implementing application-specific blockchains. The ultimate goal of the <code>consensus</code> module is to allow application developers to switch consensus mechanisms as easily as configuring a parameter.</p>
-<p>The source code for the <code>consensus</code> module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/consensus">consensus directory of the java-tron repository</a>, with the following core directory structure:</p>
-<div class="highlight"><pre><span></span><code>|-- consensus/src/main/java/org/tron/consensus
-    |-- Consensus.java
-    |-- ConsensusDelegate.java
-    |-- base
-    |   |-- ConsensusInterface.java
-    |   |-- ......
-    |-- dpos
-    |-- pbft
-</code></pre></div>
-<p>The <code>consensus</code> module abstracts the consensus process into a set of core interfaces, uniformly defined in <code>ConsensusInterface</code>, which mainly includes the following methods:</p>
-<ul>
-<li><code>start</code>: Starts the consensus service, supporting custom startup parameters.</li>
-<li><code>stop</code>: Stops the consensus service.</li>
-<li><code>receiveBlock</code>: Defines the consensus processing logic for when a block is received.</li>
-<li><code>validBlock</code>: Defines the consensus logic for block validation.</li>
-<li><code>applyBlock</code>: Defines the processing logic for applying a block (writing to the state).</li>
-</ul>
-<p>Currently, <code>java-tron</code> provides two implementations of this interface: DPoS (in the <code>dpos/</code> directory) and PBFT (in the <code>pbft/</code> directory).</p>
-<p>Developers can also implement the <code>ConsensusInterface</code> according to their specific business needs to integrate other consensus algorithms, enabling more flexible chain design and deployment.</p>
-<h2 id="actuator-module"><code>actuator</code> Module<a class="headerlink" href="#actuator-module" title="Permanent link">&para;</a></h2>
-<p>Ethereum pioneered the introduction of the virtual machine and the smart contract development paradigm, greatly advancing the development of blockchain applications. However, in some complex scenarios, smart contracts still have limitations in terms of flexibility and performance. To meet the demand for higher performance and customization, <code>java-tron</code> provides the ability to build Application Chains and has designed the independent <code>actuator</code> module for this purpose.</p>
-<p>The <code>actuator</code> module is the executor for transactions. It supports embedding application logic directly into the chain without running it in a virtual machine. Developers can view an application as being composed of different types of transactions, with each transaction type corresponding to a dedicated actuator responsible for its specific execution logic. This allows for highly customized on-chain processing capabilities.</p>
-<p>The source code for the <code>actuator</code> module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/actuator">actuator directory of the java-tron repository</a>. Its core directory structure is as follows:</p>
-<div class="highlight"><pre><span></span><code>|-- actuator/src/main/java/org/tron/core
-    |-- actuator
-    |   |-- AbstractActuator.java
-    |   |-- ActuatorCreator.java
-    |   |-- ActuatorFactory.java
-    |   |-- TransferActuator.java
-    |   |-- VMActuator.java
-    |   |-- ......
-    |-- utils
-    |-- vm
-</code></pre></div>
-<p><strong><code>actuator</code> Module Core Structure</strong></p>
-<ul>
-<li><code>actuator/</code>: Defines the executors for various types of transactions in the TRON network, with each transaction type corresponding to a specific executor. For example:<ul>
-<li><code>TransferActuator</code>: Handles TRX transfer transactions.</li>
-<li><code>FreezeBalanceV2Actuator</code>: Handles transactions for staking TRX to obtain resources (Bandwidth or Energy).</li>
-</ul>
-</li>
-<li><code>utils/</code>: Encapsulates helper utility classes for the transaction execution process.</li>
-<li><code>vm/</code>: Contains logic related to the virtual machine.</li>
-</ul>
-<p><strong>Actuator Interface Definition</strong></p>
-<p>The <code>actuator</code> module standardizes the transaction execution logic by defining a unified Actuator interface. This interface includes the following core methods:</p>
-<ul>
-<li><code>execute()</code>: Executes the specific operations of a transaction, such as state changes and business logic processing.</li>
-<li><code>validate()</code>: Validates the legality of a transaction to prevent invalid or malicious transactions.</li>
-<li><code>getOwnerAddress()</code>: Gets the address of the transaction originator.</li>
-<li><code>calcFee()</code>: Calculates the transaction fee required.</li>
-</ul>
-<p>Developers can also define and handle custom transaction types by implementing the <code>Actuator</code> interface according to their own business needs.</p>
-<h2 id="crypto-module"><code>crypto</code> Module<a class="headerlink" href="#crypto-module" title="Permanent link">&para;</a></h2>
-<p><code>crypto</code> is a relatively independent but crucial module in <code>java-tron</code>, responsible for the encryption and data security of the entire system. The currently supported cryptographic algorithms include <code>SM2</code> and <code>ECKey</code>.</p>
-<p>The source code for the <code>crypto</code> module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/crypto">crypto directory of the java-tron repository</a>. Its core directory structure is as follows:</p>
-<div class="highlight"><pre><span></span><code>|-- crypto/src/main/java/org/tron/common/crypto
-    |-- Blake2bfMessageDigest.java
-    |-- ECKey.java
-    |-- Hash.java
-    |-- SignInterface.java
-    |-- SignUtils.java
-    |-- SignatureInterface.java
-    |-- cryptohash
-    |-- jce
-    |-- sm2
-</code></pre></div>
-<ul>
-<li><code>sm2</code> and <code>jce</code>: Implement the SM2 and ECKey encryption and signature algorithms, respectively, which are widely used in core security scenarios like transaction signing and identity verification.</li>
-</ul>
-<p>This module provides the security foundation for the entire TRON network, ensuring the integrity, non-repudiation, and privacy of transaction data, and is a vital pillar supporting on-chain trust.</p>
-<h2 id="framework-module"><code>framework</code> Module<a class="headerlink" href="#framework-module" title="Permanent link">&para;</a></h2>
-<p><code>framework</code> is the core module of <code>java-tron</code> and the entry point for starting a node. It is responsible for initializing the various sub-modules, dispatching business logic, and providing a unified access point for external services, covering core functions such as node network communication, block broadcasting, synchronization, and management.</p>
-<p>The source code for the <code>framework</code> module is located in the <a href="https://github.com/tronprotocol/java-tron/tree/develop/framework">framework directory of the java-tron repository</a>. Its core directory structure is as follows:</p>
-<div class="highlight"><pre><span></span><code>|-- framework/src/main/java/org/tron
-    |-- common
-    |   |-- application
-    |   |-- backup
-    |   |-- logsfilter
-    |   |-- net
-    |   |-- overlay
-    |   |   |-- client
-    |   |   |-- discover
-    |   |   |-- message
-    |   |   |-- server
-    |   |-- runtime
-    |-- core
-    |   |-- Wallet.java
-    |   |-- capsule
-    |   |-- config
-    |   |-- consensus
-    |   |-- db
-    |   |-- metrics
-    |   |-- net
-    |   |-- services
-    |   |-- trie
-    |   |-- zen
-    |-- keystore
-    |-- program
-    |   |-- FullNode.java
-    |-- tool
-</code></pre></div>
-<ul>
-<li><code>program/FullNode.java</code>: The program entry point for <code>java-tron</code>, responsible for initializing various system components and external interface services (HTTP, gRPC, JSON-RPC, etc.) to support external systems connecting to the TRON network.</li>
-<li><code>core/services</code>: A unified exit point for external services.<ul>
-<li><code>http/</code>: Defines the control logic for all HTTP interfaces.</li>
-<li><code>json-rpc/</code>: Implements the JSON-RPC interface, compatible with Ethereum's RPC standard, supporting lightweight access to node functions.</li>
-</ul>
-</li>
-<li><code>common/overlay/discover</code>: Implements a node discovery protocol based on Kademlia for discovering and connecting to other nodes on the TRON network.</li>
-<li><code>common/overlay/server</code>: Manages connected nodes and handles logic for block synchronization, transaction propagation, etc., ensuring block consistency and efficient message passing between nodes.</li>
-<li><code>core/net</code>: Handles network messages. Its subdirectory <code>/service</code> contains the logic for broadcasting transactions and blocks, as well as block fetching and synchronization.</li>
-<li><code>core/db/Manager.java</code>: The core dispatching class for data processing, responsible for operations like transaction and block validation, application, and persistence. It is the key hub for on-chain data processing.</li>
-</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>This article, in conjunction with the transaction and block processing flows, has analyzed the implementation mechanisms of the <code>ChainBase</code> module concerning "State Rollback" and "Database Writing". It has also highlighted java-tron's <code>checkpoint</code> atomic write solution, introduced specifically for multi-database instance writing, and how it effectively prevents database corruption in the event of unexpected situations like a crash. We hope this article helps developers gain a deeper understanding and participate more effectively in the development and optimization of the java-tron database.</p>
 
 
 
@@ -2039,7 +2054,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../demo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Development Example">
+          <a href="../code-structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Module Structure">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2049,20 +2064,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Development Example
+                Module Structure
               </div>
             </div>
           </a>
         
         
           
-          <a href="../chainbase-module/" class="md-footer__link md-footer__link--next" aria-label="Next: Chainbase">
+          <a href="../network-module/" class="md-footer__link md-footer__link--next" aria-label="Next: Network">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Chainbase
+                Network
               </div>
             </div>
             <div class="md-footer__button md-icon">
