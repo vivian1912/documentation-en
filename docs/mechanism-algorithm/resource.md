@@ -115,8 +115,13 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 
 ## Energy
 
-Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract.
+Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract. This section provides a comprehensive overview of Energy focusing on the following three aspects:
 
+- [The acquisition, consumption, and recovery of Energy](#get-energy)
+- [How to set the key parameter, `fee_limit`](#set-fee-limit)
+- [The TRON network's overall consumption mechanism](#energy-mechanism)
+
+<a id="get-energy"></a>
 ### 1\. Acquiring and Consuming Energy
 
 Energy can be acquired in two primary ways:
@@ -154,7 +159,7 @@ The amount of Energy you receive is a dynamic value calculated in real-time base
 Your Energy Share = (TRX Staked for Energy / Total TRX Staked for Energy Network-Wide) * Total Energy Limit
 ```
 
-**Total Energy Limit** is a network parameter set by the committee ([\#19](https://tronscan.io/#/sr/committee)), currently at 180,000,000,000, and can be modified via proposals.
+Total Energy Limit is a network parameter set by the committee ([\#19](https://tronscan.io/#/sr/committee)), currently at 180,000,000,000, and can be modified via proposals.
 
 ##### Calculation Example
 
@@ -193,7 +198,7 @@ Contract execution can be interrupted for various reasons, with different rules 
 
 Consumed Energy resources gradually recover over a 24-hour period.
 
-
+<a id="set-fee-limit"></a>
 ### 2\. How to Set `fee_limit` (Essential for Users)
 
 > In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.
@@ -226,6 +231,7 @@ Next, calculate the portion of the fee the user is responsible for. Given the de
 - **Step 3: Set the Final `fee_limit`**
 Therefore, the recommended `fee_limit` for the user to set is 200,000 sun.
 
+<a id="energy-mechanism"></a>
 ### 3\. Energy Consumption Mechanism
 
 **Basic Energy Consumption Rules**
