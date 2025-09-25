@@ -40,7 +40,10 @@ nav:
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
-        - Core Modules: developers/code-structure.md
+        - Core Modules: 
+            - Module Structure: developers/code-structure.md
+            - Chainbase: developers/chainbase-module.md
+            - Network: developers/network-module.md
     - For Dapp Developers:
         - Tools: contracts/tools.md
     - Clients:
