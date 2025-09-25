@@ -995,13 +995,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item has-children">
-  <a href="#1-account-management-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#account-management-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      1. Account Management Contracts
+      Account Management Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Account Management Contracts" hidden>
+    <nav class="md-nav" aria-label="Account Management Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1037,13 +1037,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#2-trx-transfer-resource-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#trx-transfer-resource-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      2. TRX Transfer &amp; Resource Contracts
+      TRX Transfer &amp; Resource Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. TRX Transfer &amp; Resource Contracts" hidden>
+    <nav class="md-nav" aria-label="TRX Transfer &amp; Resource Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1133,13 +1133,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#3-trc-10-token-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#trc-10-token-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      3. TRC-10 Token Contracts
+      TRC-10 Token Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. TRC-10 Token Contracts" hidden>
+    <nav class="md-nav" aria-label="TRC-10 Token Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1193,13 +1193,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#4-super-representative-voting-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#super-representative-voting-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      4. Super Representative &amp; Voting Contracts
+      Super Representative &amp; Voting Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Super Representative &amp; Voting Contracts" hidden>
+    <nav class="md-nav" aria-label="Super Representative &amp; Voting Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1235,13 +1235,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#5-proposal-governance-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#proposal-governance-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      5. Proposal &amp; Governance Contracts
+      Proposal &amp; Governance Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Proposal &amp; Governance Contracts" hidden>
+    <nav class="md-nav" aria-label="Proposal &amp; Governance Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1277,13 +1277,13 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#6-smart-contract-management-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#smart-contract-management-contracts" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      6. Smart Contract Management Contracts
+      Smart Contract Management Contracts
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Smart Contract Management Contracts" hidden>
+    <nav class="md-nav" aria-label="Smart Contract Management Contracts" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
@@ -1346,9 +1346,9 @@
 </li>
       
         <li class="md-nav__item ">
-  <a href="#7-account-permission-management" class="md-nav__link" >
+  <a href="#account-permission-management" class="md-nav__link" >
     <span class="md-ellipsis">
-      7. Account Permission Management
+      Account Permission Management
     </span>
   </a>
   
@@ -1962,8 +1962,18 @@
 <h1 id="system-contract">System Contract<a class="headerlink" href="#system-contract" title="Permanent link">&para;</a></h1>
 <p>The TRON network supports a wide variety of transaction types, such as TRX transfers, TRC-10 token transfers, smart contract deployments and calls, and TRX staking. Each transaction type is defined and executed by a specific system contract. Developers can create these transactions by calling different API endpoints.</p>
 <p>For example, deploying a smart contract requires calling the <code>wallet/deploycontract</code> endpoint, which corresponds to the <code>CreateSmartContract</code> type. Staking TRX for resources requires calling the <code>wallet/freezebalancev2</code> endpoint, corresponding to the <code>FreezeBalanceV2Contract</code> type.</p>
-<p>This document will provide a detailed introduction to the main system contract types on the TRON network and their parameters.</p>
-<h2 id="1-account-management-contracts">1. Account Management Contracts<a class="headerlink" href="#1-account-management-contracts" title="Permanent link">&para;</a></h2>
+<p>This document will provide a detailed introduction to the main system contract types on the TRON network and their parameters:</p>
+<ul>
+<li><a href="#account-contracts"><strong>Account Management Contracts</strong></a>: Covers the creation and updating of accounts.</li>
+<li><a href="#trx-resource-contracts"><strong>TRX Transfer &amp; Resource Contracts</strong></a>: Handles transfers of the native TRX token and the staking and delegation of network resources like Bandwidth and Energy.</li>
+<li><a href="#trc10-token-contracts"><strong>TRC-10 Token Contracts</strong></a>: Defines the rules for the issuance, transfer, and management of TRC-10 standard tokens.</li>
+<li><a href="#sr-voting-contracts"><strong>Super Representative &amp; Voting Contracts</strong></a>: Covers node election and voting operations within the TRON network's consensus mechanism.</li>
+<li><a href="#proposal-governance-contracts"><strong>Proposal &amp; Governance Contracts</strong></a>: For the on-chain governance mechanism used to modify network parameters.</li>
+<li><a href="#smart-contract-contracts"><strong>Smart Contract Management Contracts</strong></a>: Supports the deployment, triggering, and configuration of TRC-20 and other smart contracts.</li>
+<li><a href="#permission-management"><strong>Account Permission Management</strong></a>: Introduces permission settings for advanced account features, such as multi-signature.</li>
+</ul>
+<p><a id="account-contracts"></a></p>
+<h2 id="account-management-contracts">Account Management Contracts<a class="headerlink" href="#account-management-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="accountcreatecontract">AccountCreateContract<a class="headerlink" href="#accountcreatecontract" title="Permanent link">&para;</a></h3>
 <p><em>Creates a new account.</em></p>
 <div class="highlight"><pre><span></span><code>message AccountCreateContract {
@@ -2006,7 +2016,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: The address of the contract initiator.</li>
 <li><code>account_id</code>: The account ID, which is unique and case-insensitive.</li>
 </ul>
-<h2 id="2-trx-transfer-resource-contracts">2. TRX Transfer &amp; Resource Contracts<a class="headerlink" href="#2-trx-transfer-resource-contracts" title="Permanent link">&para;</a></h2>
+<p><a id="trx-resource-contracts"></a></p>
+<h2 id="trx-transfer-resource-contracts">TRX Transfer &amp; Resource Contracts<a class="headerlink" href="#trx-transfer-resource-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="transfercontract">TransferContract<a class="headerlink" href="#transfercontract" title="Permanent link">&para;</a></h3>
 <p><em>Transfers TRX.</em></p>
 <div class="highlight"><pre><span></span><code>message TransferContract {
@@ -2128,7 +2139,8 @@ message SetAccountIdContract {
 <ul>
 <li><code>owner_address</code>: The address of the contract initiator.</li>
 </ul>
-<h2 id="3-trc-10-token-contracts">3. TRC-10 Token Contracts<a class="headerlink" href="#3-trc-10-token-contracts" title="Permanent link">&para;</a></h2>
+<p><a id="trc10-token-contracts"></a></p>
+<h2 id="trc-10-token-contracts">TRC-10 Token Contracts<a class="headerlink" href="#trc-10-token-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="transferassetcontract">TransferAssetContract<a class="headerlink" href="#transferassetcontract" title="Permanent link">&para;</a></h3>
 <p><em>Transfers TRC-10 tokens.</em></p>
 <div class="highlight"><pre><span></span><code>message TransferAssetContract {
@@ -2230,7 +2242,8 @@ message SetAccountIdContract {
 <li><code>new_limit</code>: The new Bandwidth limit for a single caller.</li>
 <li><code>new_public_limit</code>: The new public Bandwidth limit for all callers.</li>
 </ul>
-<h2 id="4-super-representative-voting-contracts">4. Super Representative &amp; Voting Contracts<a class="headerlink" href="#4-super-representative-voting-contracts" title="Permanent link">&para;</a></h2>
+<p><a id="sr-voting-contracts"></a></p>
+<h2 id="super-representative-voting-contracts">Super Representative &amp; Voting Contracts<a class="headerlink" href="#super-representative-voting-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="votewitnesscontract">VoteWitnessContract<a class="headerlink" href="#votewitnesscontract" title="Permanent link">&para;</a></h3>
 <p><em>Votes for Super Representative candidates.</em></p>
 <div class="highlight"><pre><span></span><code>message VoteWitnessContract {
@@ -2274,7 +2287,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: The candidate's address.</li>
 <li><code>update_url</code>: The new website URL.</li>
 </ul>
-<h2 id="5-proposal-governance-contracts">5. Proposal &amp; Governance Contracts<a class="headerlink" href="#5-proposal-governance-contracts" title="Permanent link">&para;</a></h2>
+<p><a id="proposal-governance-contracts"></a></p>
+<h2 id="proposal-governance-contracts">Proposal &amp; Governance Contracts<a class="headerlink" href="#proposal-governance-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="proposalcreatecontract">ProposalCreateContract<a class="headerlink" href="#proposalcreatecontract" title="Permanent link">&para;</a></h3>
 <p><em>Creates a proposal.</em></p>
 <div class="highlight"><pre><span></span><code>message ProposalCreateContract {
@@ -2310,7 +2324,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: The address of the proposal deleter.</li>
 <li><code>proposal_id</code>: The proposal's ID.</li>
 </ul>
-<h2 id="6-smart-contract-management-contracts">6. Smart Contract Management Contracts<a class="headerlink" href="#6-smart-contract-management-contracts" title="Permanent link">&para;</a></h2>
+<p><a id="smart-contract-contracts"></a></p>
+<h2 id="smart-contract-management-contracts">Smart Contract Management Contracts<a class="headerlink" href="#smart-contract-management-contracts" title="Permanent link">&para;</a></h2>
 <h3 id="createsmartcontract">CreateSmartContract<a class="headerlink" href="#createsmartcontract" title="Permanent link">&para;</a></h3>
 <p><em>Creates a smart contract.</em></p>
 <div class="highlight"><pre><span></span><code>message CreateSmartContract {
@@ -2393,7 +2408,8 @@ message SetAccountIdContract {
 <li><code>owner_address</code>: The Super Representative's address.</li>
 <li><code>brokerage</code>: The new commission rate, ranging from 0 to 100, representing a percentage.</li>
 </ul>
-<h2 id="7-account-permission-management">7. Account Permission Management<a class="headerlink" href="#7-account-permission-management" title="Permanent link">&para;</a></h2>
+<p><a id="permission-management"></a></p>
+<h2 id="account-permission-management">Account Permission Management<a class="headerlink" href="#account-permission-management" title="Permanent link">&para;</a></h2>
 <p>For detailed information on account permission management, please refer to <a href="https://tronprotocol.github.io/documentation-en/mechanism-algorithm/multi-signatures/">Account Permission Management</a>.</p>
 
 

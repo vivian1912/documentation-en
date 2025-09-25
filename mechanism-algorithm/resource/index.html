@@ -1899,7 +1899,13 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 </code></pre></div>
 <p><em>Note: If any of these parameters are absent from the API response, their value is <code>0</code>.</em></p>
 <h2 id="energy">Energy<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
-<p>Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract.</p>
+<p>Energy is the unit of measurement for the computational resources consumed by the TRON Virtual Machine (TVM) when executing the instructions of a smart contract. This section provides a comprehensive overview of Energy focusing on the following three aspects:</p>
+<ul>
+<li><a href="#get-energy">The acquisition, consumption, and recovery of Energy</a></li>
+<li><a href="#set-fee-limit">How to set the key parameter, <code>fee_limit</code></a></li>
+<li><a href="#energy-mechanism">The TRON network's overall consumption mechanism</a></li>
+</ul>
+<p><a id="get-energy"></a></p>
 <h3 id="1-acquiring-and-consuming-energy">1. Acquiring and Consuming Energy<a class="headerlink" href="#1-acquiring-and-consuming-energy" title="Permanent link">&para;</a></h3>
 <p>Energy can be acquired in two primary ways:</p>
 <ul>
@@ -1921,7 +1927,7 @@ Remaining Staked Bandwidth = NetLimit - NetUsed
 <p>The amount of Energy you receive is a dynamic value calculated in real-time based on your stake relative to the total network stake for Energy:</p>
 <div class="highlight"><pre><span></span><code>Your Energy Share = (TRX Staked for Energy / Total TRX Staked for Energy Network-Wide) * Total Energy Limit
 </code></pre></div>
-<p><strong>Total Energy Limit</strong> is a network parameter set by the committee (<a href="https://tronscan.io/#/sr/committee">#19</a>), currently at 180,000,000,000, and can be modified via proposals.</p>
+<p>Total Energy Limit is a network parameter set by the committee (<a href="https://tronscan.io/#/sr/committee">#19</a>), currently at 180,000,000,000, and can be modified via proposals.</p>
 <h5 id="calculation-example">Calculation Example<a class="headerlink" href="#calculation-example" title="Permanent link">&para;</a></h5>
 <p>Because your share is tied to the network's total stake, your available Energy will fluctuate as other users stake or unstake.</p>
 <div class="highlight"><pre><span></span><code>Assume only two users, A and B, have staked 2 TRX each.
@@ -1950,6 +1956,7 @@ C: 36,000,000,000
 </ul>
 <h4 id="energy-recovery">Energy Recovery<a class="headerlink" href="#energy-recovery" title="Permanent link">&para;</a></h4>
 <p>Consumed Energy resources gradually recover over a 24-hour period.</p>
+<p><a id="set-fee-limit"></a></p>
 <h3 id="2-how-to-set-fee_limit-essential-for-users">2. How to Set <code>fee_limit</code> (Essential for Users)<a class="headerlink" href="#2-how-to-set-fee_limit-essential-for-users" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>In this section, "developer" refers to the person who develops and deploys the contract, while "caller" refers to the user or contract that invokes it.</p>
@@ -1980,6 +1987,7 @@ Next, calculate the portion of the fee the user is responsible for. Given the de
 <li><strong>Step 3: Set the Final <code>fee_limit</code></strong>
 Therefore, the recommended <code>fee_limit</code> for the user to set is 200,000 sun.</li>
 </ul>
+<p><a id="energy-mechanism"></a></p>
 <h3 id="3-energy-consumption-mechanism">3. Energy Consumption Mechanism<a class="headerlink" href="#3-energy-consumption-mechanism" title="Permanent link">&para;</a></h3>
 <p><strong>Basic Energy Consumption Rules</strong></p>
 <p>When executing smart contract transactions, the system calculates and deducts the Energy required for each instruction sequentially. The consumption of Energy in an account follows these priority principles:</p>
