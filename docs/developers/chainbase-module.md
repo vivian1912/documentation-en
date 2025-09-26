@@ -172,7 +172,8 @@ However, this approach has a problem: if the `SR` node has just received and `ap
 
 ![State Rollback When Producing a Block](https://raw.githubusercontent.com/tronprotocol/documentation-en/master/images/chainbase_7.png)
 
-During block production, transactions are validated again, which causes state changes. But this is just block generation; the block still needs to be broadcast. Only the reception of a broadcasted block truly changes the state. Therefore, the state changes produced during block generation also need to be rolled back. As shown in the figure above, after block production is complete, `session2''` must also be rolled back.
+During block production, transactions are re-validated, resulting in temporary state changes. Once the block is generated, it is broadcast to the network. When the producing node receives the block it has just created, it re-executes the transactions within it, thereby truly confirming the block. Consequently, the temporary state changes introduced during block production must be rolled back. As shown above, after the block is produced, `session2''` needs to be rolled back.
+
 
 <a id="solidifying-block"></a>
 ## Block Persistence
