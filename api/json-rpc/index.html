@@ -2484,7 +2484,7 @@ The block object contains the following fields:</p>
 <li><code>QUANTITY|TAG</code> - The block number, or the tag "earliest" or "latest".</li>
 <li><code>Boolean</code> - If <code>true</code>, it returns a list of full transaction objects; if <code>false</code>, it returns only the transaction hashes.</li>
 </ol>
-<p><strong>Return Value:</strong> <code>Object</code> - A block object. Returns null if the block is not found. The structure is the same as in <a href="https://developers.tron.network/reference#eth_getblockbyhash">eth_getBlockByHash</a>.</p>
+<p><strong>Return Value:</strong> <code>Object</code> - A block object. Returns null if the block is not found. The structure is the same as in <a href="#eth_getblockbyhash">eth_getBlockByHash</a>.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2746,7 +2746,7 @@ The transaction object contains the following fields:</li>
 }
 </code></pre></div></p>
 <h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
-<p><em>Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: <a href="#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a>.</em></p>
+<p><em>Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: <a href="../http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a>.</em></p>
 <p><strong>Parameters:</strong> <code>DATA</code>, 32 Bytes - The hash of the transaction.</p>
 <p><strong>Return Value:</strong> <code>Object</code> - A transaction receipt object. Returns <code>null</code> if the transaction is unconfirmed or not found.</p>
 <p>The transaction receipt object contains the following fields:</p>

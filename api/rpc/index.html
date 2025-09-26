@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rpc-list" class="md-skip">
+        <a href="#grpc-api" class="md-skip">
           Skip to content
         </a>
       
@@ -793,524 +793,1034 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item ">
+  <a href="#overview" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#account-management" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Account Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account Management" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
   <a href="#get-account-information" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get account information
+      Get Account Information
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-account-information-by-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Account Information by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#create-account" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Create Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#update-account-name" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Update Account Name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#set-account-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Set Account ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#update-account-permission" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Update Account Permission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
+        <li class="md-nav__item has-children">
+  <a href="#transaction-operations" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Transaction Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transaction Operations" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
   <a href="#trx-transfer" class="md-nav__link" >
     <span class="md-ellipsis">
-      TRX transfer
+      TRX Transfer
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#broadcast-transaction" class="md-nav__link" >
     <span class="md-ellipsis">
-      Broadcast transaction
+      Broadcast Transaction
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#create-an-account" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-transaction-information-by-transaction-id" class="md-nav__link" >
     <span class="md-ellipsis">
-      Create an account
+      Query Transaction Information (by Transaction ID)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#account-name-update" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-transaction-fee-and-block-information-by-transaction-id" class="md-nav__link" >
     <span class="md-ellipsis">
-      Account name update
+      Query Transaction Fee and Block Information (by Transaction ID)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#vote-for-super-representative-candidates" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-transaction-information-from-pending-pool" class="md-nav__link" >
     <span class="md-ellipsis">
-      Vote for super representative candidates
+      Query Transaction Information from Pending Pool
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-ratio-of-brokerage-of-the-super-representative" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-pending-pool-transaction-id-list" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query the ratio of brokerage of the super representative
+      Query Pending Pool Transaction ID List
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-unclaimed-reward" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-pending-pool-size" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query unclaimed reward
+      Query Pending Pool Size
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#update-the-ratio-of-brokerage" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-number-of-transactions-for-a-specific-block" class="md-nav__link" >
     <span class="md-ellipsis">
-      Update the ratio of brokerage
+      Query Number of Transactions for a Specific Block
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-a-transactions-current-permission-weight" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query a Transaction's Current Permission Weight
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-a-transactions-permission-approval-list" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query a Transaction's Permission Approval List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-transactions-sent-from-a-specific-address" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Transactions Sent from a Specific Address
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-transactions-received-at-a-specific-address" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Transactions Received at a Specific Address
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
+        <li class="md-nav__item has-children">
+  <a href="#token-trc-10-operations" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Token (TRC-10) Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Token (TRC-10) Operations" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
   <a href="#issue-a-token" class="md-nav__link" >
     <span class="md-ellipsis">
-      Issue a token
+      Issue a Token
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-of-list-of-super-representative-candidates" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query of list of super representative candidates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#application-for-super-representative" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Application for super representative
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#information-update-of-super-representative-candidates" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Information update of Super Representative candidates
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#token-transfer" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Token transfer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#participate-a-token" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Participate a token
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-nodes-connected-to-the-ip-of-the-api" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of nodes connected to the ip of the api
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-all-issued-tokens" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of all issued tokens
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-token-issued-by-a-given-account" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the token issued by a given account
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-token-information-by-token-name" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the token information by token name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-tokens-by-timestamp" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the list of tokens by timestamp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-current-block-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get current block information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-a-block-by-block-height" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get a block by block height
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-the-total-number-of-transactions" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Get the total number of transactions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-by-transaction-id" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction by transaction id
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-by-timestamp" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction by timestamp
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#stake-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Stake TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#unstake-trx" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Unstake TRX
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#block-producing-reward-redemption" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Block producing reward redemption
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#unstake-token-balance" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Unstake token balance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-next-maintenance-time" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the next maintenance time
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-transaction-fee-block-information" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query the transaction fee &amp; block information
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-block-information-by-block-id" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Query block information by block id
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#update-token-information" class="md-nav__link" >
     <span class="md-ellipsis">
-      Update token information
+      Update Token Information
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-list-of-all-the-tokens-by-pagination" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#token-transfer" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query the list of all the tokens by pagination
+      Token Transfer
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item ">
+  <a href="#participate-in-token-issuance" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Participate in Token Issuance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-issued-token-list" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query All Issued Token List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-tokens-issued-by-a-given-account" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Tokens Issued by a Given Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-token-information-by-token-name" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Token Information by Token Name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-token-list-by-timestamp" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Token List by Timestamp
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-token-lists-by-page" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query All Token Lists by Page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#unfreeze-token" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Unfreeze Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-token-by-name" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Token by Name
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-token-by-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Token by ID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
+        <li class="md-nav__item has-children">
+  <a href="#super-representative-sr-voting" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Super Representative (SR) &amp; Voting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Super Representative (SR) &amp; Voting" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#vote-for-a-super-representative-candidate" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Vote for a Super Representative Candidate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-a-super-representatives-brokerage-percentage" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query a Super Representative's Brokerage Percentage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-unclaimed-rewards" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Unclaimed Rewards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#update-brokerage-percentage" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Update Brokerage Percentage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#apply-to-become-a-super-representative" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Apply to Become a Super Representative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#update-super-representative-candidate-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Update Super Representative Candidate Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-super-representative-candidates" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query All Super Representative Candidates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#block-reward-withdrawal" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Block Reward Withdrawal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#create-a-proposal" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Create a Proposal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#vote-for-or-unvote-a-proposal" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Vote for or Unvote a Proposal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#delete-a-proposal" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Delete a Proposal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#resource-management-trx-staking-delegation" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Resource Management (TRX Staking &amp; Delegation)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Management (TRX Staking &amp; Delegation)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#stake-trx-old-version-deprecated" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Stake TRX (Old version, deprecated)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#unstake-trx-old-version-deprecated" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Unstake TRX (Old version, deprecated)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#stake-trx-v2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Stake TRX V2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#unstake-trx-v2" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Unstake TRX V2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#delegate-resources" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Delegate Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#undelegate-resources" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Undelegate Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#cancel-all-unstakes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Cancel All Unstakes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-remaining-unstake-count-for-an-account" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Remaining Unstake Count for an Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Delegable Resources of a Specific Resource Type for an Address (in SUN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-matured-unstake-amount-that-can-be-withdrawn-at-a-specific-time" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Matured Unstake Amount That Can Be Withdrawn at a Specific Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#withdraw-matured-unstakes" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Withdraw Matured Unstakes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#smart-contract-operations" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Smart Contract Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Smart Contract Operations" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
   <a href="#deploy-a-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Deploy a smart contract
+      Deploy a Smart Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
+        
+          <li class="md-nav__item ">
   <a href="#trigger-a-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Trigger a smart contract
+      Trigger a Smart Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#create-an-market-order" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#estimate-energy-consumption" class="md-nav__link" >
     <span class="md-ellipsis">
-      Create an market order
+      Estimate Energy Consumption
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#cancel-the-order" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Cancel the order
+      Get Smart Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-orders-for-the-account" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#update-consume_user_resource_percent-in-a-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get all orders for the account
+      Update consume_user_resource_percent in a Smart Contract
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-trading-pairs" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#update-origin_energy_limit-in-a-smart-contract" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get all trading pairs
+      Update origin_energy_limit in a Smart Contract
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
-  <a href="#get-all-orders-for-the-trading-pair" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#market-transactions-market-order" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Get all orders for the trading pair
+      Market Transactions (Market Order)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Market Transactions (Market Order)" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#create-a-market-sell-order" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Create a Market Sell Order
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-all-prices-for-the-trading-pair" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#cancel-a-market-order" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get all prices for the trading pair
+      Cancel a Market Order
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-order-by-id" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-all-market-orders-for-an-account" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get order by id
+      Get All Market Orders for an Account
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#perform-a-historical-balance-lookup" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-all-market-trading-pairs" class="md-nav__link" >
     <span class="md-ellipsis">
-      perform a historical balance lookup
+      Get All Market Trading Pairs
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#fetch-all-balance-changing-transactions-in-a-block" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-all-market-orders-for-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      fetch all balance-changing transactions in a block
+      Get All Market Orders for a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-the-burn-trx-amount" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-all-market-prices-for-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      get the burn trx amount
+      Get All Market Prices for a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#freeze-trx" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-a-market-order-by-id" class="md-nav__link" >
     <span class="md-ellipsis">
-      Freeze TRX
+      Get a Market Order by ID
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#unfreeze-trx" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#create-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      UnFreeze TRX
+      Create a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#withdraw-staked-trx" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#inject-funds-into-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      Withdraw Staked TRX
+      Inject Funds into a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#delegate-resource" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#withdraw-funds-from-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      Delegate Resource
+      Withdraw Funds from a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#undelegate-resource" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#perform-a-trade-in-a-trading-pair" class="md-nav__link" >
     <span class="md-ellipsis">
-      UnDelegate Resource
+      Perform a Trade in a Trading Pair
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-transaction-information-in-the-pending-pool" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-trading-pairs" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query transaction information in the pending pool
+      Query All Trading Pairs
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-pending-pool-transaction-id-list" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-trading-pairs-by-page" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query the pending pool transaction id list
+      Query Trading Pairs by Page
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#query-the-size-of-the-pending-pool" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#query-trading-pair-by-id" class="md-nav__link" >
     <span class="md-ellipsis">
-      Query the size of the pending pool
+      Query Trading Pair by ID
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
-        <li class="md-nav__item ">
-  <a href="#cancel-unfreeze" class="md-nav__link" >
+        <li class="md-nav__item has-children">
+  <a href="#blockchain-data-query" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Cancel UnFreeze
+      Blockchain Data Query
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Blockchain Data Query" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#get-current-block-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Current Block Information
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-bandwidth-unit-price" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-block-by-block-number" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get bandwidth unit price
+      Get Block by Block Number
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-energy-unit-price" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-block-information-by-block-id" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get energy unit price
+      Get Block Information (by Block ID)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item ">
-  <a href="#get-transaction-memo-fee" class="md-nav__link" >
+        
+          <li class="md-nav__item ">
+  <a href="#get-total-transaction-count-deprecated-returns-0" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get transaction memo fee
+      Get Total Transaction Count (Deprecated, returns 0)
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-account-balance-at-a-specific-block-height" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Account Balance at a Specific Block Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-account-bandwidth" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Account Bandwidth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-account-resources-energy-bandwidth" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Account Resources (Energy, Bandwidth)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-account-balance-changes-within-a-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Account Balance Changes within a Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-total-burned-trx-amount" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Total Burned TRX Amount
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-all-transaction-receipt-information-for-a-specific-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get All Transaction Receipt Information for a Specific Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-information-for-a-specific-block" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Information for a Specific Block
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#governance" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Governance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Governance" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-proposals" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query All Proposals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-proposals-by-page" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Proposals by Page
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-proposal-by-id" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Proposal by ID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-all-parameters-settable-by-the-committee" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query All Parameters Settable by the Committee
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item has-children">
+  <a href="#other-types" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+    <span class="md-ellipsis">
+      Other Types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Types" hidden>
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item ">
+  <a href="#query-next-maintenance-time" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Next Maintenance Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-node-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Node Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-historical-change-records-for-bandwidth-unit-price" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Historical Change Records for Bandwidth Unit Price
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-historical-change-records-for-energy-unit-price" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Historical Change Records for Energy Unit Price
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-historical-change-records-for-transaction-memo-fee" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Historical Change Records for Transaction Memo Fee
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-block-reference" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Block Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-dynamic-network-parameters" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Dynamic Network Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-node-status-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Node Status Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#get-peer-information" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Get Peer Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#query-block-information-for-a-specific-range" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Query Block Information for a Specific Range
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2211,254 +2721,329 @@
   
 
 
-<h1 id="rpc-list">RPC List<a class="headerlink" href="#rpc-list" title="Permanent link">&para;</a></h1>
-<p><strong>For the specific definition of API, please refer to the following link:</strong>
-<a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">api/api.proto</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.</p>
-</div>
-<h2 id="get-account-information">Get account information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h1 id="grpc-api">gRPC API<a class="headerlink" href="#grpc-api" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document provides a detailed reference for <strong>gRPC</strong>) <strong>API</strong>s in the <strong>TRON</strong> blockchain network. These <strong>API</strong>s allow developers to interact with the <strong>TRON</strong> network to perform various functions such as <strong>account</strong> management, <strong>transaction</strong> broadcasting, <strong>smart contract</strong> operations, and <strong>resource</strong> management.</p>
+<p><strong>Note:</strong> <strong>SolidityNode</strong> is deprecated. The <strong>FullNode</strong> now supports all <strong>gRPCs</strong> of the <strong>SolidityNode</strong>. New developers should only deploy a <strong>FullNode</strong>.</p>
+<p><strong>API Definition Reference</strong>: This document outlines the functions of the major APIs. Please refer to <a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">api/api.proto</a> for the complete and authoritative technical definitions.</p>
+<h2 id="account-management">Account Management<a class="headerlink" href="#account-management" title="Permanent link">&para;</a></h2>
+<h3 id="get-account-information">Get Account Information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAccount (Account) returns (Account) {}
 </code></pre></div>
-Nodes: Fullnode and SolidityNode</p>
-<h2 id="trx-transfer">TRX transfer<a class="headerlink" href="#trx-transfer" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">TransferContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="get-account-information-by-id">Get Account Information by ID<a class="headerlink" href="#get-account-information-by-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAccountById (Account) returns (Account) {}
 </code></pre></div>
-Nodes: Fullnode</p>
-<h2 id="broadcast-transaction">Broadcast transaction<a class="headerlink" href="#broadcast-transaction" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">BroadcastTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Return</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="create-account">Create Account<a class="headerlink" href="#create-account" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc CreateAccount2 (AccountCreateContract) returns (TransactionExtention) {}
 </code></pre></div>
-Nodes: Fullnode</p>
-<p>Description:
-Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after super representatives verification.</p>
-<h2 id="create-an-account">Create an account<a class="headerlink" href="#create-an-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="update-account-name">Update Account Name<a class="headerlink" href="#update-account-name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateAccount2 (AccountUpdateContract) returns (TransactionExtention) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="account-name-update">Account name update<a class="headerlink" href="#account-name-update" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAccount</span><span class="w"> </span><span class="p">(</span><span class="n">AccountUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="set-account-id">Set Account ID<a class="headerlink" href="#set-account-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc SetAccountId (SetAccountIdContract) returns (Transaction) {}
 </code></pre></div>
-Nodes: Fullnode</p>
-<h2 id="vote-for-super-representative-candidates">Vote for super representative candidates<a class="headerlink" href="#vote-for-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">VoteWitnessAccount</span><span class="w"> </span><span class="p">(</span><span class="n">VoteWitnessContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="update-account-permission">Update Account Permission<a class="headerlink" href="#update-account-permission" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc AccountPermissionUpdate (AccountPermissionUpdateContract) returns (TransactionExtention) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-ratio-of-brokerage-of-the-super-representative">Query the ratio of brokerage of the super representative<a class="headerlink" href="#query-the-ratio-of-brokerage-of-the-super-representative" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBrokerageInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h2 id="transaction-operations">Transaction Operations<a class="headerlink" href="#transaction-operations" title="Permanent link">&para;</a></h2>
+<h3 id="trx-transfer">TRX Transfer<a class="headerlink" href="#trx-transfer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc CreateTransaction2 (TransferContract) returns (TransactionExtention) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-unclaimed-reward">Query unclaimed reward<a class="headerlink" href="#query-unclaimed-reward" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetRewardInfo</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="broadcast-transaction">Broadcast Transaction<a class="headerlink" href="#broadcast-transaction" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc BroadcastTransaction (Transaction) returns (Return) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="update-the-ratio-of-brokerage">Update the ratio of brokerage<a class="headerlink" href="#update-the-ratio-of-brokerage" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateBrokerage</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateBrokerageContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<p><strong>Description:</strong>
+This <strong>RPC</strong> is used to send a signed <strong>transaction</strong> to a node. After being verified by a <strong>Super Representative (SR)</strong>, the <strong>transaction</strong> will be broadcast to the entire network.</p>
+<h3 id="query-transaction-information-by-transaction-id">Query Transaction Information (by Transaction ID)<a class="headerlink" href="#query-transaction-information-by-transaction-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionById (BytesMessage) returns (Transaction) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="issue-a-token">Issue a token<a class="headerlink" href="#issue-a-token" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-transaction-fee-and-block-information-by-transaction-id">Query Transaction Fee and Block Information (by Transaction ID)<a class="headerlink" href="#query-transaction-fee-and-block-information-by-transaction-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-of-list-of-super-representative-candidates">Query of list of super representative candidates<a class="headerlink" href="#query-of-list-of-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListWitnesses</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-transaction-information-from-pending-pool">Query Transaction Information from Pending Pool<a class="headerlink" href="#query-transaction-information-from-pending-pool" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
 </code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="application-for-super-representative">Application for super representative<a class="headerlink" href="#application-for-super-representative" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CreateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessCreateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-pending-pool-transaction-id-list">Query Pending Pool Transaction ID List<a class="headerlink" href="#query-pending-pool-transaction-id-list" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
 </code></pre></div>
-Nodes: FullNode</p>
-<p>Description:
-To apply to become TRON’s Super Representative candidate.</p>
-<h2 id="information-update-of-super-representative-candidates">Information update of Super Representative candidates<a class="headerlink" href="#information-update-of-super-representative-candidates" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateWitness</span><span class="w"> </span><span class="p">(</span><span class="n">WitnessUpdateContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<p>Description: Update the website url of the SR.</p>
-<h2 id="token-transfer">Token transfer<a class="headerlink" href="#token-transfer" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TransferAsset</span><span class="w"> </span><span class="p">(</span><span class="n">TransferAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">){}</span>
-</code></pre></div>
-Node: FullNode</p>
-<h2 id="participate-a-token">Participate a token<a class="headerlink" href="#participate-a-token" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ParticipateAssetIssue</span><span class="w"> </span><span class="p">(</span><span class="n">ParticipateAssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-list-of-nodes-connected-to-the-ip-of-the-api">Query the list of nodes connected to the ip of the api<a class="headerlink" href="#query-the-list-of-nodes-connected-to-the-ip-of-the-api" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">ListNodes</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NodeList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-list-of-all-issued-tokens">Query the list of all issued tokens<a class="headerlink" href="#query-the-list-of-all-issued-tokens" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-token-issued-by-a-given-account">Query the token issued by a given account<a class="headerlink" href="#query-the-token-issued-by-a-given-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByAccount</span><span class="w"> </span><span class="p">(</span><span class="n">Account</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-token-information-by-token-name">Query the token information by token name<a class="headerlink" href="#query-the-token-information-by-token-name" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueByName</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueContract</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and Soliditynode</p>
-<h2 id="query-the-list-of-tokens-by-timestamp">Query the list of tokens by timestamp<a class="headerlink" href="#query-the-list-of-tokens-by-timestamp" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetAssetIssueListByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">){}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="get-current-block-information">Get current block information<a class="headerlink" href="#get-current-block-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNowBlock</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="get-a-block-by-block-height">Get a block by block height<a class="headerlink" href="#get-a-block-by-block-height" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockByNum</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="get-the-total-number-of-transactions">Get the total number of transactions<a class="headerlink" href="#get-the-total-number-of-transactions" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TotalTransaction</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="query-the-transaction-by-transaction-id">Query the transaction by transaction id<a class="headerlink" href="#query-the-transaction-by-transaction-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="query-the-transaction-by-timestamp">Query the transaction by timestamp<a class="headerlink" href="#query-the-transaction-by-timestamp" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">getTransactionsByTimestamp</span><span class="w"> </span><span class="p">(</span><span class="n">TimeMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="stake-trx">Stake TRX<a class="headerlink" href="#stake-trx" title="Permanent link">&para;</a></h2>
-<p>This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unstake-trx">Unstake TRX<a class="headerlink" href="#unstake-trx" title="Permanent link">&para;</a></h2>
-<p>Unstake the TRX staked during Stake1.0.
-<div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalance</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="block-producing-reward-redemption">Block producing reward redemption<a class="headerlink" href="#block-producing-reward-redemption" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawBalance</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawBalanceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unstake-token-balance">Unstake token balance<a class="headerlink" href="#unstake-token-balance" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-next-maintenance-time">Query the next maintenance time<a class="headerlink" href="#query-the-next-maintenance-time" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetNextMaintenanceTime</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">NumberMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-transaction-fee-block-information">Query the transaction fee &amp; block information<a class="headerlink" href="#query-the-transaction-fee-block-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetTransactionInfoById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionInfo</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: SolidityNode</p>
-<h2 id="query-block-information-by-block-id">Query block information by block id<a class="headerlink" href="#query-block-information-by-block-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBlockById</span><span class="w"> </span><span class="p">(</span><span class="n">BytesMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Block</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="update-token-information">Update token information<a class="headerlink" href="#update-token-information" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UpdateAsset</span><span class="w"> </span><span class="p">(</span><span class="n">UpdateAssetContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">Transaction</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: Fullnode</p>
-<p>Description:
-Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.</p>
-<h2 id="query-the-list-of-all-the-tokens-by-pagination">Query the list of all the tokens by pagination<a class="headerlink" href="#query-the-list-of-all-the-tokens-by-pagination" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetPaginatedAssetIssueList</span><span class="w"> </span><span class="p">(</span><span class="n">PaginatedMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">AssetIssueList</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="deploy-a-smart-contract">Deploy a smart contract<a class="headerlink" href="#deploy-a-smart-contract" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DeployContract</span><span class="w"> </span><span class="p">(</span><span class="n">CreateSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="trigger-a-smart-contract">Trigger a smart contract<a class="headerlink" href="#trigger-a-smart-contract" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">TriggerContract</span><span class="w"> </span><span class="p">(</span><span class="n">TriggerSmartContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="create-an-market-order">Create an market order<a class="headerlink" href="#create-an-market-order" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="cancel-the-order">Cancel the order<a class="headerlink" href="#cancel-the-order" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-orders-for-the-account">Get all orders for the account<a class="headerlink" href="#get-all-orders-for-the-account" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-trading-pairs">Get all trading pairs<a class="headerlink" href="#get-all-trading-pairs" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-orders-for-the-trading-pair">Get all orders for the trading pair<a class="headerlink" href="#get-all-orders-for-the-trading-pair" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-all-prices-for-the-trading-pair">Get all prices for the trading pair<a class="headerlink" href="#get-all-prices-for-the-trading-pair" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-order-by-id">Get order by id<a class="headerlink" href="#get-order-by-id" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="perform-a-historical-balance-lookup">perform a historical balance lookup<a class="headerlink" href="#perform-a-historical-balance-lookup" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="fetch-all-balance-changing-transactions-in-a-block">fetch all balance-changing transactions in a block<a class="headerlink" href="#fetch-all-balance-changing-transactions-in-a-block" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
-</code></pre></div>
-Nodes: FullNode </p>
-<h2 id="get-the-burn-trx-amount">get the burn trx amount<a class="headerlink" href="#get-the-burn-trx-amount" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
-</code></pre></div>
-Nodes: FullNode and SolidityNode</p>
-<h2 id="freeze-trx">Freeze TRX<a class="headerlink" href="#freeze-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">FreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">FreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="unfreeze-trx">UnFreeze TRX<a class="headerlink" href="#unfreeze-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnfreezeBalanceV2</span><span class="w"> </span><span class="p">(</span><span class="n">UnfreezeBalanceV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="withdraw-staked-trx">Withdraw Staked TRX<a class="headerlink" href="#withdraw-staked-trx" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">WithdrawExpireUnfreeze</span><span class="w"> </span><span class="p">(</span><span class="n">WithdrawExpireUnfreezeContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="delegate-resource">Delegate Resource<a class="headerlink" href="#delegate-resource" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">DelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">DelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="undelegate-resource">UnDelegate Resource<a class="headerlink" href="#undelegate-resource" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">UnDelegateResource</span><span class="w"> </span><span class="p">(</span><span class="n">UnDelegateResourceContract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-transaction-information-in-the-pending-pool">Query transaction information in the pending pool<a class="headerlink" href="#query-transaction-information-in-the-pending-pool" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-pending-pool-transaction-id-list">Query the pending pool transaction id list<a class="headerlink" href="#query-the-pending-pool-transaction-id-list" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code>rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
-</code></pre></div>
-Nodes: FullNode</p>
-<h2 id="query-the-size-of-the-pending-pool">Query the size of the pending pool<a class="headerlink" href="#query-the-size-of-the-pending-pool" title="Permanent link">&para;</a></h2>
+<h3 id="query-pending-pool-size">Query Pending Pool Size<a class="headerlink" href="#query-pending-pool-size" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
-Nodes: FullNode
 </code></pre></div>
-<h2 id="cancel-unfreeze">Cancel UnFreeze<a class="headerlink" href="#cancel-unfreeze" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">CancelAllUnfreezeV2</span><span class="w"> </span><span class="p">(</span><span class="n">CancelAllUnfreezeV2Contract</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">TransactionExtention</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-number-of-transactions-for-a-specific-block">Query Number of Transactions for a Specific Block<a class="headerlink" href="#query-number-of-transactions-for-a-specific-block" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionCountByBlockNum (NumberMessage) returns (NumberMessage) {};
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-bandwidth-unit-price">Get bandwidth unit price<a class="headerlink" href="#get-bandwidth-unit-price" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetBandwidthPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-a-transactions-current-permission-weight">Query a Transaction's Current Permission Weight<a class="headerlink" href="#query-a-transactions-current-permission-weight" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {};
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-energy-unit-price">Get energy unit price<a class="headerlink" href="#get-energy-unit-price" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetEnergyPrices</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-a-transactions-permission-approval-list">Query a Transaction's Permission Approval List<a class="headerlink" href="#query-a-transactions-permission-approval-list" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionApprovedList (Transaction) returns (TransactionApprovedList) {};
 </code></pre></div>
-Nodes: FullNode</p>
-<h2 id="get-transaction-memo-fee">Get transaction memo fee<a class="headerlink" href="#get-transaction-memo-fee" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><span class="k">rpc</span><span class="w"> </span><span class="n">GetMemoFee</span><span class="w"> </span><span class="p">(</span><span class="n">EmptyMessage</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">PricesResponseMessage</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+<h3 id="query-transactions-sent-from-a-specific-address">Query Transactions Sent from a Specific Address<a class="headerlink" href="#query-transactions-sent-from-a-specific-address" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {}
 </code></pre></div>
-Nodes: FullNodes</p>
+<h3 id="query-transactions-received-at-a-specific-address">Query Transactions Received at a Specific Address<a class="headerlink" href="#query-transactions-received-at-a-specific-address" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionsToThis2 (AccountPaginated) returns (TransactionListExtention) {}
+</code></pre></div>
+<h2 id="token-trc-10-operations">Token (TRC-10) Operations<a class="headerlink" href="#token-trc-10-operations" title="Permanent link">&para;</a></h2>
+<h3 id="issue-a-token">Issue a Token<a class="headerlink" href="#issue-a-token" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc CreateAssetIssue2 (AssetIssueContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="update-token-information">Update Token Information<a class="headerlink" href="#update-token-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateAsset2 (UpdateAssetContract) returns (TransactionExtention) {}
+</code></pre></div>
+<p><strong>Description:</strong>
+A token update can only be initiated by the token issuer to update the:
+- Token description
+- URL
+- Maximum <strong>bandwidth</strong> consumption per <strong>account</strong>
+- Total <strong>bandwidth</strong> consumption</p>
+<h3 id="token-transfer">Token Transfer<a class="headerlink" href="#token-transfer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc TransferAsset2 (TransferAssetContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="participate-in-token-issuance">Participate in Token Issuance<a class="headerlink" href="#participate-in-token-issuance" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ParticipateAssetIssue2 (ParticipateAssetIssueContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="query-all-issued-token-list">Query All Issued Token List<a class="headerlink" href="#query-all-issued-token-list" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {}
+</code></pre></div>
+<h3 id="query-tokens-issued-by-a-given-account">Query Tokens Issued by a Given Account<a class="headerlink" href="#query-tokens-issued-by-a-given-account" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {}
+</code></pre></div>
+<h3 id="query-token-information-by-token-name">Query Token Information by Token Name<a class="headerlink" href="#query-token-information-by-token-name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {}
+</code></pre></div>
+<h3 id="query-token-list-by-timestamp">Query Token List by Timestamp<a class="headerlink" href="#query-token-list-by-timestamp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){}
+</code></pre></div>
+<h3 id="query-all-token-lists-by-page">Query All Token Lists by Page<a class="headerlink" href="#query-all-token-lists-by-page" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
+</code></pre></div>
+<h3 id="unfreeze-token">Unfreeze Token<a class="headerlink" href="#unfreeze-token" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UnfreezeAsset2 (UnfreezeAssetContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="query-token-by-name">Query Token by Name<a class="headerlink" href="#query-token-by-name" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueListByName (BytesMessage) returns (AssetIssueList) {}
+</code></pre></div>
+<h3 id="query-token-by-id">Query Token by ID<a class="headerlink" href="#query-token-by-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAssetIssueById (BytesMessage) returns (AssetIssueContract) {}
+</code></pre></div>
+<h2 id="super-representative-sr-voting">Super Representative (SR) &amp; Voting<a class="headerlink" href="#super-representative-sr-voting" title="Permanent link">&para;</a></h2>
+<h3 id="vote-for-a-super-representative-candidate">Vote for a Super Representative Candidate<a class="headerlink" href="#vote-for-a-super-representative-candidate" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc VoteWitnessAccount2 (VoteWitnessContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="query-a-super-representatives-brokerage-percentage">Query a Super Representative's Brokerage Percentage<a class="headerlink" href="#query-a-super-representatives-brokerage-percentage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBrokerageInfo (BytesMessage) returns (NumberMessage) {}
+</code></pre></div>
+<h3 id="query-unclaimed-rewards">Query Unclaimed Rewards<a class="headerlink" href="#query-unclaimed-rewards" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetRewardInfo (BytesMessage) returns (NumberMessage) {}
+</code></pre></div>
+<h3 id="update-brokerage-percentage">Update Brokerage Percentage<a class="headerlink" href="#update-brokerage-percentage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateBrokerage (UpdateBrokerageContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="apply-to-become-a-super-representative">Apply to Become a Super Representative<a class="headerlink" href="#apply-to-become-a-super-representative" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {}
+</code></pre></div>
+<p><strong>Description:</strong>
+Apply to become a <strong>TRON Super Representative</strong> candidate.</p>
+<h3 id="update-super-representative-candidate-information">Update Super Representative Candidate Information<a class="headerlink" href="#update-super-representative-candidate-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {}
+</code></pre></div>
+<p><strong>Description:</strong> Update the <strong>Super Representative's</strong> website URL.</p>
+<h3 id="query-all-super-representative-candidates">Query All Super Representative Candidates<a class="headerlink" href="#query-all-super-representative-candidates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
+</code></pre></div>
+<h3 id="block-reward-withdrawal">Block Reward Withdrawal<a class="headerlink" href="#block-reward-withdrawal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc WithdrawBalance2 (WithdrawBalanceContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="create-a-proposal">Create a Proposal<a class="headerlink" href="#create-a-proposal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ProposalCreate (ProposalCreateContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="vote-for-or-unvote-a-proposal">Vote for or Unvote a Proposal<a class="headerlink" href="#vote-for-or-unvote-a-proposal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ProposalApprove (ProposalApproveContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="delete-a-proposal">Delete a Proposal<a class="headerlink" href="#delete-a-proposal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ProposalDelete (ProposalDeleteContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h2 id="resource-management-trx-staking-delegation">Resource Management (TRX Staking &amp; Delegation)<a class="headerlink" href="#resource-management-trx-staking-delegation" title="Permanent link">&para;</a></h2>
+<h3 id="stake-trx-old-version-deprecated">Stake TRX (Old version, deprecated)<a class="headerlink" href="#stake-trx-old-version-deprecated" title="Permanent link">&para;</a></h3>
+<p>This interface is deprecated. Please use <code>FreezeBalanceV2</code>.
+<div class="highlight"><pre><span></span><code>rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
+</code></pre></div></p>
+<h3 id="unstake-trx-old-version-deprecated">Unstake TRX (Old version, deprecated)<a class="headerlink" href="#unstake-trx-old-version-deprecated" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
+</code></pre></div>
+<h3 id="stake-trx-v2">Stake TRX V2<a class="headerlink" href="#stake-trx-v2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="unstake-trx-v2">Unstake TRX V2<a class="headerlink" href="#unstake-trx-v2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="delegate-resources">Delegate Resources<a class="headerlink" href="#delegate-resources" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="undelegate-resources">Undelegate Resources<a class="headerlink" href="#undelegate-resources" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="cancel-all-unstakes">Cancel All Unstakes<a class="headerlink" href="#cancel-all-unstakes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="get-remaining-unstake-count-for-an-account">Get Remaining Unstake Count for an Account<a class="headerlink" href="#get-remaining-unstake-count-for-an-account" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAvailableUnfreezeCount (GetAvailableUnfreezeCountRequestMessage)
+     returns (GetAvailableUnfreezeCountResponseMessage) {};
+</code></pre></div>
+<h3 id="get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun">Get Delegable Resources of a Specific Resource Type for an Address (in SUN)<a class="headerlink" href="#get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetCanDelegatedMaxSize (CanDelegatedMaxSizeRequestMessage) returns (CanDelegatedMaxSizeResponseMessage) {};
+</code></pre></div>
+<h3 id="get-matured-unstake-amount-that-can-be-withdrawn-at-a-specific-time">Get Matured Unstake Amount That Can Be Withdrawn at a Specific Time<a class="headerlink" href="#get-matured-unstake-amount-that-can-be-withdrawn-at-a-specific-time" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetCanWithdrawUnfreezeAmount (CanWithdrawUnfreezeAmountRequestMessage)
+     returns (CanWithdrawUnfreezeAmountResponseMessage) {};
+</code></pre></div>
+<h3 id="withdraw-matured-unstakes">Withdraw Matured Unstakes<a class="headerlink" href="#withdraw-matured-unstakes" title="Permanent link">&para;</a></h3>
+<p>After a user executes the <code>/wallet/unfreezebalancev2</code> <strong>transaction</strong> and waits N days (N being a network parameter), they can call this <strong>API</strong> to retrieve the funds.
+<div class="highlight"><pre><span></span><code>rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {};
+</code></pre></div></p>
+<h2 id="smart-contract-operations">Smart Contract Operations<a class="headerlink" href="#smart-contract-operations" title="Permanent link">&para;</a></h2>
+<h3 id="deploy-a-smart-contract">Deploy a Smart Contract<a class="headerlink" href="#deploy-a-smart-contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="trigger-a-smart-contract">Trigger a Smart Contract<a class="headerlink" href="#trigger-a-smart-contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="estimate-energy-consumption">Estimate Energy Consumption<a class="headerlink" href="#estimate-energy-consumption" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc EstimateEnergy (TriggerSmartContract) returns (EstimateEnergyMessage) {}
+</code></pre></div>
+<h3 id="get-smart-contract">Get Smart Contract<a class="headerlink" href="#get-smart-contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetContract (BytesMessage) returns (SmartContract) {}
+</code></pre></div>
+<h3 id="update-consume_user_resource_percent-in-a-smart-contract">Update <code>consume_user_resource_percent</code> in a Smart Contract<a class="headerlink" href="#update-consume_user_resource_percent-in-a-smart-contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateSetting (UpdateSettingContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h3 id="update-origin_energy_limit-in-a-smart-contract">Update <code>origin_energy_limit</code> in a Smart Contract<a class="headerlink" href="#update-origin_energy_limit-in-a-smart-contract" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc UpdateEnergyLimit (UpdateEnergyLimitContract) returns (TransactionExtention) {}
+</code></pre></div>
+<h2 id="market-transactions-market-order">Market Transactions (Market Order)<a class="headerlink" href="#market-transactions-market-order" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-market-sell-order">Create a Market Sell Order<a class="headerlink" href="#create-a-market-sell-order" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="cancel-a-market-order">Cancel a Market Order<a class="headerlink" href="#cancel-a-market-order" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="get-all-market-orders-for-an-account">Get All Market Orders for an Account<a class="headerlink" href="#get-all-market-orders-for-an-account" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
+</code></pre></div>
+<h3 id="get-all-market-trading-pairs">Get All Market Trading Pairs<a class="headerlink" href="#get-all-market-trading-pairs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
+</code></pre></div>
+<h3 id="get-all-market-orders-for-a-trading-pair">Get All Market Orders for a Trading Pair<a class="headerlink" href="#get-all-market-orders-for-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
+</code></pre></div>
+<h3 id="get-all-market-prices-for-a-trading-pair">Get All Market Prices for a Trading Pair<a class="headerlink" href="#get-all-market-prices-for-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
+</code></pre></div>
+<h3 id="get-a-market-order-by-id">Get a Market Order by ID<a class="headerlink" href="#get-a-market-order-by-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {};
+</code></pre></div>
+<h3 id="create-a-trading-pair">Create a Trading Pair<a class="headerlink" href="#create-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ExchangeCreate (ExchangeCreateContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="inject-funds-into-a-trading-pair">Inject Funds into a Trading Pair<a class="headerlink" href="#inject-funds-into-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ExchangeInject (ExchangeInjectContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="withdraw-funds-from-a-trading-pair">Withdraw Funds from a Trading Pair<a class="headerlink" href="#withdraw-funds-from-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ExchangeWithdraw (ExchangeWithdrawContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="perform-a-trade-in-a-trading-pair">Perform a Trade in a Trading Pair<a class="headerlink" href="#perform-a-trade-in-a-trading-pair" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ExchangeTransaction (ExchangeTransactionContract) returns (TransactionExtention) {};
+</code></pre></div>
+<h3 id="query-all-trading-pairs">Query All Trading Pairs<a class="headerlink" href="#query-all-trading-pairs" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ListExchanges (EmptyMessage) returns (ExchangeList) {}
+</code></pre></div>
+<h3 id="query-trading-pairs-by-page">Query Trading Pairs by Page<a class="headerlink" href="#query-trading-pairs-by-page" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {}
+</code></pre></div>
+<h3 id="query-trading-pair-by-id">Query Trading Pair by ID<a class="headerlink" href="#query-trading-pair-by-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetExchangeById (BytesMessage) returns (Exchange) {}
+</code></pre></div>
+<h2 id="blockchain-data-query">Blockchain Data Query<a class="headerlink" href="#blockchain-data-query" title="Permanent link">&para;</a></h2>
+<h3 id="get-current-block-information">Get Current Block Information<a class="headerlink" href="#get-current-block-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetNowBlock2 (EmptyMessage) returns (BlockExtention) {}
+</code></pre></div>
+<h3 id="get-block-by-block-number">Get Block by Block Number<a class="headerlink" href="#get-block-by-block-number" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBlockByNum2 (NumberMessage) returns (BlockExtention) {}
+</code></pre></div>
+<h3 id="get-block-information-by-block-id">Get Block Information (by Block ID)<a class="headerlink" href="#get-block-information-by-block-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBlockById (BytesMessage) returns (Block) {}
+</code></pre></div>
+<h3 id="get-total-transaction-count-deprecated-returns-0">Get Total Transaction Count (Deprecated, returns 0)<a class="headerlink" href="#get-total-transaction-count-deprecated-returns-0" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {}
+</code></pre></div>
+<h3 id="query-account-balance-at-a-specific-block-height">Query Account Balance at a Specific Block Height<a class="headerlink" href="#query-account-balance-at-a-specific-block-height" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){};
+</code></pre></div>
+<h3 id="get-account-bandwidth">Get Account Bandwidth<a class="headerlink" href="#get-account-bandwidth" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetAccountNet (Account) returns (AccountNetMessage){};
+</code></pre></div>
+<h3 id="get-account-resources-energy-bandwidth">Get Account Resources (Energy, Bandwidth)<a class="headerlink" href="#get-account-resources-energy-bandwidth" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code>rpc GetAccountResource (Account) returns (AccountResourceMessage){};
+</code></pre></div>
+Note: To query historical account balances, a node must have <code>storage.balance.history.lookup = true</code> set in its configuration file. You can find official nodes that support this function <a href="../../using_javatron/backup_restore/#fullnode">here</a>.</p>
+<h3 id="get-account-balance-changes-within-a-block">Get Account Balance Changes within a Block<a class="headerlink" href="#get-account-balance-changes-within-a-block" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {};
+</code></pre></div>
+<h3 id="get-total-burned-trx-amount">Get Total Burned TRX Amount<a class="headerlink" href="#get-total-burned-trx-amount" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {};
+</code></pre></div>
+<h3 id="get-all-transaction-receipt-information-for-a-specific-block">Get All Transaction Receipt Information for a Specific Block<a class="headerlink" href="#get-all-transaction-receipt-information-for-a-specific-block" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetTransactionInfoByBlockNum (NumberMessage) returns (TransactionInfoList) {};
+</code></pre></div>
+<h3 id="get-information-for-a-specific-block">Get Information for a Specific Block<a class="headerlink" href="#get-information-for-a-specific-block" title="Permanent link">&para;</a></h3>
+<p>By default, it returns the latest block header. You can also query a specific block header or block information including the transaction body.
+<div class="highlight"><pre><span></span><code>rpc GetBlock (BlockReq) returns (BlockExtention) {};
+</code></pre></div></p>
+<h2 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h2>
+<h3 id="query-all-proposals">Query All Proposals<a class="headerlink" href="#query-all-proposals" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ListProposals (EmptyMessage) returns (ProposalList) {}
+</code></pre></div>
+<h3 id="query-proposals-by-page">Query Proposals by Page<a class="headerlink" href="#query-proposals-by-page" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {}
+</code></pre></div>
+<h3 id="query-proposal-by-id">Query Proposal by ID<a class="headerlink" href="#query-proposal-by-id" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetProposalById (BytesMessage) returns (Proposal) {}
+</code></pre></div>
+<h3 id="query-all-parameters-settable-by-the-committee">Query All Parameters Settable by the Committee<a class="headerlink" href="#query-all-parameters-settable-by-the-committee" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetChainParameters (EmptyMessage) returns (ChainParameters) {}
+</code></pre></div>
+<h2 id="other-types">Other Types<a class="headerlink" href="#other-types" title="Permanent link">&para;</a></h2>
+<h3 id="query-next-maintenance-time">Query Next Maintenance Time<a class="headerlink" href="#query-next-maintenance-time" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {}
+</code></pre></div>
+<h3 id="query-node-information">Query Node Information<a class="headerlink" href="#query-node-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetNodeInfo (EmptyMessage) returns (NodeInfo) {}
+</code></pre></div>
+<h3 id="get-historical-change-records-for-bandwidth-unit-price">Get Historical Change Records for Bandwidth Unit Price<a class="headerlink" href="#get-historical-change-records-for-bandwidth-unit-price" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBandwidthPrices (EmptyMessage) returns (PricesResponseMessage) {}
+</code></pre></div>
+<h3 id="get-historical-change-records-for-energy-unit-price">Get Historical Change Records for Energy Unit Price<a class="headerlink" href="#get-historical-change-records-for-energy-unit-price" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetEnergyPrices (EmptyMessage) returns (PricesResponseMessage) {}
+</code></pre></div>
+<h3 id="get-historical-change-records-for-transaction-memo-fee">Get Historical Change Records for Transaction Memo Fee<a class="headerlink" href="#get-historical-change-records-for-transaction-memo-fee" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetMemoFee (EmptyMessage) returns (PricesResponseMessage) {}
+</code></pre></div>
+<h3 id="get-block-reference">Get Block Reference<a class="headerlink" href="#get-block-reference" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc getBlockReference (EmptyMessage) returns (BlockReference) {}
+</code></pre></div>
+<h3 id="get-dynamic-network-parameters">Get Dynamic Network Parameters<a class="headerlink" href="#get-dynamic-network-parameters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetDynamicProperties (EmptyMessage) returns (DynamicProperties) {}
+</code></pre></div>
+<h3 id="get-node-status-information">Get Node Status Information<a class="headerlink" href="#get-node-status-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetStatsInfo (EmptyMessage) returns (MetricsInfo) {}
+</code></pre></div>
+<h3 id="get-peer-information">Get Peer Information<a class="headerlink" href="#get-peer-information" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc ListNodes (EmptyMessage) returns (NodeList) {}
+</code></pre></div>
+<h3 id="query-block-information-for-a-specific-range">Query Block Information for a Specific Range<a class="headerlink" href="#query-block-information-for-a-specific-range" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rpc GetBlockByLimitNext2 (BlockLimit) returns (BlockListExtention) {}
+</code></pre></div>
 
 
 
