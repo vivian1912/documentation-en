@@ -527,6 +527,7 @@ rpc GetAccountNet (Account) returns (AccountNetMessage){};
 ```
 rpc GetAccountResource (Account) returns (AccountResourceMessage){};
 ```
+Note: To query historical account balances, a node must have `storage.balance.history.lookup = true` set in its configuration file. You can find official nodes that support this function [here](../using_javatron/backup_restore.md/#fullnode).
 
 ### Get Account Balance Changes within a Block
 
