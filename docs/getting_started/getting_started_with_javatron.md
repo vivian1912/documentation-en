@@ -161,7 +161,6 @@ This module will guide you through launching a java-tron instance, turning your 
 
 Please use the following command to start the node. The `-Xmx24g` flag allocates 24GB of memory to the JVM; you can adjust this according to your machine's configuration.
 
-
 > Tip: Before running this command, make sure you have installed java-tron as described in the introduction.
 
 ```
@@ -344,69 +343,69 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
 
 
 1. Use `gettransactionbyid <txid>`` to view the raw content of the transaction:
-```
-wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
-```
-The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
-
-```
-{
-	"ret":[
-		{
-			"contractRet":"SUCCESS"
-		}
-	],
-	"signature":[
-		"241a3ce4797ccc2fedf49ae41af28b49df1e15a476e4948af4df5aadf23a1e940ad5cc2133f501c08f2bab6a2231cdc82a745fed0fc6a012dc19310532d9138600"
-	],
-	"txID":"21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
-	"raw_data":{
-		"contract":[
-			{
-				"parameter":{
-					"value":{
-						"amount":1000000,
-						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
-						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-					},
-					"type_url":"type.googleapis.com/protocol.TransferContract"
-				},
-				"type":"TransferContract"
-			}
-		],
-		"ref_block_bytes":"cbc3",
-		"ref_block_hash":"8581ae7e29258a52",
-		"expiration":1656939118171,
-		"timestamp":1656917518232
-	},
-	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
-}
-wallet> 
-
-```
+  ```
+  wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
+  ```
+  The returned JSON data contains all the transaction details, such as the contract type (`TransferContract`), transfer amount, sender and recipient addresses, etc. `"contractRet":"SUCCESS"` indicates that the transaction's contract is syntactically correct.
+  
+  ```
+  {
+  	"ret":[
+  		{
+  			"contractRet":"SUCCESS"
+  		}
+  	],
+  	"signature":[
+  		"241a3ce4797ccc2fedf49ae41af28b49df1e15a476e4948af4df5aadf23a1e940ad5cc2133f501c08f2bab6a2231cdc82a745fed0fc6a012dc19310532d9138600"
+  	],
+  	"txID":"21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
+  	"raw_data":{
+  		"contract":[
+  			{
+  				"parameter":{
+  					"value":{
+  						"amount":1000000,
+  						"owner_address":"TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM",
+  						"to_address":"TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+  					},
+  					"type_url":"type.googleapis.com/protocol.TransferContract"
+  				},
+  				"type":"TransferContract"
+  			}
+  		],
+  		"ref_block_bytes":"cbc3",
+  		"ref_block_hash":"8581ae7e29258a52",
+  		"expiration":1656939118171,
+  		"timestamp":1656917518232
+  	},
+  	"raw_data_hex":"0a02cbc322088581ae7e29258a5240dbfc91ca9c305a67080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541ce8a0cf0c16d48bcf22825f6053248df653c89ca121541d0b69631440f0a494bb51f7eee68ff5c593c00f018c0843d7098cfebbf9c30"
+  }
+  wallet> 
+  
+  ```
 2. Use `gettransactioninfobyid <txid>` to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption):
 
-```
-wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
-```
-
-In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
-
-
-```
-{
-	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
-	"blockNumber": 27773932,
-	"blockTimeStamp": 1656917586000,
-	"contractResult": [
-		""
-	],
-	"receipt": {
-		"net_usage": 267
-	}
-}
-wallet> 
-```
+  ```
+  wallet> gettransactioninfobyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
+  ```
+  
+  In the returned result, the most important field is `blockNumber`, which indicates the block height at which the transaction was confirmed. If this value exists, the transaction has been successfully recorded on the blockchain. Additionally, the `receipt` object records the resources consumed by the transaction, such as bandwidth (`net_usage`).
+  
+  
+  ```
+  {
+  	"id": "21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4",
+  	"blockNumber": 27773932,
+  	"blockTimeStamp": 1656917586000,
+  	"contractResult": [
+  		""
+  	],
+  	"receipt": {
+  		"net_usage": 267
+  	}
+  }
+  wallet> 
+  ```
 
 ### Method Two: Using `cURL` (Direct HTTP API Call)
 
@@ -443,99 +442,101 @@ Now, let's use a TRX transfer as an example to fully demonstrate the "Create-Sig
 
 1. Create a Transaction
 
-Use the FullNode's `wallet/createtransaction` HTTP endpoint to create an unsigned TRX transfer transaction. In the request body, specify the sender (`owner_address`), recipient (`to_address`), and amount (`amount`).
+  Use the FullNode's `wallet/createtransaction` HTTP endpoint to create an unsigned TRX transfer transaction. In the request body, specify the sender (`owner_address`), recipient (`to_address`), and amount (`amount`).
+  
+  ```
+  curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
+      '{
+          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
+          "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
+          "amount": 10000000,
+          "visible":true
+      }'
+  ```
+  The node will return an unsigned TRX transfer transaction. Take note of the `txid` and `raw_data_hex` fields, as they will be used in subsequent steps.
+  
+  
+  ```
+  {
+      "visible": true,
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }
+  ```
 
-```
-curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d 
-    '{
-        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf", 
-        "owner_address": "TUoHaVjx7n5xz8LwPRDckgFrDWhMhuSuJM", 
-        "amount": 10000000,
-        "visible":true
-    }'
-```
-The node will return an unsigned TRX transfer transaction. Take note of the `txid` and `raw_data_hex` fields, as they will be used in subsequent steps.
-
-
-```
-{
-    "visible": true,
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}
-```
 2. Sign the Transaction
 
-Use the sender's private key to sign the transaction data (`raw_data_hex` or `txid`) generated in the previous step, proving your ownership of the account.
-
-**Important Note**: 
-- To ensure the security of your private key, it is strongly recommended that you perform all signing operations in a local or secure server environment using official TRON SDKs (e.g., `TronWeb`, `java-tron-sdk`).
-- `cURL` cannot perform signing operations. This step is for procedural explanation only.
-
-After signing, you will get a long string, which is the transaction's Signature Hash.
+  Use the sender's private key to sign the transaction data (`raw_data_hex` or `txid`) generated in the previous step, proving your ownership of the account.
+  
+  **Important Note**: 
+  
+  - To ensure the security of your private key, it is strongly recommended that you perform all signing operations in a local or secure server environment using official TRON SDKs (e.g., `TronWeb`, `java-tron-sdk`).
+  - `cURL` cannot perform signing operations. This step is for procedural explanation only.
+  
+  After signing, you will get a long string, which is the transaction's Signature Hash.
 
 3. Broadcast the Transaction
 
-The final step is to broadcast the signed transaction. Call the [wallet/broadcasttransaction](https://developers.tron.network/reference/broadcasttransaction) endpoint, providing the transaction object from step one and the signature hash from step two in the request body. Upon submission, the node will verify the signature and then broadcast the transaction to the entire TRON network for confirmation, completing the transfer process.
-
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "visible": true,
-    "signature": [
-        "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
-    ],
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
-                        "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}'
-```
-If the response contains `"result": true`, your transaction has been successfully broadcast:
-
-```
-{
-    "result": true,
-    "txid": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}
-```
+  The final step is to broadcast the signed transaction. Call the [wallet/broadcasttransaction](../api/http.md/#walletbroadcasttransaction) endpoint, providing the transaction object from step one and the signature hash from step two in the request body. Upon submission, the node will verify the signature and then broadcast the transaction to the entire TRON network for confirmation, completing the transfer process.
+  
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/broadcasttransaction' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "visible": true,
+      "signature": [
+          "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
+      ],
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "TPswDDCAWhJAZGdHPidFg5nEf8TkNToDX1",
+                          "to_address": "TUznHJfHe6gdYY7gvWmf6bNZHuPHDZtowf"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }'
+  ```
+  If the response contains `"result": true`, your transaction has been successfully broadcast:
+  
+  ```
+  {
+      "result": true,
+      "txid": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }
+  ```
 
 #### Query a Transaction by ID
 
@@ -543,75 +544,77 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
 
 1. Use the `wallet/gettransactionbyid` HTTP endpoint to get the full data of a broadcast transaction. In the request body, pass the `txid` you want to query in the `value` field:
 
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-```
-The data structure of the response is nearly identical to that of the `wallet-cli` `gettransactionbyid` command:
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactionbyid' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+       "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }'
+  ```
+  The data structure of the response is nearly identical to that of the `wallet-cli` `gettransactionbyid` command:
+  
+  ```
+  {
+      "ret": [
+          {
+              "contractRet": "SUCCESS"
+          }
+      ],
+      "signature": [
+          "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
+      ],
+      "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "raw_data": {
+          "contract": [
+              {
+                  "parameter": {
+                      "value": {
+                          "amount": 10000000,
+                          "owner_address": "4198927ffb9f554dc4a453c64b2e553a02d6df514b",
+                          "to_address": "41d0b69631440f0a494bb51f7eee68ff5c593c00f0"
+                      },
+                      "type_url": "type.googleapis.com/protocol.TransferContract"
+                  },
+                  "type": "TransferContract"
+              }
+          ],
+          "ref_block_bytes": "193b",
+          "ref_block_hash": "aaecd88e4e0e7528",
+          "expiration": 1656580476000,
+          "timestamp": 1656580418228
+      },
+      "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
+  }
+  ```
 
-```
-{
-    "ret": [
-        {
-            "contractRet": "SUCCESS"
-        }
-    ],
-    "signature": [
-        "e12996cfaf52f8b49e64400987f9158a87b1aa809a11a75e01bb230722db97a26204334aea945b1ece0851a89c96459872e56229b0bd725c4f6a0577bfe331c301"
-    ],
-    "txID": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "raw_data": {
-        "contract": [
-            {
-                "parameter": {
-                    "value": {
-                        "amount": 10000000,
-                        "owner_address": "4198927ffb9f554dc4a453c64b2e553a02d6df514b",
-                        "to_address": "41d0b69631440f0a494bb51f7eee68ff5c593c00f0"
-                    },
-                    "type_url": "type.googleapis.com/protocol.TransferContract"
-                },
-                "type": "TransferContract"
-            }
-        ],
-        "ref_block_bytes": "193b",
-        "ref_block_hash": "aaecd88e4e0e7528",
-        "expiration": 1656580476000,
-        "timestamp": 1656580418228
-    },
-    "raw_data_hex": "0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30"
-}
-```
+2. Use the `wallet/gettransactioninfobyid` HTTP endpoint to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption).
 
-2. Use the `wallet/gettransactioninfobyid` HTTP endpoint to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption). Pass the target `txid` in the request body:
-
-```
-curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactioninfobyid' \
---header 'Content-Type: application/json' \
---data-raw '{
-     "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
-}'
-```
-
-The `blockNumber` field in the response is the key proof of a successful transaction. As long as this field has a value, it means your transaction is successfully and irreversibly recorded on the blockchain. The `receipt` field provides a detailed execution receipt.
-
-
-```
-{
-    "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
-    "blockNumber": 27662687,
-    "blockTimeStamp": 1656580470000,
-    "contractResult": [
-        ""
-    ],
-    "receipt": {
-        "net_usage": 268
-    }
-}
-```
+  Pass the target `txid` in the request body:
+  
+  ```
+  curl --location --request POST 'http://127.0.0.1:8090/wallet/gettransactioninfobyid' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+       "value": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0"
+  }'
+  ```
+  
+  The `blockNumber` field in the response is the key proof of a successful transaction. As long as this field has a value, it means your transaction is successfully and irreversibly recorded on the blockchain. The `receipt` field provides a detailed execution receipt.
+  
+  
+  ```
+  {
+      "id": "c558bd35978267d8999baf6148703cbc94786f3f2e22893637588ca05437d7f0",
+      "blockNumber": 27662687,
+      "blockTimeStamp": 1656580470000,
+      "contractResult": [
+          ""
+      ],
+      "receipt": {
+          "net_usage": 268
+      }
+  }
+  ```
 
 
 ## Summary and Next Steps
