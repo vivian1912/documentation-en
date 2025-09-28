@@ -1315,7 +1315,7 @@
           <li class="md-nav__item ">
   <a href="#get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun" class="md-nav__link" >
     <span class="md-ellipsis">
-      Get Delegable Resources of a Specific Resource Type for an Address (in SUN)
+      Get Delegable Resources of a Specific Resource Type for an Address (in sun)
     </span>
   </a>
   
@@ -2723,8 +2723,8 @@
 
 <h1 id="grpc-api">gRPC API<a class="headerlink" href="#grpc-api" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This document provides a detailed reference for <strong>gRPC</strong>) <strong>API</strong>s in the <strong>TRON</strong> blockchain network. These <strong>API</strong>s allow developers to interact with the <strong>TRON</strong> network to perform various functions such as <strong>account</strong> management, <strong>transaction</strong> broadcasting, <strong>smart contract</strong> operations, and <strong>resource</strong> management.</p>
-<p><strong>Note:</strong> <strong>SolidityNode</strong> is deprecated. The <strong>FullNode</strong> now supports all <strong>gRPCs</strong> of the <strong>SolidityNode</strong>. New developers should only deploy a <strong>FullNode</strong>.</p>
+<p>This document provides a detailed reference for gRPC) APIs in the TRON blockchain network. These APIs allow developers to interact with the TRON network to perform various functions such as account management, transaction broadcasting, smart contract operations, and resource management.</p>
+<p><strong>Note:</strong> SolidityNode is deprecated. The FullNode now supports all gRPCs of the SolidityNode. New developers should only deploy a FullNode.</p>
 <p><strong>API Definition Reference</strong>: This document outlines the functions of the major APIs. Please refer to <a href="https://github.com/tronprotocol/protocol/blob/master/api/api.proto">api/api.proto</a> for the complete and authoritative technical definitions.</p>
 <h2 id="account-management">Account Management<a class="headerlink" href="#account-management" title="Permanent link">&para;</a></h2>
 <h3 id="get-account-information">Get Account Information<a class="headerlink" href="#get-account-information" title="Permanent link">&para;</a></h3>
@@ -2753,7 +2753,7 @@
 <div class="highlight"><pre><span></span><code>rpc BroadcastTransaction (Transaction) returns (Return) {}
 </code></pre></div>
 <p><strong>Description:</strong>
-This <strong>RPC</strong> is used to send a signed <strong>transaction</strong> to a node. After being verified by a <strong>Super Representative (SR)</strong>, the <strong>transaction</strong> will be broadcast to the entire network.</p>
+This gRPC is used to send a signed transaction to a node. After being verified by a Super Representative (SR), the transaction will be broadcast to the entire network.</p>
 <h3 id="query-transaction-information-by-transaction-id">Query Transaction Information (by Transaction ID)<a class="headerlink" href="#query-transaction-information-by-transaction-id" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc GetTransactionById (BytesMessage) returns (Transaction) {}
 </code></pre></div>
@@ -2795,8 +2795,8 @@ This <strong>RPC</strong> is used to send a signed <strong>transaction</strong> 
 A token update can only be initiated by the token issuer to update the:
 - Token description
 - URL
-- Maximum <strong>bandwidth</strong> consumption per <strong>account</strong>
-- Total <strong>bandwidth</strong> consumption</p>
+- Maximum Bandwidth consumption per account
+- Total Bandwidth consumption</p>
 <h3 id="token-transfer">Token Transfer<a class="headerlink" href="#token-transfer" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc TransferAsset2 (TransferAssetContract) returns (TransactionExtention) {}
 </code></pre></div>
@@ -2844,11 +2844,11 @@ A token update can only be initiated by the token issuer to update the:
 <div class="highlight"><pre><span></span><code>rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {}
 </code></pre></div>
 <p><strong>Description:</strong>
-Apply to become a <strong>TRON Super Representative</strong> candidate.</p>
+Apply to become a TRON Super Representative candidate.</p>
 <h3 id="update-super-representative-candidate-information">Update Super Representative Candidate Information<a class="headerlink" href="#update-super-representative-candidate-information" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {}
 </code></pre></div>
-<p><strong>Description:</strong> Update the <strong>Super Representative's</strong> website URL.</p>
+<p><strong>Description:</strong> Update the Super Representative's website URL.</p>
 <h3 id="query-all-super-representative-candidates">Query All Super Representative Candidates<a class="headerlink" href="#query-all-super-representative-candidates" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
 </code></pre></div>
@@ -2891,7 +2891,7 @@ Apply to become a <strong>TRON Super Representative</strong> candidate.</p>
 <div class="highlight"><pre><span></span><code>rpc GetAvailableUnfreezeCount (GetAvailableUnfreezeCountRequestMessage)
      returns (GetAvailableUnfreezeCountResponseMessage) {};
 </code></pre></div>
-<h3 id="get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun">Get Delegable Resources of a Specific Resource Type for an Address (in SUN)<a class="headerlink" href="#get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun" title="Permanent link">&para;</a></h3>
+<h3 id="get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun">Get Delegable Resources of a Specific Resource Type for an Address (in sun)<a class="headerlink" href="#get-delegable-resources-of-a-specific-resource-type-for-an-address-in-sun" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>rpc GetCanDelegatedMaxSize (CanDelegatedMaxSizeRequestMessage) returns (CanDelegatedMaxSizeResponseMessage) {};
 </code></pre></div>
 <h3 id="get-matured-unstake-amount-that-can-be-withdrawn-at-a-specific-time">Get Matured Unstake Amount That Can Be Withdrawn at a Specific Time<a class="headerlink" href="#get-matured-unstake-amount-that-can-be-withdrawn-at-a-specific-time" title="Permanent link">&para;</a></h3>
@@ -2899,7 +2899,7 @@ Apply to become a <strong>TRON Super Representative</strong> candidate.</p>
      returns (CanWithdrawUnfreezeAmountResponseMessage) {};
 </code></pre></div>
 <h3 id="withdraw-matured-unstakes">Withdraw Matured Unstakes<a class="headerlink" href="#withdraw-matured-unstakes" title="Permanent link">&para;</a></h3>
-<p>After a user executes the <code>/wallet/unfreezebalancev2</code> <strong>transaction</strong> and waits N days (N being a network parameter), they can call this <strong>API</strong> to retrieve the funds.
+<p>After a user executes the <code>/wallet/unfreezebalancev2</code> transaction and waits N days (N being a network parameter), they can call this API to retrieve the funds.
 <div class="highlight"><pre><span></span><code>rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {};
 </code></pre></div></p>
 <h2 id="smart-contract-operations">Smart Contract Operations<a class="headerlink" href="#smart-contract-operations" title="Permanent link">&para;</a></h2>
@@ -2997,7 +2997,7 @@ Note: To query historical account balances, a node must have <code>storage.balan
 <div class="highlight"><pre><span></span><code>rpc GetTransactionInfoByBlockNum (NumberMessage) returns (TransactionInfoList) {};
 </code></pre></div>
 <h3 id="get-information-for-a-specific-block">Get Information for a Specific Block<a class="headerlink" href="#get-information-for-a-specific-block" title="Permanent link">&para;</a></h3>
-<p>By default, it returns the latest block header. You can also query a specific block header or block information including the transaction body.
+<p>By default, it returns the latest block header. You can also query a specific block header or block information, including the transaction body.
 <div class="highlight"><pre><span></span><code>rpc GetBlock (BlockReq) returns (BlockExtention) {};
 </code></pre></div></p>
 <h2 id="governance">Governance<a class="headerlink" href="#governance" title="Permanent link">&para;</a></h2>

@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jsonrpc-api" class="md-skip">
+        <a href="#json-rpc-api" class="md-skip">
           Skip to content
         </a>
       
@@ -2100,10 +2100,10 @@
   
 
 
-<h1 id="jsonrpc-api">jsonRPC API<a class="headerlink" href="#jsonrpc-api" title="Permanent link">&para;</a></h1>
+<h1 id="json-rpc-api">JSON-RPC API<a class="headerlink" href="#json-rpc-api" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The TRON network provides a set of JSON-RPC APIs that are compatible with Ethereum.</p>
-<p>Although the APIs are designed for high compatibility, there are differences in the behavior of some interfaces due to variations in the underlying account models, resource models, and consensus mechanisms between TRON and Ethereum. Additionally, TRON has extended the API set with custom interfaces to support its unique transaction types.</p>
+<p>Although the APIs are designed for high compatibility with Ethereum, some endpoints may behave differently due to TRON's unique account model, resource model, and consensus mechanism. Additionally, TRON has extended the API set with custom interfaces to support its unique transaction types.</p>
 <h2 id="how-to-enable-or-disable-json-rpc-service-of-a-node">How to enable or disable JSON-RPC service of a node<a class="headerlink" href="#how-to-enable-or-disable-json-rpc-service-of-a-node" title="Permanent link">&para;</a></h2>
 <p>By default, the JSON-RPC service in a java-tron node is disabled. You must explicitly enable it in the node's <a href="https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf">configuration file</a>.
 <div class="highlight"><pre><span></span><code>node.jsonrpc {  
@@ -2115,39 +2115,29 @@
 </code></pre></div></p>
 <h2 id="hex-value-encoding">HEX value encoding<a class="headerlink" href="#hex-value-encoding" title="Permanent link">&para;</a></h2>
 <p>In JSON-RPC interactions, all binary data is passed as hexadecimal strings, which follow two distinct formatting rules:</p>
-<ul>
-<li><strong>QUANTITIES (Numerical Types)</strong></li>
-<li>Description: Used to represent integers, such as block numbers, balances, and counts.</li>
-<li>Format: A hexadecimal string with a <code>0x</code> prefix, using the most compact representation (i.e., with no leading zeros). The only exception is zero itself, which must be represented as <code>0x0</code>.</li>
-<li>
-<p>Examples:</p>
-<ul>
-<li><code>0x41</code> (65 in decimal)</li>
-<li><code>0x400</code> (1024 in decimal)</li>
-<li>Incorrect: <code>0x0400</code> (leading zeros are not allowed)</li>
-<li>Incorrect: <code>ff</code> (must have a <code>0x</code> prefix)</li>
-</ul>
-</li>
-<li>
-<p><strong>UNFORMATTED DATA (Byte Arrays)</strong></p>
-</li>
-<li>Description: Used to represent byte arrays, such as addresses, hashes, and bytecode.</li>
-<li>Format: A hexadecimal string with a <code>0x</code> prefix, where each byte is represented by two hex characters.</li>
-<li>Examples:<ul>
-<li><code>0x41</code> (1-byte data)</li>
-<li><code>0x004200</code> (3-byte data)</li>
-<li><code>0x</code> (0-byte data)</li>
-<li>Incorrect: <code>0xf0f0f</code> (must have an even number of digits)</li>
-<li>Incorrect: <code>004200</code> (must have a 0x prefix)</li>
-</ul>
-</li>
-</ul>
+<p><strong>QUANTITIES (Numerical Types)</strong>
+   - Description: Used to represent integers, such as block numbers, balances, and counts.
+   - Format: A hexadecimal string with a <code>0x</code> prefix, using the most compact representation (i.e., with no leading zeros). The only exception is zero itself, which must be represented as <code>0x0</code>.
+   - Examples:
+      - <code>0x41</code> (65 in decimal)
+      - <code>0x400</code> (1024 in decimal)
+      - Incorrect: <code>0x0400</code> (leading zeros are not allowed)
+      - Incorrect: <code>ff</code> (must have a <code>0x</code> prefix)</p>
+<p><strong>UNFORMATTED DATA (Byte Arrays)</strong>
+   - Description: Used to represent byte arrays, such as addresses, hashes, and bytecode.
+   - Format: A hexadecimal string with a <code>0x</code> prefix, where each byte is represented by two hex characters.
+   - Examples:
+      - <code>0x41</code> (1-byte data)
+      - <code>0x004200</code> (3-byte data)
+      - <code>0x</code> (0-byte data)
+      - Incorrect: <code>0xf0f0f</code> (must have an even number of digits)
+      - Incorrect: <code>004200</code> (must have a 0x prefix)</p>
 <h2 id="eth">eth<a class="headerlink" href="#eth" title="Permanent link">&para;</a></h2>
 <h3 id="eth_accounts">eth_accounts<a class="headerlink" href="#eth_accounts" title="Permanent link">&para;</a></h3>
 <p><em>Returns a list of addresses owned by the client.</em></p>
 <p><strong>Parameters:</strong> None
 <strong>Return Value:</strong> An empty array.
-<strong>Note:</strong> Unlike Ethereum clients such as Geth, TRON nodes do not manage private keys or accounts. Therefore, this interface exists for compatibility purposes only and has no real functionality.</p>
+<strong>Note:</strong> Unlike Ethereum clients such as Geth, TRON nodes do not manage private keys or accounts. Therefore, this interface is provided for compatibility purposes only and does not return any accounts.</p>
 <p><strong>Example</strong>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;
 {&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;eth_accounts&quot;, &quot;params&quot;: []}&#39;
@@ -2183,7 +2173,7 @@
 <tr>
 <td style="text-align: left;"><code>from</code></td>
 <td style="text-align: left;">DATA, 20 Bytes</td>
-<td style="text-align: left;">The caller's address. For Ethereum compatibility, all addresses can be either TRON hex addresses or Ethereum addresses.</td>
+<td style="text-align: left;">The caller's address. Both TRON hex addresses and Ethereum addresses are accepted.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>to</code></td>
@@ -2211,7 +2201,7 @@
 <td style="text-align: left;">The hash of the method signature and encoded parameters.</td>
 </tr>
 <tr>
-<td style="text-align: left;">2. <code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is supported</td>
+<td style="text-align: left;">2. <code>QUANTITY|TAG</code> - The block identifier. Currently, only "latest" is currently supported</td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
@@ -2259,7 +2249,7 @@
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;error&quot;:{&quot;code&quot;:-32000,&quot;message&quot;:&quot;etherbase must be explicitly specified&quot;,&quot;data&quot;:&quot;{}&quot;}}
 </code></pre></div></p>
 <h3 id="eth_estimategas">eth_estimateGas<a class="headerlink" href="#eth_estimategas" title="Permanent link">&para;</a></h3>
-<p><em>Estimates the amount of Energy required to execute a transaction.</em></p>
+<p><em>Estimates the Energy required to execute a transaction.</em></p>
 <p><strong>Parameters:</strong>
 1. <code>Object</code> - The transaction call object, containing the following fields:</p>
 <table>
@@ -2303,7 +2293,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Return Value:</strong> <code>QUANTITY</code> - The estimated amount of Energy that will be consumed.</p>
+<p><strong>Return Value:</strong> <code>QUANTITY</code> - The estimated Energy that will be consumed.</p>
 <p><strong>Example</strong></p>
 <div class="highlight"><pre><span></span><code>curl -X POST &#39;https://api.shasta.trongrid.io/jsonrpc&#39; --data &#39;{
     &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -2571,9 +2561,9 @@ The block object contains the following fields:</p>
 <ol>
 <li><code>DATA</code>, 32 Bytes - The hash of the block.</li>
 <li><code>QUANTITY</code> - The index of the transaction within the block.</li>
-<li><strong>Return Value: </strong><code>Object</code> - A transaction object. Returns <code>null</code> if not found.
-The transaction object contains the following fields:</li>
 </ol>
+<p><strong>Return Value: </strong><code>Object</code> - A transaction object. Returns <code>null</code> if not found.
+The transaction object contains the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -2636,7 +2626,7 @@ The transaction object contains the following fields:</li>
 <tr>
 <td style="text-align: left;"><code>type</code></td>
 <td style="text-align: left;">QUANTITY</td>
-<td style="text-align: left;">The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0</td>
+<td style="text-align: left;">The transaction type. Currently, all transactions on the TRON network are normal transactions, usually with a value of <code>0x0</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>value</code></td>
@@ -2746,7 +2736,7 @@ The transaction object contains the following fields:</li>
 }
 </code></pre></div></p>
 <h3 id="eth_gettransactionreceipt">eth_getTransactionReceipt<a class="headerlink" href="#eth_gettransactionreceipt" title="Permanent link">&para;</a></h3>
-<p><em>Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: <a href="../http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a>.</em></p>
+<p><em>Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This endpoint is comparable to the <a href="../http/#walletgettransactioninfobyid">wallet/gettransactioninfobyid</a> HTTP API.</em></p>
 <p><strong>Parameters:</strong> <code>DATA</code>, 32 Bytes - The hash of the transaction.</p>
 <p><strong>Return Value:</strong> <code>Object</code> - A transaction receipt object. Returns <code>null</code> if the transaction is unconfirmed or not found.</p>
 <p>The transaction receipt object contains the following fields:</p>
@@ -2953,12 +2943,12 @@ The transaction object contains the following fields:</li>
 <tr>
 <td style="text-align: left;"><code>fromBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
-<td style="text-align: left;">Integer block number, or "latest",or "earliest"</td>
+<td style="text-align: left;">Integer block number, or "latest", or "earliest"</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>toBlock</code></td>
 <td style="text-align: left;">QUANTITY|TAG</td>
-<td style="text-align: left;">Integer block number, or "latest",or "earliest"</td>
+<td style="text-align: left;">Integer block number, or "latest", or "earliest"</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>address</code></td>
@@ -3220,7 +3210,7 @@ The transaction object contains the following fields:</li>
 {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;result&quot;:&quot;0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad&quot;}
 </code></pre></div></p>
 <h2 id="buildtransaction">buildTransaction<a class="headerlink" href="#buildtransaction" title="Permanent link">&para;</a></h2>
-<p><em>This is a TRON-custom RPC method used to conveniently create native TRON transactions. It returns an unsigned transaction object. Different transaction types have different parameters.</em></p>
+<p><em>This is a TRON-specific RPC method used to conveniently create native TRON transactions. It returns an unsigned transaction object. Different transaction types have different parameters.</em></p>
 <h3 id="transfercontract-trx-transfer">TransferContract (TRX Transfer)<a class="headerlink" href="#transfercontract-trx-transfer" title="Permanent link">&para;</a></h3>
 <p><strong>Parameters:</strong> </p>
 <p><code>Object</code> - with the following fields:

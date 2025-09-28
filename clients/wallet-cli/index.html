@@ -2168,8 +2168,8 @@ CreateAccount successful !!
 <p>Retrieves the balance of the current logged-in account.</p>
 </blockquote>
 <h4 id="modify-account-permissions">Modify Account Permissions<a class="headerlink" href="#modify-account-permissions" title="Permanent link">&para;</a></h4>
-<h5 id="how-to-use-wallet-clis-multi-signature-feature">How to Use <code>wallet-cli</code>'s Multi-signature Feature?<a class="headerlink" href="#how-to-use-wallet-clis-multi-signature-feature" title="Permanent link">&para;</a></h5>
-<p>Multi-signature allows other users to access an account for better account management. There are three access types:</p>
+<h5 id="how-to-use-wallet-clis-account-permission-management-feature">How to Use <code>wallet-cli</code>'s Account Permission Management Feature?<a class="headerlink" href="#how-to-use-wallet-clis-account-permission-management-feature" title="Permanent link">&para;</a></h5>
+<p>Account Permission Management allows other users to access an account for better account management. There are three access types:</p>
 <ul>
 <li><code>owner</code>: The access permission for the account owner.</li>
 <li><code>active</code>: Access permissions for other account functions, as well as permissions for specific functions. If used for an SR, this does not include block production authorization.</li>
@@ -2598,7 +2598,7 @@ wallet&gt; GetTransactionById feb334794cf361fd351728026ccf7319e6ae90eba622b9eb53
 <blockquote>
 <p>SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000</p>
 </blockquote>
-<p>The following is an example of a multi-signature transaction。 For details on the authorization of the signing accounts, please refer to the example in the Modifying Account Permissions section.</p>
+<p>The following is an example of a transaction using Account Permission Management. For details on the authorization of the signing accounts, please refer to the example in the Modifying Account Permissions section.</p>
 <div class="highlight"><pre><span></span><code>wallet&gt; sendcoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10
 {
     &quot;raw_data&quot;:{

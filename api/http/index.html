@@ -835,9 +835,9 @@
 </li>
         
           <li class="md-nav__item ">
-  <a href="#vote-and-sr" class="md-nav__link" >
+  <a href="#vote-and-super-representative" class="md-nav__link" >
     <span class="md-ellipsis">
-      Vote and SR
+      Vote and Super Representative
     </span>
   </a>
   
@@ -1868,9 +1868,9 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 </div>
-<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before they use it in any UI, especially when the parameter visible equals true.</p>
+<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before using it in any UI, especially when the parameter visible equals true.</p>
 <p>Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as <code>encodeURIComponent()</code> or <code>escape()</code> to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.</p>
-<p>Please be sure to implement XSS protection for all data from the APIs to ensure the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html">OWASP XSS Prevention Cheat Sheet</a>.</p>
+<p>Please ensure that XSS protection is implemented for all data from the APIs to maintain the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html">OWASP XSS Prevention Cheat Sheet</a>.</p>
 <p>The TRON node's HTTP API supports two address formats. Developers can use the visible parameter to control the address format in both requests and responses.</p>
 <p>The rules for the visible parameter are as follows:</p>
 <ul>
@@ -1926,7 +1926,7 @@ Add <code>"visible": true</code> to the JSON request body.
 <li><a href="#walletgetaccountbyid">wallet/getaccountbyid</a></li>
 </ul>
 <h4 id="walletvalidateaddress">wallet/validateaddress<a class="headerlink" href="#walletvalidateaddress" title="Permanent link">&para;</a></h4>
-<p>Description:Validates if a TRON address is effective. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.</p>
+<p>Description: Validates if a TRON address is effective. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.</p>
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d &#39;{&quot;address&quot;: &quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;}&#39;
 </code></pre></div>
 <p>Parameters: 
@@ -1955,7 +1955,7 @@ Parameters:</p>
 <li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li>
 <ul>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 </li>
 </ul>
@@ -1966,7 +1966,7 @@ Parameters:</p>
 </code></pre></div>
 参数：
 * <code>address</code>: The account address to query.
-* * <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+* * <code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</p>
 <p>Return Value: An Account object.</p>
 <h4 id="walletupdateaccount">wallet/updateaccount<a class="headerlink" href="#walletupdateaccount" title="Permanent link">&para;</a></h4>
 <p>Description: Updates or sets the on-chain name (<code>account_name</code>) for a specified TRON account.
@@ -1979,7 +1979,7 @@ Parameters:</p>
 <li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li>
 <ul>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 </li>
 </ul>
@@ -2022,20 +2022,24 @@ Parameters:</p>
     }],
     &quot;visible&quot;: true}&#39;
 </code></pre></div>
-Parameters:
-* <code>owner_address</code>: The address of the account creating the contract, in hexString format by default.
-* <code>owner</code>: The permission details for the account's owner.
-* <code>witness</code>: The permission details for block production. Not required if the account is not a witness.
-* <code>actives</code>: The permission details for other functionalities.
-* * <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+Parameters:</p>
+<ul>
+<li><code>owner_address</code>: The address of the account creating the contract, in hexString format by default.</li>
+<li><code>owner</code>: The permission details for the account's owner.</li>
+<li><code>witness</code>: The permission details for block production. Not required if the account is not a witness.</li>
+<li><code>actives</code>: The permission details for other functionalities.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
+</ul>
 <p>Return Value: An unsigned transaction.</p>
 <h4 id="walletgetaccountbalance">wallet/getaccountbalance<a class="headerlink" href="#walletgetaccountbalance" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the TRX balance of a TRON account at a specific historical block height.
-The following official nodes currently support this query:
-* 13.228.119.63
-* 18.139.193.235
-* 18.141.79.38
-* 18.139.248.26</p>
+The following official nodes currently support this query:</p>
+<ul>
+<li>13.228.119.63</li>
+<li>18.139.193.235</li>
+<li>18.141.79.38</li>
+<li>18.139.248.26</li>
+</ul>
 <p>A local node must have <code>storage.balance.history.lookup=true</code> enabled in its configuration file.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 &#39;{
@@ -2049,11 +2053,13 @@ The following official nodes currently support this query:
     &quot;visible&quot;: true
 }&#39;
 </code></pre></div></p>
-<p>Parameters:
-* <code>account_identifier.address</code>: The account address to query.
-* <code>block_identifier.hash</code>: The hash of the target block.
-* <code>block_identifier.number</code>: The height (block number) of the target block.
-* <code>visible</code>(optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>account_identifier.address</code>: The account address to query.</li>
+<li><code>block_identifier.hash</code>: The hash of the target block.</li>
+<li><code>block_identifier.number</code>: The height (block number) of the target block.</li>
+<li><code>visible</code>(optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+</ul>
 <p>Return Value Example:
 <div class="highlight"><pre><span></span><code>{
     &quot;balance&quot;: 64086449348265042,
@@ -2068,17 +2074,23 @@ The following official nodes currently support this query:
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d &#39;{
 &quot;owner_address&quot;:&quot;41a7d8a35b260395c14aa456297662092ba3b76fc0&quot;,&quot;account_id&quot;:&quot;6161616162626262&quot;}&#39;
 </code></pre></div>
-Parameters:
-* <code>owner_address</code>: The address of the transaction creator, in hexString format by default.
-* <code>account_id</code>: The account ID, in hexString format by default.
-* * <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+Parameters:</p>
+<ul>
+<li><code>owner_address</code>: The address of the transaction creator, in hexString format by default.</li>
+<li><code>account_id</code>: The account ID, in hexString format by default.</li>
+<li>
+<ul>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
+</ul>
+</li>
+</ul>
 <p>Return Value: An unsigned transaction for set the Account ID.</p>
 <h4 id="walletgetaccountbyid">wallet/getaccountbyid<a class="headerlink" href="#walletgetaccountbyid" title="Permanent link">&para;</a></h4>
 <p>Description: Queries account information by its <code>account_id</code>.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 &#39;{&quot;account_id&quot;:&quot;6161616162626262&quot;}&#39;
 </code></pre></div>
-Parameters: <code>account_id</code> in hexString format by default.</p>
+Parameter: <code>account_id</code> in hexString format by default.</p>
 <p>Return Value: An Account object.</p>
 <p><a id="txn"></a></p>
 <h3 id="transfers-and-transactions">Transfers and transactions<a class="headerlink" href="#transfers-and-transactions" title="Permanent link">&para;</a></h3>
@@ -2094,19 +2106,23 @@ Parameters: <code>account_id</code> in hexString format by default.</p>
 <p>Description: Creates a TRX transfer transaction. If the to_address does not exist, this transaction will also create the account on the blockchain
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d &#39;{&quot;to_address&quot;: &quot;41e9d79cc47518930bc322d9bf7cddd260a0260a8d&quot;, &quot;owner_address&quot;: &quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;, &quot;amount&quot;: 1000 }&#39;
 </code></pre></div></p>
-<p>Parameters:
-* <code>to_address</code>: The recipient's address.
-* <code>owner_address</code>: The sender's address.
-* <code>amount</code>: The transfer amount, in sun (1 TRX = 1,000,000 sun).
-* <code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>to_address</code>: The recipient's address.</li>
+<li><code>owner_address</code>: The sender's address.</li>
+<li><code>amount</code>: The transfer amount, in sun (1 TRX = 1,000,000 sun).</li>
+<li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
+</ul>
 <p>Return Value: An unsigned TRX transfer transaction.</p>
 <h4 id="walletbroadcasttransaction">wallet/broadcasttransaction<a class="headerlink" href="#walletbroadcasttransaction" title="Permanent link">&para;</a></h4>
 <p>Description: Broadcasts a signed transaction to the TRON network.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d &#39;{&quot;signature&quot;:[&quot;97c825b41c77de2a8bd65b3df55cd4c0df59c307c0187e42321dcc1cc455ddba583dd9502e17cfec5945b34cad0511985a6165999092a6dec84c2bdd97e649fc01&quot;],&quot;txID&quot;:&quot;454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8&quot;,&quot;raw_data&quot;:{&quot;contract&quot;:[{&quot;parameter&quot;:{&quot;value&quot;:{&quot;amount&quot;:1000,&quot;owner_address&quot;:&quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;,&quot;to_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;},&quot;type_url&quot;:&quot;type.googleapis.com/protocol.TransferContract&quot;},&quot;type&quot;:&quot;TransferContract&quot;}],&quot;ref_block_bytes&quot;:&quot;267e&quot;,&quot;ref_block_hash&quot;:&quot;9a447d222e8de9f2&quot;,&quot;expiration&quot;:1530893064000,&quot;timestamp&quot;:1530893006233}}&#39;
 </code></pre></div>
-Parameters:
-* A complete signed transaction object. This is created by adding a signature field to the unsigned transaction returned by a creation API (e.g., wallet/createtransaction).</p>
+Parameter:</p>
+<ul>
+<li>A complete signed transaction object. This is created by adding a signature field to the unsigned transaction returned by a creation API (e.g., wallet/createtransaction).</li>
+</ul>
 <p>Return Value:
 * A JSON object with the broadcast result.
 * A successful response typically includes <code>"result": true</code>, indicating the node has received the transaction and started broadcasting it.</p>
@@ -2115,11 +2131,15 @@ Parameters:
 <p>Description: Broadcasts a transaction that has been signed and serialized into a hexadecimal string.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d &#39;{&quot;transaction&quot;:&quot;0A8A010A0202DB2208C89D4811359A28004098A4E0A6B52D5A730802126F0A32747970652E676F6F676C65617069732E636F6D2F70726F746F636F6C2E5472616E736665724173736574436F6E747261637412390A07313030303030311215415A523B449890854C8FC460AB602DF9F31FE4293F1A15416B0580DA195542DDABE288FEC436C7D5AF769D24206412418BF3F2E492ED443607910EA9EF0A7EF79728DAAAAC0EE2BA6CB87DA38366DF9AC4ADE54B2912C1DEB0EE6666B86A07A6C7DF68F1F9DA171EEE6A370B3CA9CBBB00&quot;}&#39;
 </code></pre></div>
-Parameters:
-* t<code>ransaction</code>: A complete transaction, including all data and signatures, serialized into a single hex string.</p>
-<p>Return Value:
-* A JSON object with the broadcast result.
-* A successful response typically includes <code>"result": true</code>, indicating the node has received the transaction and started broadcasting it.</p>
+Parameters:</p>
+<ul>
+<li><code>transaction</code>: A complete transaction, including all data and signatures, serialized into a single hex string.</li>
+</ul>
+<p>Return Value:</p>
+<ul>
+<li>A JSON object with the broadcast result.</li>
+<li>A successful response typically includes <code>"result": true</code>, indicating the node has received the transaction and started broadcasting it.</li>
+</ul>
 <p><strong>Important Note</strong>: <code>"result": true</code> does not mean the transaction has been confirmed on the blockchain. It only means <code>"successfully broadcast."</code> You must use the txID with the <code>wallet/gettransactioninfobyid</code> or <code>wallet/gettransactionbyid</code> endpoints to check the final on-chain status.</p>
 <h4 id="walletgetsignweight">wallet/getsignweight<a class="headerlink" href="#walletgetsignweight" title="Permanent link">&para;</a></h4>
 <p>Description: Checks the current signature status of a transaction requiring Account Management Permission. This is a key pre-broadcast check in the workflow for an Account Management Permission to see if the collected signature weight has met the required threshold.</p>
@@ -2150,10 +2170,14 @@ Parameters:
     &quot;raw_data_hex&quot;: &quot;0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d&quot;,
     &quot;visible&quot;: true}&#39;
 </code></pre></div>
-Parameters:
-* A complete transaction object that includes o<code>ne or more signatures</code>.</p>
-<p>Return Value: 
-* A JSON object detailing the signature status, including whether the weight threshold has been met, a list of signing addresses, permission details, the current signed weight, and the transaction itself.</p>
+Parameter:</p>
+<ul>
+<li>A complete transaction object that includes o<code>ne or more signatures</code>.</li>
+</ul>
+<p>Return Value: </p>
+<ul>
+<li>A JSON object detailing the signature status, including whether the weight threshold has been met, a list of signing addresses, permission details, the current signed weight, and the transaction itself.</li>
+</ul>
 <h4 id="walletgetapprovedlist">wallet/getapprovedlist<a class="headerlink" href="#walletgetapprovedlist" title="Permanent link">&para;</a></h4>
 <p>Description: In the workflow of an Account Management Permission, this queries and returns the list of addresses that have already signed a transaction. It is similar to wallet/getsignweight but focuses on tracking progress.</p>
 <p>This interface is similar to wallet/getsignweight, but its main Description is to quickly obtain a list of parties that have provided valid signatures to track the progress for an Account Management Permission.</p>
@@ -2226,7 +2250,7 @@ Parameters:</p>
 Parameters:</p>
 <ul>
 <li><code>address</code>: The account address to query.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value:</p>
 <ul>
@@ -2248,7 +2272,7 @@ Parameters:</p>
 <li><code>resource</code>: Can be BANDWIDTH or ENERGY.</li>
 <li><code>receiverAddress</code>: The address of the delegated account.</li>
 <li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value:
 * An unsigned unstaking transaction object.</p>
@@ -2263,7 +2287,7 @@ Parameters:</p>
 Parameters:
 * <code>fromAddress</code>: The address of the delegating account.
 * <code>toAddress</code>: The address of the recipient account.
-* <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
+* <code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</p>
 <p>Return Value: 
 * A list of <code>DelegatedResource</code> objects.</p>
 <h4 id="walletgetdelegatedresourceaccountindex">wallet/getdelegatedresourceaccountindex<a class="headerlink" href="#walletgetdelegatedresourceaccountindex" title="Permanent link">&para;</a></h4>
@@ -2361,7 +2385,7 @@ Parameters:</p>
 <li><code>lock</code>: true sets a 3-day lock on the delegation, during which it cannot be canceled. If resources are delegated again to the same address during the lock period, the 3-day timer resets. false means no lock period.</li>
 <li><code>lock_period</code>: A custom lock period in units of blocks (1 block ≈ 3s). Only effective when lock is true. For a 1-day lock, lock_period would be 28800.</li>
 <li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value:
 * An unsigned delegate resource transaction object.</p>
@@ -2383,12 +2407,12 @@ Parameters:</p>
 <li><code>balance</code>: The amount of TRX whose corresponding resource share will be undelegated, in sun.</li>
 <li><code>resource</code>: The type of resource to undelegate, <code>BANDWIDTH</code> or <code>ENERGY</code>.</li>
 <li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: 
 * An unsigned undelegate resource transaction object.</p>
 <h4 id="walletwithdrawexpireunfreeze">wallet/withdrawexpireunfreeze<a class="headerlink" href="#walletwithdrawexpireunfreeze" title="Permanent link">&para;</a></h4>
-<p>Description: Withdraws the principal of all unstaked TRX that has completed its lock period.
+<p>Description: Withdraws all unstaked TRX that have completed their lock period.
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 &#39;{
     &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,
@@ -2397,11 +2421,10 @@ Parameters:</p>
 <p>Parameters:
 * <code>owner_address</code>: The address of the transaction initiator.
 * <code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* <code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</p>
-<p>Return Value: 
-* An unsigned withdraw expired unfreeze transaction object.</p>
+* <code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</p>
+<p>Return Value: An unsigned withdraw expired unfreeze transaction object.</p>
 <h4 id="walletgetavailableunfreezecount">wallet/getavailableunfreezecount<a class="headerlink" href="#walletgetavailableunfreezecount" title="Permanent link">&para;</a></h4>
-<p>Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period.This API can be used to pre-check whether there is available "unstaking quota" before calling <code>unfreezebalancev2</code>.</p>
+<p>Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period. This API can be used to pre-check whether there is an available "unstaking quota" before calling <code>unfreezebalancev2</code>.</p>
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/getavailableunfreezecount -d
 &#39;{
   &quot;owner_address&quot;: &quot;TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g&quot;,
@@ -2411,11 +2434,10 @@ Parameters:</p>
 </code></pre></div>
 <p>Parameters:</p>
 <ul>
-<li>owner_address: The account address to query.</li>
-<li>visible (optional): Sets the address format.</li>
+<li><code>owner_address</code>: The account address to query.</li>
+<li><code>visible</code> (optional): Sets the address format.</li>
 </ul>
-<p>Return Value:
-* A JSON object containing the remaining count.</p>
+<p>Return Value: A JSON object containing the remaining count.</p>
 <h4 id="walletgetcanwithdrawunfreezeamount">wallet/getcanwithdrawunfreezeamount<a class="headerlink" href="#walletgetcanwithdrawunfreezeamount" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the total amount of unstaked principal that can be withdrawn at a specific point in time.
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/getcanwithdrawunfreezeamount -d
@@ -2432,8 +2454,7 @@ Parameters:</p>
 <li><code>timestamp</code>: The timestamp (in milliseconds) at which to query the withdrawable amount.</li>
 <li><code>visible</code>(optional): Sets the address format.</li>
 </ul>
-<p>Return Value: 
-* A JSON object containing the withdrawable amount.</p>
+<p>Return Value: A JSON object containing the withdrawable amount.</p>
 <h4 id="walletgetcandelegatedmaxsize">wallet/getcandelegatedmaxsize<a class="headerlink" href="#walletgetcandelegatedmaxsize" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the maximum amount of a specified resource type that a target address can delegate, in sun.
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/getcandelegatedmaxsize -d
@@ -2448,10 +2469,9 @@ Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The account address to query.</li>
 <li><code>type</code>: The resource type, <code>0</code> for Bandwidth, <code>1</code> for Energy.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
-<p>Return Value: 
-* A JSON object containing the maximum delegatable share.</p>
+<p>Return Value: A JSON object containing the maximum delegatable share.</p>
 <h4 id="walletgetdelegatedresourcev2">wallet/getdelegatedresourcev2<a class="headerlink" href="#walletgetdelegatedresourcev2" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the resource details delegated from one address to a target address under the Stake 2.0 mechanism.
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourcev2 -d
@@ -2464,12 +2484,11 @@ Parameters:</p>
 </code></pre></div></p>
 <p>Parameters:</p>
 <ul>
-<li>fromAddress: The delegating account address.</li>
-<li>toAddress: The recipient account address.</li>
-<li>visible (optional): Sets the address format.</li>
+<li><code>fromAddress</code>: The delegating account address.</li>
+<li><code>toAddress</code>: The recipient account address.</li>
+<li><code>visible</code> (optional): Sets the address format.</li>
 </ul>
-<p>Return Value: 
-* An array of delegatedResource objects, containing all delegation records between the two addresses under Stake 2.0.</p>
+<p>Return Value: An array of delegatedResource objects, containing all delegation records between the two addresses under Stake 2.0.</p>
 <h4 id="walletgetdelegatedresourceaccountindexv2">wallet/getdelegatedresourceaccountindexv2<a class="headerlink" href="#walletgetdelegatedresourceaccountindexv2" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the resource delegation index for an address under the Stake 2.0 mechanism. It returns two lists: one of addresses to which the account has delegated resources (toAccounts), and one of addresses that have delegated resources to this account (fromAccounts).
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindexv2 -d
@@ -2482,10 +2501,9 @@ Parameters:</p>
 <p>Parameters:</p>
 <ul>
 <li><code>value</code>: The account address.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
-<p>Return Value:
-- This interface returns a JSON object containing a list of bidirectional proxy relationships. It contains two lists: one for the addresses to which the account delegates resources (toAddress), and one for the addresses that delegate resources to the account (fromAddress).</p>
+<p>Return Value: This interface returns a JSON object containing a list of bidirectional proxy relationships. It contains two lists: one for the addresses to which the account delegates resources (toAddress), and one for the addresses that delegate resources to the account (fromAddress).</p>
 <p><a id="network"></a></p>
 <h3 id="query-the-network">Query the Network<a class="headerlink" href="#query-the-network" title="Permanent link">&para;</a></h3>
 <p>The following is the API for querying data on the chain:</p>
@@ -2522,40 +2540,33 @@ Parameter: None</p>
 Parameters:</p>
 <ul>
 <li><code>id_or_num</code>: Block height or block hash. If not set, queries the latest block.</li>
-<li><code>detail</code>: Defaults to false, meaning only the block header information is queried. If true, the entire block is queried.</li>
+<li><code>detail</code>: Defaults to false, meaning only the block header information is queried. If <code>true</code>, the entire block is queried.</li>
 </ul>
 <p>Return Value: A Block object or an object containing only block header information.</p>
 <h4 id="walletgetblockbynum">wallet/getblockbynum<a class="headerlink" href="#walletgetblockbynum" title="Permanent link">&para;</a></h4>
 <p>Description: Query complete block information by a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d &#39;{&quot;num&quot;: 1}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li>num: Block height (integer).</li>
-</ul>
+Parameter: <code>num</code>: Block height (integer).</p>
 <p>Return Value: The Block object at the specified height.</p>
 <h4 id="walletgetblockbyid">wallet/getblockbyid<a class="headerlink" href="#walletgetblockbyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query complete block information by a specified Block ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid -d &#39;{&quot;value&quot;: &quot;0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73&quot;}&#39;
 </code></pre></div>
-Parameters:
-* value: The Block ID (hash).</p>
+Parameter: <code>value</code>: The Block ID (hash).</p>
 <p>Return Value: The Block object with the specified ID.</p>
 <h4 id="walletgetblockbylatestnum">wallet/getblockbylatestnum<a class="headerlink" href="#walletgetblockbylatestnum" title="Permanent link">&para;</a></h4>
 <p>Description: Query the latest N blocks in descending order.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d &#39;{&quot;num&quot;: 5}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li>num: The number of blocks to query.</li>
-</ul>
+Parameter: <code>num</code>: The number of blocks to query.</p>
 <p>Return Value: An array containing multiple Block objects (Block[]).</p>
 <h4 id="walletgetblockbylimitnext">wallet/getblockbylimitnext<a class="headerlink" href="#walletgetblockbylimitnext" title="Permanent link">&para;</a></h4>
 <p>Description: Paginate and query a list of blocks within a specified height range.
 code</p>
 <p><div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d &#39;{&quot;startNum&quot;: 1, &quot;endNum&quot;: 2}&#39;
 </code></pre></div>
-Parameter:</p>
+Parameters:</p>
 <ul>
 <li><code>startNum</code>: Starting block height (inclusive).</li>
 <li><code>endNum</code>: Ending block height (exclusive).</li>
@@ -2574,7 +2585,7 @@ Parameters:</p>
 <ul>
 <li><code>hash</code>: The hash value of the block.</li>
 <li><code>number</code>: The height of the block. Must exactly match the block hash.</li>
-<li><code>visible</code>: Whether to display addresses in Base58Check format (true) or HexString format (false or omitted).</li>
+<li><code>visible</code>: Whether to display addresses in Base58Check format (<code>true</code>) or HexString format (<code>false</code> or omitted).</li>
 </ul>
 <p>Return Value: An object containing all balance change tracing information for the block, for example:
 <div class="highlight"><pre><span></span><code>{
@@ -2618,30 +2629,26 @@ Parameters:</p>
 <p>Description: Query the complete information of an on-chain transaction by its Transaction ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d &#39;{&quot;value&quot;: &quot;d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62&quot;}&#39;
 </code></pre></div>
-Parameters:
-* value: Transaction ID (hash).</p>
+Parameter: <code>value</code>: Transaction ID (hash).</p>
 <p>Return Value: The complete Transaction object. Returns an empty object if the transaction does not exist.</p>
 <h4 id="walletgettransactioninfobyid">wallet/gettransactioninfobyid<a class="headerlink" href="#walletgettransactioninfobyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query the summary information of a transaction, such as fees and block location, based on its Transaction ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d &#39;{&quot;value&quot; : &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;}&#39;
 </code></pre></div>
-Parameters:
-* <code>value</code>: Transaction ID (hash).</p>
+Parameter: <code>value</code>: Transaction ID (hash).</p>
 <p>Return Value: A TransactionInfo object containing transaction fees, block height, block timestamp, contract execution results, etc.</p>
 <h4 id="walletgettransactioncountbyblocknum">wallet/gettransactioncountbyblocknum<a class="headerlink" href="#walletgettransactioncountbyblocknum" title="Permanent link">&para;</a></h4>
 <p>Description: Query the total number of transactions contained in a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d &#39;{&quot;num&quot; : 100}&#39;
 </code></pre></div>
-Parameters:
-* <code>num</code>: Block height.</p>
+Parameter: <code>num</code>: Block height.</p>
 <p>Return Value: An object containing the transaction count, such as {"count": 50}.</p>
 <h4 id="walletgettransactioninfobyblocknum">wallet/gettransactioninfobyblocknum<a class="headerlink" href="#walletgettransactioninfobyblocknum" title="Permanent link">&para;</a></h4>
 <p>Description: Get a list of summary information for all transactions at a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d &#39;{&quot;num&quot; : 100}&#39;
 </code></pre></div>
-Parameters:
-* num: Block height.</p>
-<p>Return Value: A list containing multiple TransactionInfo objects.</p>
+Parameter: <code>num</code>: Block height.</p>
+<p>Return Value: A list containing multiple <code>TransactionInfo</code> objects.</p>
 <h4 id="walletlistnodes">wallet/listnodes<a class="headerlink" href="#walletlistnodes" title="Permanent link">&para;</a></h4>
 <p>Description: Query other nodes discovered by the current node's node discovery feature.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/listnodes
@@ -2696,78 +2703,78 @@ Return Value: The amount of TRX burned, in sun.</p>
 <p>Description: Get a contract's static information, such as ABI and bytecode, via its contract address.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d &#39;{&quot;value&quot;:&quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;}&#39;
 </code></pre></div>
-Parameter:
-* <code>value</code>: Contract address, defaults to HexString format.
-* <code>visible</code>: Sets the address format. true for Base58Check, false or omitted for HexString.</p>
+Parameters:</p>
+<ul>
+<li><code>value</code>: Contract address, defaults to HexString format.</li>
+<li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
+</ul>
 <p>Return Value: A SmartContract object, containing ABI, deployment bytecode, name, etc.</p>
 <h4 id="walletgetcontractinfo">wallet/getcontractinfo<a class="headerlink" href="#walletgetcontractinfo" title="Permanent link">&para;</a></h4>
 <p>Description: Get a contract's runtime information via its contract address.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getcontractinfo -d &#39;{&quot;value&quot;:&quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;}&#39;
 </code></pre></div>
-Parameter:</p>
+Parameters:</p>
 <ul>
 <li><code>value</code>: Contract address, defaults to HexString format.</li>
-<li><code>visible</code>: Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
-<p>Return Value: Queries on-chain contract information. Unlike the wallet/getcontract interface, this interface returns not only bytecode but also the contract's runtime bytecode. Runtime bytecode, compared to bytecode, does not include constructor functions and constructor parameter information.</p>
+<p>Return Value: Queries on-chain contract information. Unlike the <code>wallet/getcontract</code> interface, this interface returns not only bytecode but also the contract's runtime bytecode. Runtime bytecode, compared to bytecode, does not include constructor functions and constructor parameter information.</p>
 <h4 id="walletdeploycontract">wallet/deploycontract<a class="headerlink" href="#walletdeploycontract" title="Permanent link">&para;</a></h4>
 <p>Description: Create a transaction to deploy a smart contract.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d &#39;{&quot;abi&quot;:&quot;[{\&quot;constant\&quot;:false,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;key\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;},{\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;name\&quot;:\&quot;set\&quot;,\&quot;outputs\&quot;:[],\&quot;payable\&quot;:false,\&quot;stateMutability\&quot;:\&quot;nonpayable\&quot;,\&quot;type\&quot;:\&quot;function\&quot;},{\&quot;constant\&quot;:true,\&quot;inputs\&quot;:[{\&quot;name\&quot;:\&quot;key\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;name\&quot;:\&quot;get\&quot;,\&quot;outputs\&quot;:[{\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;uint256\&quot;}],\&quot;payable\&quot;:false,\&quot;stateMutability\&quot;:\&quot;view\&quot;,\&quot;type\&quot;:\&quot;function\&quot;}]&quot;,&quot;bytecode&quot;:&quot;608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029&quot;,&quot;parameter&quot;:&quot;&quot;,&quot;call_value&quot;:100,&quot;name&quot;:&quot;SomeContract&quot;,&quot;consume_user_resource_percent&quot;:30,&quot;fee_limit&quot;:10,&quot;origin_energy_limit&quot;: 10,&quot;owner_address&quot;:&quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;}&#39;
 </code></pre></div>
-参数说明：</p>
+Parameters:</p>
 <ul>
-<li><code>abi</code>：abi。</li>
-<li><code>bytecode</code>：The bytecode of the contract, must be in HexString format.</li>
-<li><code>parameter</code>：The parameter list for the constructor, needs to be ABI encoded and then converted to HexString format. If the constructor has no parameters, this parameter can be omitted.</li>
-<li><code>consume_user_resource_percent</code>：The percentage of resources used by users calling this contract, an integer between. If 0, users will not consume resources. If the developer's resources are exhausted, then user resources will be fully consumed.</li>
+<li><code>abi</code>：abi.</li>
+<li><code>bytecode</code>: The bytecode of the contract, must be in HexString format.</li>
+<li><code>parameter</code>: The parameter list for the constructor needs to be ABI encoded and then converted to HexString format. If the constructor has no parameters, this parameter can be omitted.</li>
+<li><code>consume_user_resource_percent</code>: The percentage of resources used by users calling this contract, an integer between. If 0, users will not consume resources. If the developer's resources are exhausted, then user resources will be fully consumed.</li>
 <li><code>fee_limit</code>：Maximum sun to be consumed (1 TRX = 1,000,000 sun).</li>
-<li><code>call_value</code>：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
-<li><code>owner_address</code>：The account address initiating the deploycontract, defaults to HexString format.
+<li><code>call_value</code>: The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
+<li><code>owner_address</code>: The account address initiating the <code>deploycontract</code>, defaults to HexString format.
 name: The contract name.</li>
-<li><code>name</code>：The contract name.</li>
+<li><code>name</code>: The contract name.</li>
 <li><code>origin_energy_limit</code>: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation, an integer greater than 0.</li>
-<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.</li>
-<li><code>token_id</code>:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
+<li><code>call_token_value</code>: The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
+<li><code>token_id</code>: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
 <li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code>:sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code>: sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
-<p>Return Value: 
-* This interface returns an object containing an unsigned deployment transaction.</p>
+<p>Return Value: This interface returns an object containing an unsigned deployment transaction.</p>
 <h4 id="wallettriggersmartcontract">wallet/triggersmartcontract<a class="headerlink" href="#wallettriggersmartcontract" title="Permanent link">&para;</a></h4>
 <p>Description: Create a transaction to call a smart contract function.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d &#39;{&quot;contract_address&quot;:&quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;,&quot;function_selector&quot;:&quot;set(uint256,uint256)&quot;,&quot;parameter&quot;:&quot;00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002&quot;,&quot;fee_limit&quot;:10,&quot;call_value&quot;:100,&quot;owner_address&quot;:&quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;}&#39;
 </code></pre></div>
-Parameter：</p>
+Parameters：</p>
 <ul>
 <li><code>contract_address</code>：The address of the callee contract, defaults to HexString format.</li>
 <li><code>function_selector</code>：The function signature, no spaces allowed.</li>
 <li><code>parameter</code>：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.</li>
-<li><code>data</code>：Data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be used for contract interaction.</li>
+<li><code>data</code>：Data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through <code>function_selector</code> and <code>parameter</code>. If <code>data</code> and <code>function_selector</code> exist simultaneously, <code>function_selector</code> will be used for contract interaction.</li>
 <li><code>fee_limit</code>：Maximum sun to be consumed (1 TRX = 1,000,000 sun).</li>
 <li><code>call_value</code>：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
-<li><code>owner_address</code>：The account address initiating the triggercontract, defaults to HexString format.</li>
-<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.</li>
+<li><code>owner_address</code>：The account address initiating the <code>triggercontract</code>, defaults to HexString format.</li>
+<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
 <li><code>token_id</code>:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
 <li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code> :Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code> :Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
-<p>Return Value: 
-* This interface returns an object containing an unsigned deployment transaction.</p>
+<p>Return Value: This interface returns an object containing an unsigned deployment transaction.</p>
 <h4 id="wallettriggerconstantcontract">wallet/triggerconstantcontract<a class="headerlink" href="#wallettriggerconstantcontract" title="Permanent link">&para;</a></h4>
 <p>Description: Simulate contract execution on the local node for data querying, transaction pre-execution, or energy consumption estimation. This operation is off-chain and does not consume resources.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d &#39;{&quot;contract_address&quot;:&quot;4189139CB1387AF85E3D24E212A008AC974967E561&quot;,&quot;function_selector&quot;:&quot;set(uint256,uint256)&quot;,&quot;parameter&quot;:&quot;00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002&quot;,&quot;call_value&quot;:100,&quot;owner_address&quot;:&quot;41D1E7A6BC354106CB410E65FF8B181C600FF14292&quot;}&#39;
 </code></pre></div>
-Parameter：</p>
+Parameters：</p>
 <ul>
 <li><code>contract_address</code>：The address of the callee contract, defaults to HexString format.</li>
-<li><code>function_selector</code>：The function signature, no spaces allowed.</li>
+<li><code>function_selector</code>: The function signature, no spaces allowed.</li>
 <li><code>parameter</code>：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.</li>
-<li><code>data</code>：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be prioritized.</li>
-<li><code>owner_address</code>：The account address initiating the triggercontract, defaults to HexString format.</li>
+<li><code>data</code>：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field or through <code>function_selector</code> and parameter. If <code>data</code> and <code>function_selector</code> exist simultaneously, function_selector will be prioritized.</li>
+<li><code>owner_address</code>：The account address initiating the <code>triggercontract</code>, defaults to HexString format.</li>
 <li><code>call_value</code>：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
-<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.</li>
+<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
 <li><code>token_id</code>:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
-<li><code>visible</code> Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code> Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: The return value of the contract function, encoded in ABI format.</p>
 <h4 id="walletupdatesetting">wallet/updatesetting<a class="headerlink" href="#walletupdatesetting" title="Permanent link">&para;</a></h4>
@@ -2780,7 +2787,7 @@ Parameters：</p>
 <li><code>contract_address</code>：The address of the contract to be modified, defaults to HexString format.</li>
 <li><code>consume_user_resource_percent</code>：The specified percentage of resources consumed by users calling this contract.</li>
 <li><code>permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
-<li><code>visible</code>:Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code>:Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned update transaction.</p>
 <h4 id="walletupdateenergylimit">wallet/updateenergylimit<a class="headerlink" href="#walletupdateenergylimit" title="Permanent link">&para;</a></h4>
@@ -2793,7 +2800,7 @@ Parameters：</p>
 <li><code>contract_address</code>: The address of the contract to be modified, defaults to HexString format.</li>
 <li><code>origin_energy_limit</code>: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation.</li>
 <li><code>permission_id</code> (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.</li>
-<li><code>visible</code>: Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing an unsigned update transaction.</p>
 <h4 id="walletclearabi">wallet/clearabi<a class="headerlink" href="#walletclearabi" title="Permanent link">&para;</a></h4>
@@ -2806,7 +2813,7 @@ Parameters：</p>
 <ul>
 <li><code>owner_address</code>: The account address that created the contract, defaults to HexString format.</li>
 <li><code>contract_address</code>: The contract address, defaults to HexString format.</li>
-<li><code>visible</code>: Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an unsigned transaction object.</p>
 <h4 id="walletestimateenergy">wallet/estimateenergy<a class="headerlink" href="#walletestimateenergy" title="Permanent link">&para;</a></h4>
@@ -2821,15 +2828,15 @@ Parameters：</p>
 </code></pre></div></p>
 <p>Parameters：</p>
 <ul>
-<li><code>contract_address</code>：The address of the callee contract, defaults to HexString format.</li>
-<li><code>function_selector</code>：The function signature, no spaces allowed.</li>
-<li><code>parameter</code>：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.</li>
-<li><code>data</code>：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be prioritized.</li>
-<li><code>owner_address</code>：The account address initiating the triggercontract, defaults to HexString format.</li>
-<li><code>call_value</code>：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
-<li><code>call_token_value</code>:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.</li>
-<li><code>token_id</code>:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
-<li><code>visible</code> Sets the address format. true for Base58Check, false or omitted for HexString.</li>
+<li><code>contract_address</code>: The address of the callee contract, defaults to HexString format.</li>
+<li><code>function_selector</code>: The function signature, no spaces allowed.</li>
+<li><code>parameter</code>: The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.</li>
+<li><code>data</code>: Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through <code>function_selector</code> and parameter. If <code>data</code> and <code>function_selector</code> exist simultaneously, <code>function_selector</code> will be prioritized.</li>
+<li><code>owner_address</code>: The account address initiating the <code>triggercontract</code>, defaults to HexString format.</li>
+<li><code>call_value</code>: The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.</li>
+<li><code>call_token_value</code>: The amount of TRC-10 tokens to transfer to the contract during this call. If <code>token_id</code> is not set, this should be <code>0</code> or not set.</li>
+<li><code>token_id</code>: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.</li>
+<li><code>visible</code> Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
 </ul>
 <p>Return Value: This interface returns an object containing the estimated energy value.</p>
 <p><a id="trc10"></a></p>
@@ -2852,16 +2859,17 @@ Parameters：</p>
 <p>Description: Query all TRC-10 tokens issued by a specified account.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d &#39;{&quot;address&quot;: &quot;41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D&quot;}&#39;
 </code></pre></div></p>
-<p>Parameters:
-* <code>address</code>: The issuer account address, defaults to HexString format.
-* <code>visible</code>: Sets the address format. true for Base58Check, false or omitted for HexString.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>address</code>: The issuer account address, defaults to HexString format.</li>
+<li><code>visible</code>: Sets the address format. <code>true</code> for Base58Check, <code>false</code> or omitted for HexString.</li>
+</ul>
 <p>Return Value: This interface returns an object containing a list of TRC-10 tokens issued by the address.</p>
 <h4 id="walletgetassetissuebyname">wallet/getassetissuebyname<a class="headerlink" href="#walletgetassetissuebyname" title="Permanent link">&para;</a></h4>
 <p>Description: Query TRC-10 tokens by name.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d &#39;{&quot;value&quot;: &quot;44756354616E&quot;}&#39;
 </code></pre></div>
-Parameters：
- - <code>value</code>：Token name, defaults to HexString format.</p>
+Parameter: <code>value</code>：Token name, defaults to HexString format.</p>
 <p>Return Value: A TRC-10 token object.</p>
 <p>Note: Starting from Odyssey-v3.2, it is recommended to use getassetissuebyid or getassetissuelistbyname to replace this interface, because starting from 3.2, tokens are allowed to have the same name. If identical token names exist, this interface will report an error.</p>
 <h4 id="walletgetassetissuelistbyname">wallet/getassetissuelistbyname<a class="headerlink" href="#walletgetassetissuelistbyname" title="Permanent link">&para;</a></h4>
@@ -2998,7 +3006,7 @@ Parameters:</p>
 </ul>
 <p>Return Value: An unsigned update token information transaction object.</p>
 <p><a id="sr"></a></p>
-<h3 id="vote-and-sr">Vote and SR<a class="headerlink" href="#vote-and-sr" title="Permanent link">&para;</a></h3>
+<h3 id="vote-and-super-representative">Vote and Super Representative<a class="headerlink" href="#vote-and-super-representative" title="Permanent link">&para;</a></h3>
 <p>The following are voting and SR related APIs:</p>
 <ul>
 <li><a href="#walletcreatewitness">wallet/createwitness</a></li>
@@ -3012,7 +3020,7 @@ Parameters:</p>
 <li><a href="#walletgetnextmaintenancetime">wallet/getnextmaintenancetime</a></li>
 </ul>
 <h4 id="walletcreatewitness">wallet/createwitness<a class="headerlink" href="#walletcreatewitness" title="Permanent link">&para;</a></h4>
-<p>Description: Create a transaction to apply to become a witness.
+<p>Description: Create a transaction to apply to become a Super Representative.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d &#39;{&quot;owner_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;, &quot;url&quot;: &quot;007570646174654e616d6531353330363038383733343633&quot;}&#39;
 </code></pre></div>
 Parameters:</p>
@@ -3039,11 +3047,11 @@ Parameters:</p>
 </ul>
 <p>Return Value: An unsigned update URL transaction object.</p>
 <h4 id="walletlistwitnesses">wallet/listwitnesses<a class="headerlink" href="#walletlistwitnesses" title="Permanent link">&para;</a></h4>
-<p>Description: Query the current list of all witnesses.
+<p>Description: Query the current list of all Super Representatives.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 </code></pre></div>
 Parameter: None</p>
-<p>Return Value: A list of all witness information.</p>
+<p>Return Value: A list of all Super Representative information.</p>
 <h4 id="walletwithdrawbalance">wallet/withdrawbalance<a class="headerlink" href="#walletwithdrawbalance" title="Permanent link">&para;</a></h4>
 <p>Description:** SR or users withdraw rewards to their balance. This can be done once every 24 hours.</p>
 <p><div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d &#39;{
@@ -3058,7 +3066,7 @@ Parameters:</p>
 </ul>
 <p>Return Value: An unsigned withdraw reward transaction object.</p>
 <h4 id="walletvotewitnessaccount">wallet/votewitnessaccount<a class="headerlink" href="#walletvotewitnessaccount" title="Permanent link">&para;</a></h4>
-<p>Description: Vote for a SR.
+<p>Description: Vote for a Super Representative.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d &#39;{
 &quot;owner_address&quot;:&quot;41d1e7a6bc354106cb410e65ff8b181c600ff14292&quot;,
 &quot;votes&quot;: [{&quot;vote_address&quot;: &quot;41e552f6487585c2b58bc2c9bb4492bc1f17132cd0&quot;, &quot;vote_count&quot;: 5}]
@@ -3085,7 +3093,7 @@ Parameters:</p>
 </ul>
 <p>Return Value: The current brokerage ratio of the Super Representative.</p>
 <h4 id="walletupdatebrokerage">wallet/updateBrokerage<a class="headerlink" href="#walletupdatebrokerage" title="Permanent link">&para;</a></h4>
-<p>Description: Update a SR's current brokerage ratio.
+<p>Description: Update a Super Representative's current brokerage ratio.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://47.252.81.126:8090/wallet/updateBrokerage  -d &#39;{
 &quot;owner_address&quot;:&quot;41E552F6487585C2B58BC2C9BB4492BC1F17132CD0&quot;,
 &quot;brokerage&quot;:30}&#39;
@@ -3142,16 +3150,13 @@ Parameters:</p>
 <p>Description: Query detailed proposal information by ID.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {&quot;id&quot;:1}
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>id</code>: Proposal ID.</li>
-</ul>
+Parameter: <code>id</code>: Proposal ID.</p>
 <p>Return Value: The detailed information of the specified proposal.</p>
 <h4 id="walletlistproposals">wallet/listproposals<a class="headerlink" href="#walletlistproposals" title="Permanent link">&para;</a></h4>
 <p>Description: Query a list of all current proposals on the network.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 </code></pre></div>
-Parameters: None</p>
+Parameter: None</p>
 <p>Return Value: An array containing all proposal objects.</p>
 <h4 id="walletproposalapprove">wallet/proposalapprove<a class="headerlink" href="#walletproposalapprove" title="Permanent link">&para;</a></h4>
 <p>Description: Approve a proposal.
@@ -3269,10 +3274,7 @@ Parameters:</p>
 <p>Description: Query a trading pair by ID.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {&quot;id&quot;:1}
 </code></pre></div>
-Parameter:</p>
-<ul>
-<li><code>id</code>: The trading pair ID.</li>
-</ul>
+Parameter: <code>id</code>: The trading pair ID.</p>
 <p>Return Value: The specified trading pair object.</p>
 <h4 id="walletlistexchanges">wallet/listexchanges<a class="headerlink" href="#walletlistexchanges" title="Permanent link">&para;</a></h4>
 <p>Description: Query all trading pairs.
@@ -3380,10 +3382,7 @@ Parameters:</p>
    &quot;value&quot;: &quot;orderid&quot;
 }&#39;
 </code></pre></div>
-Parameter:</p>
-<ul>
-<li><code>value</code>: The order ID, defaults to HexString format.</li>
-</ul>
+Parameter: <code>value</code>: The order ID, defaults to HexString format.</p>
 <p>Return Value: The specified order object.</p>
 <p><a id="pending-pool"></a></p>
 <h3 id="pending-pool">Pending Pool<a class="headerlink" href="#pending-pool" title="Permanent link">&para;</a></h3>
@@ -3400,10 +3399,7 @@ Parameter:</p>
   &quot;value&quot;: &quot;txId&quot;
 }&#39;
 </code></pre></div>
-Parameter：</p>
-<ul>
-<li><code>value</code>: The transaction ID, in hexString format by default.</li>
-</ul>
+Parameter: <code>value</code>: The transaction ID, in hexString format by default.</p>
 <p>Return Value: A complete transaction object. Returns an empty object if the transaction is not in the pending pool.</p>
 <h4 id="walletgettransactionlistfrompending">wallet/gettransactionlistfrompending<a class="headerlink" href="#walletgettransactionlistfrompending" title="Permanent link">&para;</a></h4>
 <p>Description: Retrieves a list of all transaction IDs currently in the pending pool.
@@ -3415,7 +3411,7 @@ Parameter: None</p>
 <p>Description: Queries the number of transactions currently in the pending pool.
 <div class="highlight"><pre><span></span><code>curl -X get  http://127.0.0.1:8090/wallet/getpendingsize
 </code></pre></div>
-Parameters: None</p>
+Parameter: None</p>
 <p>Return Value: An object containing the size of the pending pool.</p>
 <h2 id="fullnode-solidity-http-api">FullNode Solidity HTTP API<a class="headerlink" href="#fullnode-solidity-http-api" title="Permanent link">&para;</a></h2>
 <h3 id="account-resources">Account Resources<a class="headerlink" href="#account-resources" title="Permanent link">&para;</a></h3>
@@ -3426,7 +3422,7 @@ Parameters: None</p>
 Parameters:</p>
 <ul>
 <li><code>address</code>: The account address to query.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
 <p>Return Value: An <code>Account</code> object.</p>
 <h4 id="walletsoliditygetdelegatedresource">walletsolidity/getdelegatedresource<a class="headerlink" href="#walletsoliditygetdelegatedresource" title="Permanent link">&para;</a></h4>
@@ -3454,17 +3450,17 @@ Parameters:</p>
 Parameters:</p>
 <ul>
 <li><code>value</code>: The account address to query.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
-<p>Return Value: A DelegatedResourceAccountIndex object showing the account's delegation overview.</p>
+<p>Return Value: A <code>DelegatedResourceAccountIndex</code> object showing the account's delegation overview.</p>
 <h4 id="walletsoliditygetaccountbyid">walletsolidity/getaccountbyid<a class="headerlink" href="#walletsoliditygetaccountbyid" title="Permanent link">&para;</a></h4>
 <p>Description: Queries account information by its <code>account_id</code>.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d &#39;{&quot;account_id&quot;:&quot;6161616162626262&quot;}&#39;
 </code></pre></div>
-Parameter: account_id in hexString format by default.</p>
+Parameter: <code>account_id</code> in hexString format by default.</p>
 <p>Return Value: An Account object.</p>
 <h4 id="walletsoliditygetavailableunfreezecount">walletsolidity/getavailableunfreezecount<a class="headerlink" href="#walletsoliditygetavailableunfreezecount" title="Permanent link">&para;</a></h4>
-<p>Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period.This API can be used to pre-check whether there is available "unstaking quota" before calling <code>unfreezebalancev2</code>.</p>
+<p>Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period. This API can be used to pre-check whether there is an available "unstaking quota" before calling <code>unfreezebalancev2</code>.</p>
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/walletsolidity/getavailableunfreezecount -d
 &#39;{
   &quot;owner_address&quot;: &quot;TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g&quot;,
@@ -3475,12 +3471,9 @@ Parameter: account_id in hexString format by default.</p>
 <p>Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The account address to query.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
-<p>Return Value:</p>
-<ul>
-<li>A JSON object containing the remaining count.</li>
-</ul>
+<p>Return Value: A JSON object containing the remaining count.</p>
 <h4 id="walletsoliditygetcanwithdrawunfreezeamount">walletsolidity/getcanwithdrawunfreezeamount<a class="headerlink" href="#walletsoliditygetcanwithdrawunfreezeamount" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the total amount of unstaked principal that can be withdrawn at a specific point in time.</p>
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/walletsolidity/getcanwithdrawunfreezeamount -d
@@ -3495,12 +3488,9 @@ Parameter: account_id in hexString format by default.</p>
 <ul>
 <li><code>owner_address</code>: The address of the transaction initiator.</li>
 <li><code>timestamp</code>: The timestamp (in milliseconds) at which to query the withdrawable amount.</li>
-<li><code>visible</code> (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.</li>
+<li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
 </ul>
-<p>Return Value: </p>
-<ul>
-<li>A JSON object containing the withdrawable amount.</li>
-</ul>
+<p>Return Value: A JSON object containing the withdrawable amount.</p>
 <h4 id="walletsoliditygetcandelegatedmaxsize">walletsolidity/getcandelegatedmaxsize<a class="headerlink" href="#walletsoliditygetcandelegatedmaxsize" title="Permanent link">&para;</a></h4>
 <p>Description: Queries the maximum amount of a specified resource type that a target address can delegate, in sun.
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/walletsolidity/getcandelegatedmaxsize -d
@@ -3574,7 +3564,7 @@ Parameter: None</p>
 Parameter: None</p>
 <p>Return Value: An array containing objects for all TRC-10 tokens on the network.</p>
 <h4 id="walletsoliditygetpaginatedassetissuelist">walletsolidity/getpaginatedassetissuelist<a class="headerlink" href="#walletsoliditygetpaginatedassetissuelist" title="Permanent link">&para;</a></h4>
-<p>Description:Paginate and query a list of TRC-10 tokens on the entire network.
+<p>Description: Paginate and query a list of TRC-10 tokens on the entire network.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d &#39;{&quot;offset&quot;: 0, &quot;limit&quot;:10}&#39;
 </code></pre></div>
 Parameters:</p>
@@ -3587,27 +3577,20 @@ Parameters:</p>
 <p>Description: Query TRC-10 tokens by name.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d &#39;{&quot;value&quot;: &quot;44756354616E&quot;}&#39;
 </code></pre></div>
-Parameter：
- - <code>value</code>：Token name, defaults to HexString format.</p>
+Parameter: <code>value</code>：Token name, defaults to HexString format.</p>
 <p>Return Value: A TRC-10 token object.</p>
 <p>Note: Starting from Odyssey-v3.2, it is recommended to use getassetissuebyid or getassetissuelistbyname to replace this interface, because starting from 3.2, tokens are allowed to have the same name. If identical token names exist, this interface will report an error.</p>
 <h4 id="walletsoliditygetassetissuelistbyname">walletsolidity/getassetissuelistbyname<a class="headerlink" href="#walletsoliditygetassetissuelistbyname" title="Permanent link">&para;</a></h4>
 <p>Description: Query all matching TRC-10 token lists by name.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d &#39;{&quot;value&quot;: &quot;44756354616E&quot;}&#39;
 </code></pre></div>
-Parameter:</p>
-<ul>
-<li><code>value</code>：Token name, defaults to HexString format.</li>
-</ul>
+Parameter: <code>value</code>：Token name, defaults to HexString format.</p>
 <p>Return Value: An array containing all TRC-10 token objects with the same name.</p>
 <h4 id="walletsoliditygetassetissuebyid">walletsolidity/getassetissuebyid<a class="headerlink" href="#walletsoliditygetassetissuebyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query TRC-10 token by ID.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d &#39;{&quot;value&quot;: &quot;1000001&quot;}&#39;
 </code></pre></div>
-Parameter：</p>
-<ul>
-<li><code>value</code>: The ID of the TRC-10 token.</li>
-</ul>
+Parameter：<code>value</code>: The ID of the TRC-10 token.</p>
 <p>Return Value: The specified TRC-10 token object.</p>
 <h3 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditygetnowblock">walletsolidity/getnowblock<a class="headerlink" href="#walletsoliditygetnowblock" title="Permanent link">&para;</a></h4>
@@ -3620,24 +3603,20 @@ Parameter: None</p>
 <p>Description: Query complete block information by a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d &#39;{&quot;num&quot; : 100}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>num</code>: Block height (integer).</li>
-</ul>
+Parameter: <code>num</code>: Block height (integer).</p>
 <p>Return Value: The Block object at the specified height.</p>
 <h4 id="walletsoliditygetblockbyid">walletsolidity/getblockbyid<a class="headerlink" href="#walletsoliditygetblockbyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query complete block information by a specified Block ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d &#39;{&quot;value&quot;:
 &quot;0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73&quot;}&#39;
 </code></pre></div>
-Parameters:
-* <code>value</code>: The Block ID (hash).</p>
+Parameter: <code>value</code>: The Block ID (hash).</p>
 <p>Return Value: The Block object with the specified ID.</p>
 <h4 id="walletsoliditygetblockbylimitnext">walletsolidity/getblockbylimitnext<a class="headerlink" href="#walletsoliditygetblockbylimitnext" title="Permanent link">&para;</a></h4>
 <p>Description: Paginate and query a list of blocks within a specified height range.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d &#39;{&quot;startNum&quot;: 1, &quot;endNum&quot;: 2}&#39;
 </code></pre></div>
-Parameter:</p>
+Parameters:</p>
 <ul>
 <li><code>startNum</code>: Starting block height (inclusive).</li>
 <li><code>endNum</code>: Ending block height (exclusive).</li>
@@ -3647,11 +3626,8 @@ Parameter:</p>
 <p>Description: Queries the last N blocks from the SolidityNode, starting from the latest block.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d &#39;{&quot;num&quot;: 5}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>num</code>: The number of blocks to query.</li>
-</ul>
-<p>Return Value: An array containing multiple Block objects (Block[]).</p>
+Parameter: <code>num</code>: The number of blocks to query.</p>
+<p>Return Value: An array containing multiple Block objects (<code>Block[]</code>).</p>
 <h4 id="walletgetnodeinfo_1">wallet/getnodeinfo<a class="headerlink" href="#walletgetnodeinfo_1" title="Permanent link">&para;</a></h4>
 <p>Description: View the current node's own operating status and information.
 <div class="highlight"><pre><span></span><code>curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
@@ -3663,47 +3639,32 @@ Parameter: None</p>
 <p>Description: Queries the complete information of a confirmed transaction by its ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d &#39;{&quot;value&quot; : &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>value</code>: Transaction ID (hash).</li>
-</ul>
+Parameter: <code>value</code>: Transaction ID (hash).</p>
 <p>Return Value: The complete Transaction object. Returns an empty object if the transaction does not exist or is unconfirmed.</p>
 <h4 id="walletsoliditygettransactioncountbyblocknum">walletsolidity/gettransactioncountbyblocknum<a class="headerlink" href="#walletsoliditygettransactioncountbyblocknum" title="Permanent link">&para;</a></h4>
 <p>Description: Query the total number of transactions contained in a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d &#39;{&quot;num&quot; : 100}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>num</code>: Block height.</li>
-</ul>
+Parameter: <code>num</code>: Block height.</p>
 <p>Return Value: An object containing the transaction count, such as <code>{"count": 50}</code>.</p>
 <h4 id="walletsoliditygettransactioninfobyid">walletsolidity/gettransactioninfobyid<a class="headerlink" href="#walletsoliditygettransactioninfobyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query the summary information of a transaction, such as fees and block location, based on its Transaction ID (hash).
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d &#39;{&quot;value&quot; : &quot;309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2&quot;}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>value</code>: Transaction ID (hash).</li>
-</ul>
+Parameter: <code>value</code>: Transaction ID (hash).</p>
 <p>Return Value: A TransactionInfo object containing transaction fees, block height, block timestamp, contract execution results, etc.</p>
 <h4 id="walletsoliditygettransactioninfobyblocknum">walletsolidity/gettransactioninfobyblocknum<a class="headerlink" href="#walletsoliditygettransactioninfobyblocknum" title="Permanent link">&para;</a></h4>
 <p>Description: Get a list of summary information for all transactions at a specified block height.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyblocknum -d &#39;{&quot;num&quot; : 100}&#39;
 </code></pre></div>
-Parameters:</p>
-<ul>
-<li><code>num</code>: Block height.</li>
-</ul>
+Parameter: <code>num</code>: Block height.</p>
 <p>Return Value: A list containing multiple TransactionInfo objects.</p>
 <h3 id="dex-exchanges">DEX Exchanges<a class="headerlink" href="#dex-exchanges" title="Permanent link">&para;</a></h3>
 <h4 id="walletsoliditygetexchangebyid">walletsolidity/getexchangebyid<a class="headerlink" href="#walletsoliditygetexchangebyid" title="Permanent link">&para;</a></h4>
 <p>Description: Query a trading pair by ID.
 <div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {&quot;id&quot;:1}
 </code></pre></div>
-Parameter:</p>
-<ul>
-<li><code>id</code>: The trading pair ID.</li>
-</ul>
+Parameter: <code>id</code>: The trading pair ID.</p>
 <p>Return Value: The specified trading pair object.</p>
 <h4 id="walletsoliditylistexchanges">walletsolidity/listexchanges<a class="headerlink" href="#walletsoliditylistexchanges" title="Permanent link">&para;</a></h4>
 <p>Description: Query all trading pairs.
