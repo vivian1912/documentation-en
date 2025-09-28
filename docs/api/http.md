@@ -2,12 +2,11 @@
 This article introduces FullNode's HTTP APIs and their usage.
 
 !!! Note
+  Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before using it in any UI, especially when the parameter visible equals true.
 
-Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before they use it in any UI, especially when the parameter visible equals true.
+  Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as `encodeURIComponent()` or `escape()` to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.
 
-Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as `encodeURIComponent()` or `escape()` to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.
-
-Please be sure to implement XSS protection for all data from the APIs to ensure the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html).
+  Please ensure that XSS protection is implemented for all data from the APIs to maintain the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html).
 
 The TRON node's HTTP API supports two address formats. Developers can use the visible parameter to control the address format in both requests and responses.
 
@@ -68,7 +67,7 @@ The following are the APIs related to on-chain accounts:
 
 
 #### wallet/validateaddress
-Description:Validates if a TRON address is effective. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.
+Description: Validates if a TRON address is effective. This is useful for pre-checking user-inputted addresses in applications before sending a transaction.
 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
@@ -103,7 +102,7 @@ Parameters:
 * `owner_address`: The creator's address, which must be an activated account.
 * `account_address`: The new account address to be activated, which must be generated offline beforehand.
 * `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* * `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 
 Return Value: An unsigned transaction for activating the account.
@@ -117,7 +116,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F64
 ```
 参数：
 * `address`: The account address to query.
-* * `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An Account object.
 
@@ -131,7 +130,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d '{"account_name": "0
 * `account_name`: The account name, in hexString format by default.
 * `owner_address`: The address of the account to be updated, in hexString format by default.
 * `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* * `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An unsigned transaction for updating the account name.
 
@@ -175,17 +174,19 @@ curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
     "visible": true}'
 ```
 Parameters:
+
 * `owner_address`: The address of the account creating the contract, in hexString format by default.
 * `owner`: The permission details for the account's owner.
 * `witness`: The permission details for block production. Not required if the account is not a witness.
 * `actives`: The permission details for other functionalities.
-* * `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An unsigned transaction.
 
 #### wallet/getaccountbalance
 Description: Queries the TRX balance of a TRON account at a specific historical block height.
 The following official nodes currently support this query:
+
 * 13.228.119.63
 * 18.139.193.235
 * 18.141.79.38
@@ -207,6 +208,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountbalance -d
 ```
 
 Parameters:
+
 * `account_identifier.address`: The account address to query.
 * `block_identifier.hash`: The hash of the target block.
 * `block_identifier.number`: The height (block number) of the target block.
@@ -231,9 +233,10 @@ curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0","account_id":"6161616162626262"}'
 ```
 Parameters:
+
 * `owner_address`: The address of the transaction creator, in hexString format by default.
 * `account_id`: The account ID, in hexString format by default.
-* * `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 
 Return Value: An unsigned transaction for set the Account ID.
@@ -244,7 +247,7 @@ Description: Queries account information by its `account_id`.
 curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 '{"account_id":"6161616162626262"}'
 ```
-Parameters: `account_id` in hexString format by default.
+Parameter: `account_id` in hexString format by default.
 
 Return Value: An Account object.
 
@@ -267,11 +270,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": 
 ```
 
 Parameters:
+
 * `to_address`: The recipient's address.
 * `owner_address`: The sender's address.
 * `amount`: The transfer amount, in sun (1 TRX = 1,000,000 sun).
 * `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An unsigned TRX transfer transaction.
 
@@ -280,7 +284,8 @@ Description: Broadcasts a signed transaction to the TRON network.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d '{"signature":["97c825b41c77de2a8bd65b3df55cd4c0df59c307c0187e42321dcc1cc455ddba583dd9502e17cfec5945b34cad0511985a6165999092a6dec84c2bdd97e649fc01"],"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}'
 ```
-Parameters:
+Parameter:
+
 * A complete signed transaction object. This is created by adding a signature field to the unsigned transaction returned by a creation API (e.g., wallet/createtransaction).
 
 Return Value:
@@ -295,9 +300,11 @@ Description: Broadcasts a transaction that has been signed and serialized into a
 curl -X POST  http://127.0.0.1:8090/wallet/broadcasthex -d '{"transaction":"0A8A010A0202DB2208C89D4811359A28004098A4E0A6B52D5A730802126F0A32747970652E676F6F676C65617069732E636F6D2F70726F746F636F6C2E5472616E736665724173736574436F6E747261637412390A07313030303030311215415A523B449890854C8FC460AB602DF9F31FE4293F1A15416B0580DA195542DDABE288FEC436C7D5AF769D24206412418BF3F2E492ED443607910EA9EF0A7EF79728DAAAAC0EE2BA6CB87DA38366DF9AC4ADE54B2912C1DEB0EE6666B86A07A6C7DF68F1F9DA171EEE6A370B3CA9CBBB00"}'
 ```
 Parameters:
-* t`ransaction`: A complete transaction, including all data and signatures, serialized into a single hex string.
+
+* `transaction`: A complete transaction, including all data and signatures, serialized into a single hex string.
 
 Return Value:
+
 * A JSON object with the broadcast result.
 * A successful response typically includes `"result": true`, indicating the node has received the transaction and started broadcasting it.
 
@@ -336,10 +343,12 @@ curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{
     "raw_data_hex": "0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d",
     "visible": true}'
 ```
-Parameters:
+Parameter:
+
 * A complete transaction object that includes o`ne or more signatures`.
 
 Return Value: 
+
 * A JSON object detailing the signature status, including whether the weight threshold has been met, a list of signing addresses, permission details, the current signed weight, and the transaction itself.
 
 
@@ -424,7 +433,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d '{"address": "4112E6
 Parameters:
 
 * `address`: The account address to query.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value:
 
@@ -449,7 +458,7 @@ Parameters:
 * `resource`: Can be BANDWIDTH or ENERGY.
 * `receiverAddress`: The address of the delegated account.
 * `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 
 Return Value:
@@ -468,7 +477,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d '
 Parameters:
 * `fromAddress`: The address of the delegating account.
 * `toAddress`: The address of the recipient account.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: 
 * A list of `DelegatedResource` objects.
@@ -585,7 +594,7 @@ Parameters:
 * `lock`: true sets a 3-day lock on the delegation, during which it cannot be canceled. If resources are delegated again to the same address during the lock period, the 3-day timer resets. false means no lock period.
 * `lock_period`: A custom lock period in units of blocks (1 block ≈ 3s). Only effective when lock is true. For a 1-day lock, lock_period would be 28800.
 * `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value:
 * An unsigned delegate resource transaction object.
@@ -613,14 +622,14 @@ Parameters:
 * `balance`: The amount of TRX whose corresponding resource share will be undelegated, in sun.
 * `resource`: The type of resource to undelegate, `BANDWIDTH` or `ENERGY`.
 * `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: 
 * An unsigned undelegate resource transaction object.
 
 #### wallet/withdrawexpireunfreeze
 
-Description: Withdraws the principal of all unstaked TRX that has completed its lock period.
+Description: Withdraws all unstaked TRX that have completed their lock period.
 ```
 curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 '{
@@ -631,15 +640,13 @@ curl -X POST http://127.0.0.1:8090/wallet/withdrawexpireunfreeze -d
 Parameters:
 * `owner_address`: The address of the transaction initiator.
 * `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-
-Return Value: 
-* An unsigned withdraw expired unfreeze transaction object.
+Return Value: An unsigned withdraw expired unfreeze transaction object.
 
 #### wallet/getavailableunfreezecount
 
-Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period.This API can be used to pre-check whether there is available "unstaking quota" before calling `unfreezebalancev2`.
+Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period. This API can be used to pre-check whether there is an available "unstaking quota" before calling `unfreezebalancev2`.
 
 ```
 curl -X POST http://127.0.0.1:8090/wallet/getavailableunfreezecount -d
@@ -652,11 +659,10 @@ curl -X POST http://127.0.0.1:8090/wallet/getavailableunfreezecount -d
 
 Parameters:
 
-* owner_address: The account address to query.
-* visible (optional): Sets the address format.
+* `owner_address`: The account address to query.
+* `visible` (optional): Sets the address format.
 
-Return Value:
-* A JSON object containing the remaining count.
+Return Value: A JSON object containing the remaining count.
 
 #### wallet/getcanwithdrawunfreezeamount
 
@@ -677,8 +683,7 @@ Parameters:
 * `timestamp`: The timestamp (in milliseconds) at which to query the withdrawable amount.
 * `visible `(optional): Sets the address format.
 
-Return Value: 
-* A JSON object containing the withdrawable amount.
+Return Value: A JSON object containing the withdrawable amount.
 
 
 #### wallet/getcandelegatedmaxsize
@@ -698,10 +703,9 @@ Parameters:
 
 - `owner_address`: The account address to query.
 - `type`: The resource type, `0` for Bandwidth, `1` for Energy.
-- `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+- `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-Return Value: 
-* A JSON object containing the maximum delegatable share.
+Return Value: A JSON object containing the maximum delegatable share.
 
 #### wallet/getdelegatedresourcev2
 
@@ -718,12 +722,11 @@ curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourcev2 -d
 
 Parameters:
 
-* fromAddress: The delegating account address.
-* toAddress: The recipient account address.
-* visible (optional): Sets the address format.
+* `fromAddress`: The delegating account address.
+* `toAddress`: The recipient account address.
+* `visible` (optional): Sets the address format.
 
-Return Value: 
-* An array of delegatedResource objects, containing all delegation records between the two addresses under Stake 2.0.
+Return Value: An array of delegatedResource objects, containing all delegation records between the two addresses under Stake 2.0.
 
 
 
@@ -741,10 +744,9 @@ curl -X POST http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindexv2 -d
 Parameters:
 
 * `value`: The account address.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-Return Value:
-- This interface returns a JSON object containing a list of bidirectional proxy relationships. It contains two lists: one for the addresses to which the account delegates resources (toAddress), and one for the addresses that delegate resources to the account (fromAddress).
+Return Value: This interface returns a JSON object containing a list of bidirectional proxy relationships. It contains two lists: one for the addresses to which the account delegates resources (toAddress), and one for the addresses that delegate resources to the account (fromAddress).
 
 
 <a id="network"></a>
@@ -787,8 +789,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getblock -d '{"detail":false}'
 Parameters:
 
 * `id_or_num`: Block height or block hash. If not set, queries the latest block.
-* `detail`: Defaults to false, meaning only the block header information is queried. If true, the entire block is queried.
-
+* `detail`: Defaults to false, meaning only the block header information is queried. If `true`, the entire block is queried.
 
 Return Value: A Block object or an object containing only block header information.
 
@@ -797,9 +798,7 @@ Description: Query complete block information by a specified block height.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbynum -d '{"num": 1}'
 ```
-Parameters:
-
-* num: Block height (integer).
+Parameter: `num`: Block height (integer).
 
 Return Value: The Block object at the specified height.
 
@@ -808,8 +807,7 @@ Description: Query complete block information by a specified Block ID (hash).
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid -d '{"value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
 ```
-Parameters:
-* value: The Block ID (hash).
+Parameter: `value`: The Block ID (hash).
 
 Return Value: The Block object with the specified ID.
 
@@ -818,9 +816,7 @@ Description: Query the latest N blocks in descending order.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d '{"num": 5}'
 ```
-Parameters:
-
-* num: The number of blocks to query.
+Parameter: `num`: The number of blocks to query.
 
 Return Value: An array containing multiple Block objects (Block[]).
 
@@ -831,11 +827,10 @@ code
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 ```
-Parameter:
+Parameters:
 
 * `startNum`: Starting block height (inclusive).
 * `endNum`: Ending block height (exclusive).
-
 
 Return Value: An array containing multiple Block objects (Block[]).
 
@@ -854,7 +849,7 @@ Parameters:
 
 * `hash`: The hash value of the block.
 * `number`: The height of the block. Must exactly match the block hash.
-* `visible`: Whether to display addresses in Base58Check format (true) or HexString format (false or omitted).
+* `visible`: Whether to display addresses in Base58Check format (`true`) or HexString format (`false` or omitted).
 
 Return Value: An object containing all balance change tracing information for the block, for example:
 ```
@@ -902,8 +897,7 @@ Description: Query the complete information of an on-chain transaction by its Tr
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
 ```
-Parameters:
-* value: Transaction ID (hash).
+Parameter: `value`: Transaction ID (hash).
 
 Return Value: The complete Transaction object. Returns an empty object if the transaction does not exist.
 
@@ -912,8 +906,7 @@ Description: Query the summary information of a transaction, such as fees and bl
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 ```
-Parameters:
-* `value`: Transaction ID (hash).
+Parameter: `value`: Transaction ID (hash).
 
 Return Value: A TransactionInfo object containing transaction fees, block height, block timestamp, contract execution results, etc.
 
@@ -922,8 +915,7 @@ Description: Query the total number of transactions contained in a specified blo
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"num" : 100}'
 ```
-Parameters:
-* `num`: Block height.
+Parameter: `num`: Block height.
 
 Return Value: An object containing the transaction count, such as {"count": 50}.
 
@@ -932,10 +924,9 @@ Description: Get a list of summary information for all transactions at a specifi
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyblocknum -d '{"num" : 100}'
 ```
-Parameters:
-* num: Block height.
+Parameter: `num`: Block height.
 
-Return Value: A list containing multiple TransactionInfo objects.
+Return Value: A list containing multiple `TransactionInfo` objects.
 
 #### wallet/listnodes
 Description: Query other nodes discovered by the current node's node discovery feature.
@@ -1009,9 +1000,10 @@ Description: Get a contract's static information, such as ABI and bytecode, via 
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
 ```
-Parameter:
+Parameters:
+
 * `value`: Contract address, defaults to HexString format.
-* `visible`: Sets the address format. true for Base58Check, false or omitted for HexString.
+* `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: A SmartContract object, containing ABI, deployment bytecode, name, etc.
 
@@ -1020,12 +1012,12 @@ Description: Get a contract's runtime information via its contract address.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getcontractinfo -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
 ```
-Parameter:
+Parameters:
 
 * `value`: Contract address, defaults to HexString format.
-* `visible`: Sets the address format. true for Base58Check, false or omitted for HexString.
+* `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
  
-Return Value: Queries on-chain contract information. Unlike the wallet/getcontract interface, this interface returns not only bytecode but also the contract's runtime bytecode. Runtime bytecode, compared to bytecode, does not include constructor functions and constructor parameter information.
+Return Value: Queries on-chain contract information. Unlike the `wallet/getcontract` interface, this interface returns not only bytecode but also the contract's runtime bytecode. Runtime bytecode, compared to bytecode, does not include constructor functions and constructor parameter information.
 
 
 #### wallet/deploycontract
@@ -1033,47 +1025,45 @@ Description: Create a transaction to deploy a smart contract.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","parameter":"","call_value":100,"name":"SomeContract","consume_user_resource_percent":30,"fee_limit":10,"origin_energy_limit": 10,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-参数说明：
+Parameters:
 
-- `abi`：abi。
-- `bytecode`：The bytecode of the contract, must be in HexString format.
-- `parameter`：The parameter list for the constructor, needs to be ABI encoded and then converted to HexString format. If the constructor has no parameters, this parameter can be omitted.
-- `consume_user_resource_percent`：The percentage of resources used by users calling this contract, an integer between. If 0, users will not consume resources. If the developer's resources are exhausted, then user resources will be fully consumed.
+- `abi`：abi.
+- `bytecode`: The bytecode of the contract, must be in HexString format.
+- `parameter`: The parameter list for the constructor needs to be ABI encoded and then converted to HexString format. If the constructor has no parameters, this parameter can be omitted.
+- `consume_user_resource_percent`: The percentage of resources used by users calling this contract, an integer between. If 0, users will not consume resources. If the developer's resources are exhausted, then user resources will be fully consumed.
 - `fee_limit`：Maximum sun to be consumed (1 TRX = 1,000,000 sun).
-- `call_value`：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
-- `owner_address`：The account address initiating the deploycontract, defaults to HexString format.
+- `call_value`: The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
+- `owner_address`: The account address initiating the `deploycontract`, defaults to HexString format.
 name: The contract name.
-- `name`：The contract name.
+- `name`: The contract name.
 - `origin_energy_limit`: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation, an integer greater than 0.
-- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.
-- `token_id`:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
+- `call_token_value`: The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
+- `token_id`: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
 - `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-- `visible`:sets the address format. true for Base58Check, false or omitted for HexString.
+- `visible`: sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
-Return Value: 
-* This interface returns an object containing an unsigned deployment transaction.
+Return Value: This interface returns an object containing an unsigned deployment transaction.
 
 #### wallet/triggersmartcontract
 Description: Create a transaction to call a smart contract function.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-Parameter：
+Parameters：
 
 - `contract_address`：The address of the callee contract, defaults to HexString format.
 - `function_selector`：The function signature, no spaces allowed.
 - `parameter`：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.
-- `data`：Data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be used for contract interaction.
+- `data`：Data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through `function_selector` and `parameter`. If `data` and `function_selector` exist simultaneously, `function_selector` will be used for contract interaction.
 - `fee_limit`：Maximum sun to be consumed (1 TRX = 1,000,000 sun).
 - `call_value`：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
-- `owner_address`：The account address initiating the triggercontract, defaults to HexString format.
-- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.
+- `owner_address`：The account address initiating the `triggercontract`, defaults to HexString format.
+- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
 - `token_id`:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
 - `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-- `visible` :Sets the address format. true for Base58Check, false or omitted for HexString.
+- `visible` :Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
-Return Value: 
-* This interface returns an object containing an unsigned deployment transaction.
+Return Value: This interface returns an object containing an unsigned deployment transaction.
 
 
 #### wallet/triggerconstantcontract
@@ -1081,17 +1071,17 @@ Description: Simulate contract execution on the local node for data querying, tr
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 ```
-Parameter：
+Parameters：
 
 - `contract_address`：The address of the callee contract, defaults to HexString format.
-- `function_selector`：The function signature, no spaces allowed.
+- `function_selector`: The function signature, no spaces allowed.
 - `parameter`：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.
-- `data`：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be prioritized.
-- `owner_address`：The account address initiating the triggercontract, defaults to HexString format.
+- `data`：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field or through `function_selector` and parameter. If `data` and `function_selector` exist simultaneously, function_selector will be prioritized.
+- `owner_address`：The account address initiating the `triggercontract`, defaults to HexString format.
 - `call_value`：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
-- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.
+- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
 - `token_id`:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
-- `visible` Sets the address format. true for Base58Check, false or omitted for HexString.
+- `visible` Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: The return value of the contract function, encoded in ABI format.
 
@@ -1108,7 +1098,7 @@ Parameters：
 - `contract_address`：The address of the contract to be modified, defaults to HexString format.
 - `consume_user_resource_percent`：The specified percentage of resources consumed by users calling this contract.
 - `permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
-- `visible`:Sets the address format. true for Base58Check, false or omitted for HexString.
+- `visible`:Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned update transaction.
 
@@ -1123,7 +1113,7 @@ Parameters：
 * `contract_address`: The address of the contract to be modified, defaults to HexString format.
 * `origin_energy_limit`: The maximum energy that the creator is willing to consume for themselves during a single contract execution or creation.
 * `permission_id` (optional): Used to specify the permission ID when signing with a permission other than the default owner permission.
-* `visible`: Sets the address format. true for Base58Check, false or omitted for HexString.
+* `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing an unsigned update transaction.
 
@@ -1138,7 +1128,7 @@ Parameters：
 
 * `owner_address`: The account address that created the contract, defaults to HexString format.
 * `contract_address`: The contract address, defaults to HexString format.
-* `visible`: Sets the address format. true for Base58Check, false or omitted for HexString.
+* `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an unsigned transaction object.
 
@@ -1156,16 +1146,15 @@ curl -X POST  http://127.0.0.1:8090/wallet/estimateenergy -d '{
 
 Parameters：
 
-- `contract_address`：The address of the callee contract, defaults to HexString format.
-- `function_selector`：The function signature, no spaces allowed.
-- `parameter`：The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.
-- `data`：Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through function_selector and parameter. If data and function_selector exist simultaneously, function_selector will be prioritized.
-- `owner_address`：The account address initiating the triggercontract, defaults to HexString format.
-- `call_value`：The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
-- `call_token_value`:The amount of TRC-10 tokens to transfer to the contract during this call. If token_id is not set, this should be 0 or not set.
-- `token_id`:The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
-- `visible` Sets the address format. true for Base58Check, false or omitted for HexString.
-
+- `contract_address`: The address of the callee contract, defaults to HexString format.
+- `function_selector`: The function signature, no spaces allowed.
+- `parameter`: The virtual machine format of the call parameters. Use the JS tool provided by Remix to convert the contract caller's parameter array into the format required by the virtual machine.
+- `data`: Contract bytecode or data for interacting with the smart contract, including the called contract function and parameters. You can choose to interact through this field, or through `function_selector` and parameter. If `data` and `function_selector` exist simultaneously, `function_selector` will be prioritized.
+- `owner_address`: The account address initiating the `triggercontract`, defaults to HexString format.
+- `call_value`: The amount of sun (1 TRX = 1,000,000 sun) to transfer to the contract during this call.
+- `call_token_value`: The amount of TRC-10 tokens to transfer to the contract during this call. If `token_id` is not set, this should be `0` or not set.
+- `token_id`: The ID of the TRC-10 token to transfer to the contract during this call. If none, do not set.
+- `visible` Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing the estimated energy value.
 
@@ -1193,8 +1182,9 @@ curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address"
 ```
 
 Parameters:
+
 * `address`: The issuer account address, defaults to HexString format.
-* `visible`: Sets the address format. true for Base58Check, false or omitted for HexString.
+* `visible`: Sets the address format. `true` for Base58Check, `false` or omitted for HexString.
 
 Return Value: This interface returns an object containing a list of TRC-10 tokens issued by the address.
 
@@ -1203,8 +1193,7 @@ Description: Query TRC-10 tokens by name.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 ```
-Parameters：
- - `value`：Token name, defaults to HexString format.
+Parameter: `value`：Token name, defaults to HexString format.
  
 Return Value: A TRC-10 token object.
 
@@ -1373,7 +1362,7 @@ Return Value: An unsigned update token information transaction object.
 
 
 <a id="sr"></a>
-### Vote and SR
+### Vote and Super Representative
 The following are voting and SR related APIs:
 
 
@@ -1388,7 +1377,7 @@ The following are voting and SR related APIs:
 - [wallet/getnextmaintenancetime](#walletgetnextmaintenancetime)
 
 #### wallet/createwitness
-Description: Create a transaction to apply to become a witness.
+Description: Create a transaction to apply to become a Super Representative.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "url": "007570646174654e616d6531353330363038383733343633"}'
 ```
@@ -1421,13 +1410,13 @@ Return Value: An unsigned update URL transaction object.
 
 
 #### wallet/listwitnesses
-Description: Query the current list of all witnesses.
+Description: Query the current list of all Super Representatives.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 ```
 Parameter: None
 
-Return Value: A list of all witness information.
+Return Value: A list of all Super Representative information.
 
 #### wallet/withdrawbalance
 Description:** SR or users withdraw rewards to their balance. This can be done once every 24 hours.
@@ -1448,7 +1437,7 @@ Return Value: An unsigned withdraw reward transaction object.
 
 
 #### wallet/votewitnessaccount
-Description: Vote for a SR.
+Description: Vote for a Super Representative.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d '{
 "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292",
@@ -1479,7 +1468,7 @@ Parameters:
 Return Value: The current brokerage ratio of the Super Representative.
 
 #### wallet/updateBrokerage
-Description: Update a SR's current brokerage ratio.
+Description: Update a Super Representative's current brokerage ratio.
 ```
 curl -X POST  http://47.252.81.126:8090/wallet/updateBrokerage  -d '{
 "owner_address":"41E552F6487585C2B58BC2C9BB4492BC1F17132CD0",
@@ -1548,9 +1537,7 @@ Description: Query detailed proposal information by ID.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
 ```
-Parameters:
-
-*  `id`: Proposal ID.
+Parameter: `id`: Proposal ID.
 
 Return Value: The detailed information of the specified proposal.
 
@@ -1559,7 +1546,7 @@ Description: Query a list of all current proposals on the network.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 ```
-Parameters: None
+Parameter: None
 
 Return Value: An array containing all proposal objects.
 
@@ -1697,9 +1684,7 @@ Description: Query a trading pair by ID.
 ```
 curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
 ```
-Parameter:
-
-*   `id`: The trading pair ID.
+Parameter: `id`: The trading pair ID.
 
 Return Value: The specified trading pair object.
 
@@ -1831,9 +1816,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/getmarketorderbyid -d
    "value": "orderid"
 }'
 ```
-Parameter:
-
-*   `value`: The order ID, defaults to HexString format.
+Parameter: `value`: The order ID, defaults to HexString format.
 
 Return Value: The specified order object.
 
@@ -1854,9 +1837,7 @@ curl -X POST  http://127.0.0.1:8090/wallet/gettransactionfrompending -d
   "value": "txId"
 }'
 ```
-Parameter：
-
-- `value`: The transaction ID, in hexString format by default.
+Parameter: `value`: The transaction ID, in hexString format by default.
 
 Return Value: A complete transaction object. Returns an empty object if the transaction is not in the pending pool.
 
@@ -1875,7 +1856,7 @@ Description: Queries the number of transactions currently in the pending pool.
 ```
 curl -X get  http://127.0.0.1:8090/wallet/getpendingsize
 ```
-Parameters: None
+Parameter: None
 
 Return Value: An object containing the size of the pending pool.
 
@@ -1893,7 +1874,7 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d '{"address": "4
 Parameters:
 
 - `address`: The account address to query.
-- `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+- `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
 Return Value: An `Account` object.
 
@@ -1925,22 +1906,22 @@ curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountin
 Parameters:
 
 * `value`: The account address to query.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-Return Value: A DelegatedResourceAccountIndex object showing the account's delegation overview.
+Return Value: A `DelegatedResourceAccountIndex` object showing the account's delegation overview.
 
 #### walletsolidity/getaccountbyid
 Description: Queries account information by its `account_id`.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d '{"account_id":"6161616162626262"}'
 ```
-Parameter: account_id in hexString format by default.
+Parameter: `account_id` in hexString format by default.
 
 Return Value: An Account object.
 
 #### walletsolidity/getavailableunfreezecount
 
-Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period.This API can be used to pre-check whether there is available "unstaking quota" before calling `unfreezebalancev2`.
+Description: Queries the remaining number of unstake operations an account can initiate. The TRON network limits each account to a maximum of 32 concurrent unstaking operations within the 14-day lock period. This API can be used to pre-check whether there is an available "unstaking quota" before calling `unfreezebalancev2`.
 
 ```
 curl -X POST http://127.0.0.1:8090/walletsolidity/getavailableunfreezecount -d
@@ -1954,11 +1935,9 @@ curl -X POST http://127.0.0.1:8090/walletsolidity/getavailableunfreezecount -d
 Parameters:
 
 * `owner_address`: The account address to query.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-Return Value:
-
-* A JSON object containing the remaining count.
+Return Value: A JSON object containing the remaining count.
 
 #### walletsolidity/getcanwithdrawunfreezeamount
 
@@ -1978,11 +1957,9 @@ Parameters:
 
 * `owner_address`: The address of the transaction initiator.
 * `timestamp`: The timestamp (in milliseconds) at which to query the withdrawable amount.
-* `visible` (optional): Sets the address format. true for Base58Check, false (or omitted) for HexString.
+* `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
 
-Return Value: 
-
-* A JSON object containing the withdrawable amount.
+Return Value: A JSON object containing the withdrawable amount.
 
 
 
@@ -2077,7 +2054,7 @@ Parameter: None
 Return Value: An array containing objects for all TRC-10 tokens on the network.
 
 #### walletsolidity/getpaginatedassetissuelist
-Description:Paginate and query a list of TRC-10 tokens on the entire network.
+Description: Paginate and query a list of TRC-10 tokens on the entire network.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist -d '{"offset": 0, "limit":10}'
 ```
@@ -2093,8 +2070,7 @@ Description: Query TRC-10 tokens by name.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
 ```
-Parameter：
- - `value`：Token name, defaults to HexString format.
+Parameter: `value`：Token name, defaults to HexString format.
  
 Return Value: A TRC-10 token object.
 
@@ -2106,9 +2082,7 @@ Description: Query all matching TRC-10 token lists by name.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
 ```
-Parameter:
-
- - `value`：Token name, defaults to HexString format.
+Parameter: `value`：Token name, defaults to HexString format.
 
 Return Value: An array containing all TRC-10 token objects with the same name.
 
@@ -2117,9 +2091,7 @@ Description: Query TRC-10 token by ID.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
 ```
-Parameter：
-
-* `value`: The ID of the TRC-10 token.
+Parameter：`value`: The ID of the TRC-10 token.
 
 Return Value: The specified TRC-10 token object.
 
@@ -2141,9 +2113,7 @@ Description: Query complete block information by a specified block height.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d '{"num" : 100}'
 ```
-Parameters:
-
-* `num`: Block height (integer).
+Parameter: `num`: Block height (integer).
 
 Return Value: The Block object at the specified height.
 
@@ -2154,8 +2124,7 @@ Description: Query complete block information by a specified Block ID (hash).
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d '{"value":
 "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
 ```
-Parameters:
-* `value`: The Block ID (hash).
+Parameter: `value`: The Block ID (hash).
 
 Return Value: The Block object with the specified ID.
 
@@ -2164,7 +2133,7 @@ Description: Paginate and query a list of blocks within a specified height range
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 ```
-Parameter:
+Parameters:
 
 * `startNum`: Starting block height (inclusive).
 * `endNum`: Ending block height (exclusive).
@@ -2177,11 +2146,9 @@ Description: Queries the last N blocks from the SolidityNode, starting from the 
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d '{"num": 5}'
 ```
-Parameters:
+Parameter: `num`: The number of blocks to query.
 
-* `num`: The number of blocks to query.
-
-Return Value: An array containing multiple Block objects (Block[]).
+Return Value: An array containing multiple Block objects (`Block[]`).
 
 #### wallet/getnodeinfo
 Description: View the current node's own operating status and information.
@@ -2200,9 +2167,7 @@ Description: Queries the complete information of a confirmed transaction by its 
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 ```
-Parameters:
-
-* `value`: Transaction ID (hash).
+Parameter: `value`: Transaction ID (hash).
 
 Return Value: The complete Transaction object. Returns an empty object if the transaction does not exist or is unconfirmed.
 
@@ -2211,9 +2176,7 @@ Description: Query the total number of transactions contained in a specified blo
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d '{"num" : 100}'
 ```
-Parameters:
-
-* `num`: Block height.
+Parameter: `num`: Block height.
 
 Return Value: An object containing the transaction count, such as `{"count": 50}`.
 
@@ -2222,9 +2185,7 @@ Description: Query the summary information of a transaction, such as fees and bl
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 ```
-Parameters:
-
-* `value`: Transaction ID (hash).
+Parameter: `value`: Transaction ID (hash).
 
 Return Value: A TransactionInfo object containing transaction fees, block height, block timestamp, contract execution results, etc.
 
@@ -2233,9 +2194,7 @@ Description: Get a list of summary information for all transactions at a specifi
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyblocknum -d '{"num" : 100}'
 ```
-Parameters:
-
-* `num`: Block height.
+Parameter: `num`: Block height.
 
 Return Value: A list containing multiple TransactionInfo objects.
 
@@ -2247,9 +2206,7 @@ Description: Query a trading pair by ID.
 ```
 curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 ```
-Parameter:
-
-*   `id`: The trading pair ID.
+Parameter: `id`: The trading pair ID.
 
 Return Value: The specified trading pair object.
 

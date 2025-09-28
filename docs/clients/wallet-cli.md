@@ -374,9 +374,9 @@ Example:
 
 #### Modify Account Permissions
 
-##### How to Use `wallet-cli`'s Multi-signature Feature?
+##### How to Use `wallet-cli`'s Account Permission Management Feature?
 
-Multi-signature allows other users to access an account for better account management. There are three access types:
+Account Permission Management allows other users to access an account for better account management. There are three access types:
 
 * `owner`: The access permission for the account owner.
 * `active`: Access permissions for other account functions, as well as permissions for specific functions. If used for an SR, this does not include block production authorization.
@@ -847,7 +847,7 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 
 > SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
 
-The following is an example of a multi-signature transaction。 For details on the authorization of the signing accounts, please refer to the example in the Modifying Account Permissions section.
+The following is an example of a transaction using Account Permission Management. For details on the authorization of the signing accounts, please refer to the example in the Modifying Account Permissions section.
 
 ```
 wallet> sendcoin TXBpeye7UQ4dDZEnmGDv4vX37mBYDo1tUE 10

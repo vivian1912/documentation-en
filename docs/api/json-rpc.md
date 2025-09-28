@@ -1,9 +1,9 @@
-# jsonRPC API
+# JSON-RPC API
 
 ## Overview
 JSON-RPC is a stateless, lightweight remote procedure call (RPC) protocol. The TRON network provides a set of JSON-RPC APIs that are compatible with Ethereum.
 
-Although the APIs are designed for high compatibility, there are differences in the behavior of some interfaces due to variations in the underlying account models, resource models, and consensus mechanisms between TRON and Ethereum. Additionally, TRON has extended the API set with custom interfaces to support its unique transaction types.
+Although the APIs are designed for high compatibility with Ethereum, some endpoints may behave differently due to TRON's unique account model, resource model, and consensus mechanism. Additionally, TRON has extended the API set with custom interfaces to support its unique transaction types.
 
 ## How to enable or disable JSON-RPC service of a node
 By default, the JSON-RPC service in a java-tron node is disabled. You must explicitly enable it in the node's [configuration file](https://github.com/tronprotocol/java-tron/blob/develop/framework/src/main/resources/config.conf).
@@ -19,7 +19,7 @@ node.jsonrpc {
 ## HEX value encoding
 In JSON-RPC interactions, all binary data is passed as hexadecimal strings, which follow two distinct formatting rules:
 
-- **QUANTITIES (Numerical Types)**
+**QUANTITIES (Numerical Types)**
    - Description: Used to represent integers, such as block numbers, balances, and counts.
    - Format: A hexadecimal string with a `0x` prefix, using the most compact representation (i.e., with no leading zeros). The only exception is zero itself, which must be represented as `0x0`.
    - Examples:
@@ -28,7 +28,7 @@ In JSON-RPC interactions, all binary data is passed as hexadecimal strings, whic
       - Incorrect: `0x0400` (leading zeros are not allowed)
       - Incorrect: `ff` (must have a `0x` prefix)
 
-- **UNFORMATTED DATA (Byte Arrays)**
+**UNFORMATTED DATA (Byte Arrays)**
    - Description: Used to represent byte arrays, such as addresses, hashes, and bytecode.
    - Format: A hexadecimal string with a `0x` prefix, where each byte is represented by two hex characters.
    - Examples:
@@ -45,7 +45,7 @@ In JSON-RPC interactions, all binary data is passed as hexadecimal strings, whic
 
 **Parameters:** None
 **Return Value:** An empty array.
-**Note:** Unlike Ethereum clients such as Geth, TRON nodes do not manage private keys or accounts. Therefore, this interface exists for compatibility purposes only and has no real functionality.
+**Note:** Unlike Ethereum clients such as Geth, TRON nodes do not manage private keys or accounts. Therefore, this interface is provided for compatibility purposes only and does not return any accounts.
 
 **Example**
 ```
@@ -81,13 +81,13 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
     | Field Name | Data Type      | Description                                                   |
     | :-------- | :------------- | :------------------------------------------------------------ |
-    | `from`      | DATA, 20 Bytes | The caller's address. For Ethereum compatibility, all addresses can be either TRON hex addresses or Ethereum addresses.    |
+    | `from`      | DATA, 20 Bytes | The caller's address. Both TRON hex addresses and Ethereum addresses are accepted.    |
     | `to`        | DATA, 20 Bytes | The contract address. |
     | `gas`       | QUANTITY       | Not supported. The value should be `0x0`                               |
     | `gasPrice`  | QUANTITY       | Not supported. The value should be `0x0`                             |
     | `value`     | QUANTITY       | Not supported. The value should be `0x0`                              |
     | `data`      | DATA           | The hash of the method signature and encoded parameters.          |
-2. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is supported
+2. `QUANTITY|TAG` - The block identifier. Currently, only "latest" is currently supported
 
 **Return Value:** `DATA` - The ABI-encoded return value of the executed contract function.
 
@@ -146,7 +146,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 
 ### eth_estimateGas
 
-*Estimates the amount of Energy required to execute a transaction.*
+*Estimates the Energy required to execute a transaction.*
 
 **Parameters:**
 1. `Object` - The transaction call object, containing the following fields:
@@ -161,7 +161,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 | `data` | DATA | The hash of the method signature and encoded parameters. |
 
 
-**Return Value:** `QUANTITY` - The estimated amount of Energy that will be consumed.
+**Return Value:** `QUANTITY` - The estimated Energy that will be consumed.
 
 **Example**
 
@@ -395,7 +395,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 1. `DATA`, 32 Bytes - The hash of the block.
 2. `QUANTITY` - The index of the transaction within the block.
-3. 
+
 **Return Value: **`Object` - A transaction object. Returns `null` if not found.
 The transaction object contains the following fields:
 
@@ -411,7 +411,7 @@ The transaction object contains the following fields:
 | `nonce`            | QUANTITY       | unused                                                                                                   |
 | `to`               | DATA, 20 Bytes | address of the receiver                                                                                  |
 | `transactionIndex` | QUANTITY       | The index of the transaction in the block                                                                |
-| `type`             | QUANTITY       | The transaction type. Currently, all transactions on the TRON network are normal transactions with a value of 0 |
+| `type`             | QUANTITY       | The transaction type. Currently, all transactions on the TRON network are normal transactions, usually with a value of `0x0` |
 | `value`            | QUANTITY       | value transferred in sun                                                                                 |
 | `v`                | QUANTITY       | ECDSA recovery id                                                                                        |
 | `r`                | DATA, 32 Bytes | ECDSA signature r                                                                                        |
@@ -517,7 +517,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{
 
 ### eth_getTransactionReceipt
 
-*Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This is comparable to the HTTP API: [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid).*
+*Returns the receipt of a transaction by its hash. The receipt contains the execution result, event logs, and resources consumed. This endpoint is comparable to the [wallet/gettransactioninfobyid](http.md#walletgettransactioninfobyid) HTTP API.*
 
 **Parameters:** `DATA`, 32 Bytes - The hash of the transaction.
 
@@ -663,8 +663,8 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc":"2.0","
 
 | Field     | Type                  | Description                                                               |
 | :-------- | :-------------------- | :------------------------------------------------------------------------ |
-| `fromBlock` | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                        |
-| `toBlock`   | QUANTITY\|TAG         | Integer block number, or "latest",or "earliest"                                   |
+| `fromBlock` | QUANTITY\|TAG         | Integer block number, or "latest", or "earliest"                                        |
+| `toBlock`   | QUANTITY\|TAG         | Integer block number, or "latest", or "earliest"                                   |
 | `address`   | DATA\|Array, 20 Bytes | Contract address or a list of addresses from which logs should originate. |
 | `topics`    | Array of DATA         |An array of 32-byte DATA topics to filter events. The order is significant. Each topic position can also be an array of DATA, representing an "OR" condition.                                                                 |
 
@@ -909,7 +909,7 @@ curl -X POST 'https://api.shasta.trongrid.io/jsonrpc' --data '{"jsonrpc": "2.0",
 ```
 
 ## buildTransaction
-*This is a TRON-custom RPC method used to conveniently create native TRON transactions. It returns an unsigned transaction object. Different transaction types have different parameters.*
+*This is a TRON-specific RPC method used to conveniently create native TRON transactions. It returns an unsigned transaction object. Different transaction types have different parameters.*
 
 ### TransferContract (TRX Transfer)
 **Parameters:** 
