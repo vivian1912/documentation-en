@@ -3,9 +3,9 @@
 ## Overview
 
 
-This document provides a detailed reference for **gRPC**) **API**s in the **TRON** blockchain network. These **API**s allow developers to interact with the **TRON** network to perform various functions such as **account** management, **transaction** broadcasting, **smart contract** operations, and **resource** management.
+This document provides a detailed reference for gRPC) APIs in the TRON blockchain network. These APIs allow developers to interact with the TRON network to perform various functions such as account management, transaction broadcasting, smart contract operations, and resource management.
 
-**Note:** **SolidityNode** is deprecated. The **FullNode** now supports all **gRPCs** of the **SolidityNode**. New developers should only deploy a **FullNode**.
+**Note:** SolidityNode is deprecated. The FullNode now supports all gRPCs of the SolidityNode. New developers should only deploy a FullNode.
 
 **API Definition Reference**: This document outlines the functions of the major APIs. Please refer to [api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto) for the complete and authoritative technical definitions.
 
@@ -64,7 +64,7 @@ rpc BroadcastTransaction (Transaction) returns (Return) {}
 ```
 
 **Description:**
-This **RPC** is used to send a signed **transaction** to a node. After being verified by a **Super Representative (SR)**, the **transaction** will be broadcast to the entire network.
+This gRPC is used to send a signed transaction to a node. After being verified by a Super Representative (SR), the transaction will be broadcast to the entire network.
 
 ### Query Transaction Information (by Transaction ID)
 
@@ -145,8 +145,8 @@ rpc UpdateAsset2 (UpdateAssetContract) returns (TransactionExtention) {}
 A token update can only be initiated by the token issuer to update the:
 - Token description
 - URL
-- Maximum **bandwidth** consumption per **account**
-- Total **bandwidth** consumption
+- Maximum Bandwidth consumption per account
+- Total Bandwidth consumption
 
 ### Token Transfer
 
@@ -243,7 +243,7 @@ rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {}
 ```
 
 **Description:**
-Apply to become a **TRON Super Representative** candidate.
+Apply to become a TRON Super Representative candidate.
 
 ### Update Super Representative Candidate Information
 
@@ -251,7 +251,7 @@ Apply to become a **TRON Super Representative** candidate.
 rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {}
 ```
 
-**Description:** Update the **Super Representative's** website URL.
+**Description:** Update the Super Representative's website URL.
 
 ### Query All Super Representative Candidates
 
@@ -337,7 +337,7 @@ rpc GetAvailableUnfreezeCount (GetAvailableUnfreezeCountRequestMessage)
      returns (GetAvailableUnfreezeCountResponseMessage) {};
 ```
 
-### Get Delegable Resources of a Specific Resource Type for an Address (in SUN)
+### Get Delegable Resources of a Specific Resource Type for an Address (in sun)
 
 ```
 rpc GetCanDelegatedMaxSize (CanDelegatedMaxSizeRequestMessage) returns (CanDelegatedMaxSizeResponseMessage) {};
@@ -352,7 +352,7 @@ rpc GetCanWithdrawUnfreezeAmount (CanWithdrawUnfreezeAmountRequestMessage)
 
 ### Withdraw Matured Unstakes
 
-After a user executes the `/wallet/unfreezebalancev2` **transaction** and waits N days (N being a network parameter), they can call this **API** to retrieve the funds.
+After a user executes the `/wallet/unfreezebalancev2` transaction and waits N days (N being a network parameter), they can call this API to retrieve the funds.
 ```
 rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {};
 ```
@@ -549,7 +549,7 @@ rpc GetTransactionInfoByBlockNum (NumberMessage) returns (TransactionInfoList) {
 
 ### Get Information for a Specific Block
 
-By default, it returns the latest block header. You can also query a specific block header or block information including the transaction body.
+By default, it returns the latest block header. You can also query a specific block header or block information, including the transaction body.
 ```
 rpc GetBlock (BlockReq) returns (BlockExtention) {};
 ```
