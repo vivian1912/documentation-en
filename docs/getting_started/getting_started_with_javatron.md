@@ -342,7 +342,7 @@ After you send a transaction, the `wallet-cli` terminal returns a unique transac
 
 
 
-1. Use `gettransactionbyid <txid>`` to view the raw content of the transaction:
+1. Use `gettransactionbyid <txid>` to view the raw content of the transaction:
   ```
   wallet> gettransactionbyid 21851bcf1faf22c99a7a49c4f246d709cf9f54db2f264ca145adcd464ea155a4
   ```
