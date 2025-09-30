@@ -1714,9 +1714,7 @@
 <ul>
 <li><strong>Java Development Kit (JDK)</strong>: You must have Oracle JDK 1.8 installed.</li>
 <li><strong>TRON Accounts</strong>: You need to create at least two TRON network addresses in advance and securely store the addresses and their corresponding private keys. One address will serve as the initial SR node (Block Production), and the other will be a regular account.</li>
-<li>
-<p><strong>Address Creation Tools</strong>: You can use any of the following tools to generate and manage your TRON accounts:</p>
-<ul>
+<li><strong>Address Creation Tools</strong>: You can use any of the following tools to generate and manage your TRON accounts:<ul>
 <li><a href="https://github.com/tronprotocol/wallet-cli">Wallet-cli</a>: An official command-line wallet tool, suitable for server environments.</li>
 <li><a href="https://www.tronlink.org/">TronLink</a>: A multi-chain wallet that supports the TRON network, featuring a user-friendly graphical interface for easy address creation and management.</li>
 <li><a href="https://tronweb.network/docu/docs/intro/">TronWeb</a>: A JavaScript library for developers to interact with the TRON network and build dApps.</li>
@@ -1730,11 +1728,11 @@
 <li>
 <p>Prepare Node Directories</p>
 <p>To keep configurations and data isolated, it is recommended to create separate deployment directories for each node.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Create the Super Representative (SR) node directory</span>
-$<span class="w"> </span>mkdir<span class="w"> </span>SR
+<div class="highlight"><pre><span></span><code># Create the Super Representative (SR) node directory
+$ mkdir SR
 
-<span class="c1"># Create the regular Fullnode directory</span>
-$<span class="w"> </span>mkdir<span class="w"> </span>FullNode
+# Create the regular Fullnode directory
+$ mkdir FullNode
 </code></pre></div>
 </li>
 <li>

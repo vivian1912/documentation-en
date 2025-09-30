@@ -2229,7 +2229,7 @@ wallet&gt;
 
 <h4 id="query-a-transaction-by-id">Query a Transaction by ID<a class="headerlink" href="#query-a-transaction-by-id" title="Permanent link">&para;</a></h4>
 <p>Querying a broadcast transaction via the HTTP API follows the same principle as with <code>wallet-cli</code>.</p>
-<h5 id="walletgettransactionbyid"><code>wallet/gettransactionbyid</code><a class="headerlink" href="#walletgettransactionbyid" title="Permanent link">&para;</a></h5>
+<p><strong><code>wallet/gettransactionbyid</code></strong></p>
 <p>Use the <code>wallet/gettransactionbyid</code> HTTP endpoint to get the full data of a broadcast transaction. In the request body, pass the <code>txid</code> you want to query in the <code>value</code> field:</p>
 <p><div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:8090/wallet/gettransactionbyid&#39; \
 --header &#39;Content-Type: application/json&#39; \
@@ -2270,7 +2270,7 @@ wallet&gt;
     &quot;raw_data_hex&quot;: &quot;0a02193b2208aaecd88e4e0e752840e098909f9b305a68080112640a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412330a154198927ffb9f554dc4a453c64b2e553a02d6df514b121541d0b69631440f0a494bb51f7eee68ff5c593c00f01880ade20470b4d58c9f9b30&quot;
 }
 </code></pre></div>
-<h5 id="walletgettransactioninfobyid"><code>wallet/gettransactioninfobyid</code><a class="headerlink" href="#walletgettransactioninfobyid" title="Permanent link">&para;</a></h5>
+<p><strong><code>wallet/gettransactioninfobyid</code></strong></p>
 <p>Use the <code>wallet/gettransactioninfobyid</code> HTTP endpoint to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption).</p>
 <p>Pass the target <code>txid</code> in the request body:</p>
 <div class="highlight"><pre><span></span><code>curl --location --request POST &#39;http://127.0.0.1:8090/wallet/gettransactioninfobyid&#39; \

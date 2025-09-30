@@ -1699,15 +1699,15 @@
 
 
 <h1 id="node-data-backup-and-restore">Node Data Backup and Restore<a class="headerlink" href="#node-data-backup-and-restore" title="Permanent link">&para;</a></h1>
-<p><code>java-tron</code> nodes store their persistent data in a specified data directory, which defaults to <code>/output-directory/</code>. You can specify a different data storage location by adding the <code>-d</code> or <code>--output-directory</code> parameter to the <code>java-tron</code> node startup command. For example:</p>
+<p>java-tron nodes store their persistent data in a specified data directory, which defaults to <code>/output-directory/</code>. You can specify a different data storage location by adding the <code>-d</code> or <code>--output-directory</code> parameter to the java-tron node startup command. For example:</p>
 <div class="highlight"><pre><span></span><code>java -jar fullnode.jar -d ./outputdir
 </code></pre></div>
 <h2 id="backing-up-node-data">Backing Up Node Data<a class="headerlink" href="#backing-up-node-data" title="Permanent link">&para;</a></h2>
 <p>Before backing up node data, it's crucial to <strong>shut down the node process</strong>. You can do this by following these steps:</p>
-<p>First, get the PID of the <code>java-tron</code> process using the following command:</p>
+<p>First, get the PID of the java-tron process using the following command:</p>
 <div class="highlight"><pre><span></span><code>ps -ef | grep FullNode.jar | grep -v grep | awk &#39;{print $2}&#39;
 </code></pre></div>
-<p>Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the <code>java-tron</code> process and avoid database corruption:</p>
+<p>Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:</p>
 <p>```bash!</p>
 <h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
 <p>while true; do
@@ -1721,7 +1721,7 @@
     break
   fi
 done
-<div class="highlight"><pre><span></span><code>Once the `java-tron` process has successfully shut down, you can back up the data using the following command:
+<div class="highlight"><pre><span></span><code>Once the java-tron process has successfully shut down, you can back up the data using the following command:
 </code></pre></div>
 tar cvzf output-directory.<code>date "+%Y%m%d%H%M%S"</code>.etgz output-directory
 <div class="highlight"><pre><span></span><code>## Restoring Node Data
