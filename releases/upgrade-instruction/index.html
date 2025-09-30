@@ -1809,10 +1809,12 @@ $ git checkout -b release_vx.x.x
 <ol>
 <li>
 <p>Use the following command to find the <code>PID</code> of the java-tron process.</p>
-<p><div class="highlight"><pre><span></span><code>$ ps -ef | grep java
+<div class="highlight"><pre><span></span><code>$ ps -ef | grep java
 </code></pre></div>
-2. Stop the node process.
-<div class="highlight"><pre><span></span><code>$ kill -15 &lt;PID&gt;
+</li>
+<li>
+<p>Stop the node process.
+    <div class="highlight"><pre><span></span><code>$ kill -15 &lt;PID&gt;
 </code></pre></div></p>
 </li>
 </ol>
@@ -1846,7 +1848,7 @@ $ git checkout -b release_vx.x.x
 </li>
 </ol>
 <blockquote>
-<p><strong>Note on the Database</strong>: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built <a href="https://tronprotocol.github.io/documentation-zh/using_javatron/backup_restore">database snapshot</a>.</p>
+<p><strong>Note on the Database</strong>: The existing database in the working directory can be used as-is. Alternatively, you may restore from a pre-built <a href="https://tronprotocol.github.io/documentation-en/using_javatron/backup_restore">database snapshot</a>.</p>
 </blockquote>
 <p><a id="step5"></a> </p>
 <h3 id="step-5-start-the-node">Step 5: Start the Node<a class="headerlink" href="#step-5-start-the-node" title="Permanent link">&para;</a></h3>
