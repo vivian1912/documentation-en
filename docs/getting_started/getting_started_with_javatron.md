@@ -540,7 +540,8 @@ Step 3 - Broadcast the Transaction
 
 Querying a broadcast transaction via the HTTP API follows the same principle as with `wallet-cli`.
 
-##### `wallet/gettransactionbyid`
+**`wallet/gettransactionbyid`**
+
   Use the `wallet/gettransactionbyid` HTTP endpoint to get the full data of a broadcast transaction. In the request body, pass the `txid` you want to query in the `value` field:
 
   ```
@@ -586,7 +587,8 @@ Querying a broadcast transaction via the HTTP API follows the same principle as 
   }
   ```
 
-##### `wallet/gettransactioninfobyid`
+**`wallet/gettransactioninfobyid`**
+
   Use the `wallet/gettransactioninfobyid` HTTP endpoint to view the transaction's processing result and receipt information (i.e., whether the transaction has been included in a block, its execution result, and resource consumption).
 
   Pass the target `txid` in the request body:
