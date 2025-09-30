@@ -3,9 +3,7 @@ This article introduces FullNode's HTTP APIs and their usage.
 
 !!! Note
   Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before using it in any UI, especially when the parameter visible equals true.
-
   Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as `encodeURIComponent()` or `escape()` to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.
-
   Please ensure that XSS protection is implemented for all data from the APIs to maintain the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: [OWASP XSS Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html).
 
 The TRON node's HTTP API supports two address formats. Developers can use the visible parameter to control the address format in both requests and responses.
@@ -455,7 +453,7 @@ curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 Parameters:
 
 * `owner_address`: The address of the account unstaking TRX.
-* `resource`: Can be BANDWIDTH or ENERGY.
+* `resource`: Can be Bandwidth or Energy.
 * `receiverAddress`: The address of the delegated account.
 * `Permission_id` (optional): Specifies the ID of the Account Management Permission used to sign the transaction.
 * `visible` (optional): Sets the address format. `true` for Base58Check, `false` (or omitted) for HexString.
@@ -523,7 +521,7 @@ Return Value:
 
 #### wallet/unfreezebalancev2
 
-Description: Unstakes TRX that was staked via the Stake 2.0 mechanism. This releases the corresponding amount of Bandwidth or Energy and reclaims the equivalent amount of TRON Power (TP).
+Description: Unstakes TRX staked via the Stake 2.0 mechanism. This releases the corresponding amount of Bandwidth or Energy and reclaims the equivalent amount of TRON Power (TP).
 ```
 curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
 '{
@@ -550,7 +548,7 @@ Return Value:
 
 Description: Immediately cancels all pending (not yet unlocked) unfreeze requests for an account. This has a dual effect:
 
-* Restakes: All TRX from the canceled unfreezing requests is immediately restaked for the same resource type.
+* Restakes: All TRX from the canceled unfreezing requests are immediately restaked for the same resource type.
 * Withdraws: Any TRX from unfreeze requests that have already completed their 14-day pending period is automatically withdrawn to the account's balance.
 
 ```
