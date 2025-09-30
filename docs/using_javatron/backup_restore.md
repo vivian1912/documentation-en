@@ -1,6 +1,6 @@
 # Node Data Backup and Restore
 
-`java-tron` nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the `java-tron` node startup command. For example:
+java-tron nodes store their persistent data in a specified data directory, which defaults to `/output-directory/`. You can specify a different data storage location by adding the `-d` or `--output-directory` parameter to the java-tron node startup command. For example:
 
 ```
 java -jar fullnode.jar -d ./outputdir
@@ -11,13 +11,13 @@ java -jar fullnode.jar -d ./outputdir
 
 Before backing up node data, it's crucial to **shut down the node process**. You can do this by following these steps:
 
-First, get the PID of the `java-tron` process using the following command:
+First, get the PID of the java-tron process using the following command:
 
 ```
 ps -ef | grep FullNode.jar | grep -v grep | awk '{print $2}'
 ```
 
-Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the `java-tron` process and avoid database corruption:
+Then, use the obtained PID to terminate the process. It's recommended to use the following shutdown script to safely close the java-tron process and avoid database corruption:
 
 ```bash!
 #!/bin/bash
@@ -34,7 +34,7 @@ while true; do
 done
 ```
 
-Once the `java-tron` process has successfully shut down, you can back up the data using the following command:
+Once the java-tron process has successfully shut down, you can back up the data using the following command:
 
 ```
 tar cvzf output-directory.`date "+%Y%m%d%H%M%S"`.etgz output-directory
