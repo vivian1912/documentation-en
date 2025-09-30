@@ -1867,10 +1867,10 @@
 <p>This article introduces FullNode's HTTP APIs and their usage.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before using it in any UI, especially when the parameter visible equals true.
+Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as <code>encodeURIComponent()</code> or <code>escape()</code> to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.
+Please ensure that XSS protection is implemented for all data from the APIs to maintain the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html">OWASP XSS Prevention Cheat Sheet</a>.</p>
 </div>
-<p>Although TRON has avoided XSS by setting the Content-Type of HTTP APIs to application/json, there are a few APIs that don't have input validation. To better protect user data security, we recommend that you correctly encode any data from APIs before using it in any UI, especially when the parameter visible equals true.</p>
-<p>Here is a typical XSS protection method: Encode all data from the APIs in HTML. Use methods such as <code>encodeURIComponent()</code> or <code>escape()</code> to encode the data, which can convert special characters into their HTML entities and prevent them from being interpreted as HTML code by the browser.</p>
-<p>Please ensure that XSS protection is implemented for all data from the APIs to maintain the security of user data. We understand that you may need more information about XSS protection. It is recommended that you refer to the following resources: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html">OWASP XSS Prevention Cheat Sheet</a>.</p>
 <p>The TRON node's HTTP API supports two address formats. Developers can use the visible parameter to control the address format in both requests and responses.</p>
 <p>The rules for the visible parameter are as follows:</p>
 <ul>
@@ -2269,7 +2269,7 @@ Parameters:</p>
 Parameters:</p>
 <ul>
 <li><code>owner_address</code>: The address of the account unstaking TRX.</li>
-<li><code>resource</code>: Can be BANDWIDTH or ENERGY.</li>
+<li><code>resource</code>: Can be Bandwidth or Energy.</li>
 <li><code>receiverAddress</code>: The address of the delegated account.</li>
 <li><code>Permission_id</code> (optional): Specifies the ID of the Account Management Permission used to sign the transaction.</li>
 <li><code>visible</code> (optional): Sets the address format. <code>true</code> for Base58Check, <code>false</code> (or omitted) for HexString.</li>
@@ -2324,7 +2324,7 @@ Parameters:</p>
 <p>Return Value: 
 * An unsigned staking transaction object.</p>
 <h4 id="walletunfreezebalancev2">wallet/unfreezebalancev2<a class="headerlink" href="#walletunfreezebalancev2" title="Permanent link">&para;</a></h4>
-<p>Description: Unstakes TRX that was staked via the Stake 2.0 mechanism. This releases the corresponding amount of Bandwidth or Energy and reclaims the equivalent amount of TRON Power (TP).
+<p>Description: Unstakes TRX staked via the Stake 2.0 mechanism. This releases the corresponding amount of Bandwidth or Energy and reclaims the equivalent amount of TRON Power (TP).
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/unfreezebalancev2 -d
 &#39;{
     &quot;owner_address&quot;: &quot;41e472f387585c2b58bc2c9bb4492bc1f17342cd1&quot;,
@@ -2347,7 +2347,7 @@ Parameters:</p>
 <h4 id="walletcancelallunfreezev2">wallet/cancelallunfreezev2<a class="headerlink" href="#walletcancelallunfreezev2" title="Permanent link">&para;</a></h4>
 <p>Description: Immediately cancels all pending (not yet unlocked) unfreeze requests for an account. This has a dual effect:</p>
 <ul>
-<li>Restakes: All TRX from the canceled unfreezing requests is immediately restaked for the same resource type.</li>
+<li>Restakes: All TRX from the canceled unfreezing requests are immediately restaked for the same resource type.</li>
 <li>Withdraws: Any TRX from unfreeze requests that have already completed their 14-day pending period is automatically withdrawn to the account's balance.</li>
 </ul>
 <div class="highlight"><pre><span></span><code>curl -X POST http://127.0.0.1:8090/wallet/cancelallunfreezev2 -d
