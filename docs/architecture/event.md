@@ -313,7 +313,7 @@ Key Fields in Contract Events
 For a complete list of fields, see the [ContractEventTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java) and [ContractLogTrigger](https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java) source code.
 
 
-> Note: **Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
+> **Note**: `Contract event` and `Contract log` support event filtering through the `filter` field. You can specify a block range (`fromblock` - `toblock`), specific contract addresses (`contractAddress`), or specific contract topics (`contractTopic`) to provide developers with a more efficient and precise event subscription service.
 > ```
 > filter = {
 >   fromblock = "" // The starting block number of the query range. Can be an empty string, "earliest", or a specific block number.
