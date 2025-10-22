@@ -1911,7 +1911,7 @@ Parameters:</p>
 </ul>
 <p>For a complete list of fields, see the <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractEventTrigger.java">ContractEventTrigger</a> and <a href="https://github.com/tronprotocol/java-tron/blob/develop/common/src/main/java/org/tron/common/logsfilter/trigger/ContractLogTrigger.java">ContractLogTrigger</a> source code.</p>
 <blockquote>
-<p>Note: **Contract event<code>and</code>Contract log<code>support event filtering through the</code>filter<code>field. You can specify a block range (</code>fromblock<code>-</code>toblock<code>), specific contract addresses (</code>contractAddress<code>), or specific contract topics (</code>contractTopic`) to provide developers with a more efficient and precise event subscription service.
+<p><strong>Note</strong>: <code>Contract event</code> and <code>Contract log</code> support event filtering through the <code>filter</code> field. You can specify a block range (<code>fromblock</code> - <code>toblock</code>), specific contract addresses (<code>contractAddress</code>), or specific contract topics (<code>contractTopic</code>) to provide developers with a more efficient and precise event subscription service.
 <div class="highlight"><pre><span></span><code>filter = {
   fromblock = &quot;&quot; // The starting block number of the query range. Can be an empty string, &quot;earliest&quot;, or a specific block number.
   toblock = &quot;&quot; // The ending block number of the query range. Can be an empty string, &quot;latest&quot;, or a specific block number.
