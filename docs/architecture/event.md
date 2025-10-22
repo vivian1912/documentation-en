@@ -2,7 +2,10 @@
 
 TRON provides a robust event subscription mechanism that allows developers to capture critical on-chain events in real-time. This includes transaction statuses, contract invocations, and block production, facilitating the development of feature-rich decentralized applications (dApps).
 
-TRON offers two primary event subscription methods, each designed to cater to different use cases and technical requirements.
+TRON offers two primary event subscription methods, allowing developers to choose based on their specific use cases:
+
+* [Local Event Plugin Subscription](#local-event-plugin-subscription-recommended)
+* [Built-in Message Queue (ZeroMQ) Subscription](#built-in-message-queue-subscription-zeromq)
 
 ## Local Event Plugin Subscription (Recommended)
 
@@ -78,8 +81,8 @@ event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
 
 The configuration process for the new plugin is mostly identical to the old version. You can refer to the official documentation for deployment:
 
-  - [Deploying the Event Plugin (MongoDB)](/documentation-en/architecture/use-mongodb/)
-  - [Deploying the Event Plugin (Kafka)](/documentation-en/architecture/use-kafka/)
+  - [Deploying the Event Plugin (MongoDB)](#mongodb-plugin-deployment-and-usage)
+  - [Deploying the Event Plugin (Kafka)](#kafka-plugin-deployment-and-usage)
 
 ##### Step 4 (Optional): Configure the Starting Point for Historical Sync
 
@@ -104,11 +107,11 @@ This guide is designed to help developers efficiently use the Kafka event subscr
 The main steps include:
 
 - [Checking System Configuration](#recommended-system-configuration)
-- [Compiling the Event Plugin](#2)
-- [Deploying and Running Kafka](#3)
-- [Configuring Event Subscription Rules](#4)
-- [Creating the Kafka Subscription Topic](#5)
-- [Starting the Event Subscription Node](#6)
+- [Compiling the Event Plugin](#compiling-the-kafka-event-plugin)
+- [Deploying and Running Kafka](#deploying-and-running-kafka)
+- [Configuring Event Subscription Rules](#configuring-event-subscription)
+- [Creating the Kafka Subscription Topic](#creating-a-kafka-subscription-topic)
+- [Starting the Event Subscription Node](#starting-the-event-subscription-node)
 
 
 #### Recommended System Configuration
@@ -413,13 +416,13 @@ This guide is designed to help developers quickly deploy and use the TRON MongoD
 
 The main steps include:
 
-- [Checking System Configuration](#)
-- [Understanding the System Architecture](#)
-- [Deploying the Event Plugin](#)
-- [Deploying the MongoDB](#)
-- [Deploying the Event Query Service](#)
-- [Starting and Verifing](#)
-- [Using the TRON Event Query Service API](#)
+- [Checking System Configuration](#recommended-system-configuration_1)
+- [Understanding the System Architecture](#system-architecture-and-workflow)
+- [Deploying the Event Plugin](#deploying-the-event-subscription-plugin)
+- [Deploying the MongoDB](#installing-and-configuring-mongodb)
+- [Deploying the Event Query Service](#deploying-the-event-query-service)
+- [Starting and Verifing](#launch-and-verification)
+- [Using the TRON Event Query Service API](#using-the-tron-event-query-service-api)
 
 
 #### Recommended System Configuration
@@ -727,7 +730,7 @@ The TRON Event Query Service provides a series of HTTP API endpoints for queryin
 
 
 
-## 2. Built-in Message Queue Subscription (ZeroMQ)
+## Built-in Message Queue Subscription (ZeroMQ)
 
 The java-tron node includes a built-in **ZeroMQ** message queue that provides a lightweight event streaming service. This method requires no external plugins and is ideal for use cases that demand high real-time event delivery but do not require event persistence or historical replay, such as rapid prototyping and testing.
 
