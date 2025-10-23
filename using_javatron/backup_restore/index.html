@@ -1749,23 +1749,20 @@ done
 <p>The TRON network snapshot data size exceeds 2TB. To save disk space, we recommend using the streaming method, which downloads and extracts the data simultaneously. </p>
 <p><strong>Method 1: Streamed Download and Extract (Recommended, Saves Space)</strong></p>
 <p>Create a script file named <code>download_snapshot.sh</code> and add the following content:</p>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-wget<span class="w"> </span>-q<span class="w"> </span>-O<span class="w"> </span>-<span class="w"> </span>SNAPSHOT_URL/FullNode_output-directory.tgz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-zxvf<span class="w"> </span>-
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+wget -q -O - SNAPSHOT_URL/FullNode_output-directory.tgz | tar -zxvf -
 </code></pre></div>
 <p>Run the script:</p>
-<p>```Text Bash
-bash download_snapshot.sh
-<div class="highlight"><pre><span></span><code>Note: This method avoids storing the complete compressed file and extracts the data on-the-fly, **significantly reducing disk space requirements**.
-
-**Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)**
-
-```bash
-# 1. Download the complete snapshot file
+<div class="highlight"><pre><span></span><code>bash download_snapshot.sh
+</code></pre></div>
+<p>Note: This method avoids storing the complete compressed file and extracts the data on-the-fly, <strong>significantly reducing disk space requirements</strong>.</p>
+<p><strong>Method 2: Full Download Before Extraction (Requires Sufficient Storage Space)</strong></p>
+<div class="highlight"><pre><span></span><code># 1. Download the complete snapshot file
 wget SNAPSHOT_URL/FullNode_output-directory.tgz
 
 # 2. Extract the file
 tar -zxvf FullNode_output-directory.tgz
-</code></pre></div></p>
+</code></pre></div>
 <p>Note: During extraction, both the compressed archive and the extracted files must be stored simultaneously. We recommend using two 3TB disks (3TB+ for the archive &amp; 3TB+ for the extracted data. You can release the archive disk after extraction to reduce costs.).</p>
 
 
