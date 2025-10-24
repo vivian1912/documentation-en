@@ -394,7 +394,7 @@ The revocation operation is not random. Instead, votes are revoked proportionall
           * Votes revoked for SR2: `500 * (400 / 1000) = 200` votes.
     5.  Final State: User A successfully unstakes 1,500 TRX. Their voting state is updated to: 300 votes for SR1 and 200 votes for SR2.
 
-!!! Important Distinction
+!!! Note
     Stake 1.0 vs. Stake 2.0
     
     Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding `wallet/unfreezebalance` API. Unstaking TRX from Stake 1.0 will revoke **all** of the account's votes.
