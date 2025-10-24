@@ -2106,11 +2106,11 @@ Here's how to estimate the <code>fee_limit</code> for executing a contract <code
 </ol>
 </li>
 </ul>
-<p>!!! Important Distinction: 
-    Stake 1.0 vs. Stake 2.0</p>
-<div class="codehilite"><pre><span></span><code>Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <span class="sb">`wallet/unfreezebalance`</span> API. Unstaking TRX from Stake 1.0 will revoke **all** of the account&#39;s votes.
-</code></pre></div>
-
+<div class="admonition important distinction">
+<p class="admonition-title">Important</p>
+<p>Stake 1.0 vs. Stake 2.0</p>
+<p>Although Stake 2.0 is the current standard, TRX staked via the legacy Stake 1.0 system is still valid and can be redeemed using its corresponding <code>wallet/unfreezebalance</code> API. Unstaking TRX from Stake 1.0 will revoke <strong>all</strong> of the account's votes.</p>
+</div>
 <h3 id="how-to-cancel-all-unstaking-requests">How to Cancel All Unstaking Requests<a class="headerlink" href="#how-to-cancel-all-unstaking-requests" title="Permanent link">&para;</a></h3>
 <p>If you initiate an unstake but change your mind, Stake 2.0 provides an efficient "cancel" feature. You can use the <code>cancelallunfreezev2</code> API to immediately cancel all pending unstake requests, bypassing the 14-day pending period, and get your resources back immediately.</p>
 <p><strong>Please note</strong>: this endpoint cancels all of your account's unstaking requests that are currently in the 14-day pending period.</p>
