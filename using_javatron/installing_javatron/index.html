@@ -1829,26 +1829,26 @@ cd java-tron
 <span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h4 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h4>
-<p><strong>General &amp; Memory Parameters:</strong>
-*   <code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.</p>
-<blockquote>
+<p><strong>General &amp; Memory Parameters:</strong></p>
 <ul>
-<li>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.</li>
-<li>For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
+<li><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.
+    &gt; For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
+    &gt; For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
 <li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
 <li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
 <li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
 <li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
 <li><code>-XX:+HeapDumpOnOutOfMemoryError</code>: Dumps the heap to a file if an OutOfMemoryError occurs.</li>
 </ul>
-</blockquote>
-<p><strong>JDK 8 (CMS GC) Specific:</strong>
-*   <code>-XX:+UseConcMarkSweepGC</code>: Enables the Concurrent Mark Sweep (CMS) garbage collector.
-*   <code>-XX:NewRatio=3</code>: Sets the ratio of Old Generation to Young Generation to 3:1.
-*   <code>-XX:+CMSScavengeBeforeRemark</code>: Triggers a minor GC before the CMS Remark phase to reduce pause time.
-*   <code>-XX:+ParallelRefProcEnabled</code>: Enables parallel reference processing to reduce pause times.
-*   <code>-XX:+UseCMSInitiatingOccupancyOnly</code> &amp; <code>-XX:CMSInitiatingOccupancyFraction=70</code>: Forces CMS to start collection when Old Gen is 70% full.
-*   <code>-XX:+PrintGCDetails</code>, <code>-XX:+PrintGCDateStamps</code>, <code>-Xloggc:gc.log</code>: Legacy GC logging settings.</p>
+<p><strong>JDK 8 (CMS GC) Specific:</strong></p>
+<ul>
+<li><code>-XX:+UseConcMarkSweepGC</code>: Enables the Concurrent Mark Sweep (CMS) garbage collector.</li>
+<li><code>-XX:NewRatio=3</code>: Sets the ratio of Old Generation to Young Generation to 3:1.</li>
+<li><code>-XX:+CMSScavengeBeforeRemark</code>: Triggers a minor GC before the CMS Remark phase to reduce pause time.</li>
+<li><code>-XX:+ParallelRefProcEnabled</code>: Enables parallel reference processing to reduce pause times.</li>
+<li><code>-XX:+UseCMSInitiatingOccupancyOnly</code> &amp; <code>-XX:CMSInitiatingOccupancyFraction=70</code>: Forces CMS to start collection when Old Gen is 70% full.</li>
+<li><code>-XX:+PrintGCDetails</code>, <code>-XX:+PrintGCDateStamps</code>, <code>-Xloggc:gc.log</code>: Legacy GC logging settings.</li>
+</ul>
 <p><strong>JDK 17 (ZGC) Specific:</strong>
 *   <code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.
 *   <code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</p>
