@@ -1843,14 +1843,16 @@ cd java-tron
 <p><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.</p>
 <blockquote>
 <p>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
-For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.
-*   <code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).
-*   <code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.
-*   <code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.
-*   <code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.
-*   <code>-XX:+HeapDumpOnOutOfMemoryError</code>: Dumps the heap to a file if an OutOfMemoryError occurs.</p>
+For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</p>
 </blockquote>
 </li>
+<li>
+<p><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</p>
+</li>
+<li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
+<li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
+<li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
+<li><code>-XX:+HeapDumpOnOutOfMemoryError</code>: Dumps the heap to a file if an OutOfMemoryError occurs.</li>
 </ul>
 <p><strong>JDK 8 (CMS GC) Specific:</strong></p>
 <ul>
