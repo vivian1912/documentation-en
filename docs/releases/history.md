@@ -87,8 +87,9 @@
 Since `ExchangeTransactionContract` involves relatively complex exponential calculations and its use cases are fully covered by the more efficient SunSwap-style AMM (Automated Market Maker) protocols, Seneca has consolidated and streamlined the related functionality. This optimization does not compromise user asset security. Creators of the original trading pairs (Exchanges) retain full access to their assets and can withdraw them at any time as needed.
 
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6507](https://github.com/tronprotocol/java-tron/pull/6507)
+
 ---
-There is no easy way from the earth to the stars.
+*There is no easy way from the earth to the stars.*
 <p align="right">---Seneca</p>
 
 
@@ -330,10 +331,8 @@ Kant adds validation to the shielded transaction creation API to ensure a paymen
 
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6174](https://github.com/tronprotocol/java-tron/pull/6174)
 
-
-
-
-Science is organized knowledge. Wisdom is organized life.
+---
+*Science is organized knowledge. Wisdom is organized life.*
 <p align="right">---Immanuel Kant</p>
 
 
@@ -380,12 +379,12 @@ The Epicurus version optimizes the duration statistics method for GRPC interface
 Source Code: [https://github.com/tronprotocol/java-tron/pull/6097](https://github.com/tronprotocol/java-tron/pull/6097)  
 
 
-
-Not what we have but what we enjoy, constitutes our abundance.
+---
+*Not what we have but what we enjoy, constitutes our abundance.*
 
 <p align="right">---Epicurus</p>
 
----
+
 
 
 ## GreatVoyage-v4.7.6(Anaximander)
@@ -450,12 +449,12 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5924](https://githu
 
 
 
-
+---
 *Nature is eternal and does not age.*
 
 <p align="right">---Anaximander</p>
 
----
+
 
 
 ## GreatVoyage-v4.7.5(Cleobulus)
@@ -508,11 +507,11 @@ The Cleobulus version removes redundant code in the block processing logic, impr
 Source Code: [https://github.com/tronprotocol/java-tron/pull/5834](https://github.com/tronprotocol/java-tron/pull/5834) 
 
 
-
+--- 
 *Seek virtue and eschew vice.* 
 <p align="right"> ---Cleobulus</p>
 
---- 
+
 
 ## GreatVoyage-v4.7.4(Bias)
 
@@ -656,11 +655,11 @@ Source Code: [https://github.com/tronprotocol/java-tron/pull/5746](https://githu
 
 
 
-
+--- 
 *Be slow in considering, but resolute in action.* 
 <p align="right"> ---Bias</p>
 
---- 
+
 
 
 
@@ -2224,6 +2223,7 @@ GreatVoyage-v4.3.0 (Bacon) introduces the `leveldb` startup optimization plug-in
 * Source Code:  https://github.com/tronprotocol/java-tron/pull/3925
 * Plug-in Usage Guide: https://tronprotocol.github.io/documentation-en/using_javatron/toolkit/#leveldb-startup-optimization
 
+---
 *Knowledge is power.* 
 <p align="right"> --- Francis Bacon </p>
 
@@ -2289,7 +2289,8 @@ In the version of GreatVoyage-v4.2.2 (Lucretius), smart contract ABIs are transf
 
 
 
- --- *Truths kindle light for truths.* 
+ --- 
+ *Truths kindle light for truths.* 
 <p align="right"> --- Lucretius</p>
 
 
