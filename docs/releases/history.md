@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Seneca    |  GreatVoyage-v4.8.0.1    |  2026-01-13    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0.1)   |   [Specs](#greatvoyage-4801seneca)   |
 |  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
 |  Anaximander    |  GreatVoyage-v4.7.6    |  2024-10-04    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.6)   |   [Specs](#greatvoyage-v476anaximander)   |
@@ -78,6 +79,20 @@
 |   N/A   | Odyssey-v1.0.3    |  2018-4-5    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v1.0.3)    |  N/A   |
 |   N/A   | Exodus-v1.0    |  2017-12-28    |  N/A    |      [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/Exodus-v1.0)    |  N/A   |
 
+## GreatVoyage-4.8.0.1(Seneca)
+
+### Other Changes
+#### 1. Optimize Transaction Processing Logic for ExchangeTransactionContract
+
+Since `ExchangeTransactionContract` involves relatively complex exponential calculations and its use cases are fully covered by the more efficient SunSwap-style AMM (Automated Market Maker) protocols, Seneca has consolidated and streamlined the related functionality. This optimization does not compromise user asset security. Creators of the original trading pairs (Exchanges) retain full access to their assets and can withdraw them at any time as needed.
+
+* Source Code: [https://github.com/tronprotocol/java-tron/pull/6507](https://github.com/tronprotocol/java-tron/pull/6507)
+
+There is no easy way from the earth to the stars.
+
+<p align="right">---Seneca</p>
+
+---
 
 ## GreatVoyage-4.8.0(Kant)
 The Kant release introduces several important optimizations and updates, including support for the Ethereum Cancun upgrade and enhanced validation in the consensus layer. Detailed information is provided below.
