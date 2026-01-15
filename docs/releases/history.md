@@ -88,6 +88,7 @@ Since `ExchangeTransactionContract` involves relatively complex exponential calc
 
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6507](https://github.com/tronprotocol/java-tron/pull/6507)
 
+---
 There is no easy way from the earth to the stars.
 
 <p align="right">---Seneca</p>
