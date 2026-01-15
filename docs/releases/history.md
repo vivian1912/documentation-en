@@ -93,7 +93,6 @@ There is no easy way from the earth to the stars.
 
 <p align="right">---Seneca</p>
 
----
 
 ## GreatVoyage-4.8.0(Kant)
 The Kant release introduces several important optimizations and updates, including support for the Ethereum Cancun upgrade and enhanced validation in the consensus layer. Detailed information is provided below.
