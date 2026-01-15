@@ -87,10 +87,10 @@
 Since `ExchangeTransactionContract` involves relatively complex exponential calculations and its use cases are fully covered by the more efficient SunSwap-style AMM (Automated Market Maker) protocols, Seneca has consolidated and streamlined the related functionality. This optimization does not compromise user asset security. Creators of the original trading pairs (Exchanges) retain full access to their assets and can withdraw them at any time as needed.
 
 * Source Code: [https://github.com/tronprotocol/java-tron/pull/6507](https://github.com/tronprotocol/java-tron/pull/6507)
-
 ---
 There is no easy way from the earth to the stars.
 <p align="right">---Seneca</p>
+
 
 
 ## GreatVoyage-4.8.0(Kant)
