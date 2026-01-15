@@ -90,7 +90,6 @@ Since `ExchangeTransactionContract` involves relatively complex exponential calc
 
 ---
 There is no easy way from the earth to the stars.
-
 <p align="right">---Seneca</p>
 
 
