@@ -3490,25 +3490,25 @@
 <p>To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the ARM architecture. In ARM environments, the system currently supports JDK 17 and the RocksDB database.</p>
 <ul>
 <li><strong>ARM architecture</strong><ul>
-<li><strong>Mandatory JDK 17</strong>
+<li><strong>Mandatory JDK 17</strong>: 
 JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the ARM environments (based on JEP 237, 388, 391).</li>
-<li><strong>Mandatory RocksDB</strong>
+<li><strong>Mandatory RocksDB</strong>: 
 The database only supports <strong>RocksDB (v9.7.4)</strong>. LevelDB JNI does not support ARM architecture and lacks maintenance, so the community-active RocksDB was chosen.</li>
-<li><strong>Floating point computation adaptation</strong>
+<li><strong>Floating point computation adaptation</strong>: 
 Floating-point calculations have been switched to use <code>StrictMath</code> via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between ARM and x86 architectures could lead to inconsistent results. Therefore, on ARM architectures,  results are kept consistent with x86 mainnet data via hardcoding.<ul>
 <li>Warning: Private networks on x86 platforms using floating-point computation (specifically Bancor transactions involving <code>pow</code>) may face synchronization issues from genesis on ARM. In such cases, please use a database snapshot from an existing height to start ARM nodes.</li>
 </ul>
 </li>
-<li><strong>Toolkit limitations</strong>
+<li><strong>Toolkit limitations</strong>: 
 LevelDB-related commands (<code>db archive</code> and <code>db convert</code>) are not supported in ARM environments.</li>
 </ul>
 </li>
-<li><strong>Changes under x86 architecture</strong><ul>
-<li><strong>Mandatory JDK 8</strong>
+<li><strong>Changes under x86 architecture</strong>: <ul>
+<li><strong>Mandatory JDK 8</strong>: 
 Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as <code>@PostConstruct</code> will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86 to ensure environment stability.</li>
-<li><strong>RocksDB/LevelDB compatibility restrictions</strong>
+<li><strong>RocksDB/LevelDB compatibility restrictions</strong>: 
 Due to version discrepancies (x86 uses RocksDB v5.15.10 which supports LevelDB, while ARM uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an ARM environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, <strong>Democritus uniformly prohibits RocksDB from accessing LevelDB databases</strong> (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.</li>
-<li><strong>Toolkit update</strong>
+<li><strong>Toolkit update</strong>: 
 Previously, <code>db convert</code> defaulted to a "compatibility mode" that only updated the value of <code>engine.properties</code> to RocksDB while keeping the underlying data in LevelDB format. To align with ARM's strict RocksDB requirements, the <code>db convert</code> command has been refactored to perform a <strong>non-compatibility conversion</strong> by default (previously the <code>–safe</code> flag logic). Consequently, the <code>–safe</code> parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.</li>
 </ul>
 </li>
@@ -3592,28 +3592,31 @@ Previously, <code>db convert</code> defaulted to a "compatibility mode" that onl
 <p>Following the proposal to deprecate the <code>SELFDESTRUCT</code> instruction via TIP-652 in GreatVoyage-4.8.0 (Kant), the Democritus release formally introduces behavioral adjustments to <code>SELFDESTRUCT</code>. This change ensures deep compatibility with Ethereum's EIP-6780, aligning the TVM (TRON Virtual Machine) with EVM standards. Detailed specifications can be found in TIP-6780.</p>
 <p>In versions prior to Democritus, <code>SELFDESTRUCT</code> allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the <code>SELFDESTRUCT</code> instruction is modified as follows:</p>
 <ul>
-<li><strong>Restricted Execution Scenarios</strong></li>
-</ul>
-<p>Account data deletion (including code, storage, and the account itself) is now only permitted if <code>SELFDESTRUCT</code> is invoked within the same transaction in which the contract was created.</p>
-<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">invoke</span><span class="w"> </span><span class="n n-Quoted">`SELFDESTRUCT`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Subsequent</span><span class="w"> </span><span class="k">Transaction</span><span class="w"> </span><span class="p">(</span><span class="n">Standard</span><span class="w"> </span><span class="k">Case</span><span class="p">)</span>
-
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">**</span><span class="k">not</span><span class="o">**</span><span class="w"> </span><span class="n">destroyed</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">Execution</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">stops</span><span class="w"> </span><span class="n">immediately</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">deleted</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="k">storage</span><span class="w"> </span><span class="k">keys</span><span class="p">,</span><span class="w"> </span><span class="k">code</span><span class="p">,</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="n">itself</span><span class="p">.</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="p">(</span><span class="n">TRX</span><span class="p">,</span><span class="w"> </span><span class="n">staked</span><span class="w"> </span><span class="n">TRX</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">TRC10</span><span class="w"> </span><span class="n">tokens</span><span class="p">)</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">itself</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">burned</span><span class="p">.</span>
-
-<span class="o">*</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">invoke</span><span class="w"> </span><span class="n n-Quoted">`SELFDESTRUCT`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Same</span><span class="w"> </span><span class="k">Transaction</span><span class="w"> </span><span class="p">(</span><span class="n">Creation</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Destruction</span><span class="p">)</span>
-
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">Execution</span><span class="w"> </span><span class="n">stops</span><span class="w"> </span><span class="n">immediately</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">All</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">purged</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">All</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="p">.</span>
-<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">itself</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">reset</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">burned</span><span class="p">.</span>
-</code></pre></div>
-
+<li>
+<p><strong>Restricted Execution Scenarios</strong>
+Account data deletion (including code, storage, and the account itself) is now only permitted if <code>SELFDESTRUCT</code> is invoked within the same transaction in which the contract was created.</p>
 <ul>
-<li><strong>Energy Cost Adjustment</strong></li>
+<li>Scenario 1: invoke <code>SELFDESTRUCT</code> in a Subsequent Transaction (Standard Case)<ul>
+<li>The contract account is <strong>not</strong> destroyed.</li>
+<li>Execution of the current contract stops immediately.</li>
+<li>No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.</li>
+<li>If the target address is the contract itself, the assets are not burned.</li>
 </ul>
-<p>To increase the threshold for usage and further mitigate abuse, the Energy cost for the <code>SELFDESTRUCT</code> opcode has been increased from 0 to 5,000.</p>
+</li>
+<li>Scenario 2: invoke <code>SELFDESTRUCT</code> in the Same Transaction (Creation &amp; Destruction)<ul>
+<li>Execution stops immediately.</li>
+<li>All account data is purged.</li>
+<li>All assets are transferred to the target address.</li>
+<li>If the target address is the contract itself, the balance is reset to zero and the assets are burned.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Energy Cost Adjustment
+To increase the threshold for usage and further mitigate abuse, the Energy cost for the <code>SELFDESTRUCT</code> opcode has been increased from 0 to 5,000.</p>
+</li>
+</ul>
 <p>NOTE: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.</p>
 <ul>
 <li>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-6780.md">https://github.com/tronprotocol/tips/blob/master/tip-6780.md</a></li>
