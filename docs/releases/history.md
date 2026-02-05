@@ -2,6 +2,7 @@
 
 |  Code Name |Version  | Released | Incl TIPs | Release Note | Specs |
 | -------- | -------- | -------- | -------- | -------- | -------- |
+|  Democritus    |  GreatVoyage-v4.8.1    |  2026-02-04    |  [TIP-6780](https://github.com/tronprotocol/tips/blob/master/tip-6780.md) <br> [TIP-767](https://github.com/tronprotocol/tips/blob/master/tip-767.md) |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.1)   |   [Specs](#greatvoyage-481democritus)   |
 |  Seneca    |  GreatVoyage-v4.8.0.1    |  2026-01-13    |  N/A  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0.1)   |   [Specs](#greatvoyage-4801seneca)   |
 |  Kant    |  GreatVoyage-v4.8.0    |  2025-04-29    |  [TIP-650](https://github.com/tronprotocol/tips/blob/master/tip-650.md) <br> [TIP-651](https://github.com/tronprotocol/tips/blob/master/tip-651.md) <br> [TIP-694](https://github.com/tronprotocol/tips/blob/master/tip-694.md) <br> [TIP-697](https://github.com/tronprotocol/tips/blob/master/tip-697.md) <br> [TIP-745](https://github.com/tronprotocol/tips/blob/master/tip-745.md)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.8.0)   |   [Specs](#greatvoyage-480kant)   |
 |  Epicurus    |  GreatVoyage-v4.7.7    |  2024-11-29    |  [TIP-697](https://github.com/tronprotocol/tips/issues/697)  |  [Release Note](https://github.com/tronprotocol/java-tron/releases/tag/GreatVoyage-v4.7.7)   |   [Specs](#greatvoyage-477epicurus)   |
@@ -99,7 +100,7 @@ To further enrich the java-tron technical ecosystem, the Democritus version intr
         * Warning: Private networks on x86 platforms using floating-point computation (specifically Bancor transactions involving `pow`) may face synchronization issues from genesis on ARM. In such cases, please use a database snapshot from an existing height to start ARM nodes.
     * **Toolkit limitations**: 
     LevelDB-related commands (`db archive` and `db convert`) are not supported in ARM environments.
-* **Changes under x86 architecture**: 
+* **Changes under x86 architecture**
     * **Mandatory JDK 8**: 
     Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as `@PostConstruct` will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86 to ensure environment stability.
     * **RocksDB/LevelDB compatibility restrictions**: 
@@ -116,7 +117,6 @@ To further enrich the java-tron technical ecosystem, the Democritus version intr
         * Increase max handle setting parameter: Added parameter dbSettings.maxOpenFiles, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.
         * Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.
         * To support JDK 17 and ARM architecture, the following dependency changes were made:
-
         |  group-name   | package-name | Old version | New version |
         | --- | -------- | -------- | -------- |
         | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
@@ -142,7 +142,7 @@ Following the proposal to deprecate the `SELFDESTRUCT` instruction via TIP-652 i
 
 In versions prior to Democritus, `SELFDESTRUCT` allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the `SELFDESTRUCT` instruction is modified as follows:
 
-* **Restricted Execution Scenarios**
+* **Restricted Execution Scenarios**: 
 Account data deletion (including code, storage, and the account itself) is now only permitted if `SELFDESTRUCT` is invoked within the same transaction in which the contract was created.
     * Scenario 1: invoke `SELFDESTRUCT` in a Subsequent Transaction (Standard Case)
         * The contract account is **not** destroyed.
@@ -155,10 +155,10 @@ Account data deletion (including code, storage, and the account itself) is now o
         * All assets are transferred to the target address.
         * If the target address is the contract itself, the balance is reset to zero and the assets are burned.
 
-* Energy Cost Adjustment
+* **Energy Cost Adjustment**: 
 To increase the threshold for usage and further mitigate abuse, the Energy cost for the `SELFDESTRUCT` opcode has been increased from 0 to 5,000.
 
-NOTE: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
+**NOTE**: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
 
 * TIP: [https://github.com/tronprotocol/tips/blob/master/tip-6780.md](https://github.com/tronprotocol/tips/blob/master/tip-6780.md)
 * Source Code：
@@ -187,10 +187,12 @@ Prior to the Democritus release, certain `P2P_DISCONNECT` messages utilized vagu
 * Previously, failures during the `HelloMessage` validation incorrectly triggered an `UNEXPECTED_IDENTITY` error, even when no identity-specific checks were performed. This has been corrected to `INCOMPATIBLE_PROTOCOL` to accurately reflect the validation failure.
 * When a `P2P_HELLO` message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as `INCOMPATIBLE_PROTOCOL` instead of `UNKNOWN`.
 
+
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6394](https://github.com/tronprotocol/java-tron/pull/6394)
 
 #### 4. Implement P2P message rate limit
 Prior to the Democritus release, P2P message processing was not rate-limited, leaving nodes vulnerable to resource exhaustion (bandwidth, CPU, and RAM) when handling high message volumes. To address this, Democritus introduces a per-peer rate limiting mechanism. If the frequency of specific messages from a single peer exceeds defined thresholds, the node will drop the messages and proactively disconnect from that peer. The following limits are applied based on message type and node state:
+
 * `SyncBlockChainMessage`: Restricted to 3 QPS during the synchronization phase (defined as `ChainInventory.remainNum > 0`).
 * `FetchInvDataMessage`: Restricted to 3 QPS during the block synchronization stage.
 * `P2P_DISCONNECT`: Processing is limited to 1 QPS.
@@ -260,22 +262,93 @@ The Democritus version introduces a standardized configuration file containing a
 #### 8. Update dependencies
 Upgraded dependencies such as `grpc-java`, `spring`, `jackson`, and `jetty`:
 
-| group-name | package-name | Old version | New version |
-| --- | --- | --- | --- |
-| org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
-| com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
-| com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
-| com.carrotsearch | java-sizeof | delete |  |
-| org.springframework | spring-tx | delete |  |
-|  | spring-web | delete |  |
-|  | spring-context | 5.3.18 | 5.3.39 |
-|  | spring-test | 5.2.0.RELEASE | 5.3.39 |
-| io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
-| com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
-| org.hamcrest | hamcrest-junit | delete |  |
-| com.google.inject | guice | delete |  |
-| io.vavr | vavr | delete |  |
-
+<table>
+  <thead>
+    <tr>
+      <th>group-name</th>
+      <th>package-name</th>
+      <th>Old version</th>
+      <th>New version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>org.eclipse.jetty</td>
+      <td>jetty-server</td>
+      <td>9.4.53.v20231009</td>
+      <td>9.4.57.v20241219</td>
+    </tr>
+    <tr>
+      <td>com.cedarsoftware</td>
+      <td>java-util</td>
+      <td>1.8.0</td>
+      <td>3.2.0</td>
+    </tr>
+    <tr>
+      <td>com.fasterxml.jackson.core</td>
+      <td>jackson-databind</td>
+      <td>2.13.4.2</td>
+      <td>2.18.3</td>
+    </tr>
+    <tr>
+      <td>com.carrotsearch</td>
+      <td>java-sizeof</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="4">org.springframework</td>
+      <td>spring-tx</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-web</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>spring-context</td>
+      <td>5.3.18</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>spring-test</td>
+      <td>5.2.0.RELEASE</td>
+      <td>5.3.39</td>
+    </tr>
+    <tr>
+      <td>io.grpc</td>
+      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
+      <td>1.60.0</td>
+      <td>1.75.0</td>
+    </tr>
+    <tr>
+      <td>com.google.protobuf</td>
+      <td>protobuf-java, protobuf-java-util, protoc</td>
+      <td>3.25.5</td>
+      <td>3.25.8</td>
+    </tr>
+    <tr>
+      <td>org.hamcrest</td>
+      <td>hamcrest-junit</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>com.google.inject</td>
+      <td>guice</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>io.vavr</td>
+      <td>vavr</td>
+      <td>delete</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 Additionally, the Democritus version upgrades the underlying network library `libp2p`, from 2.2.6 to 2.2.7. This version not only adds compilation support for JDK 17 but also introduces numerous optimizations and improvements:
 
@@ -329,10 +402,10 @@ The Democritus version introduces an optimized shutdown logic for the `HistoryEv
 #### 1. Optimize resource management for test cases
 The Democritus version introduces a systematic optimization of resource management for unit testing. These enhancements significantly improve execution efficiency while further ensuring the cleanliness and stability of the testing environment:
 
-* Standardized Cleanup Mechanism: Implemented a more rigorous file cleanup protocol to ensure that all temporary data generated during testing is thoroughly removed post-execution.
-* Improved Execution Performance: By optimizing high-latency test cases, the total duration of the unit testing suite has been reduced by up to 30%.
-* Robust Resource Release: Addressed known resource leak issues and standardized the resource release logic.
-* Enhanced Runtime Stability: Resolved specific NullPointerExceptions.
+* **Standardized Cleanup Mechanism**: Implemented a more rigorous file cleanup protocol to ensure that all temporary data generated during testing is thoroughly removed post-execution.
+* **Improved Execution Performance**: By optimizing high-latency test cases, the total duration of the unit testing suite has been reduced by up to 30%.
+* **Robust Resource Release**: Addressed known resource leak issues and standardized the resource release logic.
+* **Enhanced Runtime Stability**: Resolved specific NullPointerExceptions.
 
 * Source Code: 
 [https://github.com/tronprotocol/java-tron/pull/6437](https://github.com/tronprotocol/java-tron/pull/6437)
@@ -341,7 +414,7 @@ The Democritus version introduces a systematic optimization of resource manageme
 
 #### 2. Implement gRPC timeout mechanism
 
-When executing test cases repeatedly (e.g., over 100 times) on ARM, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. a 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.
+When executing test cases repeatedly (e.g., over 100 times) on ARM, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.
 
 * Source Code: 
 [https://github.com/tronprotocol/java-tron/pull/6441](https://github.com/tronprotocol/java-tron/pull/6441)
@@ -387,7 +460,7 @@ The Democritus version udpated the README document to add Telegram contact infor
 **Others**
 
 #### 1. TIP-767: Transitioning voting window configuration to chain governance 
-To ensure high uniformity of governance parameters across the entire network and enhance protocol consistency, the Democritus version introduces TRON network parameter No. 92 (`PROPOSAL_EXPIRE_TIME`), transitioning the proposal expiration time to an on-chain governance model.
+To ensure high uniformity of governance parameters across the entire network and enhance protocol consistency, the Democritus version introduces TRON No. 92 network parameter (`PROPOSAL_EXPIRE_TIME`), transitioning the configuration of proposal expiration time to on-chain governance.
 
 
 * TIP：[https://github.com/tronprotocol/tips/blob/master/tip-767.md](https://github.com/tronprotocol/tips/blob/master/tip-767.md)
@@ -409,7 +482,7 @@ Fixed the hexadecimal casing error in the `ReasonCode` struct, resolving compila
 #### 1. Introduce the`eth_getBlockReceipts` API
 The Democritus version introduces the `eth_getBlockReceipts` interface, used to query all transaction receipts in a specified block. For genesis blocks, blocks already pruned by light nodes, and unproduced blocks, it returns `null`.
 
-**Parameters**: blockNumber (required): Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").
+**Parameters**: block number (required). Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").
 
 **Returns**: An array of objects, where each object is a receipt for a transaction in that block. The structure is consistent with [eth_getTransactionReceipt](https://developers.tron.network/reference/eth_gettransactionreceipt).
 
@@ -420,16 +493,16 @@ The Democritus version introduces the `eth_getBlockReceipts` interface, used to 
 #### 2. Introduce a new API to query the real-time vote count of witness
 The Democritus version introduces the `getPaginatedNowWitnessList` interface. This endpoint is designed to query real-time voting data for the current epoch and return a paginated list of witnesses sorted in descending order of their vote counts. where votes = final votes at the end of the last maintenance period + voting increments in the current epoch (can be negative).
 
-**Parameters**:
+**Parameters**
 
 * offset: long, start index, requires >= 0.
-* limit: long, number of items to return, requires > 0, upper limit is system constant 1000.
+* limit: long, number of items to return, requires > 0, upper limit is 1000.
 * visible: boolean, optional; controls whether the returned JSON address is in readable encoding.
 
-**Returns**:
+**Returns**
 
 * Success: witnesses array, each item is a Witness (containing address, vote count, URL, etc.), sorted descending by "real-time votes".
-* No result or invalid parameters: When limit <= 0, offset < 0, or offset >= total Witness count, returns {} (empty object), http code = 200.
+* Failure: No result or invalid parameters. When limit <= 0, offset < 0, or offset >= total Witness count, returns {} (empty object), http code = 200.
 
 API-specific errors: When in a maintenance period and requesting non-solidified data, throws a maintenance period unavailable exception, http code = 200.
 
@@ -438,7 +511,9 @@ API-specific errors: When in a maintenance period and requesting non-solidified 
 [https://github.com/tronprotocol/java-tron/pull/6451](https://github.com/tronprotocol/java-tron/pull/6451)
 
 #### 3. Optimize the return data `eth_call`
-In versions prior to Democritus, the `eth_call` interface provided limited feedback upon contract execution failure. It typically returned a generic error message (e.g., "REVERT opcode executed") while leaving the data field empty. This lack of detailed execution context made it difficult for developers to diagnose and trace specific issues within the smart contract. The Democritus version introduced `JsonRpcException` as the parent class for all JsonRpc exceptions, and a `JsonRpcErrorResolver` class for data field generation logic.
+In versions prior to Democritus, the `eth_call` interface provided limited feedback upon contract execution failure. It typically returned a generic error message (e.g., "REVERT opcode executed") while leaving the data field empty. This lack of detailed execution context made it difficult for developers to diagnose and trace specific issues within the smart contract. 
+
+The Democritus version introduced `JsonRpcException` as the parent class for all JsonRpc exceptions, and a `JsonRpcErrorResolver` class for data field generation logic.
 
 Using [the demo contract](https://nile.tronscan.org/#/contract/TAFPPQK2NaqSPwKcaomLXJmwbxLB34x8Lr/code) as an example, the following information was returned when calling the testInsufficientBalance method prior to the change: 
 ```
@@ -486,8 +561,6 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
-
-
 
 
 
