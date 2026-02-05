@@ -185,8 +185,8 @@ The Democritus release refines this logic by introducing a specific height thres
 Prior to the Democritus release, certain `P2P_DISCONNECT` messages utilized vague reason codes, hindering accurate network troubleshooting. This update refines the error reporting logic for three specific scenarios to provide clearer diagnostic data:
 
 * Scenario 1: If a connection is terminated because a received block fails signature verification, the reason code is updated from `UNKNOWN` to `BAD_BLOCK`.
-* Previously, failures during the `HelloMessage` validation incorrectly triggered an `UNEXPECTED_IDENTITY` error, even when no identity-specific checks were performed. This has been corrected to `INCOMPATIBLE_PROTOCOL` to accurately reflect the validation failure.
-* When a `P2P_HELLO` message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as `INCOMPATIBLE_PROTOCOL` instead of `UNKNOWN`.
+* Scenario 2: Previously, failures during the `HelloMessage` validation incorrectly triggered an `UNEXPECTED_IDENTITY` error, even when no identity-specific checks were performed. This has been corrected to `INCOMPATIBLE_PROTOCOL` to accurately reflect the validation failure.
+* Scenario 3: When a `P2P_HELLO` message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as `INCOMPATIBLE_PROTOCOL` instead of `UNKNOWN`.
 
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6394](https://github.com/tronprotocol/java-tron/pull/6394)
@@ -263,93 +263,25 @@ The Democritus version introduces a standardized configuration file containing a
 #### 8. Update dependencies
 Upgraded dependencies such as `grpc-java`, `spring`, `jackson`, and `jetty`:
 
-<table>
-  <thead>
-    <tr>
-      <th>group-name</th>
-      <th>package-name</th>
-      <th>Old version</th>
-      <th>New version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>org.eclipse.jetty</td>
-      <td>jetty-server</td>
-      <td>9.4.53.v20231009</td>
-      <td>9.4.57.v20241219</td>
-    </tr>
-    <tr>
-      <td>com.cedarsoftware</td>
-      <td>java-util</td>
-      <td>1.8.0</td>
-      <td>3.2.0</td>
-    </tr>
-    <tr>
-      <td>com.fasterxml.jackson.core</td>
-      <td>jackson-databind</td>
-      <td>2.13.4.2</td>
-      <td>2.18.3</td>
-    </tr>
-    <tr>
-      <td>com.carrotsearch</td>
-      <td>java-sizeof</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="4">org.springframework</td>
-      <td>spring-tx</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-web</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-context</td>
-      <td>5.3.18</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>spring-test</td>
-      <td>5.2.0.RELEASE</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>io.grpc</td>
-      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
-      <td>1.60.0</td>
-      <td>1.75.0</td>
-    </tr>
-    <tr>
-      <td>com.google.protobuf</td>
-      <td>protobuf-java, protobuf-java-util, protoc</td>
-      <td>3.25.5</td>
-      <td>3.25.8</td>
-    </tr>
-    <tr>
-      <td>org.hamcrest</td>
-      <td>hamcrest-junit</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>com.google.inject</td>
-      <td>guice</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>io.vavr</td>
-      <td>vavr</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+| group-name | package-name | Old version | New version |
+| --- | --- | --- | --- |
+| org.eclipse.jetty | jetty-server | 9.4.53.v20231009 | 9.4.57.v20241219 |
+| com.cedarsoftware | java-util | 1.8.0 | 3.2.0 |
+| com.fasterxml.jackson.core | jackson-databind | 2.13.4.2 | 2.18.3 |
+| org.springframework | spring-context | 5.3.18 | 5.3.39 |
+| org.springframework | spring-test | 5.2.0.RELEASE | 5.3.39 |
+| io.grpc | grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services | 1.60.0 | 1.75.0 |
+| com.google.protobuf | protobuf-java, protobuf-java-util, protoc | 3.25.5 | 3.25.8 |
+
+Deleted dependencies: 
+| group-name | package-name |
+| --- | --- |
+| com.carrotsearch | java-sizeof | 
+| org.springframework | spring-tx | 
+| org.springframework | spring-web |
+| org.hamcrest | hamcrest-junit | 
+| com.google.inject | guice |
+| io.vavr | vavr | 
 
 Additionally, the Democritus version upgrades the underlying network library `libp2p`, from 2.2.6 to 2.2.7. This version not only adds compilation support for JDK 17 but also introduces numerous optimizations and improvements:
 
@@ -536,6 +468,7 @@ After modification: The `data` field returns error information (e.g., encoded re
     }
 }
 ```
+
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6369](https://github.com/tronprotocol/java-tron/pull/6369)
 
 #### 4. Performance optimization for eth_getLogs, eth_getFilterLogs
@@ -558,7 +491,6 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
-
 
 
 
