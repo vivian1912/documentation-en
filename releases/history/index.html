@@ -3592,31 +3592,28 @@ Previously, <code>db convert</code> defaulted to a "compatibility mode" that onl
 <p>Following the proposal to deprecate the <code>SELFDESTRUCT</code> instruction via TIP-652 in GreatVoyage-4.8.0 (Kant), the Democritus release formally introduces behavioral adjustments to <code>SELFDESTRUCT</code>. This change ensures deep compatibility with Ethereum's EIP-6780, aligning the TVM (TRON Virtual Machine) with EVM standards. Detailed specifications can be found in TIP-6780.</p>
 <p>In versions prior to Democritus, <code>SELFDESTRUCT</code> allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the <code>SELFDESTRUCT</code> instruction is modified as follows:</p>
 <ul>
-<li>
-<p>Restricted Execution Scenarios
-Account data deletion (including code, storage, and the account itself) is now only permitted if <code>SELFDESTRUCT</code> is invoked within the same transaction in which the contract was created.</p>
+<li><strong>Restricted Execution Scenarios</strong></li>
+</ul>
+<p>Account data deletion (including code, storage, and the account itself) is now only permitted if <code>SELFDESTRUCT</code> is invoked within the same transaction in which the contract was created.</p>
+<div class="codehilite"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="w"> </span><span class="n">invoke</span><span class="w"> </span><span class="n n-Quoted">`SELFDESTRUCT`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">Subsequent</span><span class="w"> </span><span class="k">Transaction</span><span class="w"> </span><span class="p">(</span><span class="n">Standard</span><span class="w"> </span><span class="k">Case</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="o">**</span><span class="k">not</span><span class="o">**</span><span class="w"> </span><span class="n">destroyed</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">Execution</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">stops</span><span class="w"> </span><span class="n">immediately</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">No</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">deleted</span><span class="p">,</span><span class="w"> </span><span class="n">including</span><span class="w"> </span><span class="k">storage</span><span class="w"> </span><span class="k">keys</span><span class="p">,</span><span class="w"> </span><span class="k">code</span><span class="p">,</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="n">itself</span><span class="p">.</span><span class="w"> </span><span class="n">However</span><span class="p">,</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="p">(</span><span class="n">TRX</span><span class="p">,</span><span class="w"> </span><span class="n">staked</span><span class="w"> </span><span class="n">TRX</span><span class="p">,</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">TRC10</span><span class="w"> </span><span class="n">tokens</span><span class="p">)</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">itself</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="n">burned</span><span class="p">.</span>
+
+<span class="o">*</span><span class="w"> </span><span class="n">Scenario</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="w"> </span><span class="n">invoke</span><span class="w"> </span><span class="n n-Quoted">`SELFDESTRUCT`</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">Same</span><span class="w"> </span><span class="k">Transaction</span><span class="w"> </span><span class="p">(</span><span class="n">Creation</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">Destruction</span><span class="p">)</span>
+
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="n">Execution</span><span class="w"> </span><span class="n">stops</span><span class="w"> </span><span class="n">immediately</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">All</span><span class="w"> </span><span class="k">account</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">purged</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">All</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">transferred</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="p">.</span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">target</span><span class="w"> </span><span class="n">address</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">itself</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">reset</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">assets</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">burned</span><span class="p">.</span>
+</code></pre></div>
+
 <ul>
-<li>Scenario 1: invoke <code>SELFDESTRUCT</code> in a Subsequent Transaction (Standard Case)<ul>
-<li>The contract account is <strong>not</strong> destroyed.</li>
-<li>Execution of the current contract stops immediately.</li>
-<li>No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.</li>
-<li>If the target address is the contract itself, the assets are not burned.</li>
+<li><strong>Energy Cost Adjustment</strong></li>
 </ul>
-</li>
-<li>Scenario 2: invoke <code>SELFDESTRUCT</code> in the Same Transaction (Creation &amp; Destruction)<ul>
-<li>Execution stops immediately.</li>
-<li>All account data is purged.</li>
-<li>All assets are transferred to the target address.</li>
-<li>If the target address is the contract itself, the balance is reset to zero and the assets are burned.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>Energy Cost Adjustment
-To increase the threshold for usage and further mitigate abuse, the Energy cost for the <code>SELFDESTRUCT</code> opcode has been increased from 0 to 5,000.</p>
-</li>
-</ul>
+<p>To increase the threshold for usage and further mitigate abuse, the Energy cost for the <code>SELFDESTRUCT</code> opcode has been increased from 0 to 5,000.</p>
 <p>NOTE: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.</p>
 <ul>
 <li>TIP: <a href="https://github.com/tronprotocol/tips/blob/master/tip-6780.md">https://github.com/tronprotocol/tips/blob/master/tip-6780.md</a></li>
