@@ -83,30 +83,31 @@
 
 
 
+
 ## GreatVoyage-4.8.1(Democritus)
 
 ### Core
-#### 1. Expand compatibility for ARM architecture and JDK 17
+#### 1. Expand compatibility for ARM64 architecture and JDK 17
 
-To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the ARM architecture. In ARM environments, the system currently supports JDK 17 and the RocksDB database.
+To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the arm64 architecture. In arm64 environments, the system currently supports JDK 17 and the RocksDB database.
 
-* **ARM architecture**
+* **ARM64 architecture**
     * **Mandatory JDK 17**: 
-    JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the ARM environments (based on JEP 237, 388, 391).
+    JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the arm64 environments (based on JEP 237, 388, 391).
     * **Mandatory RocksDB**: 
-    The database only supports **RocksDB (v9.7.4)**. LevelDB JNI does not support ARM architecture and lacks maintenance, so the community-active RocksDB was chosen.
+    The database only supports **RocksDB (v9.7.4)**. LevelDB JNI does not support arm64 architecture and lacks maintenance, so the community-active RocksDB was chosen.
     * **Floating point computation adaptation**: 
-    Floating-point calculations have been switched to use `StrictMath` via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between ARM and x86 architectures could lead to inconsistent results. Therefore, on ARM architectures,  results are kept consistent with x86 mainnet data via hardcoding.
-        * Warning: Private networks on x86 platforms using floating-point computation (specifically Bancor transactions involving `pow`) may face synchronization issues from genesis on ARM. In such cases, please use a database snapshot from an existing height to start ARM nodes.
+    Floating-point calculations have been switched to use `StrictMath` via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between arm64 and x86_64 architectures could lead to inconsistent results. Therefore, on arm64 architectures,  results are kept consistent with x86_64 mainnet data via hardcoding.
+        * Warning: Private networks on x86_64 platforms using floating-point computation (specifically Bancor transactions involving `pow`) may face synchronization issues from genesis on arm64. In such cases, please use a database snapshot from an existing height to start arm64 nodes.
     * **Toolkit limitations**: 
-    LevelDB-related commands (`db archive` and `db convert`) are not supported in ARM environments.
-* **Changes under x86 architecture**
+    LevelDB-related commands (`db archive` and `db convert`) are not supported in arm64 environments.
+* **Changes under x86_64 architecture**
     * **Mandatory JDK 8**: 
-    Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as `@PostConstruct` will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86 to ensure environment stability.
+    Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as `@PostConstruct` will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86_64 to ensure environment stability.
     * **RocksDB/LevelDB compatibility restrictions**: 
-    Due to version discrepancies (x86 uses RocksDB v5.15.10 which supports LevelDB, while ARM uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an ARM environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, **Democritus uniformly prohibits RocksDB from accessing LevelDB databases** (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.
+    Due to version discrepancies (x86_64 uses RocksDB v5.15.10 which supports LevelDB, while arm64 uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an arm64 environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, **Democritus uniformly prohibits RocksDB from accessing LevelDB databases** (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.
     * **Toolkit update**: 
-    Previously, `db convert` defaulted to a "compatibility mode" that only updated the value of `engine.properties` to RocksDB while keeping the underlying data in LevelDB format. To align with ARM's strict RocksDB requirements, the `db convert` command has been refactored to perform a **non-compatibility conversion** by default (previously the `–safe` flag logic). Consequently, the `–safe` parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.
+    Previously, `db convert` defaulted to a "compatibility mode" that only updated the value of `engine.properties` to RocksDB while keeping the underlying data in LevelDB format. To align with arm64's strict RocksDB requirements, the `db convert` command has been refactored to perform a **non-compatibility conversion** by default (previously the `–safe` flag logic). Consequently, the `–safe` parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.
 * **Other changes**
     * **JDK 17 Compatibility**
         * Null pointer compatibility: Optimized null pointer prompt information to facilitate problem positioning (based on JEP 358).
@@ -116,7 +117,7 @@ To further enrich the java-tron technical ecosystem, the Democritus version intr
     * **RocksDB Resource Optimization**
         * Increase max handle setting parameter: Added the parameter `dbSettings.maxOpenFiles`, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.
         * Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.
-        * To support JDK 17 and ARM architecture, the following dependency changes were made:
+        * To support JDK 17 and arm64 architecture, the following dependency changes were made:
         
             |  group-name   | package-name | Old version | New version |
             | --- | -------- | -------- | -------- |
@@ -124,7 +125,7 @@ To further enrich the java-tron technical ecosystem, the Democritus version intr
             |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
             | javax.jws    |   javax.jws-api       |   -       |      1.1    |
             |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
-            |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
+            |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm64)    |
 
 * Issue：[https://github.com/tronprotocol/java-tron/issues/5954](https://github.com/tronprotocol/java-tron/issues/5954)
 * Source Code：
@@ -347,7 +348,7 @@ The Democritus version introduces a systematic optimization of resource manageme
 
 #### 2. Implement gRPC timeout mechanism
 
-When executing test cases repeatedly (e.g., over 100 times) on ARM, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.
+When executing test cases repeatedly (e.g., over 100 times) on arm64, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.
 
 * Source Code: 
 [https://github.com/tronprotocol/java-tron/pull/6441](https://github.com/tronprotocol/java-tron/pull/6441)
@@ -374,7 +375,7 @@ Added a line break to a comment statement in the test case file to fix `checkSty
 
 **Documents**
 #### 1. Update readme for FullNode startup JVM parameters 
-Adjusted the JVM startup parameters for java-tron on x86 and ARM platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.
+Adjusted the JVM startup parameters for java-tron on x86_64 and arm64 platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.
 
 * Source Code:  [https://github.com/tronprotocol/java-tron/pull/6478](https://github.com/tronprotocol/java-tron/pull/6478)
 
