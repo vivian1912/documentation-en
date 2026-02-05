@@ -82,8 +82,6 @@
 
 
 
-
-
 ## GreatVoyage-4.8.1(Democritus)
 
 ### Core
@@ -92,21 +90,21 @@
 To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the ARM architecture. In ARM environments, the system currently supports JDK 17 and the RocksDB database.
 
 * **ARM architecture**
-    * **Mandatory JDK 17**
+    * **Mandatory JDK 17**: 
     JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the ARM environments (based on JEP 237, 388, 391).
-    * **Mandatory RocksDB**
+    * **Mandatory RocksDB**: 
     The database only supports **RocksDB (v9.7.4)**. LevelDB JNI does not support ARM architecture and lacks maintenance, so the community-active RocksDB was chosen.
-    * **Floating point computation adaptation**
+    * **Floating point computation adaptation**: 
     Floating-point calculations have been switched to use `StrictMath` via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between ARM and x86 architectures could lead to inconsistent results. Therefore, on ARM architectures,  results are kept consistent with x86 mainnet data via hardcoding.
         * Warning: Private networks on x86 platforms using floating-point computation (specifically Bancor transactions involving `pow`) may face synchronization issues from genesis on ARM. In such cases, please use a database snapshot from an existing height to start ARM nodes.
-    * **Toolkit limitations**
+    * **Toolkit limitations**: 
     LevelDB-related commands (`db archive` and `db convert`) are not supported in ARM environments.
-* **Changes under x86 architecture**
-    * **Mandatory JDK 8**
+* **Changes under x86 architecture**: 
+    * **Mandatory JDK 8**: 
     Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as `@PostConstruct` will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86 to ensure environment stability.
-    * **RocksDB/LevelDB compatibility restrictions**
+    * **RocksDB/LevelDB compatibility restrictions**: 
     Due to version discrepancies (x86 uses RocksDB v5.15.10 which supports LevelDB, while ARM uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an ARM environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, **Democritus uniformly prohibits RocksDB from accessing LevelDB databases** (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.
-    * **Toolkit update**
+    * **Toolkit update**: 
     Previously, `db convert` defaulted to a "compatibility mode" that only updated the value of `engine.properties` to RocksDB while keeping the underlying data in LevelDB format. To align with ARM's strict RocksDB requirements, the `db convert` command has been refactored to perform a **non-compatibility conversion** by default (previously the `–safe` flag logic). Consequently, the `–safe` parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.
 * **Other changes**
     * **JDK 17 Compatibility**
@@ -145,25 +143,19 @@ Following the proposal to deprecate the `SELFDESTRUCT` instruction via TIP-652 i
 In versions prior to Democritus, `SELFDESTRUCT` allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the `SELFDESTRUCT` instruction is modified as follows:
 
 * **Restricted Execution Scenarios**
-
 Account data deletion (including code, storage, and the account itself) is now only permitted if `SELFDESTRUCT` is invoked within the same transaction in which the contract was created.
-
     * Scenario 1: invoke `SELFDESTRUCT` in a Subsequent Transaction (Standard Case)
-        
         * The contract account is **not** destroyed.
         * Execution of the current contract stops immediately.
         * No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.
         * If the target address is the contract itself, the assets are not burned.
-    
     * Scenario 2: invoke `SELFDESTRUCT` in the Same Transaction (Creation & Destruction)
-        
         * Execution stops immediately.
         * All account data is purged.
         * All assets are transferred to the target address.
         * If the target address is the contract itself, the balance is reset to zero and the assets are burned.
 
-* **Energy Cost Adjustment**
-
+* Energy Cost Adjustment
 To increase the threshold for usage and further mitigate abuse, the Energy cost for the `SELFDESTRUCT` opcode has been increased from 0 to 5,000.
 
 NOTE: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
@@ -494,6 +486,14 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
+
+
+
+
+
+
+
+
 
 
 
