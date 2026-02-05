@@ -3494,30 +3494,30 @@
 </table>
 <h2 id="greatvoyage-481democritus">GreatVoyage-4.8.1(Democritus)<a class="headerlink" href="#greatvoyage-481democritus" title="Permanent link">&para;</a></h2>
 <h3 id="core">Core<a class="headerlink" href="#core" title="Permanent link">&para;</a></h3>
-<h4 id="1-expand-compatibility-for-arm-architecture-and-jdk-17">1. Expand compatibility for ARM architecture and JDK 17<a class="headerlink" href="#1-expand-compatibility-for-arm-architecture-and-jdk-17" title="Permanent link">&para;</a></h4>
-<p>To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the ARM architecture. In ARM environments, the system currently supports JDK 17 and the RocksDB database.</p>
+<h4 id="1-expand-compatibility-for-arm64-architecture-and-jdk-17">1. Expand compatibility for ARM64 architecture and JDK 17<a class="headerlink" href="#1-expand-compatibility-for-arm64-architecture-and-jdk-17" title="Permanent link">&para;</a></h4>
+<p>To further enrich the java-tron technical ecosystem, the Democritus version introduces support for the arm64 architecture. In arm64 environments, the system currently supports JDK 17 and the RocksDB database.</p>
 <ul>
-<li><strong>ARM architecture</strong><ul>
+<li><strong>ARM64 architecture</strong><ul>
 <li><strong>Mandatory JDK 17</strong>: 
-JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the ARM environments (based on JEP 237, 388, 391).</li>
+JDK 17 is the required Java runtime environment to ensure the operational stability of the node in the arm64 environments (based on JEP 237, 388, 391).</li>
 <li><strong>Mandatory RocksDB</strong>: 
-The database only supports <strong>RocksDB (v9.7.4)</strong>. LevelDB JNI does not support ARM architecture and lacks maintenance, so the community-active RocksDB was chosen.</li>
+The database only supports <strong>RocksDB (v9.7.4)</strong>. LevelDB JNI does not support arm64 architecture and lacks maintenance, so the community-active RocksDB was chosen.</li>
 <li><strong>Floating point computation adaptation</strong>: 
-Floating-point calculations have been switched to use <code>StrictMath</code> via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between ARM and x86 architectures could lead to inconsistent results. Therefore, on ARM architectures,  results are kept consistent with x86 mainnet data via hardcoding.<ul>
-<li>Warning: Private networks on x86 platforms using floating-point computation (specifically Bancor transactions involving <code>pow</code>) may face synchronization issues from genesis on ARM. In such cases, please use a database snapshot from an existing height to start ARM nodes.</li>
+Floating-point calculations have been switched to use <code>StrictMath</code> via a proposal to ensure consistent results across different platforms. Before the proposal took effect, differences in floating-point implementations between arm64 and x86_64 architectures could lead to inconsistent results. Therefore, on arm64 architectures,  results are kept consistent with x86_64 mainnet data via hardcoding.<ul>
+<li>Warning: Private networks on x86_64 platforms using floating-point computation (specifically Bancor transactions involving <code>pow</code>) may face synchronization issues from genesis on arm64. In such cases, please use a database snapshot from an existing height to start arm64 nodes.</li>
 </ul>
 </li>
 <li><strong>Toolkit limitations</strong>: 
-LevelDB-related commands (<code>db archive</code> and <code>db convert</code>) are not supported in ARM environments.</li>
+LevelDB-related commands (<code>db archive</code> and <code>db convert</code>) are not supported in arm64 environments.</li>
 </ul>
 </li>
-<li><strong>Changes under x86 architecture</strong><ul>
+<li><strong>Changes under x86_64 architecture</strong><ul>
 <li><strong>Mandatory JDK 8</strong>: 
-Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as <code>@PostConstruct</code> will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86 to ensure environment stability.</li>
+Since versions higher than JDK 8 have removed Java EE modules (per JEP 320), annotations such as <code>@PostConstruct</code> will fail, leading to NullPointerExceptions and block synchronization failures. Democritus introduces mandatory JDK 8 validation on x86_64 to ensure environment stability.</li>
 <li><strong>RocksDB/LevelDB compatibility restrictions</strong>: 
-Due to version discrepancies (x86 uses RocksDB v5.15.10 which supports LevelDB, while ARM uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an ARM environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, <strong>Democritus uniformly prohibits RocksDB from accessing LevelDB databases</strong> (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.</li>
+Due to version discrepancies (x86_64 uses RocksDB v5.15.10 which supports LevelDB, while arm64 uses v9.7.4 which does not), forcing RocksDB to open LevelDB in an arm64 environment triggers "Database Corruption" errors. To ensure consistent cross-platform behavior and data migration, <strong>Democritus uniformly prohibits RocksDB from accessing LevelDB databases</strong> (Existing databases successfully opened via compatibility mode remain unaffected). Error prompts for LevelDB attempting to open RocksDB have also been optimized, and interfaces/exception logic have been standardized.</li>
 <li><strong>Toolkit update</strong>: 
-Previously, <code>db convert</code> defaulted to a "compatibility mode" that only updated the value of <code>engine.properties</code> to RocksDB while keeping the underlying data in LevelDB format. To align with ARM's strict RocksDB requirements, the <code>db convert</code> command has been refactored to perform a <strong>non-compatibility conversion</strong> by default (previously the <code>–safe</code> flag logic). Consequently, the <code>–safe</code> parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.</li>
+Previously, <code>db convert</code> defaulted to a "compatibility mode" that only updated the value of <code>engine.properties</code> to RocksDB while keeping the underlying data in LevelDB format. To align with arm64's strict RocksDB requirements, the <code>db convert</code> command has been refactored to perform a <strong>non-compatibility conversion</strong> by default (previously the <code>–safe</code> flag logic). Consequently, the <code>–safe</code> parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.</li>
 </ul>
 </li>
 <li>
@@ -3534,7 +3534,7 @@ Previously, <code>db convert</code> defaulted to a "compatibility mode" that onl
 <li>Increase max handle setting parameter: Added the parameter <code>dbSettings.maxOpenFiles</code>, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.</li>
 <li>Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.</li>
 <li>
-<p>To support JDK 17 and ARM architecture, the following dependency changes were made:</p>
+<p>To support JDK 17 and arm64 architecture, the following dependency changes were made:</p>
 <table>
 <thead>
 <tr>
@@ -3573,7 +3573,7 @@ Previously, <code>db convert</code> defaulted to a "compatibility mode" that onl
 <td>org.rocksdb</td>
 <td>rocksdbjni</td>
 <td>-</td>
-<td>9.7.4(arm)</td>
+<td>9.7.4(arm64)</td>
 </tr>
 </tbody>
 </table>
@@ -3849,7 +3849,7 @@ To increase the threshold for usage and further mitigate abuse, the Energy cost 
 </li>
 </ul>
 <h4 id="2-implement-grpc-timeout-mechanism">2. Implement gRPC timeout mechanism<a class="headerlink" href="#2-implement-grpc-timeout-mechanism" title="Permanent link">&para;</a></h4>
-<p>When executing test cases repeatedly (e.g., over 100 times) on ARM, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.</p>
+<p>When executing test cases repeatedly (e.g., over 100 times) on arm64, certain gRPC test cases would hang. To solve this, the Democritus version introduces a gRPC timeout mechanism. A 5-second execution timeout was added for individual gRPC test case, and a 30-second timeout for the entire test execution; if it times out, it breaks and continues executing subsequent logic.</p>
 <ul>
 <li>Source Code: 
 <a href="https://github.com/tronprotocol/java-tron/pull/6441">https://github.com/tronprotocol/java-tron/pull/6441</a>
@@ -3872,7 +3872,7 @@ To increase the threshold for usage and further mitigate abuse, the Energy cost 
 </ul>
 <p><strong>Documents</strong></p>
 <h4 id="1-update-readme-for-fullnode-startup-jvm-parameters">1. Update readme for FullNode startup JVM parameters<a class="headerlink" href="#1-update-readme-for-fullnode-startup-jvm-parameters" title="Permanent link">&para;</a></h4>
-<p>Adjusted the JVM startup parameters for java-tron on x86 and ARM platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.</p>
+<p>Adjusted the JVM startup parameters for java-tron on x86_64 and arm64 platforms, aiming to ensure that FullNode nodes can meet basic disaster recovery requirements under minimum hardware configurations; meanwhile, modified hardware requirements to recommend more stable machine configurations.</p>
 <ul>
 <li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6478">https://github.com/tronprotocol/java-tron/pull/6478</a></li>
 </ul>
