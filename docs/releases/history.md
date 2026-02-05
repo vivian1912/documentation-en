@@ -109,21 +109,22 @@ To further enrich the java-tron technical ecosystem, the Democritus version intr
     Previously, `db convert` defaulted to a "compatibility mode" that only updated the value of `engine.properties` to RocksDB while keeping the underlying data in LevelDB format. To align with ARM's strict RocksDB requirements, the `db convert` command has been refactored to perform a **non-compatibility conversion** by default (previously the `–safe` flag logic). Consequently, the `–safe` parameter and "compatibility mode" have been removed to ensure seamless data migration across architectures.
 * **Other changes**
     * **JDK 17 Compatibility**
-        * Null pointer compatibility: Optimized null pointer prompt information (based on JEP 358) to facilitate problem positioning.
+        * Null pointer compatibility: Optimized null pointer prompt information to facilitate problem positioning (based on JEP 358).
         * Number conversion exception compatibility: Optimized number conversion exception prompts and added conversion radix error prompts (based on JDK-8176425).
         * JDK version parsing compatibility: Adapted to JDK 10+ version number format changes (based on JEP 223).
         * var inference keyword: Supports var type inference mechanism (based on JEP 286).
     * **RocksDB Resource Optimization**
-        * Increase max handle setting parameter: Added parameter dbSettings.maxOpenFiles, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.
+        * Increase max handle setting parameter: Added the parameter `dbSettings.maxOpenFiles`, default is 5000 (previously mandatory and unconfigurable), developers can adjust according to server load.
         * Resource release optimization: Set a reasonable lifecycle for RocksDB resources to release used resources in time, avoiding potential memory leak problems.
         * To support JDK 17 and ARM architecture, the following dependency changes were made:
-        |  group-name   | package-name | Old version | New version |
-        | --- | -------- | -------- | -------- |
-        | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
-        |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
-        | javax.jws    |   javax.jws-api       |   -       |      1.1    |
-        |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
-        |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
+        
+            |  group-name   | package-name | Old version | New version |
+            | --- | -------- | -------- | -------- |
+            | org.projectlombok    |   lombok       |   1.18.12       |   1.18.34       |
+            |  javax.annotation   |   javax.annotation-api       |   -       |  1.3.2        |
+            | javax.jws    |   javax.jws-api       |   -       |      1.1    |
+            |  org.aspectj   | aspectjrt    | 1.8.13     | 1.9.8     |
+            |  org.rocksdb   | rocksdbjni    | -     | 9.7.4(arm)    |
 
 * Issue：[https://github.com/tronprotocol/java-tron/issues/5954](https://github.com/tronprotocol/java-tron/issues/5954)
 * Source Code：
@@ -482,9 +483,8 @@ Fixed the hexadecimal casing error in the `ReasonCode` struct, resolving compila
 #### 1. Introduce the`eth_getBlockReceipts` API
 The Democritus version introduces the `eth_getBlockReceipts` interface, used to query all transaction receipts in a specified block. For genesis blocks, blocks already pruned by light nodes, and unproduced blocks, it returns `null`.
 
-**Parameters**: block number (required). Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").
-
-**Returns**: An array of objects, where each object is a receipt for a transaction in that block. The structure is consistent with [eth_getTransactionReceipt](https://developers.tron.network/reference/eth_gettransactionreceipt).
+* **Parameters**: block number (required). Supports three types: hexadecimal string, blockHash (with or without 0x prefix), or tags ("latest", "earliest", "finalized").
+* **Returns**: An array of objects, where each object is a receipt for a transaction in that block. The structure is consistent with [eth_getTransactionReceipt](https://developers.tron.network/reference/eth_gettransactionreceipt).
 
 
 * Source Code: 
@@ -493,16 +493,13 @@ The Democritus version introduces the `eth_getBlockReceipts` interface, used to 
 #### 2. Introduce a new API to query the real-time vote count of witness
 The Democritus version introduces the `getPaginatedNowWitnessList` interface. This endpoint is designed to query real-time voting data for the current epoch and return a paginated list of witnesses sorted in descending order of their vote counts. where votes = final votes at the end of the last maintenance period + voting increments in the current epoch (can be negative).
 
-**Parameters**
-
-* offset: long, start index, requires >= 0.
-* limit: long, number of items to return, requires > 0, upper limit is 1000.
-* visible: boolean, optional; controls whether the returned JSON address is in readable encoding.
-
-**Returns**
-
-* Success: witnesses array, each item is a Witness (containing address, vote count, URL, etc.), sorted descending by "real-time votes".
-* Failure: No result or invalid parameters. When limit <= 0, offset < 0, or offset >= total Witness count, returns {} (empty object), http code = 200.
+* **Parameters**
+    * offset: long, start index, requires >= 0.
+    * limit: long, number of items to return, requires > 0, upper limit is 1000.
+    * visible: boolean, optional; controls whether the returned JSON address is in readable encoding.
+* **Returns**
+    * Success: witnesses array, each item is a Witness (containing address, vote count, URL, etc.), sorted descending by "real-time votes".
+    * Failure: No result or invalid parameters. When limit <= 0, offset < 0, or offset >= total Witness count, returns {} (empty object), http code = 200.
 
 API-specific errors: When in a maintenance period and requesting non-solidified data, throws a maintenance period unavailable exception, http code = 200.
 
@@ -561,7 +558,6 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
-
 
 
 
