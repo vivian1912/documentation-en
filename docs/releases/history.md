@@ -82,9 +82,6 @@
 
 
 
-
-
-
 ## GreatVoyage-4.8.1(Democritus)
 
 ### Core
@@ -336,7 +333,7 @@ The Democritus version introduces an optimized shutdown logic for the `HistoryEv
 **Test Case**
 
 #### 1. Optimize resource management for test cases
-The Democritus version introduces a systematic optimization of resource management for unit testing. These enhancements significantly improve execution efficiency while further ensuring the cleanliness and stability of the testing environment:
+The Democritus version introduces a systematic optimization of resource management for unit testing. These enhancements significantly improve execution efficiency while further ensuring the cleanliness and stability of the testing environment.
 
 * **Standardized Cleanup Mechanism**: Implemented a more rigorous file cleanup protocol to ensure that all temporary data generated during testing is thoroughly removed post-execution.
 * **Improved Execution Performance**: By optimizing high-latency test cases, the total duration of the unit testing suite has been reduced by up to 30%.
@@ -494,19 +491,6 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## GreatVoyage-4.8.0.1(Seneca)
