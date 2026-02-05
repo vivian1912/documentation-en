@@ -81,6 +81,9 @@
 
 
 
+
+
+
 ## GreatVoyage-4.8.1(Democritus)
 
 ### Core
@@ -141,20 +144,26 @@ Following the proposal to deprecate the `SELFDESTRUCT` instruction via TIP-652 i
 
 In versions prior to Democritus, `SELFDESTRUCT` allowed a contract to terminate itself, transfer its funds to a designated address, and delete all associated account data (code, storage, and the account itself). Starting with the Democritus release, the behavior of the `SELFDESTRUCT` instruction is modified as follows:
 
-* Restricted Execution Scenarios
+* **Restricted Execution Scenarios**
+
 Account data deletion (including code, storage, and the account itself) is now only permitted if `SELFDESTRUCT` is invoked within the same transaction in which the contract was created.
+
     * Scenario 1: invoke `SELFDESTRUCT` in a Subsequent Transaction (Standard Case)
+        
         * The contract account is **not** destroyed.
         * Execution of the current contract stops immediately.
         * No data is deleted, including storage keys, code, or the account itself. However, all assets (TRX, staked TRX, and TRC10 tokens) are transferred to the target address.
         * If the target address is the contract itself, the assets are not burned.
+    
     * Scenario 2: invoke `SELFDESTRUCT` in the Same Transaction (Creation & Destruction)
+        
         * Execution stops immediately.
         * All account data is purged.
         * All assets are transferred to the target address.
         * If the target address is the contract itself, the balance is reset to zero and the assets are burned.
 
-* Energy Cost Adjustment
+* **Energy Cost Adjustment**
+
 To increase the threshold for usage and further mitigate abuse, the Energy cost for the `SELFDESTRUCT` opcode has been increased from 0 to 5,000.
 
 NOTE: This feature is governed by TRON network parameter #94. It is disabled by default (value: 0) and can be enabled through a governance proposal vote. Once enabled, it cannot be disabled.
@@ -485,6 +494,15 @@ The table below contrasts the duplication rate of `bitIndex` and execution time 
 ---
 *To a wise and good man the whole earth is his fatherland.*
 <p align="right">---Democritus</p>
+
+
+
+
+
+
+
+
+
 
 ## GreatVoyage-4.8.0.1(Seneca)
 
