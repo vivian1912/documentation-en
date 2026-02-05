@@ -7,11 +7,11 @@ For **mandatory upgrades**, it is crucial to strictly follow this guide to compl
   * For standard nodes, please refer to the [Standard Node Upgrade Process](#standard_process).
   * For nodes configured with a primary/backup high-availability setup, please follow the [Primary/Backup Node Upgrade Guide](#primary/backup_upgrade) to ensure a seamless service transition.
 
------
+
 <a id="standard_process"></a>
 ## Standard Node Upgrade Process
 
-All Fullnodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.
+All FullNodes, including block-producing Super Representative nodes, should follow these steps to complete the upgrade.
 
 <a id="step1"></a> 
 ### Step 1: Prepare the New Version Package
@@ -27,7 +27,6 @@ You can either download the compiled java-tron executable directly or download t
 #### Option 2: Compile from Source Code
 
 1. Clone the `java-tron` repository and switch to the target version's branch.
-
     ```
     # clone the repository
     $ git clone https://github.com/tronprotocol/java-tron.git
@@ -35,7 +34,7 @@ You can either download the compiled java-tron executable directly or download t
     # Switch to the specified version branch
     $ cd java-tron
     $ git checkout -b release_vx.x.x
-    ```    
+    ```
 2. Run the build command. Upon successful compilation, the new executable file, `FullNode.jar`, will be generated in the `build/libs/` directory.
     ```
     $ ./gradlew clean build -x test
@@ -92,21 +91,61 @@ After preparing the new version of the executable file and backing up the origin
 <a id="step5"></a> 
 ### Step 5: Start the Node
 
-Please select the appropriate startup command based on your node type.
+Please select the appropriate startup command below as a reference based on the node type and CPU architecture. For detailed explanations of the command parameters, refer to the [ Deployment](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/#starting-a-fullnode-on-the-tron-main-network) section. Adjust the parameter values according to your actual runtime environment.
 
-  * **Super Representative (Block-Producing Node)**
-
-    ```
-    nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar  -p <your private key> --witness -c config.conf </dev/null &>/dev/null &
-    ```
-    > **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
+#### Super Representative Node (Block-Producing Node)
+* **x86_64 Architecture (Only JDK 8 is supported)**
+```bash
+nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+```
+* **ARM64 Architecture (Only JDK 17 is supported)**
+```bash
+nohup java -Xms9G -Xmx24G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar ./build/libs/FullNode.jar --witness -c config.conf &
+```
+> **Note**: We recommend managing your private key using a `keystore` file or within the configuration file, rather than passing it directly as a command-line argument.
     
-  * **Regular Fullnode**
+#### Regular FullNode
 
-    ```
-    nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar -c config.conf </dev/null &>/dev/null &
-
-    ```
+* **x86_64 Architecture (Only JDK 8 is supported)**
+```bash
+nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+```
+* **ARM64 Architecture (Only JDK 17 is supported)**
+```bash
+nohup java -Xmx9G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+```
 
 ### Step 6: Verify and Monitor
 
@@ -118,7 +157,7 @@ Please select the appropriate startup command based on your node type.
         ```
         curl http://127.0.0.1:8090/wallet/getnowblock
         ```
-    - To check the block height on Mainnet in real-time on [TRONSCAN](https://tronscan.org).
+    - To check the real-time block height of the Mainnet, use the [TRONSCAN](https://tronscan.org) block explorer.
 
 **Contingency Plan**: If you encounter any issues during the upgrade process that prevent the node from starting or running correctly, immediately use the data backed up in [Step 3](#step3) to restore the previous version. Please submit a GitHub Issue or report the problem to the TRON community for assistance.
 
