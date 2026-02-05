@@ -3648,9 +3648,9 @@ To increase the threshold for usage and further mitigate abuse, the Energy cost 
 <p>Prior to the Democritus release, certain <code>P2P_DISCONNECT</code> messages utilized vague reason codes, hindering accurate network troubleshooting. This update refines the error reporting logic for three specific scenarios to provide clearer diagnostic data:</p>
 <ul>
 <li>Scenario 1: If a connection is terminated because a received block fails signature verification, the reason code is updated from <code>UNKNOWN</code> to <code>BAD_BLOCK</code>.</li>
-<li>Previously, failures during the <code>HelloMessage</code> validation incorrectly triggered an <code>UNEXPECTED_IDENTITY</code> error, even when no identity-specific checks were performed. This has been corrected to <code>INCOMPATIBLE_PROTOCOL</code> to accurately reflect the validation failure.</li>
+<li>Scenario 2: Previously, failures during the <code>HelloMessage</code> validation incorrectly triggered an <code>UNEXPECTED_IDENTITY</code> error, even when no identity-specific checks were performed. This has been corrected to <code>INCOMPATIBLE_PROTOCOL</code> to accurately reflect the validation failure.</li>
 <li>
-<p>When a <code>P2P_HELLO</code> message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as <code>INCOMPATIBLE_PROTOCOL</code> instead of <code>UNKNOWN</code>.</p>
+<p>Scenario 3: When a <code>P2P_HELLO</code> message contains a Block ID with a length other than 32 bytes, the disconnection reason is now reported as <code>INCOMPATIBLE_PROTOCOL</code> instead of <code>UNKNOWN</code>.</p>
 </li>
 <li>
 <p>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6394">https://github.com/tronprotocol/java-tron/pull/6394</a></p>
@@ -3727,93 +3727,68 @@ To increase the threshold for usage and further mitigate abuse, the Energy cost 
 <h4 id="8-update-dependencies">8. Update dependencies<a class="headerlink" href="#8-update-dependencies" title="Permanent link">&para;</a></h4>
 <p>Upgraded dependencies such as <code>grpc-java</code>, <code>spring</code>, <code>jackson</code>, and <code>jetty</code>:</p>
 <table>
-  <thead>
-    <tr>
-      <th>group-name</th>
-      <th>package-name</th>
-      <th>Old version</th>
-      <th>New version</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>org.eclipse.jetty</td>
-      <td>jetty-server</td>
-      <td>9.4.53.v20231009</td>
-      <td>9.4.57.v20241219</td>
-    </tr>
-    <tr>
-      <td>com.cedarsoftware</td>
-      <td>java-util</td>
-      <td>1.8.0</td>
-      <td>3.2.0</td>
-    </tr>
-    <tr>
-      <td>com.fasterxml.jackson.core</td>
-      <td>jackson-databind</td>
-      <td>2.13.4.2</td>
-      <td>2.18.3</td>
-    </tr>
-    <tr>
-      <td>com.carrotsearch</td>
-      <td>java-sizeof</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td rowspan="4">org.springframework</td>
-      <td>spring-tx</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-web</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>spring-context</td>
-      <td>5.3.18</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>spring-test</td>
-      <td>5.2.0.RELEASE</td>
-      <td>5.3.39</td>
-    </tr>
-    <tr>
-      <td>io.grpc</td>
-      <td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
-      <td>1.60.0</td>
-      <td>1.75.0</td>
-    </tr>
-    <tr>
-      <td>com.google.protobuf</td>
-      <td>protobuf-java, protobuf-java-util, protoc</td>
-      <td>3.25.5</td>
-      <td>3.25.8</td>
-    </tr>
-    <tr>
-      <td>org.hamcrest</td>
-      <td>hamcrest-junit</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>com.google.inject</td>
-      <td>guice</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>io.vavr</td>
-      <td>vavr</td>
-      <td>delete</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr>
+<th>group-name</th>
+<th>package-name</th>
+<th>Old version</th>
+<th>New version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.eclipse.jetty</td>
+<td>jetty-server</td>
+<td>9.4.53.v20231009</td>
+<td>9.4.57.v20241219</td>
+</tr>
+<tr>
+<td>com.cedarsoftware</td>
+<td>java-util</td>
+<td>1.8.0</td>
+<td>3.2.0</td>
+</tr>
+<tr>
+<td>com.fasterxml.jackson.core</td>
+<td>jackson-databind</td>
+<td>2.13.4.2</td>
+<td>2.18.3</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-context</td>
+<td>5.3.18</td>
+<td>5.3.39</td>
+</tr>
+<tr>
+<td>org.springframework</td>
+<td>spring-test</td>
+<td>5.2.0.RELEASE</td>
+<td>5.3.39</td>
+</tr>
+<tr>
+<td>io.grpc</td>
+<td>grpc-netty, grpc-protobuf, grpc-stub, grpc-core, grpc-services</td>
+<td>1.60.0</td>
+<td>1.75.0</td>
+</tr>
+<tr>
+<td>com.google.protobuf</td>
+<td>protobuf-java, protobuf-java-util, protoc</td>
+<td>3.25.5</td>
+<td>3.25.8</td>
+</tr>
+</tbody>
 </table>
-
+<p>Deleted dependencies: 
+| group-name | package-name |
+| --- | --- |
+| com.carrotsearch | java-sizeof | 
+| org.springframework | spring-tx | 
+| org.springframework | spring-web |
+| org.hamcrest | hamcrest-junit | 
+| com.google.inject | guice |
+| io.vavr | vavr | </p>
 <p>Additionally, the Democritus version upgrades the underlying network library <code>libp2p</code>, from 2.2.6 to 2.2.7. This version not only adds compilation support for JDK 17 but also introduces numerous optimizations and improvements:</p>
 <ul>
 <li>Added formal compilation support for JDK 17 (<a href="https://github.com/tronprotocol/libp2p/pull/113">#113</a>).</li>
@@ -3984,8 +3959,10 @@ After modification: The <code>data</code> field returns error information (e.g.,
        &quot;data&quot;: &quot;0xcf47918100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000064&quot;
     }
 }
-</code></pre></div>
-* Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6369">https://github.com/tronprotocol/java-tron/pull/6369</a></p>
+</code></pre></div></p>
+<ul>
+<li>Source Code:  <a href="https://github.com/tronprotocol/java-tron/pull/6369">https://github.com/tronprotocol/java-tron/pull/6369</a></li>
+</ul>
 <h4 id="4-performance-optimization-for-eth_getlogs-eth_getfilterlogs">4. Performance optimization for eth_getLogs, eth_getFilterLogs<a class="headerlink" href="#4-performance-optimization-for-eth_getlogs-eth_getfilterlogs" title="Permanent link">&para;</a></h4>
 <p>Event query interfaces like <code>eth_getLogs</code> rely on a <code>partialMatch</code> function to query the Bloom database. The query conditions are derived from 3 <code>bitIndexes</code> generated for each topic or address. Since the Bloom filter has a bit limit (2048 bits), when the number of topics reaches 683, the total number of indexes ( 683 * 3 &gt; 2048) exceeds the filter capacity. This inevitably leads to bit collisions and redundant bitIndexes, resulting in duplicate database queries. To address this, the proposed optimization implements de-duplication of bitIndexes prior to execution, significantly reducing the frequency of database lookups.</p>
 <p>The table below contrasts the duplication rate of <code>bitIndex</code> and execution time of <code>partialMatch</code> under different numbers of topics and addresses. It shows that as the number of <code>topics</code> increases, the higher the <code>bitIndex</code> duplication, the more significant the performance improvement after optimization.</p>
