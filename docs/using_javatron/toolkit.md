@@ -1,8 +1,8 @@
 # Toolkit: A Java-tron Node Maintenance Suite
 
-The TRON Toolkit is a comprehensive utility that integrates various ecosystem tools for `java-tron`, designed to streamline node maintenance and management operations. We are committed to expanding its functionality in future releases to improve the developer experience. The Toolkit currently offers the following core features:
+The TRON Toolkit is a comprehensive utility that integrates various ecosystem tools for `java-tron`, designed to streamline node maintenance and management operations. We are continuously expanding its functionality in future releases to improve the developer experience. The Toolkit currently offers the following core features:
 
-* [Database Partitioning](#database-partition-tool): Alleviates storage pressure caused by on-chain data growth.
+* [Database Partitioning](#database-partitioning-tool): Alleviates storage pressure caused by on-chain data growth.
 * [Lite Fullnode Data Pruning](#lite-fullnode-data-pruning): Enables periodic pruning of Lite Fullnode data.
 * [Fast Data Copy](#fast-data-copy-tool): Implements rapid database copying.
 * [Data Conversion](#data-conversion-tool): Supports data format conversion from LevelDB to RocksDB.
@@ -10,6 +10,7 @@ The TRON Toolkit is a comprehensive utility that integrates various ecosystem to
 
 This document provides a detailed guide on how to acquire and use the TRON Toolkit.
 
+**Note**: Because only RocksDB is supported on the arm64 architecture, LevelDB-specific tools like `db convert` and `db archive` can only be used on x86_64 architectures.
 
 ## Obtaining the Toolkit
 
@@ -33,23 +34,23 @@ Upon successful compilation, the `Toolkit.jar` artifact will be located in the `
 
 ## Database Partitioning Tool
 
-The continuous growth of TRON's on-chain data (Mainnet Fullnode database currently exceeds 2TB and grows by approximately 1.2GB daily) places increasing storage demands on nodes. To address the limitations of single-disk capacity, the TRON Toolkit includes a **database storage partitioning tool**. This tool enables you to migrate specific database components to different storage disks based on a configuration file. This allows you to expand storage capacity by adding new devices rather than replacing existing ones when disk space becomes insufficient.
+The continuous growth of TRON's on-chain data (Mainnet Fullnode database currently exceeds 2TB and grows by approximately 1.2GB daily) places increasing storage demands on nodes. To address single-disk capacity limitations, the TRON Toolkit includes a **database storage partitioning tool**. This tool enables you to migrate specific database components to different storage disks based on a configuration file. This allows you to expand storage capacity by adding new devices rather than replacing existing ones when disk space becomes insufficient.
 
 ### Command and Parameters
 
 Use the `db mv` command to execute the data migration：
 ```
 # full command
-java -jar Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
+java -jar build/libs/Toolkit.jar db mv [-h] [-c=<config>] [-d=<database>]
 # examples
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 **Optional Parameters**：
 
-*   `-c | --config <string>`: Specifies the FullNode configuration file path. Default: `config.conf`。
-*   `-d | --database-directory <string>`: Specifies the FullNode database directory. Default: `output-directory`。
-*   `-h | --help <boolean>`: Displays help information. Default: `false`。
+*   `-c | --config <string>`: Specifies the FullNode configuration file path. Default: `config.conf`.
+*   `-d | --database-directory <string>`: Specifies the FullNode database directory. Default: `output-directory`.
+*   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 ### Usage Instructions
 
@@ -98,7 +99,7 @@ storage {
 *   `name`：The name of the database to be migrated.
 *   `path`：The target directory for the database migration.
 
-The tool will move the database specified by `name` to the `path` directory and create a soft link in the original location pointing to the new directory. After the Fullnode restart, it will use this link to locate the data.
+The tool will move the database specified by `name` to the `path` directory and create a soft link in the original location pointing to the new directory. Upon restarting, the FullNode will use this link to locate the data.
 
 
 #### 3. Execute the Database Migration
@@ -106,48 +107,27 @@ The tool will move the database specified by `name` to the `path` directory and 
 After configuration, run the following command to perform the migration. The command will display the current progress.
 
 ```
-java -jar Toolkit.jar db mv -c main_net_config.conf -d /data/tron/output-directory
+java -jar build/libs/Toolkit.jar db mv -c framework/src/main/resources/config.conf -d /data/tron/output-directory
 ```
 
 #### 4. Restart the FullNode Service
 
 Once the migration is complete, restart your `java-tron` node. 
 
-**FullNode Startup Command Example**：
+[**FullNode Startup Command Example**](../installing_javatron/#starting-a-fullnode-on-the-tron-main-network)
 
-```
-nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-                -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-                -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-                -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-                -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-                -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-                -XX:+HeapDumpOnOutOfMemoryError \
-                -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-                -jar FullNode.jar -c main_net_config.conf >> start.log 2>&1 &
-```
-**Super Representative (SR) FullNode Startup Command Example**：
-```
-nohup java -Xms9G -Xmx9G -XX:ReservedCodeCacheSize=256m \
-               -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-               -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-               -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-               -XX:+UseConcMarkSweepGC -XX:NewRatio=2 \
-               -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-               -XX:+HeapDumpOnOutOfMemoryError \
-               -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-               -jar FullNode.jar --witness -c main_net_config.conf >> start.log 2>&1 &
-```
+[**Super Representative (SR) FullNode Startup Command Example**](../installing_javatron/#starting-a-block-production-node)
+
 ## Lite Fullnode Data Pruning
 
 The TRON Toolkit provides a **data pruning tool** primarily used for generating and managing lite FullNode data.
 
-A FullNode's complete data can be split into two parts: a snapshot dataset (Snapshot Dataset) or a historical dataset (History Dataset).
+A FullNode's complete data can be split into two parts: a Snapshot Dataset or a History Dataset.
 
 * **Snapshot Dataset**: Used to start a lite FullNode. It does not contain historical data prior to the block height at the time of pruning.
 * **History Dataset**: Used for querying historical data.
 
-The snapshot dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the snapshot dataset, it has the advantages of low disk usage and fast startup speeds.
+The Snapshot Dataset contains all account state data plus the history of the most recent 65,536 blocks. It occupies a small amount of space (approximately 3% of a FullNode's data). Since a Lite Fullnode starts using only the Snapshot Dataset, it benefits from low disk usage and fast startup speeds.
 
 The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or a **History Dataset**. It also supports merging a history dataset back with a snapshot dataset. This enables the following use cases:
 * **Convert FullNode Data into Lite Fullnode Data**: Split the full node data to generate a snapshot dataset, which is all that's needed to run a light node.
@@ -163,14 +143,14 @@ The data pruning tool can split a FullNode's data into a **Snapshot Dataset** or
 Use the `db lite` command to perform data pruning operations:
 ```
 # full command
-  java -jar Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
+  java -jar build/libs/Toolkit.jar db lite [-h] -ds=<datasetPath> -fn=<fnDataPath> [-o=<operate>] [-t=<type>]
 # examples
   #split and get a snapshot dataset
-  java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
   #split and get a history dataset
-  java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+  java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
   #merge history dataset and snapshot dataset
-  java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+  java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
 **Optional Parameters**：
 
@@ -197,7 +177,7 @@ First, stop the node, then execute the following command:
 
 ```shell
 # For simplicity, the snapshot dataset will be stored in the /tmp directory
-java -jar Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
+java -jar build/libs/Toolkit.jar db lite -o split -t snapshot --fn-data-path output-directory/database --dataset-path /tmp
 ```
 
 * `--fn-data-path`: The source directory of the data to be pruned (the node's database directory).
@@ -213,7 +193,7 @@ To split and create a history dataset, use the following command:
 
 ```
 # For simplicity, the history dataset will be stored in the /tmp directory
-java -jar Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
+java -jar build/libs/Toolkit.jar db lite -o split -t history --fn-data-path output-directory/database --dataset-path /tmp
 ```
 
 *   `--fn-data-path`: The FullNode's database directory.
@@ -231,7 +211,7 @@ Use the following command to merge a history dataset and a snapshot dataset:
 
 ```shell
 # Assuming the snapshot dataset is in /tmp/snapshot and the history dataset is in /tmp/history
-java -jar Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
+java -jar build/libs/Toolkit.jar db lite -o merge --fn-data-path /tmp/snapshot --dataset-path /tmp/history
 ```
 *   `--fn-data-path`: The directory of the snapshot dataset.
 *   `--dataset-path`: The directory of the history dataset.
@@ -249,9 +229,9 @@ Use the `db cp` command to perform a data copy operation:
 
 ```shell
 # full command
-  java -jar Toolkit.jar db cp [-h] <src> <dest>
+  java -jar build/libs/Toolkit.jar db cp [-h] <src> <dest>
 # examples
-  java -jar Toolkit.jar db cp  output-directory/database /tmp/databse
+  java -jar build/libs/Toolkit.jar db cp  output-directory/database /tmp/databse
 ```
 
 **Optional Parameters**:
@@ -271,18 +251,15 @@ Use the `db convert` command to perform the data conversion:
 
 ```
 # full command
-  java -jar Toolkit.jar db convert [-h] [--safe] <src> <dest>
+  java -jar build/libs/Toolkit.jar db convert [-h] <src> <dest>
 # examples
-  java -jar Toolkit.jar db convert  output-directory/database /tmp/database
+  java -jar build/libs/Toolkit.jar db convert  output-directory/database /tmp/database
 ```
 
 **Optional Parameters**:
 
 *   `<src>`: Specifies the source LevelDB data directory. Default: `output-directory/database`.
 *   `<dest>`: Specifies the output directory for the RocksDB data. Default: `output-directory-dst/database`.
-*   `--safe <boolean>`: Toggles safe mode for the conversion. The default is `false`, but we recommended setting this to `true` for better data compatibility.
-    *   If safe mode is enabled, the tool reads all data from LevelDB and writes it to RocksDB. This process is slower but more thorough.
-    *   If safe mode is disabled (default), the tool performs a much faster conversion. Because the current version of RocksDB is compatible with LevelDB, this mode simply changes the `engine.properties` file setting from `leveldb` to `rocksdb`.
 *   `-h | --help <boolean>`: Displays help information. Default: `false`.
 
 > **Important Note**: Before performing any operation with this tool, you must stop the currently running node.
@@ -297,16 +274,16 @@ Use the `db archive` command to perform the LevelDB startup optimization:
 
 ```
 # full command
-   java -jar Toolkit.jar db archive [-h] [-b=<maxBatchSize>] [-d=<databaseDirectory>] [-m=<maxManifestSize>]
+   java -jar build/libs/Toolkit.jar db archive [-h] [-b=<maxBatchSize>] [-d=<databaseDirectory>] [-m=<maxManifestSize>]
 # examples
    #1. use default settings
-   java -jar Toolkit.jar db archive 
+   java -jar build/libs/Toolkit.jar db archive 
    #2. specify the database directory as /tmp/db/database
-   java -jar Toolkit.jar db archive -d /tmp/db/database 
+   java -jar build/libs/Toolkit.jar db archive -d /tmp/db/database 
    #3. specify the batch size to 64000 when optimizing manifest
-   java -jar Toolkit.jar db archive -b 64000
+   java -jar build/libs/Toolkit.jar db archive -b 64000
    #4. specify optimization only when Manifest exceeds 128M
-   java -jar Toolkit.jar db archive -m 128 
+   java -jar build/libs/Toolkit.jar db archive -m 128 
 ```
 
 **Optional Parameters**:

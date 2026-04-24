@@ -2,12 +2,15 @@
 
 This document guides developers on how to deploy a TRON java-tron node on `Linux` or `macOS` operating systems.
 
-**Important Note:** The java-tron node currently requires **Oracle JDK 1.8**. Other JDK versions are not supported.
+Currently, a java-tron node supports running on both x86_64 and arm64 architectures(support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:
+
+- For the x86_64 architecture, currently only Oracle JDK 8 is supported.
+- For the arm64 architecture, currently only JDK 17 is supported.
 
 
 ## Hardware Configuration Requirements
 
-The minimum hardware configuration required to run a java-tron node is as follows:
+The minimum hardware requirements to run a java-tron node are as follows:
 
 * **CPU**: 8 Cores
 * **Memory**: 16 GB
@@ -21,7 +24,7 @@ The recommended configuration is:
 * **SSD**: 3.5 TB+
 * **Network Bandwidth**: 100 Mbps
 
-For a Super Representative (SR) node acting as a **block production node**, the recommended configuration is:
+For a Super Representative (SR) node acting as a **block-production node**, the recommended configuration is:
 
 * **CPU**: 32 Cores
 * **Memory**: 64 GB
@@ -33,11 +36,11 @@ For a Super Representative (SR) node acting as a **block production node**, the 
 
 You can directly download the official client [here](https://github.com/tronprotocol/java-tron/releases), or you can compile the source code yourself to package the client.
 
-### Prerequisites Before Compiling java-tron
+### Prerequisites for Compiling java-tron
 Before compiling java-tron, make sure you have:
 
-- Operating system: `Linux` or `MacOS` (Windows is not supported).
-- Git and correct JDK version installed based on your CPU architecture.
+- Operating system: `Linux` or `macOS` (`Windows` is not supported).
+- Git and the correct JDK version installed based on your CPU architecture.
 
 Step 1: Verify Git is installed
 
@@ -55,7 +58,7 @@ uname -m
 
 - If your architecture is `x86_64` (Intel/AMD 64-bit):
 
-    - Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html
+    - Install Java SE 8 (Oracle JDK 8): [https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html)
     - Verify:
     ```bash
     java -version
@@ -64,7 +67,7 @@ uname -m
 
 - If your architecture is `arm64` or `aarch64` (Apple Silicon / ARM servers):
 
-    - Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17
+    - Install Java SE 17 (JDK 17): [https://www.oracle.com/java/technologies/downloads/#java17](https://www.oracle.com/java/technologies/downloads/#java17)
     - Verify:
     ```bash
     java -version
@@ -83,72 +86,88 @@ uname -m
     ```
     ./gradlew clean build -x test
     ```
-    * The parameter `-x test` indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.
+    * The `-x test` parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.
     * If you encounter `DependencyVerificationException` during the build, refresh dependencies and regenerate verification metadata:
       ```
       ./gradlew clean build -x test --refresh-dependencies
       ```
     * After compilation is complete, the `FullNode.jar` file will be generated in the `java-tron/build/libs/` directory.
 
-## Starting a java-tron Node
+## Starting a java-tron Full Node
+A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.
 
-You can choose different configuration files to connect the java-tron node to different TRON networks:
+### Network Types
 
-* For Mainnet FullNode configuration file: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf)
-* For other network node configuration:
-    * Nile Testnet: https://nileex.io/
-    * Private Network: please refer to [Private Network](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/)
+The TRON network is mainly divided into:
 
-### Quick Start a FullNode 
+- **Main Network (Mainnet)**  
+  The primary public blockchain where real value (TRX, TRC-20 tokens, etc.) is transacted, secured by a massive decentralized network.
 
-A **FullNode** serves as an entry point to the TRON network, possesses complete historical data, and provides external access via **HTTP API**, **gRPC API**, and **JSON-RPC API**. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.
+- **[Nile Test Network (Testnet)](https://nileex.io/)**  
+  A forward-looking testnet where new features and governance proposals are launched first for developers to experience. Consequently, its codebase is typically ahead of the Mainnet.
 
-Below is the command to start a **Mainnet FullNode**, specifying the configuration file with the `-c` parameter:
+- **[Shasta Testnet](https://shasta.tronex.io/)**  
+  Closely mirrors the Mainnet’s features and governance proposals. Its network parameters and software versions are kept in sync with the Mainnet, providing developers with a highly realistic environment for final testing.
 
-```
-$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &
+- **Private Networks**  
+  Customized TRON networks set up by private entities for testing, development, or specific use cases.
+
+Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: [config.conf](https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf); Nile testnet configuration: [config-nile.conf](https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf)
+
+### Starting a FullNode on the TRON main network
+
+Launch a main-network full node with the built-in default configuration:
+```bash
+nohup java -jar build/libs/FullNode.jar &
 ```
 
 * `nohup ... &`: Runs the command in the background and ignores the hangup signal.
-* The `Xms9G` parameter suggests the minimal heap size to `9 GB` for connecting to Mainnet.
-* To start a **Nile Testnet FullNode** or **Private Network FullNode**, use the corresponding configuration file links provided above.
 
-### JVM Parameter Optimization for Mainnet FullNode Deployment
-For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:
+> For production deployments or long-running Mainnet nodes, please refer to the below [JVM Parameter Optimization for FullNode](#jvm-parameter-optimization-for-mainnet-fullnode-deployment) guide for the recommended Java commands.
 
-#### x86_64 (JDK 8)
+Using the command below, you can monitor the block synchronization progress:
 ```bash
-$ nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
-             -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
-             -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
-             -XX:+PrintGCDateStamps  -Xloggc:gc.log \
-             -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
-             -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
-             -XX:+HeapDumpOnOutOfMemoryError \
-             -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
-             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
-```
-#### ARM64 (JDK 17)
-```bash
-$ nohup java -Xmx9G -XX:+UseZGC \
-             -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
-             -XX:ReservedCodeCacheSize=256m \
-             -XX:+UseCodeCacheFlushing \
-             -XX:MetaspaceSize=256m \
-             -XX:MaxMetaspaceSize=512m \
-             -XX:MaxDirectMemorySize=1g \
-             -XX:+HeapDumpOnOutOfMemoryError \
-             -jar ./build/libs/FullNode.jar -c main_net_config.conf &
+tail -f ./logs/tron.log
 ```
 
-#### Java Startup Parameters Explanation
+Use [TronScan](https://tronscan.org/#/), TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, and more.
+
+Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.
+
+#### JVM Parameter Optimization for Mainnet FullNode Deployment
+For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:
+
+##### x86_64 (JDK 8)
+```bash
+nohup java -Xms9G -Xmx12G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
+```
+##### arm64 (JDK 17)
+```bash
+nohup java -Xmx9G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf &
+```
+
+##### Java Startup Parameters Explanation
 **General & Memory Parameters:**
 
 *   `-Xms` / `-Xmx`: Sets the initial and maximum JVM heap size.
-
-    > For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
-    > For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
-  
+    * For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use `-Xms9G -Xmx12G`; JDK 17 use `-Xmx9G`.
+    * For servers with ≥32 GB RAM, suggest setting the maximum heap size (`-Xmx`) to 40 % of total RAM, with the minimum to `-Xms9G`.
 *   `-XX:MetaspaceSize` / `-XX:MaxMetaspaceSize`: Sets the initial and maximum size of Metaspace (class metadata).
 *   `-XX:MaxDirectMemorySize`: Limits the memory used by NIO Direct Byte Buffers.
 *   `-XX:ReservedCodeCacheSize`: Sets the maximum size of the JIT code cache.
@@ -169,6 +188,40 @@ $ nohup java -Xmx9G -XX:+UseZGC \
 *   `-XX:+UseZGC`: Enables ZGC, a scalable low-latency garbage collector.
 *   `-Xlog:gc...`: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).
 
+### Starting a FullNode on the Nile test network
+Utilize the `-c` flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is **strongly advised** to compile the source code following the [Building the Source Code](https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code) instructions for the Nile TestNet.
+
+```bash
+nohup java -jar build/libs/FullNode.jar -c framework/src/main/resources/config-nile.conf &
+```
+
+Nile resources: explorer, faucet, wallet, developer docs, and network statistics at [nileex.io](https://nileex.io/).
+
+### Access Shasta test network
+Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see [TronGrid Service](https://developers.tron.network/docs/trongrid) for details.
+
+Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at [shasta.tronex.io](https://shasta.tronex.io/).
+
+### Starting a FullNode on a private network
+To set up a private network for testing or development, follow the [Private Network guidance](https://tronprotocol.github.io/documentation-en/using_javatron/private_network/).
+
+### Starting a SolidityNode
+A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.
+
+```
+node {
+  # trust node for solidity node
+  # trustNode = "ip:port"
+  trustNode = "127.0.0.1:50051"
+  ...
+}
+```
+
+Starting from version 4.8.1, `SolidityNode.jar` is no longer provided. Instead, SolidityNode is started using the command-line parameter `--solidity`, as shown below:
+
+```
+java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
+```
 
 
 ### Starting a Block Production Node
@@ -189,15 +242,37 @@ localwitness = [
 ]
 ```
 
-Then execute the following command to start the Block Production Node:
+For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:
 
+#### Option 1: JDK 8 on x86_64
+```bash
+nohup java -Xms9G -Xmx24G -XX:ReservedCodeCacheSize=256m \
+    -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1G -XX:+PrintGCDetails \
+    -XX:+PrintGCDateStamps  -Xloggc:gc.log \
+    -XX:+UseConcMarkSweepGC -XX:NewRatio=3 \
+    -XX:+CMSScavengeBeforeRemark -XX:+ParallelRefProcEnabled \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:+UseCMSInitiatingOccupancyOnly  -XX:CMSInitiatingOccupancyFraction=70 \
+    -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
-java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+
+#### Option 2: JDK 17 on arm64
+```bash
+nohup java -Xms9G -Xmx24G -XX:+UseZGC \
+    -Xlog:gc,gc+heap:file=gc.log:time,tags,level:filecount=10,filesize=100M \
+    -XX:ReservedCodeCacheSize=256m \
+    -XX:+UseCodeCacheFlushing \
+    -XX:MetaspaceSize=256m \
+    -XX:MaxMetaspaceSize=512m \
+    -XX:MaxDirectMemorySize=1g \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf &
 ```
 
 ### Master-Slave Mode for Block Production FullNodes
 
-To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The description of `node.backup` configuration items is as follows:
+To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes **(Recommended number: 2)**, it's necessary to configure `node.backup` in each node's configuration file. The descriptions of the `node.backup` configuration items are as follows:
 
 ```ini
 node.backup {
@@ -259,7 +334,7 @@ For Mainnet and Nile Testnet, a newly launched node needs to synchronize a large
 The operational steps are as follows:
 
 1. Download the latest data snapshot.
-2. Unzip it to the `output-directory` within your `tron` project.
+2. Unzip it to the `output-directory` folder within your `tron` project (default is `output-directory`).
 3. Then start the node; the node will continue to synchronize based on the data snapshot.
 
 ### Specifying Super Representative Account Private Key Using Keystore + Password
@@ -276,15 +351,15 @@ To avoid specifying the private key in plaintext within the configuration file, 
         localwitnesskeystore = ["B/localwitnesskeystore.json"]
         ```
 
-    * You can generate the `keystore` file and password using the `registerwallet` command from the `wallet-cli` project.
+    * You can use the `registerwallet` command from the `wallet-cli` project to generate the `keystore` file and password, or use the command `java -jar build/libs/FullNode.jar --keystore-factory` to generate them (starting from version 4.8.1, `KeystoreFactory.jar` is no longer provided).
 
 2. **Starting a Block Production Node**:
 
-    * **Starting the node interactively without `nohup` (Recommended)**
-        * **Important Notes**: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as `screen` or `tmux`.
+    * **Interactive Startup without `nohup` (Recommended)**
+        * **Notes**: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."
   
         ```
-        java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+        java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
         ```
 
         * During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.
@@ -292,12 +367,14 @@ To avoid specifying the private key in plaintext within the configuration file, 
     * **Using `nohup` to pass the password directly in the command line via `--password`**
 
         ```
-        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf --password "your_password" > start.log 2>&1 &
+        nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password "your_password" > start.log 2>&1 &
         ```
 
 ### Optimizing Memory Usage with `tcmalloc`
 
 To achieve optimal memory usage, use Google's `tcmalloc` instead of the system's `glibc malloc`.
+**Note**:
+ If you are deploying via the official java-tron Docker image (version 4.8.1 or later), `tcmalloc` is already integrated by default and no manual configuration is required.
 
 1. **Install `tcmalloc`**:
     * **Ubuntu 20.04 LTS / Ubuntu 18.04 LTS / Debian stable**:

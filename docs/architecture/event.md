@@ -9,7 +9,7 @@ TRON offers two primary event subscription methods, allowing developers to choos
 
 ## Local Event Plugin Subscription (Recommended)
 
-This method utilizes an extensible plugin architecture to persistntly store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
+This method utilizes an extensible plugin architecture to persistently store on-chain events in external systems, such as **MongoDB** or **Kafka**, either in real-time or in batches. Designed specifically for production environments, this solution caters to applications requiring high reliability, durable storage, and robust data analysis capabilities.
 
 This method has the following advantages:
 
@@ -71,7 +71,7 @@ Visit the [event-plugin Releases page](https://github.com/tronprotocol/event-plu
 
 ##### Step 2: Modify the FullNode Configuration
 
-In your `config.conf` file, set the event service version to `V2.0`, the value is `1`.
+In your `config.conf` file, set the event service version to `V2.0` by setting the value to 1.
 
 ```
 event.subscribe.version = 1 # 1 for V2.0，0 for V1.0
@@ -97,7 +97,7 @@ event.subscribe.startSyncBlockNum = <block_height>
 After completing the configuration, use the following command to start the `FullNode` and load the event plugin.
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 ### Kafka Plugin: Deployment and Usage
@@ -224,7 +224,7 @@ Parameters:
 
 - `triggerName`: (String) The event type identifier. For transaction events, this value is fixed to `transaction`.
 - `enable`: (Boolean) Enables or disables the subscription for this event type.
-- `topic`: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must be consistent with the configuration in MongoDB or Kafka.
+- `topic`: (String) The name of the topic for receiving this event type in MongoDB or Kafka. This value must match the configuration in MongoDB or Kafka.
 - `solidified`: (Boolean) If set to `true`, the subscription will only deliver events for transactions included in solidified blocks.
 - `ethCompatible`: (Boolean) If set to `true`, the event payload will include Ethereum-compatible fields (e.g., `transactionIndex`, `logList`).
 
@@ -368,7 +368,7 @@ bin/kafka-topics.sh --create --topic block --bootstrap-server localhost:9092
 After completing the above configuration, you must add the `--es` parameter when starting the FullNode to enable the event subscription feature.
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 ##### Verifying Plugin Load
@@ -421,7 +421,7 @@ The main steps include:
 - [Deploying the Event Plugin](#deploying-the-event-subscription-plugin)
 - [Deploying the MongoDB](#installing-and-configuring-mongodb)
 - [Deploying the Event Query Service](#deploying-the-event-query-service)
-- [Starting and Verifing](#launch-and-verification)
+- [Starting and Verifying](#launch-and-verification)
 - [Using the TRON Event Query Service API](#using-the-tron-event-query-service-api)
 
 
@@ -625,7 +625,7 @@ db.createUser({user:"<eventlog-username>",pwd:"<eventlog-password>",roles:[{role
 
 The Event Query Service provides an HTTP interface for querying event data stored in MongoDB. This service requires a Java environment.
 
-**Note**: Please ensure you are using **Oracle JDK 8**, not Open JDK 8.
+**Note**: Please use Oracle JDK 8 on x86_64 architecture and JDK 17 on arm64 architecture.
 
 ##### 1. Downloading the Source Code
 
@@ -649,14 +649,18 @@ mvn --version
 mvn package
 ```
 
-Upon successful execution, a JAR package will be generated in the `tron-eventquery/target` directory, and a `config.conf` file will be created in the `tron-eventquery/` directory. An example of the configuration file content is shown below:
+Upon successful execution, a JAR package will be generated in the `tron-eventquery/target` directory, and a `config.conf` file will be created in the `tron-eventquery/` directory. 
+
+**Note: The configuration below is for reference only. In a production environment, please ensure you set a strong password for MongoDB and avoid using hardcoded plaintext passwords.**
+
+An example of the configuration file content is shown below:
 
 ```text
-mongo.host=IP
+mongo.host=127.0.0.1
 mongo.port=27017
 mongo.dbname=eventlog
-mongo.username=tron
-mongo.password=123456
+mongo.username=${MONGO_USERNAME}  # Example: tron
+mongo.password=${MONGO_PASSWORD}  # MUST be a strong password in production
 mongo.connectionsPerHost=8
 mongo.threadsAllowedToBlockForConnectionMultiplier=4
 ```
@@ -690,7 +694,7 @@ After completing the deployment steps, you can start the TRON FullNode and verif
 The command to start the FullNode is as follows:
 
 ```
-java -jar FullNode.jar -c config.conf --es
+java -jar build/libs/FullNode.jar -c framework/src/main/resources/config.conf --es
 ```
 
 For information on installing a FullNode, please refer to the [Deploying a FullNode](https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/) documentation.
@@ -740,7 +744,7 @@ This method has the following advantages:
   - **Low Latency**: Optimized for real-time event streaming.
   - **Lightweight**: Well-suited for rapid development and testing environments.
 
-Therefore, when you want to connect to an event stream quickly and at a minimal cost without relying on persistence capabilities, using the **built-in ZeroMQ message queue** is a more lightweight and direct choice. This guide explains how to subscribe to events using this method.
+Therefore, if you need to connect to an event stream quickly and efficiently without requiring persistent storage, the **built-in ZeroMQ message queue** is the ideal lightweight choice. This guide explains how to subscribe to events using this method.
 
 ### Configuring the Node
 
@@ -777,7 +781,7 @@ event.subscribe = {
 The event subscription service is disabled by default and must be enabled using the `--es` command-line argument. The startup command for a node with event subscription enabled is as follows:
 
 ```
-$ java -jar FullNode.jar --es
+$ java -jar build/libs/FullNode.jar --es
 ```
 
 ### Preparing the Event Subscription Script

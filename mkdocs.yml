@@ -1,5 +1,5 @@
 site_name: java-tron
-site_url: https://tronprotocol.github.io/documentation-en/
+# site_url: https://tronprotocol.github.io/documentation-en/
 repo_url: https://github.com/tronprotocol/documentation-en
 
 nav:
@@ -32,14 +32,12 @@ nav:
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips.md
+        - TIPs: developers/tips/
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
         - Development Example: developers/demo.md
-        - Core Modules: 
-            - Module Structure: developers/code-structure.md
-            - Chainbase: developers/chainbase-module.md
-            - Network: developers/network-module.md
+        - Core Modules: developers/code-structure.md
     - For Dapp Developers:
         - Tools: contracts/tools.md
     - Clients:
@@ -50,6 +48,7 @@ nav:
         - History: releases/history.md
     - Appendix:
         - Glossary: glossary.md
+    
 
 theme:
   name: material
@@ -62,6 +61,10 @@ theme:
     - search.suggest  # Show suggestions during search
     - content.code.annotate  # Code block annotations
     - content.tooltips  # Tooltips in content
+    - navigation.tabs
+    - content.tabs.link
+    - content.code.copy
+    - tags 
   palette:
     primary: custom  # Primary color
     accent: custom  # Accent color
@@ -72,7 +75,7 @@ theme:
 extra_javascript:
     - javascripts/toc.js
     - javascripts/nav-toc.js
-    - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+    - javascripts/mathjax-sri.js
 
 extra_css:
     - stylesheets/extra.css
@@ -88,6 +91,9 @@ markdown_extensions:
     - pymdownx.tilde
     - pymdownx.tasklist
     - pymdownx.superfences
+    - tables
+    - attr_list
+    - md_in_html
 
 plugins:
   - search
@@ -105,4 +111,6 @@ plugins:
         - introduction/overview.md
         - mechanism-algorithm/shielded-TRC20-contract.md
         - mechanism-algorithm/trc10.md
+        - search
+        - tags
 

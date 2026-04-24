@@ -163,7 +163,7 @@ public class FullNodeHttpApiService implements Service {
 }
 ```
 
-### 2.3 Debuging and Testing
+### 2.3 Debugging and Testing
 
 Once the code changes are complete, you can start the `java-tron` node in IntelliJ IDEA for debugging. Then, use the `curl` command in your terminal to access the newly added HTTP API:
 
@@ -304,7 +304,7 @@ After fixing the code style issues, run the check again to ensure all warnings h
 
 ### 5.1 Submit a Commit
 
-After you have finished writing and testing your code, commit your changes. Please refer to the [Commit Specification](java-tron.md/#commit-messages).
+After you have finished writing and testing your code, commit your changes. Please refer to the [Commit Specification](java-tron.md/#commit-message-specifications).
 
 ```bash
 git add .

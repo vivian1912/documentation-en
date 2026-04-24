@@ -600,9 +600,7 @@ wallet> GetTransactionById e5763ab8dfb1e7ed076770d55cf3c1ddaf36d75e23ec8330f99df
 }
 ```
 
-#### Cancel All Unfreezing
-
-> cancelAllUnfreezeV2 [OwnerAddress]
+#### Cancel All Unfreezing - `cancelAllUnfreezeV2 [OwnerAddress]`
 
 - `OwnerAddress` - The account address initiating the transaction. This is optional and defaults to the address of the logged-in account.
 
@@ -700,7 +698,6 @@ wallet> GetTransactionById 363ac0b82b6ad3e0d3cad90f7d72b3eceafe36585432a3e013389
 ##### Undelegating Resources
 
 ```
-
 unDelegateResource [OwnerAddress] balance ResourceCode(0 BANDWIDTH,1 ENERGY), ReceiverAddress
 ```
 
@@ -845,7 +842,9 @@ wallet> getCanWithdrawUnfreezeAmount TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh 16711003
 
 #### Signing a Transaction
 
+```
 > SendCoin TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW 10000000000000000
+```
 
 The following is an example of a transaction using Account Permission Management. For details on the authorization of the signing accounts, please refer to the example in the Modifying Account Permissions section.
 
@@ -929,10 +928,9 @@ Current signWeight is:
 **BroadcastTransaction**
 > Broadcasts a transaction, where the transaction is in hex string format。
 
-#### Getting Transaction Signature Weight
+#### Getting Transaction Signature Weight - `getTransactionSignWeight`
 
-> getTransactionSignWeight
-0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
+> 0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
 
 The information displayed is as follows:
 
@@ -992,10 +990,9 @@ The information displayed is as follows:
 }
 ```
 
-#### Get Signature Information from a Transaction
+#### Get Signature Information from a Transaction - `getTransactionApprovedList`
 
-> getTransactionApprovedList
-0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
+> 0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
 
 ```
 {
@@ -1260,115 +1257,100 @@ TriggerConstantContract [ownerAddress] contractAddress method args isHex fee_lim
 - `token_value` - The amount of the TRC-10 token.
 - `token_id` - The ID of the TRC-10 token. Use '#' if not applicable.
 
-好的，我明白您的意思了。非常抱歉，我之前用错了字符。我已纠正过来，现在将使用正确的全角省略号 ``` 来替换代码块的围栏，并严格按照您的要求输出。
-
-Information is displayed as follows:
-
+Example:
 ```
+> TriggerConstantContract TSNEe5Tf4rnc9zPMNXfaTF5fZfHDDH8oyW TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs "balanceOf(address)" 000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c true
+```
+
+#### Predict Contract Address - `Create2 <address> <code> <salt>`
+> Predicts the address of a contract before it is deployed using `CREATE2`.
+
+- `address` - The creator's address
+- `code` - The bytecode of the new contract
+- `salt` - A user-defined salt value.
+
+Example:
+```
+> Create2 TEDapYSVvAZ3aYH7w8N9tMEEFKaNKUD5Bp 5f805460ff1916600190811790915560649055606319600255 2132
+```
+#### Estimate Energy
+```
+EstimateEnergy <owner_address> <contract_address> <method> <args> <isHex> [value] [token_value] [token_id]
+```
+> Estimates the Energy required for a smart contract transaction to execute successfully. This simulates the execution without creating an on-chain transaction.
+> Note: `#` can be used for `<owner_address>` to refer to the logged-in account.
+
+Example:
+```
+> EstimateEnergy TSNEe5Tf4rnc9zPMNXfaTF5fZfHDDH8oyW TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs "balanceOf(address)" 000000000000000000000000a614f803b6fd780986a42c78ec9c7f77e6ded13c true
+```
+
+#### Clear Contract ABI - `ClearContractABI [ownerAddress] <contractAddress>`
+
+- `ownerAddress` (Optional) - The account address initiating the transaction. Defaults to the logged-in account's address.
+- `contractAddress` - The address of the smart contract.
+
+Example:
+```
+> ClearContractABI TSNEe5Tf4rnc9zPMNXfaTF5fZfHDDH8oyW TG3XXyExBkPp9nzdajDZsozEu4BkaSJozs
+```
+
+#### Get Contract - `GetContract <contractAddress>`
+
+- `contractAddress` - The address of the smart contract to query.
+
+Example:
+```
+> GetContract TGdtALTPZ1FWQcc5MW7aK3o1ASaookkJxG
 {
-    "result":{
-        "code":"PERMISSION_ERROR",
-        "message":"Signature count is 2 more than key counts of permission : 1"
-    },
-    "permission":{
-        "operations":"7fff1fc0033e0100000000000000000000000000000000000000000000000000",
-        "keys":[
+    "origin_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+    "contract_address": "TJMKWmC6mwF1QVax8Sy2AcgT6MqaXmHEds",
+    "abi": {
+        "entrys": [
             {
-                "address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                "weight":1
+                "name": "findArgsByIndexTest",
+                "inputs": [
+                    {
+                        "name": "i",
+                        "type": "uint256"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "name": "z",
+                        "type": "uint256"
+                    }
+                ],
+                "type": "Function",
+                "stateMutability": "Nonpayable"
             }
-        ],
-        "threshold":1,
-        "id":2,
-        "type":"Active",
-        "permission_name":"active"
+        ]
     },
-    "transaction":{
-        "result":{
-            "result":true
-        },
-        "txid":"7da63b6a1f008d03ef86fa871b24a56a501a8bbf15effd7aca635de6c738df4b",
-        "transaction":{
-            "signature":[
-                "c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b01",
-                "3d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101"
-            ],
-            "txID":"7da63b6a1f008d03ef86fa871b24a56a501a8bbf15effd7aca635de6c738df4b",
-            "raw_data":{
-                "contract":[
-                    {
-                        "parameter":{
-                            "value":{
-                                "amount":10000000000000000,
-                                "owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                                "to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
-                            },
-                            "type_url":"type.googleapis.com/protocol.TransferContract"
-                        },
-                        "type":"TransferContract",
-                        "Permission_id":2
-                    }
-                ],
-                "ref_block_bytes":"0318",
-                "ref_block_hash":"60e195d3609c8661",
-                "expiration":1554123306262,
-                "timestamp":1554101706260
-            },
-            "raw_data_hex":"0a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d"
-        }
-    }
+    "bytecode": "608060405234801561001057600080fd5b50610134806100206000396000f3006080604052600436106100405763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663329000b58114610045575b600080fd5b34801561005157600080fd5b5061005d60043561006f565b60408051918252519081900360200190f35b604080516003808252608082019092526000916060919060208201838038833901905050905060018160008151811015156100a657fe5b602090810290910101528051600290829060019081106100c257fe5b602090810290910101528051600390829060029081106100de57fe5b6020908102909101015280518190849081106100f657fe5b906020019060200201519150509190505600a165627a7a72305820b24fc247fdaf3644b3c4c94fcee380aa610ed83415061ff9e65d7fa94a5a50a00029",
+    "consume_user_resource_percent": 75,
+    "name": "normalcontract544",
+    "origin_energy_limit": 50000,
+    "code_hash": "23423cece3b4866263c15357b358e5ac261c218693b862bcdb90fa792d5714e6"
 }
 ```
 
-#### Get Signature Information from a Transaction
+#### Get Contract Info - `GetContractInfo <contractAddress>`
 
-> getTransactionApprovedList
-0a8c010a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d1241c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b0112413d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101
+- `contractAddress` - The address of the smart contract to query.
 
+Example:
 ```
-{
-    "result": {},
-    "approved_list": [
-        "TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP",
-        "TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR"
-    ],
-    "transaction": {
-        "result": {
-            "result": true
-        },
-        "txid": "7da63b6a1f008d03ef86fa871b24a56a501a8bbf15effd7aca635de6c738df4b",
-        "transaction": {
-            "signature": [
-                "c18ca91f1533ecdd83041eb0005683c4a39a2310ec60456b1f0075b4517443cf4f601a69788f001d4bc03872e892a5e25c618e38e7b81b8b1e69d07823625c2b01",
-                "3d61eb0f8868990cfa138b19878e607af957c37b51961d8be16168d7796675384e24043d121d01569895fcc7deb37648c59f538a8909115e64da167ff659c26101"
-            ],
-            "txID": "7da63b6a1f008d03ef86fa871b24a56a501a8bbf15effd7aca635de6c738df4b",
-            "raw_data": {
-                "contract": [
-                    {
-                        "parameter": {
-                            "value": {
-                                "amount": 10000000000000000,
-                                "owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-                                "to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
-                            },
-                            "type_url": "type.googleapis.com/protocol.TransferContract"
-                        },
-                        "type": "TransferContract",
-                        "Permission_id": 2
-                    }
-                ],
-                "ref_block_bytes": "0318",
-                "ref_block_hash": "60e195d3609c8661",
-                "expiration": 1554123306262,
-                "timestamp": 1554101706260
-            },
-            "raw_data_hex": "0a020318220860e195d3609c86614096eadec79d2d5a6e080112680a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412370a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18808084fea6dee11128027094bcb8bd9d2d"
-        }
-    }
-}
+> GetContractInfo TGdtALTPZ1FWQcc5MW7aK3o1ASaookkJxG
 ```
 
+#### Update Contract Parameters
+```
+# Updates the origin_energy_limit parameter
+> UpdateEnergyLimit [ownerAddress] <contract_address> <energy_limit>
+
+# Updates the consume_user_resource_percent parameter
+> UpdateSetting [ownerAddress] <contract_address> <consume_user_resource_percent>
+```
 
 <a id="trc-10-assets"></a>
 ### TRC-10 Assets
@@ -1378,47 +1360,28 @@ Information is displayed as follows:
 Each account can only issue **one** TRC-10 token.
 
 ##### Issue a TRC-10 Token
+```
+AssetIssue [OwnerAddress] AssetName AbbrName TotalSupply TrxNum AssetNum Precision StartDate EndDate Description Url FreeNetLimitPerAccount PublicFreeNetLimit FrozenAmount0 FrozenDays0 [...] FrozenAmountN FrozenDaysN
+```
 
-> AssetIssue [OwnerAddress] AssetName AbbrName TotalSupply TrxNum AssetNum Precision StartDate EndDate Description Url FreeNetLimitPerAccount PublicFreeNetLimit FrozenAmount0 FrozenDays0 [...] FrozenAmountN FrozenDaysN
-
-`OwnerAddress` (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-`AssetName`
-> The name of the TRC-10 token being issued.
-
-`AbbrName`
-> The abbreviation of the TRC-10 token.
-
-`TotalSupply`
-> `TotalSupply` = Issuer's account balance + all frozen token amounts.
-> `TotalSupply`: Total issuance amount.
-> Issuer's account balance: At the time of issuance.
-> All frozen token amounts: Before the asset transfer and issuance.
-
-`TrxNum`, `AssetNum`
-> These two parameters determine the exchange rate at the time of token issuance.
-> Exchange Rate = `TrxNum` / `AssetNum`
-> `AssetNum`: The unit of the issued token, calculated in its base unit.
-> `TrxNum`: The unit is sun (0.000001 TRX).
-
-`Precision`
-> The number of decimal places.
-
-`FreeNetLimitPerAccount`
-> The maximum amount of Bandwidth an account is allowed to use. The token issuer can freeze TRX to obtain Bandwidth (limited to TransferAssetContract).
-
-`PublicFreeNetLimit`
-> The maximum total Bandwidth allowed for all accounts. The token issuer can freeze TRX to obtain Bandwidth (limited to TransferAssetContract).
-
-`StartDate`, `EndDate`
-> The start and end dates of the token issuance. During this period, other users can participate in the token issuance.
-
-`FrozenAmount0`, `FrozenDays0`
-> The amount of token frozen and the number of days.
-> `FrozenAmount0`: Must be greater than 0.
-> `FrozenDays0`: Must be between 1 and 3653.
+- `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
+- `AssetName` - The name of the TRC-10 token being issued.
+- `AbbrName` - The abbreviation of the TRC-10 token.
+- `TotalSupply` - Total issuance amount.
+  > `TotalSupply` = Issuer's account balance + all frozen token amounts.
+  > Issuer's account balance: At the time of issuance.
+  > All frozen token amounts: Before the asset transfer and issuance.
+- `TrxNum`, `AssetNum` - These two parameters determine the exchange rate at the time of token issuance.
+  > Exchange Rate = `TrxNum` / `AssetNum`
+  > `AssetNum`: The unit of the issued token, calculated in its base unit.
+  > `TrxNum`: The unit is sun (0.000001 TRX).
+- `Precision` - The number of decimal places.
+- `FreeNetLimitPerAccount` - The maximum amount of Bandwidth an account is allowed to use. The token issuer can freeze TRX to obtain Bandwidth (limited to TransferAssetContract).
+- `PublicFreeNetLimit` - The maximum total Bandwidth allowed for all accounts. The token issuer can freeze TRX to obtain Bandwidth (limited to TransferAssetContract).
+- `StartDate`, `EndDate` - The start and end dates of the token issuance. During this period, other users can participate in the token issuance.
+- `FrozenAmount0`, `FrozenDays0` - The amount of token frozen and the number of days.
+  > `FrozenAmount0`: Must be greater than 0.
+  > `FrozenDays0`: Must be between 1 and 3653.
 
 Example:
 
@@ -1459,7 +1422,7 @@ Example:
 
 ##### Update TRC-10 Token Parameters - `UpdateAsset [OwnerAddress] newLimit newPublicLimit description url`
 
-The specific meanings of the parameters are the same as in `AssetIssue`.
+> The specific meanings of the parameters are the same as in `AssetIssue`.
 
 Example:
 
@@ -1500,19 +1463,10 @@ Example:
 
 #### Participate in TRC-10 Token Issuance - `ParticipateAssetIssue [OwnerAddress] ToAddress AssetID Amount`
 
-`OwnerAddress` (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-`ToAddress`
-> The account address of the TRC-10 issuer.
-
-`AssertName`
-> The TRC-10 token ID.
-> Example: 1000001
-
-`Amount`
-> The number of TRC-10 tokens to be transferred.
+- `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
+- `ToAddress` - The account address of the TRC-10 issuer.
+- `AssertName` - The TRC-10 token ID. Example: 1000001
+- `Amount` - The number of TRC-10 tokens to be transferred.
 
 Participation must take place during the TRC-10 token issuance period, otherwise an error may occur.
 
@@ -1537,19 +1491,10 @@ assetV2
 
 #### TRC-10 Token Transfer -` TransferAsset [OwnerAddress] ToAddress AssertID Amount`
 
-`OwnerAddress` (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-`ToAddress`
-> The address of the destination account.
-
-`AssertName`
-> The TRC-10 token ID.
-> Example: 1000001
-
-`Amount`
-> The number of TRC-10 tokens to be transferred.
+- `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
+-`ToAddress` - The address of the destination account.
+- `AssertName` - The TRC-10 token ID. Example: 1000001
+- `Amount` - The number of TRC-10 tokens to be transferred.
 
 Example:
 
@@ -1583,11 +1528,9 @@ address: TN3zfjYUmMFK3ZsHSsrdJoNRtGkQmZLBLz
 `GetAssetIssueListByName`
 > Get a list of TRC-10 token information based on the name.
 
-#### List Asset Issuance by Page
+#### List Asset Issuance by Page - `ListAssetIssuePaginated address code salt`
 
-> ListAssetIssuePaginated address code salt
-
-Query all token lists by page. Return the token list starting from the offset position.
+> Query all token lists by page. Return the token list starting from the offset position.
 
 Example:
 
@@ -1617,49 +1560,32 @@ Example:
 > votewitness 123455 witness1 10 # Vote for witness1 with 10 votes
 ```
 
-The final result of the commands above is 10 votes for witness1 and 0 votes for witness2.
+The final result of the commands above is 10 votes for `witness1` and 0 votes for `witness2`.
 
 #### Brokerage
 
-You will receive rewards after voting for a witness. The witness has the right to decide the brokerage percentage. The default percentage is 20%, which the witness can adjust.
+You will receive rewards after voting for an SR. The SR has the right to decide the brokerage percentage. The default percentage is 20%, which the SR can adjust.
 
-By default, if a witness receives a reward, they will get 20% of the total reward, and the remaining 80% will be distributed to their voters.
+By default, if an SR receives a reward, they will get 20% of the total reward, and the remaining 80% will be distributed to their voters.
 
-##### GetBrokerage
+##### Get Brokerage - `getbrokerage OwnerAddress`
 
-Check the witness's brokerage percentage.
+> Check the SR's brokerage percentage.
 
-```
-> getbrokerage OwnerAddress
-```
+- `OwnerAddress` - The address of the SR account, which is a base58check address.
 
-OwnerAddress
-> The address of the witness account, which is a base58check address.
+##### Get Reward - `getreward OwnerAddress`
 
-##### GetReward
+> Query for unclaimed rewards.
 
-Query for unclaimed rewards.
+- `OwnerAddress` - The address of the voter's account, which is a base58check address.
 
-```
-> getreward OwnerAddress
-```
+##### Update the brokerage percentage - `updateBrokerage OwnerAddress brokerage`
 
-OwnerAddress
-> The address of the voter's account, which is a base58check address.
+> This command is typically used by the witness account.
 
-##### UpdateBrokerage
-
-Update the brokerage percentage. This command is typically used by the witness account.
-
-```
-> updateBrokerage OwnerAddress brokerage
-```
-
-OwnerAddress
-> The address of the witness account, which is a base58check address.
-
-brokerage
-> The brokerage percentage you want to update, ranging from 0 to 100. If you enter 10, it means 10% of the total rewards will be allocated to the SR, and the rest (90% in this case) will be rewarded to all voters.
+- `OwnerAddress` - The address of the witness account, which is a base58check address.
+- `brokerage` - The brokerage percentage you want to update, ranging from 0 to 100. If you enter 10, it means 10% of the total rewards will be allocated to the SR, and the rest (90% in this case) will be rewarded to all voters.
 
 Example:
 
@@ -1671,11 +1597,9 @@ Example:
 > updateBrokerage TZ7U1WVBRLZ2umjizxqz3XfearEHhXKX7h 30
 ```
 
-##### Withdraw Balance
+##### Withdraw Balance - `WithdrawBalance [owner_address]`
 
-> WithdrawBalance [owner_address]
-
-Withdraw vote or block rewards.
+> Withdraw vote or block rewards.
 
 Example:
 
@@ -1687,18 +1611,16 @@ Example:
 
 Applying to become a witness account requires a fee of **100,000 TRX**. This portion of the funds will be burned directly.
 
-##### Create a Witness
-> CreateWitness [owner_address] url
-Apply to become a Super Representative candidate.
+##### Create a Witness - `CreateWitness [owner_address] url`
+> Apply to become a Super Representative candidate.
 
 Example:
 ```
 > CreateWitness TEDapYSVvAZ3aYH7w8N9tMEEFKaNKUD5Bp 007570646174654e616d6531353330363038383733343633
 ```
 
-##### Update a Witness
-> UpdateWitness
-Edit the SR official website URL.
+##### Update a Witness - `UpdateWitness`
+> Edit the SR official website URL.
 
 Example:
 ```
@@ -1713,19 +1635,11 @@ After each block is generated, the block rewards are sent to the account's **all
 
 Any proposal-related operation (except for viewing) must be executed by a Committee member.
 
-##### Create a Proposal
+##### Create a Proposal - `createProposal [OwnerAddress] id0 value0 ... idN valueN`
 
-> createProposal [OwnerAddress] id0 value0 ... idN valueN
-
-OwnerAddress (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-id0
-> The parameter's ID number. Each parameter in the TRON network has an ID number. Please refer to "http://tronscan.org/#/sr/committee".
-
-Value0
-> The modified value.
+- `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
+- `id0` - The parameter's ID number. Each parameter in the TRON network has an ID number. Please refer to "http://tronscan.org/#/sr/committee".
+- `Value0` - The modified value.
 
 In this example, to modify parameter ID 4 (the cost of issuing a token) to 1,000 TRX:
 
@@ -1756,16 +1670,9 @@ The corresponding ID is 1.
 
 > approveProposal [OwnerAddress] id is_or_not_add_approval
 
-OwnerAddress (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-id
-> The ID of the initiated proposal.
-> Example: 1
-
-is_or_not_add_approval
-> `true` means approve; `false` means unapprove.
+- `OwnerAddress` (Optional) - The account address initiating the transaction. Default: The address of the logged-in account.
+- `id` - The ID of the initiated proposal. Example: 1
+- `is_or_not_add_approval` - `true` means approve; `false` means unapprove.
 
 Example:
 
@@ -1774,19 +1681,13 @@ Example:
 > ApproveProposal 1 false # Cancel the approved proposal
 ```
 
-##### Delete an Existing Proposal
+##### Delete an Existing Proposal - `deleteProposal [OwnerAddress] proposalId`
 
-> deleteProposal [OwnerAddress] proposalId
+- `proposalId` - The ID of the initiated proposal. Example: `1`
 
-proposalId
-> The ID of the initiated proposal.
-> Example: 1
+> The proposal must be canceled by the Super Representative who initiated it.
 
-The proposal must be canceled by the Super Representative who initiated it.
-
-Example:
-
-> DeleteProposal 1
+Example: `DeleteProposal 1`
 
 ##### Get Proposal Information
 
@@ -1803,24 +1704,11 @@ Example:
 <a id="defi"></a>
 ### Decentralized Exchange (DEX)
 
-Trading and price fluctuations of trading pairs follow the Bancor protocol,
-which can be found in TRON's [relevant documentation](https://tronprotocol.github.io/documentation-en/clients/wallet-cli-command/#dex).
+Trading and price fluctuations of trading pairs follow the Bancor protocol.
 
 #### Create a Trading Pair
 
 > exchangeCreate [OwnerAddress] first_token_id first_token_balance second_token_id second_token_balance
-
-OwnerAddress (Optional)
-> The account address initiating the transaction.
-> Default: The address of the logged-in account.
-
-First_token_id, first_token_balance
-> The ID and amount of the first token.
-
-second_token_id, second_token_balance
-> The ID and amount of the second token.
->
-
 
 - `OwnerAddress` - (Optional) The account address initiating the transaction. Defaults to the logged-in account's address.
 - `first_token_id`, `first_token_balance` - The ID and amount of the first token.
@@ -1831,13 +1719,15 @@ second_token_id, second_token_balance
 
 Example:
 
+```
 > exchangeCreate 1000001 10000 _ 10000
 > Create a trading pair of ID 1000001 and TRX, with a quantity of 10,000 for both.
+```
 
 #### Get Exchange Information by ID
 
-> getExchange
-Query for a trading pair by ID (in a confirmed state).
+`getExchange`
+> Query for a trading pair by ID (in a confirmed state).
 
 Example:
 
@@ -1860,8 +1750,7 @@ When injecting liquidity, based on its quantity (`quant`), a portion of each tok
 - `exchange_id` - The ID of the trading pair.
 - `token_id`, `quant` - The token ID and quantity to trade, equivalent to selling.
 - `expected` - The expected quantity of the other token.
-
-`expected` must be less than `quant`, otherwise, an error will occur.
+  > `expected` must be less than `quant`, otherwise, an error will occur.
 
 Example:
 
@@ -1947,7 +1836,6 @@ GetMarketOrderByAccount TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 ##### `GetMarketOrderById orderId`
 
 > Get a specific **order** by `order_id`.
-
 
 Example:
 

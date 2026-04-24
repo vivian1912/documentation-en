@@ -1,645 +1,382 @@
-# gRPC API
+# RPC List
 
-## Overview
+**For the specific definition of API, please refer to the following link:**
+[api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto)
 
+!!! note
+    SolidityNode is deprecated. Now a FullNode supports all RPCs of a SolidityNode. New developers should deploy FullNode only.
 
-This document provides a detailed reference for gRPC) APIs in the TRON blockchain network. These APIs allow developers to interact with the TRON network to perform various functions such as account management, transaction broadcasting, smart contract operations, and resource management.
+## Get account information
 
-**Note:** SolidityNode is deprecated. The FullNode now supports all gRPCs of the SolidityNode. New developers should only deploy a FullNode.
-
-**API Definition Reference**: This document outlines the functions of the major APIs. Please refer to [api/api.proto](https://github.com/tronprotocol/protocol/blob/master/api/api.proto) for the complete and authoritative technical definitions.
-
-
-## Account Management
-
-### Get Account Information
-
-```
+```protobuf
 rpc GetAccount (Account) returns (Account) {}
 ```
+Nodes: Fullnode and SolidityNode
 
-### Get Account Information by ID
+## TRX transfer
 
+```protobuf
+rpc CreateTransaction (TransferContract) returns (Transaction) {}
 ```
-rpc GetAccountById (Account) returns (Account) {}
-```
+Nodes: Fullnode
 
-### Create Account
+## Broadcast transaction
 
-```
-rpc CreateAccount2 (AccountCreateContract) returns (TransactionExtention) {}
-```
-
-### Update Account Name
-
-```
-rpc UpdateAccount2 (AccountUpdateContract) returns (TransactionExtention) {}
-```
-
-### Set Account ID
-
-```
-rpc SetAccountId (SetAccountIdContract) returns (Transaction) {}
-```
-
-### Update Account Permission
-
-```
-rpc AccountPermissionUpdate (AccountPermissionUpdateContract) returns (TransactionExtention) {}
-```
-
-
-## Transaction Operations
-
-### TRX Transfer
-
-```
-rpc CreateTransaction2 (TransferContract) returns (TransactionExtention) {}
-```
-
-### Broadcast Transaction
-
-```
+```protobuf
 rpc BroadcastTransaction (Transaction) returns (Return) {}
 ```
+Nodes: Fullnode
 
-**Description:**
-This gRPC is used to send a signed transaction to a node. After being verified by a Super Representative (SR), the transaction will be broadcast to the entire network.
+Description:
+Transfer, vote, issuance of token, or participation in token offering. Sending signed transaction information to node, and broadcasting it to the entire network after super representatives verification.
 
-### Query Transaction Information (by Transaction ID)
+## Create an account
 
+```protobuf
+rpc CreateAccount (AccountCreateContract) returns (Transaction) {}
 ```
-rpc GetTransactionById (BytesMessage) returns (Transaction) {}
+Nodes: FullNode
+
+## Account name update
+```protobuf
+rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {}
 ```
+Nodes: Fullnode
 
-### Query Transaction Fee and Block Information (by Transaction ID)
-
+## Vote for super representative candidates
+```protobuf
+rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {}
 ```
-rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}
-```
+Nodes: FullNode
 
-### Query Transaction Information from Pending Pool
-
-```
-rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
-```
-
-### Query Pending Pool Transaction ID List
-
-```
-rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
-```
-
-### Query Pending Pool Size
-
-```
-rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
-```
-
-### Query Number of Transactions for a Specific Block
-
-```
-rpc GetTransactionCountByBlockNum (NumberMessage) returns (NumberMessage) {};
-```
-
-### Query a Transaction's Current Permission Weight
-
-```
-rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {};
-```
-
-### Query a Transaction's Permission Approval List
-
-```
-rpc GetTransactionApprovedList (Transaction) returns (TransactionApprovedList) {};
-```
-
-### Query Transactions Sent from a Specific Address
-
-```
-rpc GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {}
-```
-
-### Query Transactions Received at a Specific Address
-
-```
-rpc GetTransactionsToThis2 (AccountPaginated) returns (TransactionListExtention) {}
-```
-
-
-## Token (TRC-10) Operations
-
-### Issue a Token
-
-```
-rpc CreateAssetIssue2 (AssetIssueContract) returns (TransactionExtention) {}
-```
-
-### Update Token Information
-
-```
-rpc UpdateAsset2 (UpdateAssetContract) returns (TransactionExtention) {}
-```
-
-**Description:**
-A token update can only be initiated by the token issuer to update the:
-- Token description
-- URL
-- Maximum Bandwidth consumption per account
-- Total Bandwidth consumption
-
-### Token Transfer
-
-```
-rpc TransferAsset2 (TransferAssetContract) returns (TransactionExtention) {}
-```
-
-### Participate in Token Issuance
-
-```
-rpc ParticipateAssetIssue2 (ParticipateAssetIssueContract) returns (TransactionExtention) {}
-```
-
-### Query All Issued Token List
-
-```
-rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {}
-```
-
-### Query Tokens Issued by a Given Account
-
-```
-rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {}
-```
-
-### Query Token Information by Token Name
-
-```
-rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {}
-```
-
-### Query Token List by Timestamp
-
-```
-rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){}
-```
-
-### Query All Token Lists by Page
-
-```
-rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
-```
-
-### Unfreeze Token
-
-```
-rpc UnfreezeAsset2 (UnfreezeAssetContract) returns (TransactionExtention) {}
-```
-
-### Query Token by Name
-
-```
-rpc GetAssetIssueListByName (BytesMessage) returns (AssetIssueList) {}
-```
-
-### Query Token by ID
-
-```
-rpc GetAssetIssueById (BytesMessage) returns (AssetIssueContract) {}
-```
-
-
-
-## Super Representative (SR) & Voting
-
-### Vote for a Super Representative Candidate
-
-```
-rpc VoteWitnessAccount2 (VoteWitnessContract) returns (TransactionExtention) {}
-```
-
-### Query a Super Representative's Brokerage Percentage
-
-```
+## Query the ratio of brokerage of the super representative
+```protobuf
 rpc GetBrokerageInfo (BytesMessage) returns (NumberMessage) {}
 ```
+Nodes: FullNode
 
-### Query Unclaimed Rewards
-
-```
+## Query unclaimed reward
+```protobuf
 rpc GetRewardInfo (BytesMessage) returns (NumberMessage) {}
 ```
+Nodes: FullNode
 
-### Update Brokerage Percentage
-
-```
+## Update the ratio of brokerage
+```protobuf
 rpc UpdateBrokerage (UpdateBrokerageContract) returns (TransactionExtention) {}
 ```
+Nodes: FullNode
 
-### Apply to Become a Super Representative
-
+## Issue a token
+```protobuf
+rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {}
 ```
-rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {}
-```
+Nodes: FullNode
 
-**Description:**
-Apply to become a TRON Super Representative candidate.
-
-### Update Super Representative Candidate Information
-
-```
-rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {}
-```
-
-**Description:** Update the Super Representative's website URL.
-
-### Query All Super Representative Candidates
-
-```
+## Query of list of super representative candidates
+```protobuf
 rpc ListWitnesses (EmptyMessage) returns (WitnessList) {}
 ```
+Nodes: FullNode and SolidityNode
 
-### Block Reward Withdrawal
-
+## Get the paged list of witnesses in descending order by real-time vote count
+```protobuf
+rpc GetPaginatedNowWitnessList (PaginatedMessage) returns (WitnessList) {}
 ```
-rpc WithdrawBalance2 (WithdrawBalanceContract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+## Application for super representative
+```protobuf
+rpc CreateWitness (WitnessCreateContract) returns (Transaction) {}
 ```
+Nodes: FullNode
 
-### Create a Proposal
+Description:
+To apply to become TRON’s Super Representative candidate.
 
+## Information update of Super Representative candidates
+```protobuf
+rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {}
 ```
-rpc ProposalCreate (ProposalCreateContract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+Description: Update the website url of the SR.
+
+## Token transfer
+```protobuf
+rpc TransferAsset (TransferAssetContract) returns (Transaction){}
 ```
+Node: FullNode
 
-### Vote for or Unvote a Proposal
-
+## Participate a token
+```protobuf
+rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {}
 ```
-rpc ProposalApprove (ProposalApproveContract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+## Query the list of nodes connected to the ip of the api
+```protobuf
+rpc ListNodes (EmptyMessage) returns (NodeList) {}
 ```
+Nodes: FullNode and SolidityNode
 
-### Delete a Proposal
-
+## Query the list of all issued tokens
+```protobuf
+rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {}
 ```
-rpc ProposalDelete (ProposalDeleteContract) returns (TransactionExtention) {}
+Nodes: FullNode and SolidityNode
+
+## Query the token issued by a given account
+```protobuf
+rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {}
 ```
+Nodes: FullNode and SolidityNode
 
-
-
-## Resource Management (TRX Staking & Delegation)
-
-### Stake TRX (Old version, deprecated)
-
-This interface is deprecated. Please use `FreezeBalanceV2`.
+## Query the token information by token name
+```protobuf
+rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {}
 ```
+Nodes: FullNode and Soliditynode
+
+## Query the list of tokens by timestamp
+```protobuf
+rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){}
+```
+Nodes: SolidityNode
+
+## Get current block information
+```protobuf
+rpc GetNowBlock (EmptyMessage) returns (Block) {}
+```
+Nodes: FullNode and SolidityNode
+
+## Get a block by block height
+```protobuf
+rpc GetBlockByNum (NumberMessage) returns (Block) {}
+```
+Nodes: FullNode and SolidityNode
+
+## Get the total number of transactions
+```protobuf
+rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {}
+```
+Nodes: FullNode and SolidityNode
+
+## Query the transaction by transaction id
+```protobuf
+rpc getTransactionById (BytesMessage) returns (Transaction) {}
+```
+Nodes: SolidityNode
+
+## Query the transaction by timestamp
+```protobuf
+rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {}
+```
+Nodes: SolidityNode
+
+## Stake TRX
+This interface has been deprecated, please use FreezeBalanceV2 to stake TRX to obtain resources.
+```protobuf
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {}
 ```
+Nodes: FullNode
 
-### Unstake TRX (Old version, deprecated)
-
-```
+## Unstake TRX
+Unstake the TRX staked during Stake1.0.
+```protobuf
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {}
 ```
+Nodes: FullNode
 
-### Stake TRX V2
-
+## Block producing reward redemption
+```protobuf
+rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {}
 ```
-rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+## Unstake token balance
+```protobuf
+rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {}
 ```
+Nodes: FullNode
 
-### Unstake TRX V2
-
+## Query the next maintenance time
+```protobuf
+rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {}
 ```
-rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+## Query the transaction fee & block information
+```protobuf
+rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {}
 ```
+Nodes: SolidityNode
 
-### Delegate Resources
-
+## Query block information by block id
+```protobuf
+rpc GetBlockById (BytesMessage) returns (Block) {}
 ```
-rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
+Nodes: FullNode
+
+## Update token information
+```protobuf
+rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {}
 ```
+Nodes: Fullnode
 
-### Undelegate Resources
+Description:
+Token update can only be initiated by the token issuer to update token description, url, maximum bandwidth consumption by each account and total bandwidth consumption.
 
+## Query the list of all the tokens by pagination
+```protobuf
+rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {}
 ```
-rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-```
-
-### Cancel All Unstakes
-
-```
-rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
-```
-
-### Get Remaining Unstake Count for an Account
-
-```
-rpc GetAvailableUnfreezeCount (GetAvailableUnfreezeCountRequestMessage)
-     returns (GetAvailableUnfreezeCountResponseMessage) {};
-```
-
-### Get Delegable Resources of a Specific Resource Type for an Address (in sun)
-
-```
-rpc GetCanDelegatedMaxSize (CanDelegatedMaxSizeRequestMessage) returns (CanDelegatedMaxSizeResponseMessage) {};
-```
-
-### Get Matured Unstake Amount That Can Be Withdrawn at a Specific Time
-
-```
-rpc GetCanWithdrawUnfreezeAmount (CanWithdrawUnfreezeAmountRequestMessage)
-     returns (CanWithdrawUnfreezeAmountResponseMessage) {};
-```
-
-### Withdraw Matured Unstakes
-
-After a user executes the `/wallet/unfreezebalancev2` transaction and waits N days (N being a network parameter), they can call this API to retrieve the funds.
-```
-rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {};
-```
+Nodes: FullNode and SolidityNode
 
 
-## Smart Contract Operations
-
-### Deploy a Smart Contract
-
-```
+## Deploy a smart contract
+```protobuf
 rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {}
 ```
+Nodes: FullNode and SolidityNode
 
-### Trigger a Smart Contract
-
-```
+## Trigger a smart contract
+```protobuf
 rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {}
 ```
-
-### Estimate Energy Consumption
-
-```
-rpc EstimateEnergy (TriggerSmartContract) returns (EstimateEnergyMessage) {}
-```
-
-### Get Smart Contract
-
-```
-rpc GetContract (BytesMessage) returns (SmartContract) {}
-```
-
-### Update `consume_user_resource_percent` in a Smart Contract
-
-```
-rpc UpdateSetting (UpdateSettingContract) returns (TransactionExtention) {}
-```
-
-### Update `origin_energy_limit` in a Smart Contract
-
-```
-rpc UpdateEnergyLimit (UpdateEnergyLimitContract) returns (TransactionExtention) {}
-```
+Nodes: FullNode
 
 
-## Market Transactions (Market Order)
-
-### Create a Market Sell Order
-
+## Create an market order       
 ```
 rpc MarketSellAsset (MarketSellAssetContract) returns (TransactionExtention) {};
 ```
-
-### Cancel a Market Order
-
-```
+Nodes: FullNode
+ 
+## Cancel the order      
+```   
 rpc MarketCancelOrder (MarketCancelOrderContract) returns (TransactionExtention) {};
 ```
+Nodes: FullNode 
 
-### Get All Market Orders for an Account
-
+## Get all orders for the account      
 ```
 rpc GetMarketOrderByAccount (BytesMessage) returns (MarketOrderList) {};
 ```
+Nodes: FullNode 
 
-### Get All Market Trading Pairs
-
+## Get all trading pairs         
 ```
 rpc GetMarketPairList (EmptyMessage) returns (MarketOrderPairList) {};
 ```
+Nodes: FullNode 
 
-### Get All Market Orders for a Trading Pair
-
+## Get all orders for the trading pair       
 ```
 rpc GetMarketOrderListByPair (MarketOrderPair) returns (MarketOrderList) {};
 ```
+Nodes: FullNode 
 
-### Get All Market Prices for a Trading Pair
-
+## Get all prices for the trading pair      
 ```
 rpc GetMarketPriceByPair (MarketOrderPair) returns (MarketPriceList) {};
 ```
+Nodes: FullNode 
 
-### Get a Market Order by ID
-
+## Get order by id      
 ```
-rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {};
+rpc GetMarketOrderById (BytesMessage) returns (MarketOrder) {}; 
 ```
+Nodes: FullNode 
 
-### Create a Trading Pair
-
+## perform a historical balance lookup      
 ```
-rpc ExchangeCreate (ExchangeCreateContract) returns (TransactionExtention) {};
+rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){}; 
 ```
+Nodes: FullNode
 
-### Inject Funds into a Trading Pair
+**Notice**: Only node where `storage.balance.history.lookup= true` is set in the configuration file supports querying the account's historical balance. The supported official nodes can be queried [here](../using_javatron/backup_restore.md/#fullnode-data-snapshots).
 
+## fetch all balance-changing transactions in a block      
 ```
-rpc ExchangeInject (ExchangeInjectContract) returns (TransactionExtention) {};
+rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {}; 
 ```
+Nodes: FullNode 
 
-### Withdraw Funds from a Trading Pair
-
+## get the burn trx amount      
 ```
-rpc ExchangeWithdraw (ExchangeWithdrawContract) returns (TransactionExtention) {};
+rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {}; 
 ```
+Nodes: FullNode and SolidityNode
 
-### Perform a Trade in a Trading Pair
-
+## Freeze TRX
+```protobuf
+rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
-rpc ExchangeTransaction (ExchangeTransactionContract) returns (TransactionExtention) {};
+Nodes: FullNode
+
+## UnFreeze TRX
+```protobuf
+rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
 ```
+Nodes: FullNode
 
-### Query All Trading Pairs
-
+## Withdraw Staked TRX
+```protobuf
+rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
 ```
-rpc ListExchanges (EmptyMessage) returns (ExchangeList) {}
+Nodes: FullNode
+
+## Delegate Resource
+```protobuf
+rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
 ```
+Nodes: FullNode
 
-### Query Trading Pairs by Page
-
+## UnDelegate Resource
+```protobuf
+rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
 ```
-rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {}
+Nodes: FullNode
+
+## Query transaction information in the pending pool
 ```
-
-### Query Trading Pair by ID
-
+rpc GetTransactionFromPending (BytesMessage) returns (Transaction) {};
 ```
-rpc GetExchangeById (BytesMessage) returns (Exchange) {}
+Nodes: FullNode
+
+## Query the pending pool transaction id list
 ```
-
-
-## Blockchain Data Query
-
-### Get Current Block Information
-
+rpc GetTransactionListFromPending (EmptyMessage) returns (TransactionIdList) {};
 ```
-rpc GetNowBlock2 (EmptyMessage) returns (BlockExtention) {}
-```
+Nodes: FullNode
 
-### Get Block by Block Number
-
+## Query the size of the pending pool
 ```
-rpc GetBlockByNum2 (NumberMessage) returns (BlockExtention) {}
-```
-
-### Get Block Information (by Block ID)
-
-```
-rpc GetBlockById (BytesMessage) returns (Block) {}
-```
-
-### Get Total Transaction Count (Deprecated, returns 0)
-
-```
-rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {}
-```
-
-### Query Account Balance at a Specific Block Height
-
-```
-rpc GetAccountBalance (AccountBalanceRequest) returns (AccountBalanceResponse){};
+rpc GetPendingSize (EmptyMessage) returns (NumberMessage) {};
+Nodes: FullNode
 ```
 
-### Get Account Bandwidth
-
+##  Cancel UnFreeze
+```protobuf
+rpc CancelAllUnfreezeV2 (CancelAllUnfreezeV2Contract) returns (TransactionExtention) {}
 ```
-rpc GetAccountNet (Account) returns (AccountNetMessage){};
-```
+Nodes: FullNode
 
-### Get Account Resources (Energy, Bandwidth)
-
-```
-rpc GetAccountResource (Account) returns (AccountResourceMessage){};
-```
-Note: To query historical account balances, a node must have `storage.balance.history.lookup = true` set in its configuration file. You can find official nodes that support this function [here](../using_javatron/backup_restore.md/#fullnode).
-
-### Get Account Balance Changes within a Block
-
-```
-rpc GetBlockBalanceTrace (BlockBalanceTrace.BlockIdentifier) returns (BlockBalanceTrace) {};
-```
-
-### Get Total Burned TRX Amount
-
-```
-rpc GetBurnTrx (EmptyMessage) returns (NumberMessage) {};
-```
-
-### Get All Transaction Receipt Information for a Specific Block
-
-```
-rpc GetTransactionInfoByBlockNum (NumberMessage) returns (TransactionInfoList) {};
-```
-
-### Get Information for a Specific Block
-
-By default, it returns the latest block header. You can also query a specific block header or block information, including the transaction body.
-```
-rpc GetBlock (BlockReq) returns (BlockExtention) {};
-```
-
-
-## Governance
-
-### Query All Proposals
-
-```
-rpc ListProposals (EmptyMessage) returns (ProposalList) {}
-```
-
-### Query Proposals by Page
-
-```
-rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {}
-```
-
-### Query Proposal by ID
-
-```
-rpc GetProposalById (BytesMessage) returns (Proposal) {}
-```
-
-### Query All Parameters Settable by the Committee
-
-```
-rpc GetChainParameters (EmptyMessage) returns (ChainParameters) {}
-```
-
-
-## Other Types
-
-### Query Next Maintenance Time
-
-```
-rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {}
-```
-
-### Query Node Information
-
-```
-rpc GetNodeInfo (EmptyMessage) returns (NodeInfo) {}
-```
-
-### Get Historical Change Records for Bandwidth Unit Price
-
-```
+##  Get bandwidth unit price
+```protobuf
 rpc GetBandwidthPrices (EmptyMessage) returns (PricesResponseMessage) {}
 ```
+Nodes: FullNode
 
-### Get Historical Change Records for Energy Unit Price
-
-```
+##  Get energy unit price
+```protobuf
 rpc GetEnergyPrices (EmptyMessage) returns (PricesResponseMessage) {}
 ```
+Nodes: FullNode
 
-### Get Historical Change Records for Transaction Memo Fee
-
-```
+##  Get transaction memo fee
+```protobuf
 rpc GetMemoFee (EmptyMessage) returns (PricesResponseMessage) {}
 ```
-
-### Get Block Reference
-
-```
-rpc getBlockReference (EmptyMessage) returns (BlockReference) {}
-```
-
-### Get Dynamic Network Parameters
-
-```
-rpc GetDynamicProperties (EmptyMessage) returns (DynamicProperties) {}
-```
-
-### Get Node Status Information
-
-```
-rpc GetStatsInfo (EmptyMessage) returns (MetricsInfo) {}
-```
-
-### Get Peer Information
-
-```
-rpc ListNodes (EmptyMessage) returns (NodeList) {}
-```
-
-### Query Block Information for a Specific Range
-
-```
-rpc GetBlockByLimitNext2 (BlockLimit) returns (BlockListExtention) {}
-```
+Nodes: FullNodes
