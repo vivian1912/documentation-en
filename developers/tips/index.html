@@ -8,13 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/developers/tips/">
       
-      
-        <link rel="prev" href="../java-tron/">
-      
-      
-        <link rel="next" href="../issue-workflow/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +16,7 @@
     
     
       
-        <title>TIPs Workflow - java-tron</title>
+        <title>TRON Improvement Proposals (TIPs) - java-tron</title>
       
     
     
@@ -74,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tip-specification-and-guidelines" class="md-skip">
+        <a href="#tron-improvement-proposals-tips" class="md-skip">
           Skip to content
         </a>
       
@@ -86,9 +80,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -110,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TIPs Workflow
+              TRON Improvement Proposals (TIPs)
             
           </span>
         </div>
@@ -183,6 +175,194 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -190,16 +370,20 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
 
 
+  
+
 
   
 
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -255,19 +439,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -325,19 +509,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -571,19 +755,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -685,19 +869,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -903,27 +1087,25 @@
       
   
   
-    
-  
   
   
     
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -935,7 +1117,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             For java-tron Developers
@@ -968,31 +1150,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    TIPs Workflow
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1002,119 +1163,28 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="./" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
     
+  </span>
   
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item ">
-  <a href="#tip-types" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TIP Types
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tip-workflow" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TIP Workflow
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TIP Workflow" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#tip-status" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TIP Status
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item has-children">
-  <a href="#tip-composition" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
-    <span class="md-ellipsis">
-      TIP Composition
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TIP Composition" hidden>
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item ">
-  <a href="#tip-header" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TIP Header
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item ">
-  <a href="#tip-body" class="md-nav__link" >
-    <span class="md-ellipsis">
-      TIP Body
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#linking-to-external-resources" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Linking to External Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#linking-to-other-tips" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Linking to Other TIPs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item ">
-  <a href="#auxiliary-files" class="md-nav__link" >
-    <span class="md-ellipsis">
-      Auxiliary Files
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -1214,21 +1284,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../code-structure/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Core Modules
@@ -1236,76 +1294,6 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
-            <span class="md-nav__icon md-icon"></span>
-            Core Modules
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../code-structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Module Structure
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../chainbase-module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Chainbase
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../network-module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Network
-    
-  </span>
-  
-
       </a>
     </li>
   
@@ -1318,14 +1306,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
@@ -1336,20 +1316,20 @@
     
     
     
+      
       
         
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1407,19 +1387,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1477,19 +1457,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1591,19 +1571,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1664,100 +1644,886 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+
 
 
   
   
 
 
-<h1 id="tip-specification-and-guidelines">TIP Specification and Guidelines<a class="headerlink" href="#tip-specification-and-guidelines" title="Permanent link">&para;</a></h1>
-<p><strong>TRON Improvement Proposals (TIPs)</strong> document the entire improvement process for the TRON network, from community suggestions and discussions to final adoption. Each TIP is a detailed design document that covers its underlying principles and technical specifications, to help community members fully understand its content. TIPs are a core unit of TRON's community governance, and anyone can freely submit a TIP. Through community discussion, the community decides whether to develop it into a common standard or incorporate it into a network upgrade. The proposer of a TIP is responsible for encouraging developer participation in the community, building consensus for the TIP, and recording all dissenting opinions.</p>
-<h2 id="tip-types">TIP Types<a class="headerlink" href="#tip-types" title="Permanent link">&para;</a></h2>
-<p>TIPs are primarily categorized into two types: <code>Standard Track</code> and <code>Informational</code>.</p>
-<ul>
-<li>
-<p><strong><code>Standard Track</code></strong>: These TIPs describe changes that affect how TRON is implemented, such as modifications to block or transaction validity rules, proposed application standards, or any changes that affect the interoperability of TRON applications. <code>Standard Track</code> TIPs can be further subdivided into the following categories:</p>
-<ul>
-<li><strong><code>Core</code></strong>: TIPs that require a consensus fork<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> for implementation. This category also includes TIPs that don't require a consensus fork but still need discussion by core developers.</li>
-<li><strong><code>Networking</code></strong>: Improvements to the network protocol.</li>
-<li><strong><code>Interface</code></strong>: Improvements to API/RPC specifications and standards.</li>
-<li><strong><code>TRC</code></strong>: Application-level standards, including smart contract standards like TRC-20.</li>
-<li><strong><code>TVM</code></strong>: Improvements to the TRON Virtual Machine.</li>
-</ul>
-</li>
-<li>
-<p><strong><code>Informational</code></strong>: These TIPs describe issues related to TRON's design or provide general guidance or information to the TRON community, but do not propose new features.</p>
-</li>
-</ul>
-<h2 id="tip-workflow">TIP Workflow<a class="headerlink" href="#tip-workflow" title="Permanent link">&para;</a></h2>
-<p>Before submitting a TIP, we recommend first creating a TIP <strong>Issue</strong> for community discussion and add a link to this issue in the TIP's title. The format of the TIP issue should be consistent with the content of the TIP. The specific process for submitting a TIP is as follows:</p>
-<ol>
-<li><strong>Fork</strong> the GitHub <a href="https://github.com/tronprotocol/TIPs">TIPs repository</a>.</li>
-<li>Create a new TIP in your forked repository, following the <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">TIP template</a>.</li>
-<li>Submit a <strong>Pull Request (PR)</strong> to the TRON TIPs repository.</li>
-</ol>
-<p>Strictly follow the <code>markdown</code> requirements of the <a href="https://github.com/tronprotocol/TIPs/blob/master/template.md">template</a> when writing a TIP, and ensure that the TIP title includes a link to the TIP Issue or a discussion forum address so that community members can fully discuss the TIP. If a TIP involves the development of new features in java-tron and has a corresponding development PR, you need to cross-reference each other's GitHub links in both the TIP and the java-tron PR to ensure the traceability of the new feature's requirements analysis and development code.</p>
-<p>After a new TIP's initial PR submission, the TIP will be in the <strong><code>Draft</code></strong> state. The editor will review the TIP to ensure it meets certain formatting standards and assign a TIP number before merging it.</p>
-<p>Once the TIP is considered mature and ready to move to the next phase, you should:</p>
-<ul>
-<li>For <strong>Core TIPs</strong>, you must follow the process in the <a href="https://github.com/tronprotocol/pm?tab=readme-ov-file#tron-core-devs-meetings-and-sr-meetings-overview">TRON Project Management Repository</a> to submit your TIP to the agenda for discussion at an upcoming core developers meeting. If the core developers decide to accept your TIP, the TIP editor will update its status to <strong><code>Accepted</code></strong>.</li>
-<li>For <strong>other types of TIPs</strong>, you can submit a PR to change the TIP's status to <strong><code>Final (non-Core)</code></strong>. The TIP editor will then review your draft and ask for any dissenting opinions. If the TIP editor determines that the TIP has not yet reached preliminary consensus, they may close your PR and ask you to continue modifying the draft.</li>
-</ul>
-<h3 id="tip-status">TIP Status<a class="headerlink" href="#tip-status" title="Permanent link">&para;</a></h3>
-<p>A TIP may go through the following statuses:</p>
-<ul>
-<li><strong><code>Draft</code></strong>: The TIP is in a rapid iteration and modification phase.</li>
-<li><strong><code>Last Call</code></strong>: The TIP has completed its initial iteration and is ready for review by others.</li>
-<li><strong><code>Accepted</code></strong>: After a Core TIP's proposer has resolved the required technical changes and the TIP has been in the <code>Last Call</code> state for at least 2 weeks, core developers will decide whether to include the TIP as part of a hard fork and add it to the client development (this process is not part of the TIP workflow). Once a decision is made, the TIP will enter the <code>Final</code> state.</li>
-<li><strong><code>Final (non-Core)</code></strong>: A non-Core TIP has been in the <code>Last Call</code> state for at least 2 weeks, and all changes have been completed.</li>
-<li><strong><code>Final (Core)</code></strong>: The core developers have decided to implement the TIP, and it will be included in an upcoming release or has already been implemented in a released version.</li>
-<li><strong><code>Active</code></strong>: If a TIP may never be completed, its status can be <code>Active</code>.</li>
-<li><strong><code>Abandoned</code></strong>: A TIP is no longer tracked or maintained by its submitter, or it may no longer be the technically preferred solution.</li>
-<li><strong><code>Rejected</code></strong>: A TIP that breaks functionality or a <code>Core</code> TIP that has been rejected by core developers and will not be implemented.</li>
-<li><strong><code>Superseded</code></strong>: A TIP that was previously <code>Final</code> but is no longer considered the optimal solution.</li>
-<li><strong><code>Deferred</code></strong>: A TIP that is not currently accepted but may be accepted in the future.</li>
-</ul>
-<h2 id="tip-composition">TIP Composition<a class="headerlink" href="#tip-composition" title="Permanent link">&para;</a></h2>
-<p>A TIP consists of two parts: the header and the main content.</p>
-<h3 id="tip-header">TIP Header<a class="headerlink" href="#tip-header" title="Permanent link">&para;</a></h3>
-<p>The TIP header contains the TIP number, a short descriptive title (limited to 44 characters), author details, a link to the discussion, TIP status, TIP type, creation date, etc. For the specific format, refer to:</p>
-<div class="highlight"><pre><span></span><code>tip: &lt;to be assigned&gt;
-title: &lt;TIP title&gt;
-author: &lt;a list of the author&#39;s or authors&#39; name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName &lt;foo@bar.com&gt;, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)&gt;
-discussions-to: &lt;URL&gt;
-status: &lt;Draft | Last Call | Accepted | Final | Deferred&gt;
-type: &lt;Standards Track (Core, Networking, Interface, TRC, VM) | Informational&gt;
-category (*only required for Standard Track): &lt;Core | Networking | Interface | TRC | VM&gt;
-created: &lt;date created on, in ISO 8601 (yyyy-mm-dd) format&gt;
-requires (*optional): &lt;TIP number(s)&gt;
-replaces (*optional): &lt;TIP number(s)&gt;
-</code></pre></div>
-<h3 id="tip-body">TIP Body<a class="headerlink" href="#tip-body" title="Permanent link">&para;</a></h3>
-<p>The TIP body should include the following sections:</p>
-<ul>
-<li><strong><code>Simple Summary</code></strong>: A brief description of the TIP.</li>
-<li><strong><code>Abstract</code></strong>: A concise, easy-to-understand technical summary of the <code>Specification</code> section. Readers should be able to understand the main function of the TIP by reading only the <code>Abstract</code>.</li>
-<li><strong><code>Motivation</code></strong>: (Optional) Motivation is an important part of a TIP. It should clearly explain why the current protocol is insufficient to address the problem this TIP targets. This section can be omitted if the motivation is obvious.</li>
-<li><strong><code>Specification</code></strong>: The technical specification, which details the new feature's syntax and semantics and should be sufficiently comprehensive.</li>
-<li><strong><code>Rationale</code></strong>: Describes the design's motivation and the reasons for the design decisions made. It serves to supplement the <code>Specification</code>. The <code>Rationale</code> should also describe alternative designs and related work, and include an explanation of significant objections or concerns raised during the TIP's discussion.</li>
-<li><strong><code>Backwards Compatibility</code></strong>: (Optional) If the TIP's changes introduce backwards compatibility issues, the TIP should include a <code>Backwards Compatibility</code> section describing these incompatibilities and their impact. The TIP must state how these incompatibilities are intended to be handled.</li>
-<li><strong><code>Test Cases</code></strong>: (Optional) For TIPs that affect consensus, implementation-related test cases must be included. This section can be omitted for non-Core TIPs.</li>
-<li><strong><code>Implementation</code></strong>: This section does not need to be completed before the TIP is assigned the <code>Accepted</code> status but must be completed before the TIP is assigned the <code>Final</code> status. When discussing many API details, "general consensus and working code" are necessary.</li>
-</ul>
-<h2 id="linking-to-external-resources">Linking to External Resources<a class="headerlink" href="#linking-to-external-resources" title="Permanent link">&para;</a></h2>
-<p>Since external resources may change at any time (e.g., broken links, content moved or modified), TIPs should not directly include links to them.</p>
-<h2 id="linking-to-other-tips">Linking to Other TIPs<a class="headerlink" href="#linking-to-other-tips" title="Permanent link">&para;</a></h2>
-<p>A TIP can reference other TIPs. References to other TIPs should follow the <code>TIP-N</code> format, where <code>N</code> is the number of the referenced TIP, and must be accompanied by a link. The link must be a relative path to ensure it is valid in the TIPs GitHub repository as well as in all forks. For example, you can use <code>[TIP-1](/tips/TIP-1)</code> to reference <code>TIP-1</code>.</p>
-<h2 id="auxiliary-files">Auxiliary Files<a class="headerlink" href="#auxiliary-files" title="Permanent link">&para;</a></h2>
-<p>Images, diagrams, and other auxiliary files should be stored in a subdirectory of the TIPs repository's <code>assets</code> folder, for example: <code>assets/TIP-N/</code> (where N is the TIP number). When linking to images within a TIP, a relative path should be used, such as: <code>../assets/TIP-1/image.png</code>.</p>
-<div class="footnote">
+<h1 id="tron-improvement-proposals-tips">TRON Improvement Proposals (TIPs)<a class="headerlink" href="#tron-improvement-proposals-tips" title="Permanent link">&para;</a></h1>
+<p><strong>Quick Jump to Status:</strong></p>
+<p><a class="md-button" href="#final">Final</a> <a class="md-button" href="#last-call">Last Call</a> <a class="md-button" href="#draft">Draft</a> <a class="md-button" href="#unknown">Unknown</a> <a class="md-button" href="#&lt;draft-|-last-call-|-accepted-|-final-|-deferred&gt;"><Draft | Last Call | Accepted | Final | Deferred></a> <a class="md-button" href="#deferred">Deferred</a> <a class="md-button" href="#final(core)">Final(core)</a> <a class="md-button" href="#fnial">Fnial</a> <a class="md-button" href="#lastcall">LASTCALL</a> <a class="md-button" href="#lastcall">LastCall</a></p>
 <hr />
-<ol>
-<li id="fn:1">
-<p><strong>Consensus fork</strong>: A phenomenon in a blockchain network where nodes have different opinions on changes to protocol rules, leading to a divergence in the blockchain's history.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+<h2 id="final">Final<a class="headerlink" href="#final" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"><a href="tip-10/">TRC-10 Token Standard</a></td>
+<td style="text-align: left;">Marcus Zhao<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><a href="tip-12/">TRC-12 Tron event subscribes model</a></td>
+<td style="text-align: left;">jiangyy<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#105;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#106;&#105;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><a href="tip-13/">Account System Standard</a></td>
+<td style="text-align: left;">Justin Sun(@justintron) <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#117;&#115;&#116;&#105;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#106;&#117;&#115;&#116;&#105;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;"><a href="tip-16/">Account Multi-signature</a></td>
+<td style="text-align: left;">Marcus Zhao(@zhaohong ) <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;"><a href="tip-17/">Adaptive Energy Limit Model</a></td>
+<td style="text-align: left;">nanfengpo <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#110;&#97;&#110;&#102;&#101;&#110;&#103;&#112;&#111;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#110;&#97;&#110;&#102;&#101;&#110;&#103;&#112;&#111;&#64;&#104;&#111;&#116;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"><a href="tip-20/">TRC-20 Token Standard</a></td>
+<td style="text-align: left;">Marcus Zhao <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#122;&#104;&#97;&#111;&#104;&#111;&#110;&#103;&#50;&#50;&#57;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;"><a href="tip-23/">TRC-23 Add the account world status tree root to the block header</a></td>
+<td style="text-align: left;">lvs007 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#105;&#97;&#110;&#103;&#122;&#104;&#105;&#121;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#108;&#105;&#97;&#110;&#103;&#122;&#104;&#105;&#121;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;"><a href="tip-28/">TRC-28 Built-in message queue for event subscribe</a></td>
+<td style="text-align: left;">jiangyy <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#105;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#106;&#105;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#121;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;"><a href="tip-29/">Bitwise shifting instructions in Tron</a></td>
+<td style="text-align: left;">@ithinker1991</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;"><a href="tip-30/">TRC-30 Code hash instructions</a></td>
+<td style="text-align: left;">llwslc<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;"><a href="tip-31/">TRC-31 Trigger constant contract</a></td>
+<td style="text-align: left;">llwslc<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;"><a href="tip-32/">TRC-32 Clear the ABI of contract</a></td>
+<td style="text-align: left;">llwslc<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;"><a href="tip-37/">TRC-37: forbid using TransferContract &amp; TransferAssetContract  for contract account</a></td>
+<td style="text-align: left;">Taihao Fu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#97;&#105;&#104;&#97;&#111;&#46;&#102;&#117;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#116;&#97;&#105;&#104;&#97;&#111;&#46;&#102;&#117;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;"><a href="tip-41/">Optimize transactionHistoryStore occupancy space#40</a></td>
+<td style="text-align: left;">wubin1<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#117;&#98;&#105;&#110;&#49;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#119;&#117;&#98;&#105;&#110;&#49;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;"><a href="tip-43/">TRC-43: Precompiled contract function for signature parallel verification</a></td>
+<td style="text-align: left;">Sh11thead<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#115;&#108;&#50;&#57;&#52;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#107;&#115;&#108;&#50;&#57;&#52;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;"><a href="tip-44/">TRC-44 Address.isContract instructions</a></td>
+<td style="text-align: left;">llwslc<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#108;&#108;&#119;&#115;&#108;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;"><a href="tip-51/">TRC-51 rate limit of API traffic</a></td>
+<td style="text-align: left;">shydesky<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#104;&#121;&#100;&#101;&#115;&#107;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#104;&#121;&#100;&#101;&#115;&#107;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">53</td>
+<td style="text-align: left;"><a href="tip-53/">Optimize the current TRON delegation mechanism</a></td>
+<td style="text-align: left;">lvs007 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#122;&#121;&#46;&#108;&#105;&#97;&#110;&#103;&#46;&#53;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#122;&#121;&#46;&#108;&#105;&#97;&#110;&#103;&#46;&#53;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;"><a href="tip-54/">TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract</a></td>
+<td style="text-align: left;">Jeancky <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#105;&#97;&#110;&#103;&#120;&#105;&#110;&#106;&#105;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#106;&#105;&#97;&#110;&#103;&#120;&#105;&#110;&#106;&#105;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;"><a href="tip-60/">TRC-60:Precompiled contract function for multi-signature verification</a></td>
+<td style="text-align: left;">Sh11thead <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#115;&#108;&#50;&#57;&#52;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#107;&#115;&#108;&#50;&#57;&#52;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">105</td>
+<td style="text-align: left;"><a href="tip-105/">Multi-signature Permission Operation</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">120</td>
+<td style="text-align: left;"><a href="tip-120/">ECDSA Signature Encoding Specification</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">127</td>
+<td style="text-align: left;"><a href="tip-127/">Support Tron-DEX based on system contracts</a></td>
+<td style="text-align: left;">sean liu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">135</td>
+<td style="text-align: left;"><a href="tip-135/">Shielded TRC-20 Contract</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a>, leo<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#101;&#111;&#46;&#104;&#111;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#108;&#101;&#111;&#46;&#104;&#111;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">137</td>
+<td style="text-align: left;"><a href="tip-137/">Zero-knowledge Proof Verification functions</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">138</td>
+<td style="text-align: left;"><a href="tip-138/">Pedersen hash function</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">157</td>
+<td style="text-align: left;"><a href="tip-157/">Freeze instructions in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">174</td>
+<td style="text-align: left;"><a href="tip-174/">CHAINID instructions in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">175</td>
+<td style="text-align: left;"><a href="tip-175/">SELFBALANCE instructions in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">191</td>
+<td style="text-align: left;"><a href="tip-191/">Signed Data Standard</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">196</td>
+<td style="text-align: left;"><a href="tip-196/">Reward SRs with the transaction fees charged for bandwidth and Energy</a></td>
+<td style="text-align: left;">sean liu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">203</td>
+<td style="text-align: left;"><a href="tip-203/">Adaptation to solidity-v0.5.15</a></td>
+<td style="text-align: left;">yanghang8612<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">204</td>
+<td style="text-align: left;"><a href="tip-204/">Make MAX_FEE_LIMIT configurable as a chain property</a></td>
+<td style="text-align: left;">yanghang8612<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">207</td>
+<td style="text-align: left;"><a href="tip-207/">A proposal to improve network resources model</a></td>
+<td style="text-align: left;">sean Liu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#108;&#105;&#117;&#46;&#115;&#101;&#97;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">209</td>
+<td style="text-align: left;"><a href="tip-209/">Adapt to Solidity 0.6.0.</a></td>
+<td style="text-align: left;">neo hong neo.hong@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">222</td>
+<td style="text-align: left;"><a href="tip-222/">Improve transaction execution speed</a></td>
+<td style="text-align: left;">Kiven <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#105;&#118;&#101;&#110;&#46;&#108;&#105;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#107;&#105;&#118;&#101;&#110;&#46;&#108;&#105;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">250</td>
+<td style="text-align: left;"><a href="tip-250/">Include transaction results on the chain</a></td>
+<td style="text-align: left;">Andy <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#65;&#110;&#100;&#121;&#46;&#122;&#104;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#65;&#110;&#100;&#121;&#46;&#122;&#104;&#97;&#110;&#103;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">268</td>
+<td style="text-align: left;"><a href="tip-268/">SmartContract ABI optimization</a></td>
+<td style="text-align: left;">yanghang8612 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">271</td>
+<td style="text-align: left;"><a href="tip-271/">Vote for SR in Smart Contract</a></td>
+<td style="text-align: left;">yanghang8612<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">272</td>
+<td style="text-align: left;"><a href="tip-272/">Compatible with EVM</a></td>
+<td style="text-align: left;">yanghang8612<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">276</td>
+<td style="text-align: left;"><a href="tip-276/">Optimize block verification logic</a></td>
+<td style="text-align: left;">lucas.wu@tron.network</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">281</td>
+<td style="text-align: left;"><a href="tip-281/">Optimize the query of database</a></td>
+<td style="text-align: left;">forfreeday@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">285</td>
+<td style="text-align: left;"><a href="tip-285/">Optimize transaction cache initialization logic</a></td>
+<td style="text-align: left;">lucas.wu@tron.network</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">289</td>
+<td style="text-align: left;"><a href="tip-289/">Block Broadcast Optimization</a></td>
+<td style="text-align: left;">lucas.wu@tron.network</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">290</td>
+<td style="text-align: left;"><a href="tip-290/">Dynamic store optimization</a></td>
+<td style="text-align: left;">lucas.wu@tron.network</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">292</td>
+<td style="text-align: left;"><a href="tip-292/">Add a proposal to adjust the free net limit in an account</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">293</td>
+<td style="text-align: left;"><a href="tip-293/">Add a proposal to adjust the total net limit</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">295</td>
+<td style="text-align: left;"><a href="tip-295/">Optimize account assets</a></td>
+<td style="text-align: left;">forfreeday@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">298</td>
+<td style="text-align: left;"><a href="tip-298/">Reformat manifest</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">306</td>
+<td style="text-align: left;"><a href="tip-306/">Adapt to solidity_0.8.4</a></td>
+<td style="text-align: left;">neo.hong@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">318</td>
+<td style="text-align: left;"><a href="tip-318/">Adapt to Ethereum London Upgrade</a></td>
+<td style="text-align: left;">neo.hong@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">343</td>
+<td style="text-align: left;"><a href="tip-343/">TIP-343 Refine Write Parameters For Leveldb</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">344</td>
+<td style="text-align: left;"><a href="tip-344/">Optimize instruction execution for TVM</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">362</td>
+<td style="text-align: left;"><a href="tip-362/">Optimized node broadcast data caching</a></td>
+<td style="text-align: left;">forfreeday@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">366</td>
+<td style="text-align: left;"><a href="tip-366/">TIP-366 Node startup optimization</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">369</td>
+<td style="text-align: left;"><a href="tip-369/">Node support prometheus metrics</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">370</td>
+<td style="text-align: left;"><a href="tip-370/">Node support conditionalized stop</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">382</td>
+<td style="text-align: left;"><a href="tip-382/">Optimize the data structure of account assets</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">383</td>
+<td style="text-align: left;"><a href="tip-383/">Optimize transaction cache loading</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">387</td>
+<td style="text-align: left;"><a href="tip-387/">Transaction memo fee</a></td>
+<td style="text-align: left;">Andy <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#101;&#108;&#108;&#55;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#106;&#101;&#108;&#108;&#55;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">388</td>
+<td style="text-align: left;"><a href="tip-388/">Optimize light node synchronization logic</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">391</td>
+<td style="text-align: left;"><a href="tip-391/">Optimize fetch block process</a></td>
+<td style="text-align: left;">vikingzzu@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">397</td>
+<td style="text-align: left;"><a href="tip-397/">Raise limit of the 13th network parameter</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">425</td>
+<td style="text-align: left;"><a href="tip-425/">Speed up TCP connection establishment</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">428</td>
+<td style="text-align: left;"><a href="tip-428/">Increase the probability that the block processing thread acquires the lock</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">440</td>
+<td style="text-align: left;"><a href="tip-440/">Transaction cache optimization</a></td>
+<td style="text-align: left;">jell7@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">461</td>
+<td style="text-align: left;"><a href="tip-461/">Optimize data consistency for system abnormals</a></td>
+<td style="text-align: left;">ray.wu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#97;&#121;&#46;&#119;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#114;&#97;&#121;&#46;&#119;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">465</td>
+<td style="text-align: left;"><a href="tip-465/">new reward calculation algorithm</a></td>
+<td style="text-align: left;">bladehan@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">467</td>
+<td style="text-align: left;"><a href="tip-467/">Stake 2.0 - A new TRON staking model</a></td>
+<td style="text-align: left;">lxcmyf@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">474</td>
+<td style="text-align: left;"><a href="tip-474/">Optimize the return value of chainid opcode</a></td>
+<td style="text-align: left;">yanghang8612 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">476</td>
+<td style="text-align: left;"><a href="tip-476/">Delegate Data Structure Optimization</a></td>
+<td style="text-align: left;">lxcmyf@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">484</td>
+<td style="text-align: left;"><a href="tip-484/">Smart Contract Standard for TRX liquidity staking and resource market</a></td>
+<td style="text-align: left;">raymondliu0711</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">491</td>
+<td style="text-align: left;"><a href="tip-491/">Dynamic Energy Model</a></td>
+<td style="text-align: left;">daniel.cao@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">534</td>
+<td style="text-align: left;"><a href="tip-534/">Remove Vulnerable APIs</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">541</td>
+<td style="text-align: left;"><a href="tip-541/">Support canceling unstaking in Stake 2.0</a></td>
+<td style="text-align: left;">CooperDepp <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#111;&#111;&#112;&#101;&#114;&#100;&#101;&#112;&#112;&#57;&#48;&#64;&#111;&#117;&#116;&#108;&#111;&#111;&#107;&#46;&#99;&#111;&#109;">&#99;&#111;&#111;&#112;&#101;&#114;&#100;&#101;&#112;&#112;&#57;&#48;&#64;&#111;&#117;&#116;&#108;&#111;&#111;&#107;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">542</td>
+<td style="text-align: left;"><a href="tip-542/">Resource delegating supports customizable lock period</a></td>
+<td style="text-align: left;">Tee <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#109;&#105;&#110;&#64;&#116;&#114;&#111;&#110;&#101;&#110;&#101;&#114;&#103;&#121;&#46;&#109;&#97;&#114;&#107;&#101;&#116;">&#97;&#100;&#109;&#105;&#110;&#64;&#116;&#114;&#111;&#110;&#101;&#110;&#101;&#114;&#103;&#121;&#46;&#109;&#97;&#114;&#107;&#101;&#116;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">543</td>
+<td style="text-align: left;"><a href="tip-543/">Implement EIP-3855 PUSH0 instruction</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">544</td>
+<td style="text-align: left;"><a href="tip-544/">Add <code>data</code> to the http interfaces interacting with smart contract</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">547</td>
+<td style="text-align: left;"><a href="tip-547/">Connection precheck before P2P communication</a></td>
+<td style="text-align: left;">wb_bupt@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">548</td>
+<td style="text-align: left;"><a href="tip-548/">Node Discovery via DNS</a></td>
+<td style="text-align: left;">317787106@qq.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">549</td>
+<td style="text-align: left;"><a href="tip-549/">P2P support IPv6 protocol</a></td>
+<td style="text-align: left;">317787106@qq.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">550</td>
+<td style="text-align: left;"><a href="tip-550/">P2P message snappy compression</a></td>
+<td style="text-align: left;">allen.cheng@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">555</td>
+<td style="text-align: left;"><a href="tip-555/">Network upgrade logic optimization</a></td>
+<td style="text-align: left;">allen.cheng@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">586</td>
+<td style="text-align: left;"><a href="tip-586/">GRPC Implementation for Resource Price Interfaces</a></td>
+<td style="text-align: left;">lxcmyf@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">592</td>
+<td style="text-align: left;"><a href="tip-592/">Supplement Disconnect Reasons in Java-tron</a></td>
+<td style="text-align: left;">317787106@qq.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">621</td>
+<td style="text-align: left;"><a href="tip-621/">Add code version column to HelloMessage</a></td>
+<td style="text-align: left;">317787106@qq.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">635</td>
+<td style="text-align: left;"><a href="tip-635/">Optimize Reward Withdrawal To Improve TPS</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">650</td>
+<td style="text-align: left;"><a href="tip-650/">Implement EIP-1153 Transient storage opcodes</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">651</td>
+<td style="text-align: left;"><a href="tip-651/">Implement EIP-5656 MCOPY - Memory copying instruction</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">652</td>
+<td style="text-align: left;"><a href="tip-652/">Announce EIP-6049 Deprecate SELFDESTRUCT</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Meta</td>
+</tr>
+<tr>
+<td style="text-align: left;">653</td>
+<td style="text-align: left;"><a href="tip-653/">Adjust energy cost of SUICIDE and VOTEWITNESS opcodes in TVM</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">694</td>
+<td style="text-align: left;"><a href="tip-694/">Enhance Verification of Transaction Limitation at Consensus Layer</a></td>
+<td style="text-align: left;">lxcmyf@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">697</td>
+<td style="text-align: left;"><a href="tip-697/">Migrate Floating-Point Calculations from Math to StrictMath</a></td>
+<td style="text-align: left;">halibobo1205@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">712</td>
+<td style="text-align: left;"><a href="tip-712/">TRON typed structured data hashing and signing</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">721</td>
+<td style="text-align: left;"><a href="tip-721/">TRC-721 Non-Fungible Token Standard</a></td>
+<td style="text-align: left;">timothychung timothychungkitwai@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">745</td>
+<td style="text-align: left;"><a href="tip-745/">Introduce EIP-4844 and EIP-7516 instructions</a></td>
+<td style="text-align: left;">lei19942016@hotmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">767</td>
+<td style="text-align: left;"><a href="tip-767/">Transitioning proposal expire time configuration to Chain Governance</a></td>
+<td style="text-align: left;">lxcmyf@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">1102</td>
+<td style="text-align: left;"><a href="tip-1102/">Opt-in account exposure</a></td>
+<td style="text-align: left;">Aaron <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">1155</td>
+<td style="text-align: left;"><a href="tip-1155/">Multi Token Standard</a></td>
+<td style="text-align: left;">yanghang8612@163.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">1193</td>
+<td style="text-align: left;"><a href="tip-1193/">TRON Provider JavaScript API</a></td>
+<td style="text-align: left;">Aaron <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">3326</td>
+<td style="text-align: left;"><a href="tip-3326/">Wallet Switch TRON Chain Method</a></td>
+<td style="text-align: left;">Aaron <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#97;&#114;&#111;&#110;&#108;&#117;&#111;&#116;&#114;&#111;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">4907</td>
+<td style="text-align: left;"><a href="tip-4906/">Fork from ERC-4907 Rental NFT</a></td>
+<td style="text-align: left;">lopeed_prcy</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">6780</td>
+<td style="text-align: left;"><a href="tip-6780/">Implement EIP-6780: SELFDESTRUCT only in same transaction</a></td>
+<td style="text-align: left;">liang3885@hotmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">8004</td>
+<td style="text-align: left;"><a href="tip-8004/">Trustless Agents - Discover agents and establish trust through reputation and validation</a></td>
+<td style="text-align: left;">bankofai.io <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#97;&#109;&#64;&#98;&#97;&#110;&#107;&#111;&#102;&#97;&#105;&#46;&#105;&#111;">&#116;&#101;&#97;&#109;&#64;&#98;&#97;&#110;&#107;&#111;&#102;&#97;&#105;&#46;&#105;&#111;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="last-call">Last Call<a class="headerlink" href="#last-call" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">101</td>
+<td style="text-align: left;"><a href="tip-101/">Wallet Keystore Specification</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">102</td>
+<td style="text-align: left;"><a href="tip-102/">Hierarchical Deterministic Wallet</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">104</td>
+<td style="text-align: left;"><a href="tip-104/">Data Signing Specification</a></td>
+<td style="text-align: left;">federico<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#102;&#101;&#100;&#101;&#114;&#105;&#99;&#111;&#46;&#122;&#104;&#101;&#110;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="draft">Draft<a class="headerlink" href="#draft" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;"><a href="tip-62/">Tron consensus algorithm introduction</a></td>
+<td style="text-align: left;">xing@tron.network</td>
+<td style="text-align: left;">algorithm</td>
+</tr>
+<tr>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;"><a href="tip-64/">tron mix consensus Analytics</a></td>
+<td style="text-align: left;">xing@tron.network</td>
+<td style="text-align: left;">algorithm</td>
+</tr>
+<tr>
+<td style="text-align: left;">156</td>
+<td style="text-align: left;"><a href="tip-156/">Vote instructions in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">165</td>
+<td style="text-align: left;"><a href="tip-165/">TRC-165 Standard Interface Detection In Contract</a></td>
+<td style="text-align: left;">timothychung timothychungkitwai@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">171</td>
+<td style="text-align: left;"><a href="tip-171/">STAKE instructions in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">178</td>
+<td style="text-align: left;"><a href="tip-178/">TOKENISSUE and UPDATEASSET Instruction in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+<tr>
+<td style="text-align: left;">241</td>
+<td style="text-align: left;"><a href="tip-241/">Adaptation to solidity-v0.5.16</a></td>
+<td style="text-align: left;">yanghang8612<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#121;&#97;&#110;&#103;&#104;&#97;&#110;&#103;&#56;&#54;&#49;&#50;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unknown">Unknown<a class="headerlink" href="#unknown" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">0001</td>
+<td style="text-align: left;"><a href="tip-01/">Tron Wallet Proposal - Key Derivation Methods for Tron Accounts with BIP39</a></td>
+<td style="text-align: left;">getty.io</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;"><a href="tip-26/">Untitled</a></td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">LICENSE.md</td>
+<td style="text-align: left;"><a href="LICENSE/">Untitled</a></td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">Unknown</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1"><Draft | Last Call | Accepted | Final | Deferred><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><to be assigned></td>
+<td style="text-align: left;"><a href="template/"><TIP title></a></td>
+<td style="text-align: left;"><a list of the authors or authors name(s) and/or username(s), or name(s) and email(s), e.g. (use with the parentheses or triangular brackets): FirstName LastName (@GitHubUsername), FirstName LastName <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#111;&#111;&#64;&#98;&#97;&#114;&#46;&#99;&#111;&#109;">&#102;&#111;&#111;&#64;&#98;&#97;&#114;&#46;&#99;&#111;&#109;</a>, FirstName (@GitHubUsername) and GitHubUsername (@GitHubUsername)></td>
+<td style="text-align: left;">&lt;Standards Track (Core, Networking, Interface, TRC, VM)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deferred">Deferred<a class="headerlink" href="#deferred" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;"><a href="tip-19/">TRC-19 Deferred transaction</a></td>
+<td style="text-align: left;">jiangyy jiangyangyang@tron.network</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="finalcore">Final(core)<a class="headerlink" href="#finalcore" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;"><a href="tip-24/">Implement DB storage with RocksDB</a></td>
+<td style="text-align: left;">@shydesky <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#104;&#121;&#100;&#101;&#115;&#107;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#115;&#104;&#121;&#100;&#101;&#115;&#107;&#121;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fnial">Fnial<a class="headerlink" href="#fnial" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">269</td>
+<td style="text-align: left;"><a href="tip-269/">Optimize the performance of block processing</a></td>
+<td style="text-align: left;">kayle.liu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#111;&#114;&#102;&#114;&#101;&#101;&#100;&#97;&#121;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;">&#102;&#111;&#114;&#102;&#114;&#101;&#101;&#100;&#97;&#121;&#64;&#49;&#54;&#51;&#46;&#99;&#111;&#109;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lastcall">LASTCALL<a class="headerlink" href="#lastcall" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;"><a href="tip-128/">TIP128 Lite Fullnode support</a></td>
+<td style="text-align: left;">ray.wu <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#97;&#121;&#46;&#119;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#114;&#97;&#121;&#46;&#119;&#117;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lastcall_1">LastCall<a class="headerlink" href="#lastcall_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">176</td>
+<td style="text-align: left;"><a href="tip-176/">altbn128 operation energy reduction in TVM</a></td>
+<td style="text-align: left;">taihao.fu@gmail.com</td>
+<td style="text-align: left;">Standards Track</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1765,52 +2531,30 @@ replaces (*optional): &lt;TIP number(s)&gt;
 
 
 
-
-
-
-
-
-		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
-      	    	  <footer class="md-footer">
   
-    
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../java-tron/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Developer Guide">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Developer Guide
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../issue-workflow/" class="md-footer__link md-footer__link--next" aria-label="Next: Issue Workflow">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Issue Workflow
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
+        <footer class="md-footer">
+  
     
   
   <!--div class="md-footer-meta md-typeset">
@@ -1828,22 +2572,14 @@ replaces (*optional): &lt;TIP number(s)&gt;
     </div>
   </div-->
 </footer>
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-      </main>
+      
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
@@ -1852,7 +2588,7 @@ replaces (*optional): &lt;TIP number(s)&gt;
       
         <script src="../../javascripts/nav-toc.js"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="../../javascripts/mathjax-sri.js"></script>
       
     
   </body>

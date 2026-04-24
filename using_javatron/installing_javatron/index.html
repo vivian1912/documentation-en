@@ -8,8 +8,6 @@
       
       
       
-        <link rel="canonical" href="https://tronprotocol.github.io/documentation-en/using_javatron/installing_javatron/">
-      
       
         <link rel="prev" href="../../getting_started/getting_started_with_javatron/">
       
@@ -86,9 +84,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -183,6 +179,196 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../developers/java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -196,10 +382,12 @@
                     
 
 
+  
+
 
   
 
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
       
@@ -255,19 +443,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -328,6 +516,9 @@
     
       
         
+        
+      
+      
         
       
     
@@ -432,9 +623,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#prerequisites-before-compiling-java-tron" class="md-nav__link" >
+  <a href="#prerequisites-for-compiling-java-tron" class="md-nav__link" >
     <span class="md-ellipsis">
-      Prerequisites Before Compiling java-tron
+      Prerequisites for Compiling java-tron
     </span>
   </a>
   
@@ -455,28 +646,64 @@
 </li>
       
         <li class="md-nav__item has-children">
-  <a href="#starting-a-java-tron-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
+  <a href="#starting-a-java-tron-full-node" class="md-nav__link" onclick="toggleChildren(event)" aria-expanded="false">
     <span class="md-ellipsis">
-      Starting a java-tron Node
+      Starting a java-tron Full Node
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Starting a java-tron Node" hidden>
+    <nav class="md-nav" aria-label="Starting a java-tron Full Node" hidden>
       <ul class="md-nav__list">
         
           <li class="md-nav__item ">
-  <a href="#quick-start-a-fullnode" class="md-nav__link" >
+  <a href="#network-types" class="md-nav__link" >
     <span class="md-ellipsis">
-      Quick Start a FullNode
+      Network Types
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item ">
-  <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" class="md-nav__link" >
+  <a href="#starting-a-fullnode-on-the-tron-main-network" class="md-nav__link" >
     <span class="md-ellipsis">
-      JVM Parameter Optimization for Mainnet FullNode Deployment
+      Starting a FullNode on the TRON main network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-fullnode-on-the-nile-test-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a FullNode on the Nile test network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#access-shasta-test-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Access Shasta test network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-fullnode-on-a-private-network" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a FullNode on a private network
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item ">
+  <a href="#starting-a-soliditynode" class="md-nav__link" >
+    <span class="md-ellipsis">
+      Starting a SolidityNode
     </span>
   </a>
   
@@ -749,19 +976,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -863,19 +1090,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1087,19 +1314,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1152,6 +1379,28 @@
   
   <span class="md-ellipsis">
     TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developers/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
     
   </span>
   
@@ -1256,21 +1505,9 @@
   
   
   
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../developers/code-structure/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
     Core Modules
@@ -1278,76 +1515,6 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
-            <span class="md-nav__icon md-icon"></span>
-            Core Modules
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/code-structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Module Structure
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/chainbase-module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Chainbase
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../developers/network-module/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Network
-    
-  </span>
-  
-
       </a>
     </li>
   
@@ -1360,14 +1527,6 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
@@ -1378,20 +1537,20 @@
     
     
     
+      
       
         
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1449,19 +1608,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1519,19 +1678,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1633,19 +1792,19 @@
     
     
       
-        
+      
         
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1714,9 +1873,13 @@
 
 <h1 id="deploying-a-java-tron-node">Deploying a java-tron Node<a class="headerlink" href="#deploying-a-java-tron-node" title="Permanent link">&para;</a></h1>
 <p>This document guides developers on how to deploy a TRON java-tron node on <code>Linux</code> or <code>macOS</code> operating systems.</p>
-<p><strong>Important Note:</strong> The java-tron node currently requires <strong>Oracle JDK 1.8</strong>. Other JDK versions are not supported.</p>
+<p>Currently, a java-tron node supports running on both x86_64 and arm64 architectures(support for the arm64 architecture starts from version 4.8.1). JDK support varies by architecture:</p>
+<ul>
+<li>For the x86_64 architecture, currently only Oracle JDK 8 is supported.</li>
+<li>For the arm64 architecture, currently only JDK 17 is supported.</li>
+</ul>
 <h2 id="hardware-configuration-requirements">Hardware Configuration Requirements<a class="headerlink" href="#hardware-configuration-requirements" title="Permanent link">&para;</a></h2>
-<p>The minimum hardware configuration required to run a java-tron node is as follows:</p>
+<p>The minimum hardware requirements to run a java-tron node are as follows:</p>
 <ul>
 <li><strong>CPU</strong>: 8 Cores</li>
 <li><strong>Memory</strong>: 16 GB</li>
@@ -1730,7 +1893,7 @@
 <li><strong>SSD</strong>: 3.5 TB+</li>
 <li><strong>Network Bandwidth</strong>: 100 Mbps</li>
 </ul>
-<p>For a Super Representative (SR) node acting as a <strong>block production node</strong>, the recommended configuration is:</p>
+<p>For a Super Representative (SR) node acting as a <strong>block-production node</strong>, the recommended configuration is:</p>
 <ul>
 <li><strong>CPU</strong>: 32 Cores</li>
 <li><strong>Memory</strong>: 64 GB</li>
@@ -1739,11 +1902,11 @@
 </ul>
 <h2 id="obtaining-the-java-tron-client">Obtaining the java-tron Client<a class="headerlink" href="#obtaining-the-java-tron-client" title="Permanent link">&para;</a></h2>
 <p>You can directly download the official client <a href="https://github.com/tronprotocol/java-tron/releases">here</a>, or you can compile the source code yourself to package the client.</p>
-<h3 id="prerequisites-before-compiling-java-tron">Prerequisites Before Compiling java-tron<a class="headerlink" href="#prerequisites-before-compiling-java-tron" title="Permanent link">&para;</a></h3>
+<h3 id="prerequisites-for-compiling-java-tron">Prerequisites for Compiling java-tron<a class="headerlink" href="#prerequisites-for-compiling-java-tron" title="Permanent link">&para;</a></h3>
 <p>Before compiling java-tron, make sure you have:</p>
 <ul>
-<li>Operating system: <code>Linux</code> or <code>MacOS</code> (Windows is not supported).</li>
-<li>Git and correct JDK version installed based on your CPU architecture.</li>
+<li>Operating system: <code>Linux</code> or <code>macOS</code> (<code>Windows</code> is not supported).</li>
+<li>Git and the correct JDK version installed based on your CPU architecture.</li>
 </ul>
 <p>Step 1: Verify Git is installed</p>
 <p>If Git is not installed, download it from <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>.</p>
@@ -1756,7 +1919,7 @@
 <li>
 <p>If your architecture is <code>x86_64</code> (Intel/AMD 64-bit):</p>
 <ul>
-<li>Install Java SE 8 (Oracle JDK 8): https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</li>
+<li>Install Java SE 8 (Oracle JDK 8): <a href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html</a></li>
 <li>Verify:
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
@@ -1766,7 +1929,7 @@ The output should show a version starting with <code>1.8</code>.</li>
 <li>
 <p>If your architecture is <code>arm64</code> or <code>aarch64</code> (Apple Silicon / ARM servers):</p>
 <ul>
-<li>Install Java SE 17 (JDK 17): https://www.oracle.com/java/technologies/downloads/#java17</li>
+<li>Install Java SE 17 (JDK 17): <a href="https://www.oracle.com/java/technologies/downloads/#java17">https://www.oracle.com/java/technologies/downloads/#java17</a></li>
 <li>Verify:
 <div class="highlight"><pre><span></span><code>java<span class="w"> </span>-version
 </code></pre></div>
@@ -1784,7 +1947,7 @@ cd java-tron
 <li>Then, run the following commands to build java-tron:
     <div class="highlight"><pre><span></span><code>./gradlew clean build -x test
 </code></pre></div><ul>
-<li>The parameter <code>-x test</code> indicates skipping the execution of test cases. You can remove this parameter to execute test code during compilation, but this will extend the compilation time.</li>
+<li>The <code>-x test</code> parameter skips the execution of test cases. You can remove this parameter to execute test during compilation, but this will increase the compilation time.</li>
 <li>If you encounter <code>DependencyVerificationException</code> during the build, refresh dependencies and regenerate verification metadata:
   <div class="highlight"><pre><span></span><code>./gradlew clean build -x test --refresh-dependencies
 </code></pre></div></li>
@@ -1792,63 +1955,77 @@ cd java-tron
 </ul>
 </li>
 </ol>
-<h2 id="starting-a-java-tron-node">Starting a java-tron Node<a class="headerlink" href="#starting-a-java-tron-node" title="Permanent link">&para;</a></h2>
-<p>You can choose different configuration files to connect the java-tron node to different TRON networks:</p>
+<h2 id="starting-a-java-tron-full-node">Starting a java-tron Full Node<a class="headerlink" href="#starting-a-java-tron-full-node" title="Permanent link">&para;</a></h2>
+<p>A full node acts as a gateway to the TRON network, exposing comprehensive interfaces via HTTP and RPC APIs. Through these endpoints, clients may execute asset transfers, deploy smart contracts, and invoke on-chain logic. It must join a TRON network to participate in the network's consensus and transaction processing.</p>
+<h3 id="network-types">Network Types<a class="headerlink" href="#network-types" title="Permanent link">&para;</a></h3>
+<p>The TRON network is mainly divided into:</p>
 <ul>
-<li>For Mainnet FullNode configuration file: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a></li>
-<li>For other network node configuration:<ul>
-<li>Nile Testnet: https://nileex.io/</li>
-<li>Private Network: please refer to <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network</a></li>
-</ul>
+<li>
+<p><strong>Main Network (Mainnet)</strong><br />
+  The primary public blockchain where real value (TRX, TRC-20 tokens, etc.) is transacted, secured by a massive decentralized network.</p>
+</li>
+<li>
+<p><strong><a href="https://nileex.io/">Nile Test Network (Testnet)</a></strong><br />
+  A forward-looking testnet where new features and governance proposals are launched first for developers to experience. Consequently, its codebase is typically ahead of the Mainnet.</p>
+</li>
+<li>
+<p><strong><a href="https://shasta.tronex.io/">Shasta Testnet</a></strong><br />
+  Closely mirrors the Mainnet’s features and governance proposals. Its network parameters and software versions are kept in sync with the Mainnet, providing developers with a highly realistic environment for final testing.</p>
+</li>
+<li>
+<p><strong>Private Networks</strong><br />
+  Customized TRON networks set up by private entities for testing, development, or specific use cases.</p>
 </li>
 </ul>
-<h3 id="quick-start-a-fullnode">Quick Start a FullNode<a class="headerlink" href="#quick-start-a-fullnode" title="Permanent link">&para;</a></h3>
-<p>A <strong>FullNode</strong> serves as an entry point to the TRON network, possesses complete historical data, and provides external access via <strong>HTTP API</strong>, <strong>gRPC API</strong>, and <strong>JSON-RPC API</strong>. You can interact with the TRON network through a FullNode for activities such as asset transfers, smart contract deployments, and smart contract interactions.</p>
-<p>Below is the command to start a <strong>Mainnet FullNode</strong>, specifying the configuration file with the <code>-c</code> parameter:</p>
-<div class="highlight"><pre><span></span><code>$ nohup java -Xms9G -jar ./build/libs/FullNode.jar -c config.conf &amp;
-</code></pre></div>
+<p>Network selection is performed by specifying the appropriate configuration file upon full-node startup. Mainnet configuration: <a href="https://github.com/tronprotocol/java-tron/blob/master/framework/src/main/resources/config.conf">config.conf</a>; Nile testnet configuration: <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/framework/src/main/resources/config-nile.conf">config-nile.conf</a></p>
+<h3 id="starting-a-fullnode-on-the-tron-main-network">Starting a FullNode on the TRON main network<a class="headerlink" href="#starting-a-fullnode-on-the-tron-main-network" title="Permanent link">&para;</a></h3>
+<p>Launch a main-network full node with the built-in default configuration:
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div></p>
 <ul>
 <li><code>nohup ... &amp;</code>: Runs the command in the background and ignores the hangup signal.</li>
-<li>The <code>Xms9G</code> parameter suggests the minimal heap size to <code>9 GB</code> for connecting to Mainnet.</li>
-<li>To start a <strong>Nile Testnet FullNode</strong> or <strong>Private Network FullNode</strong>, use the corresponding configuration file links provided above.</li>
 </ul>
-<h3 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h3>
-<p>For higher efficiency and stability when connecting to Mainnet, please refer to the following sections with respective architectures:</p>
-<h4 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<blockquote>
+<p>For production deployments or long-running Mainnet nodes, please refer to the below <a href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for FullNode</a> guide for the recommended Java commands.</p>
+</blockquote>
+<p>Using the command below, you can monitor the block synchronization progress:
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-f<span class="w"> </span>./logs/tron.log
+</code></pre></div></p>
+<p>Use <a href="https://tronscan.org/#/">TronScan</a>, TRON's official block explorer, to view main network transactions, blocks, accounts, witness voting, and governance metrics, and more.</p>
+<p>Please refer to the subsequent sections for detailed instructions on deploying full nodes within the Nile Testnet and private networks.</p>
+<h4 id="jvm-parameter-optimization-for-mainnet-fullnode-deployment">JVM Parameter Optimization for Mainnet FullNode Deployment<a class="headerlink" href="#jvm-parameter-optimization-for-mainnet-fullnode-deployment" title="Permanent link">&para;</a></h4>
+<p>For higher efficiency and stability when connecting to Mainnet, please refer to the following full Java startup parameters for different architectures:</p>
+<h5 id="x86_64-jdk-8">x86_64 (JDK 8)<a class="headerlink" href="#x86_64-jdk-8" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx12G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="arm64-jdk-17">ARM64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
-<span class="w">             </span>-jar<span class="w"> </span>./build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>main_net_config.conf<span class="w"> </span><span class="p">&amp;</span>
+<h5 id="arm64-jdk-17">arm64 (JDK 17)<a class="headerlink" href="#arm64-jdk-17" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xmx9G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
-<h4 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h4>
+<h5 id="java-startup-parameters-explanation">Java Startup Parameters Explanation<a class="headerlink" href="#java-startup-parameters-explanation" title="Permanent link">&para;</a></h5>
 <p><strong>General &amp; Memory Parameters:</strong></p>
 <ul>
-<li>
-<p><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.</p>
-<blockquote>
-<p>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.
-For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</p>
-</blockquote>
+<li><code>-Xms</code> / <code>-Xmx</code>: Sets the initial and maximum JVM heap size.<ul>
+<li>For minimum hardware requirements (16 GB RAM servers): Suggested JDK 8 use <code>-Xms9G -Xmx12G</code>; JDK 17 use <code>-Xmx9G</code>.</li>
+<li>For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx</code>) to 40 % of total RAM, with the minimum to <code>-Xms9G</code>.</li>
+</ul>
 </li>
-<li>
-<p><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</p>
-</li>
+<li><code>-XX:MetaspaceSize</code> / <code>-XX:MaxMetaspaceSize</code>: Sets the initial and maximum size of Metaspace (class metadata).</li>
 <li><code>-XX:MaxDirectMemorySize</code>: Limits the memory used by NIO Direct Byte Buffers.</li>
 <li><code>-XX:ReservedCodeCacheSize</code>: Sets the maximum size of the JIT code cache.</li>
 <li><code>-XX:+UseCodeCacheFlushing</code>: Allows the JVM to flush the code cache when full.</li>
@@ -1868,6 +2045,28 @@ For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx
 <li><code>-XX:+UseZGC</code>: Enables ZGC, a scalable low-latency garbage collector.</li>
 <li><code>-Xlog:gc...</code>: Unified JVM logging configuration. The example configures GC logs with file rotation (10 files, 100MB each).</li>
 </ul>
+<h3 id="starting-a-fullnode-on-the-nile-test-network">Starting a FullNode on the Nile test network<a class="headerlink" href="#starting-a-fullnode-on-the-nile-test-network" title="Permanent link">&para;</a></h3>
+<p>Utilize the <code>-c</code> flag to direct the node to the configuration file corresponding to the desired network. Since Nile TestNet may incorporate features not yet available on the MainNet, it is <strong>strongly advised</strong> to compile the source code following the <a href="https://github.com/tron-nile-testnet/nile-testnet/blob/master/README.md#building-the-source-code">Building the Source Code</a> instructions for the Nile TestNet.</p>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config-nile.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<p>Nile resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://nileex.io/">nileex.io</a>.</p>
+<h3 id="access-shasta-test-network">Access Shasta test network<a class="headerlink" href="#access-shasta-test-network" title="Permanent link">&para;</a></h3>
+<p>Shasta does not accept public node peers. Programmatic access is available via TronGrid endpoints; see <a href="https://developers.tron.network/docs/trongrid">TronGrid Service</a> for details.</p>
+<p>Shasta resources: explorer, faucet, wallet, developer docs, and network statistics at <a href="https://shasta.tronex.io/">shasta.tronex.io</a>.</p>
+<h3 id="starting-a-fullnode-on-a-private-network">Starting a FullNode on a private network<a class="headerlink" href="#starting-a-fullnode-on-a-private-network" title="Permanent link">&para;</a></h3>
+<p>To set up a private network for testing or development, follow the <a href="https://tronprotocol.github.io/documentation-en/using_javatron/private_network/">Private Network guidance</a>.</p>
+<h3 id="starting-a-soliditynode">Starting a SolidityNode<a class="headerlink" href="#starting-a-soliditynode" title="Permanent link">&para;</a></h3>
+<p>A SolidityNode only synchronizes solidified blocks from a trusted FullNode. The trusted FullNode is configured in the configuration file, with the port number being the gRPC service port of the FullNode.</p>
+<div class="highlight"><pre><span></span><code>node {
+  # trust node for solidity node
+  # trustNode = &quot;ip:port&quot;
+  trustNode = &quot;127.0.0.1:50051&quot;
+  ...
+}
+</code></pre></div>
+<p>Starting from version 4.8.1, <code>SolidityNode.jar</code> is no longer provided. Instead, SolidityNode is started using the command-line parameter <code>--solidity</code>, as shown below:</p>
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --solidity -c framework/src/main/resources/config.conf
+</code></pre></div>
 <h3 id="starting-a-block-production-node">Starting a Block Production Node<a class="headerlink" href="#starting-a-block-production-node" title="Permanent link">&para;</a></h3>
 <p>By adding the <code>--witness</code> parameter to the FullNode startup command above, the <code>FullNode</code> will run as a <strong>Block Production Node</strong> (SR Node). In addition to supporting all FullNode functionalities, a Block Production Node also supports <strong>block production</strong> and <strong>transaction packaging</strong>.</p>
 <p><strong>Important Notes</strong>:</p>
@@ -1881,11 +2080,31 @@ For servers with ≥32 GB RAM, suggest setting the maximum heap size (<code>-Xmx
     650950B1...295BD812
 ]
 </code></pre></div>
-<p>Then execute the following command to start the Block Production Node:</p>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+<p>For SR nodes running on high-performance servers (e.g., ≥ 64GB RAM), it is strongly recommended to use the following optimized Java startup commands. These configurations are designed to ensure maximum stability and efficiency for block production. Execute the command corresponding to your environment:</p>
+<h4 id="option-1-jdk-8-on-x86_64">Option 1: JDK 8 on x86_64<a class="headerlink" href="#option-1-jdk-8-on-x86_64" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1G<span class="w"> </span>-XX:+PrintGCDetails<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+PrintGCDateStamps<span class="w">  </span>-Xloggc:gc.log<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseConcMarkSweepGC<span class="w"> </span>-XX:NewRatio<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+CMSScavengeBeforeRemark<span class="w"> </span>-XX:+ParallelRefProcEnabled<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCMSInitiatingOccupancyOnly<span class="w">  </span>-XX:CMSInitiatingOccupancyFraction<span class="o">=</span><span class="m">70</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
+</code></pre></div>
+<h4 id="option-2-jdk-17-on-arm64">Option 2: JDK 17 on arm64<a class="headerlink" href="#option-2-jdk-17-on-arm64" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>nohup<span class="w"> </span>java<span class="w"> </span>-Xms9G<span class="w"> </span>-Xmx24G<span class="w"> </span>-XX:+UseZGC<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-Xlog:gc,gc+heap:file<span class="o">=</span>gc.log:time,tags,level:filecount<span class="o">=</span><span class="m">10</span>,filesize<span class="o">=</span>100M<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:ReservedCodeCacheSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+UseCodeCacheFlushing<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MetaspaceSize<span class="o">=</span>256m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxMetaspaceSize<span class="o">=</span>512m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:MaxDirectMemorySize<span class="o">=</span>1g<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-XX:+HeapDumpOnOutOfMemoryError<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-jar<span class="w"> </span>build/libs/FullNode.jar<span class="w"> </span>--witness<span class="w"> </span>-c<span class="w"> </span>framework/src/main/resources/config.conf<span class="w"> </span><span class="p">&amp;</span>
 </code></pre></div>
 <h3 id="master-slave-mode-for-block-production-fullnodes">Master-Slave Mode for Block Production FullNodes<a class="headerlink" href="#master-slave-mode-for-block-production-fullnodes" title="Permanent link">&para;</a></h3>
-<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The description of <code>node.backup</code> configuration items is as follows:</p>
+<p>To enhance the reliability of block production FullNodes, you can deploy multiple block production FullNodes for the same account, forming a master-slave mode. When an account with block production rights deploys two or more nodes <strong>(Recommended number: 2)</strong>, it's necessary to configure <code>node.backup</code> in each node's configuration file. The descriptions of the <code>node.backup</code> configuration items are as follows:</p>
 <p><div class="highlight"><pre><span></span><code><span class="na">node.backup {</span>
 <span class="w">  </span><span class="c1"># udp listen port, each member should have the same configuration</span>
 <span class="w">  </span><span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10001</span>
@@ -1942,7 +2161,7 @@ For example, if an account with block production rights deploys two nodes with I
 <p>The operational steps are as follows:</p>
 <ol>
 <li>Download the latest data snapshot.</li>
-<li>Unzip it to the <code>output-directory</code> within your <code>tron</code> project.</li>
+<li>Unzip it to the <code>output-directory</code> folder within your <code>tron</code> project (default is <code>output-directory</code>).</li>
 <li>Then start the node; the node will continue to synchronize based on the data snapshot.</li>
 </ol>
 <h3 id="specifying-super-representative-account-private-key-using-keystore-password">Specifying Super Representative Account Private Key Using Keystore + Password<a class="headerlink" href="#specifying-super-representative-account-private-key-using-keystore-password" title="Permanent link">&para;</a></h3>
@@ -1962,7 +2181,7 @@ For example, if an account with block production rights deploys two nodes with I
 </code></pre></div>
 </li>
 <li>
-<p>You can generate the <code>keystore</code> file and password using the <code>registerwallet</code> command from the <code>wallet-cli</code> project.</p>
+<p>You can use the <code>registerwallet</code> command from the <code>wallet-cli</code> project to generate the <code>keystore</code> file and password, or use the command <code>java -jar build/libs/FullNode.jar --keystore-factory</code> to generate them (starting from version 4.8.1, <code>KeystoreFactory.jar</code> is no longer provided).</p>
 </li>
 </ul>
 </li>
@@ -1970,11 +2189,11 @@ For example, if an account with block production rights deploys two nodes with I
 <p><strong>Starting a Block Production Node</strong>:</p>
 <ul>
 <li>
-<p><strong>Starting the node interactively without <code>nohup</code> (Recommended)</strong></p>
+<p><strong>Interactive Startup without <code>nohup</code> (Recommended)</strong></p>
 <ul>
-<li><strong>Important Notes</strong>: This method requires human interaction to enter the password during node startup. It is recommended to use a session persistence tool, such as <code>screen</code> or <code>tmux</code>.</li>
+<li><strong>Notes</strong>: This method requires manually entering the password during node startup. It is highly recommended to run this inside a session persistence tool like screen or tmux."</li>
 </ul>
-<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf
+<div class="highlight"><pre><span></span><code>java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf
 </code></pre></div>
 <ul>
 <li>During node startup, the system will prompt you to enter the password. After entering the password correctly, the node will complete its startup.</li>
@@ -1982,14 +2201,16 @@ For example, if an account with block production rights deploys two nodes with I
 </li>
 <li>
 <p><strong>Using <code>nohup</code> to pass the password directly in the command line via <code>--password</code></strong></p>
-<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar FullNode.jar --witness -c config.conf --password &quot;your_password&quot; &gt; start.log 2&gt;&amp;1 &amp;
+<div class="highlight"><pre><span></span><code>nohup java -Xmx24g -XX:+UseConcMarkSweepGC -jar build/libs/FullNode.jar --witness -c framework/src/main/resources/config.conf --password &quot;your_password&quot; &gt; start.log 2&gt;&amp;1 &amp;
 </code></pre></div>
 </li>
 </ul>
 </li>
 </ol>
 <h3 id="optimizing-memory-usage-with-tcmalloc">Optimizing Memory Usage with <code>tcmalloc</code><a class="headerlink" href="#optimizing-memory-usage-with-tcmalloc" title="Permanent link">&para;</a></h3>
-<p>To achieve optimal memory usage, use Google's <code>tcmalloc</code> instead of the system's <code>glibc malloc</code>.</p>
+<p>To achieve optimal memory usage, use Google's <code>tcmalloc</code> instead of the system's <code>glibc malloc</code>.
+<strong>Note</strong>:
+ If you are deploying via the official java-tron Docker image (version 4.8.1 or later), <code>tcmalloc</code> is already integrated by default and no manual configuration is required.</p>
 <ol>
 <li>
 <p><strong>Install <code>tcmalloc</code></strong>:</p>
@@ -2054,8 +2275,19 @@ export TCMALLOC_RELEASE_RATE=10
 
 
 
-		  <hr class="content-footer-divider">  <!-- 添加的水平线 -->
-      	    	  <footer class="md-footer">
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
   
     
       
@@ -2112,22 +2344,14 @@ export TCMALLOC_RELEASE_RATE=10
     </div>
   </div-->
 </footer>
-                
-              </article>
-            </div>
-          
-          
-<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
-        </div>
-        
-      </main>
+      
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
@@ -2136,7 +2360,7 @@ export TCMALLOC_RELEASE_RATE=10
       
         <script src="../../javascripts/nav-toc.js"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="../../javascripts/mathjax-sri.js"></script>
       
     
   </body>

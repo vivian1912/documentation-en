@@ -1,0 +1,2023 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="federico<federico.zhen@tron.network>, leo<leo.hou@tron.network>">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Shielded TRC-20 Contract - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Shielded TRC-20 Contract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Shielded TRC-20 Contract</h1>
+
+<div class="highlight"><pre><span></span><code>tip: 135 
+title: Shielded TRC-20 Contract 
+author: federico&lt;federico.zhen@tron.network&gt;, leo&lt;leo.hou@tron.network&gt;
+discussions-to: https://github.com/tronprotocol/tips/issues/135
+status: Final
+type: Standards Track
+category: TRC
+created: 2020-03-04
+</code></pre></div>
+<h2 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h2>
+<p>This TIP provides the contract implementation of transforming public TRC-20 token to shielded token, which can guarantee the privacy of token ownership and transactions. </p>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>The shielded TRC-20 contract has three core modules: <code>mint</code>, <code>transfer</code> and <code>burn</code>. <code>mint</code> is used to transform the public TRC-20 token to shielded token, which makes token ownership invisible. <code>transfer</code> is used for shielded token transactions, which can hide the source address, the destination address, and the transaction amount. <code>burn</code> is used to transform the shielded token to the public TRC-20 token. The technical implementation is based on zk-SNARK proof system, which is secure and efficient.  </p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>TRC-20 token contract allows users to issue and transfer tokens, but it can not guarantee the privacy since it leaks the token ownership. When transferring the token, the source address, destination address, and the token amount are  public. The shielded TRC-20 contract aims to solve this problem and provides users better privacy of token ownership and transactions.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>The following defines the implementation of the shielded TRC-20 contract. </p>
+<h3 id="preliminaries">Preliminaries<a class="headerlink" href="#preliminaries" title="Permanent link">&para;</a></h3>
+<p><strong>NoteCommitment</strong></p>
+<p>The TRC-20 token is transformed into shielded token in the form of commitment by the cryptographic method, which is defined as:</p>
+<p>note<sub>-</sub>commitment = NoteCommitment<sub>r</sub>(v)</p>
+<p>The <code>v</code> value is hidden by  <code>note_commitment</code> with the blinding factor <code>r</code>.</p>
+<p><strong>SpendDescription</strong></p>
+<p>The <code>SpendDescription</code> includes zk-SNARK proof related data, which is used as the input of the shielded token transaction. </p>
+<div class="highlight"><pre><span></span><code>message SpendDescription { 
+  bytes value_commitment = 1; // value commitment
+  bytes anchor = 2; // merkle root
+  bytes nullifier = 3; // used for check double spend
+  bytes rk = 4; // used for check spend spend authority signature
+  bytes zkproof = 5; // zk-SNARK proof
+  bytes spend_authority_signature = 6; //spend authority signature 
+}
+</code></pre></div>
+<p><strong>ReceiveDescription</strong></p>
+<p>The <code>ReceiveDescrion</code> also includes zk-SNARK proof related data, which is used as the output of shielded token transaction.</p>
+<div class="highlight"><pre><span></span><code>message ReceiveDescription { 
+  bytes value_commitment = 1; // value commitment used for binding signature
+  byte  note_commitment = 2;  // note commitment used for hiding the value
+  bytes epk = 3;  // ephemeral public key used for encryption
+  bytes c_enc = 4;  // encryption for note plaintext
+  bytes c_out = 5; // encryption for audit
+  bytes zkproof = 6; // zk-SNARK proof 
+}
+</code></pre></div>
+<p>For more details about <code>note commitment</code>, <code>SpendDescription</code> and <code>ReceiveDescripton</code>, please refer the <a href="https://www.tronz.io">TRONZ shielded transaction protocol</a>.</p>
+<h3 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h3>
+<p><strong>constructor</strong></p>
+<p>The <code>constructor</code> method binds the TRC-20 token address to the shielded TRC-20 contract when it is deployed. The <code>scalingFactorExponent</code> is used as the scaling factor between the TRC-20 value and the shielded  token value, since the type of prior is <code>uint256</code> while the rear is <code>unit64</code>.  For example, if   <code>scalingFactorExponent</code> is 2, it means 100 (10<sup>2</sup>) TRC-20 tokens can be transformed to a shielded token.</p>
+<div class="highlight"><pre><span></span><code>    constructor (address trc20ContractAddress, uint256 scalingFactorExponent) public {
+        require(scalingFactorExponent &lt; 77, &quot;The scalingFactorExponent is out of range!&quot;);
+        scalingFactor = 10 ** scalingFactorExponent;
+        owner = msg.sender;
+        trc20Token = TokenTRC20(trc20ContractAddress);
+        require(approveSelf(), &quot;approveSelf failed!&quot;);
+    }
+</code></pre></div>
+<p><code>approveSelf()</code> is used to approve the shielded TRC-20 contract address for itself, which can replace the <code>transfer</code> function by <code>transferFrom</code> function since the <code>transfer</code> function in some TRC-20 contract doesn't have the returned value.</p>
+<div class="highlight"><pre><span></span><code>    function approveSelf() public returns (bool) {
+        return address(trc20Token).safeApprove(address(this), uint256(- 1));
+    }
+</code></pre></div>
+<p><strong>mint</strong></p>
+<p><code>mint</code> method is to transform the public TRC-20 token with amount <code>value</code> to shielded token in the form of <code>note_commitment</code>. The method input parameters also include zk-SNARK proof related data.</p>
+<div class="highlight"><pre><span></span><code>    // output: cm, cv, epk, proof
+    function mint(uint256 rawValue, bytes32[9] calldata output, bytes32[2] calldata bindingSignature, bytes32[21] calldata c) external {
+        // step 1: transfer the TRC-20 Tokens from the sender to this contract
+        address sender = msg.sender;
+        bool transferResult = address(trc20Token).safeTransferFrom(sender, address(this), rawValue);
+        require(transferResult, &quot;safeTransferFrom failed!&quot;);
+
+        // step 2: check the value and the note commitments
+        require(noteCommitment[output[0]] == 0, &quot;Duplicate noteCommitments!&quot;);
+
+        // step 3: Scale the raw value 
+        uint64 value = rawValueToValue(rawValue);
+
+        // step 4: check the zk-SNARK proof 
+        bytes32 signHash = sha256(abi.encodePacked(address(this), value, output, c));
+        (bytes32[] memory ret) = verifyMintProof(output, bindingSignature, value, signHash, frontier, leafCount);
+        uint256 result = uint256(ret[0]);
+        require(result == 1, &quot;The proof and signature have not been verified by the contract!&quot;);
+
+        //step 5: store the note_commitment in the Merkle tree
+        uint256 slot = uint256(ret[1]);
+        uint256 nodeIndex = leafCount + 2 ** 32 - 1;
+        tree[nodeIndex] = output[0];
+        if (slot == 0) {
+            frontier[0] = output[0];
+        }
+        for (uint256 i = 1; i &lt; slot + 1; i++) {
+            nodeIndex = (nodeIndex - 1) / 2;
+            tree[nodeIndex] = ret[i + 1];
+            if (i == slot) {
+                frontier[slot] = tree[nodeIndex];
+            }
+        }
+
+        //step 6: store the latest root in the contract
+        latestRoot = ret[slot + 2];
+        roots[latestRoot] = latestRoot;
+        noteCommitment[output[0]] = output[0];
+        leafCount ++;
+
+        //step 7: emit the event
+        emit MintNewLeaf(leafCount - 1, output[0], output[1], output[2], c);
+        emit TokenMint(sender, rawValue);
+    }
+</code></pre></div>
+<p>The <code>mint</code> includes the seven steps:</p>
+<p>(1) transfer the TRC-20 token to the shielded contract by <code>safeTransferFrom</code> function.</p>
+<p>(2) check the <code>value</code> is positive and prevent duplicate note commitments.</p>
+<p>(3) Scale the TRC-20 value to shielded token value by <code>rawValueToValue</code> function. The <code>rawValue</code> must be the integer multiples of <code>scalingFactor</code>, which is initialized in the constructor function.</p>
+<div class="highlight"><pre><span></span><code>    function rawValueToValue(uint256 rawValue) private view returns (uint64) {
+        require(rawValue &gt; 0, &quot;Value must be positive!&quot;);
+        require(rawValue.mod(scalingFactor) == 0, &quot;Value must be integer multiples of scalingFactor!&quot;);
+        uint256 value = rawValue.div(scalingFactor);
+        require(value &lt; INT64_MAX);
+        return uint64(value);
+    }
+</code></pre></div>
+<p>(4) verify the proof to check the validity of <code>note_commitment</code> by <a href="https://github.com/tronprotocol/tips/blob/master/tip-137.md">verifyMintProof</a> function. Here, the input of the signed hash includes shielded contract address <code>this</code> , the scaled <code>value</code>, <code>output</code> and <code>c</code>. <code>output</code> includes <code>note_commitment</code>, <code>value_commitment</code>, <code>epk</code> and <code>zkproof</code>. <code>c</code> includes <code>c_enc</code> and <code>c_out</code>.</p>
+<div class="highlight"><pre><span></span><code>bytes32 signHash = sha256(abi.encodePacked(address(this), value, output, c));
+</code></pre></div>
+<p>(5) store  the <code>note_commitment</code> in the merkle tree <code>tree</code>, which is a mapping data structure.</p>
+<div class="highlight"><pre><span></span><code>mapping(uint256 =&gt; bytes32) public tree;
+</code></pre></div>
+<p>(6) store the latest root in the <code>roots</code>, which is used for merkle path proof.</p>
+<div class="highlight"><pre><span></span><code>mapping(bytes32 =&gt; bytes32) public roots; 
+</code></pre></div>
+<p>(7) emit the related data ( <code>position</code>, <code>note_commitment</code>, <code>value_commitment</code>, <code>epk</code>, <code>c_enc</code>, <code>c_out</code>) as event to make it convenient for shielded note scanning.</p>
+<p><code>event MintNewLeaf(uint256 position, bytes32 cm, bytes32 cv, bytes32 epk, bytes32[21] c);</code></p>
+<p>Note: <code>c</code> includes <code>c_enc</code> and <code>c_out</code>.</p>
+<p><strong>transfer</strong></p>
+<p><code>transfer</code> method is used for shielded token transfer. </p>
+<div class="highlight"><pre><span></span><code>    //input: nf, anchor, cv, rk, proof
+    //output: cm, cv, epk, proof
+    function transfer(bytes32[10][] calldata input, bytes32[2][] calldata spendAuthoritySignature, bytes32[9][] calldata output, bytes32[2] calldata bindingSignature, bytes32[21][] calldata c) external {
+        // step 1: check the parameters 
+        require(input.length &gt;= 1 &amp;&amp; input.length &lt;= 2, &quot;Input number must be 1 or 2!&quot;);
+        require(input.length == spendAuthoritySignature.length, &quot;Input number must be equal to spendAuthoritySignature number!&quot;);
+        require(output.length &gt;= 1 &amp;&amp; output.length &lt;= 2, &quot;Output number must be 1 or 2!&quot;);
+        require(output.length == c.length, &quot;Output number must be equal to c number!&quot;);
+
+        for (uint256 i = 0; i &lt; input.length; i++) {
+            require(nullifiers[input[i][0]] == 0, &quot;The note has already been spent!&quot;);
+            require(roots[input[i][1]] != 0, &quot;The anchor must exist!&quot;);
+        }
+        for (uint256 i = 0; i &lt; output.length; i++) {
+            require(noteCommitment[output[i][0]] == 0, &quot;Duplicate noteCommitment!&quot;);
+        }
+
+        //step 2: check the proof 
+        bytes32 signHash = sha256(abi.encodePacked(address(this), input, output, c));
+        (bytes32[] memory ret) = verifyTransferProof(input, spendAuthoritySignature, output, bindingSignature, signHash, 0, frontier, leafCount);
+        uint256 result = uint256(ret[0]);
+        require(result == 1, &quot;The proof and signature have not been verified by the contract!&quot;);
+
+        //step 3: store the output note_commitments in the merkle tree 
+        uint256 offset = 1;
+        //ret offset
+        for (uint256 i = 0; i &lt; output.length; i++) {
+            uint256 slot = uint256(ret[offset++]);
+            uint256 nodeIndex = leafCount + 2 ** 32 - 1;
+            tree[nodeIndex] = output[i][0];
+            if (slot == 0) {
+                frontier[0] = output[i][0];
+            }
+            for (uint256 k = 1; k &lt; slot + 1; k++) {
+                nodeIndex = (nodeIndex - 1) / 2;
+                tree[nodeIndex] = ret[offset++];
+                if (k == slot) {
+                    frontier[slot] = tree[nodeIndex];
+                }
+            }
+            leafCount++;
+        }
+
+        //step 4: store the latest root and nullifier in the contract
+        latestRoot = ret[offset];
+        roots[latestRoot] = latestRoot;
+        for (uint256 i = 0; i &lt; input.length; i++) {
+            bytes32 nf = input[i][0];
+            nullifiers[nf] = nf;
+        }
+
+        //step 5: emit the event
+        for (uint256 i = 0; i &lt; output.length; i++) {
+            noteCommitment[output[i][0]] = output[i][0];
+            emit TransferNewLeaf(leafCount - (output.length - i), output[i][0], output[i][1], output[i][2], c[i]);
+        }
+    }
+</code></pre></div>
+<p>The <code>transfer</code> method includes five steps:</p>
+<p>(1) check the size of <code>input</code> and <code>output</code> to be in the range <code>[1,2]</code> , which corresponds to the input and output number in the UTXO model; check <code>nullifiers</code> to prevent the double spend. <code>nullifiers</code> are defined as a mapping structure in the contract. check the <code>notecommitment</code> to prevent the duplicate note commitments.</p>
+<div class="highlight"><pre><span></span><code>mapping(bytes32 =&gt; bytes32) public nullifiers; 
+</code></pre></div>
+<p>(2) verify the proof by <a href="https://github.com/tronprotocol/tips/blob/master/tip-137.md">verifyTransferProof</a> function check the validity of the  <code>note_commitments</code>. The input of the signed hash includes shielded contract address <code>this</code> , <code>input</code>, <code>output</code> and <code>c</code>. The <code>input</code>  and <code>output</code> both includes one or two arrays. An array of <code>input</code> includes <code>nullifier</code>, <code>anchor</code>, <code>value_commitment</code>, <code>rk</code> and <code>zkproof</code>. An array of <code>output</code> includes <code>note_commitment</code>, <code>value_commitment</code>, <code>epk</code> and <code>proof</code>. <code>c</code> includes <code>c_enc</code> and <code>c_out</code>.</p>
+<div class="highlight"><pre><span></span><code>bytes32 signHash = sha256(abi.encodePacked(address(this), input, output, c));
+</code></pre></div>
+<p>(3) store  the output <code>note_commitments</code> in the Merkle tree <code>tree</code>.</p>
+<p>(4) store the latest root in <code>roots</code> and the input nullifier in the <code>nullifiers</code> .</p>
+<p>(5) emit the related data ( <code>position</code>, <code>note_commitment</code>, <code>value_commitment</code>, <code>epk</code>, <code>c_enc</code>, <code>c_out</code>) as an event to make it convenient for shielded note scanning.</p>
+<p><strong>burn</strong></p>
+<p><code>burn</code> method is to transform shielded token <code>note_commitment</code> to the public TRC-20 token with amount <code>value</code>. <code>burn</code> can have zero or one shielded output.</p>
+<div class="highlight"><pre><span></span><code>    //input: nf, anchor, cv, rk, proof
+    //output: cm, cv, epk, proof
+    function burn(bytes32[10] calldata input, bytes32[2] calldata spendAuthoritySignature, uint256 rawValue, bytes32[2] calldata bindingSignature, address payTo, bytes32[3] calldata burnCipher, bytes32[9][] calldata output, bytes32[21][] calldata c) external {
+        //step 1: scale the rawValue to value
+        uint64 value = rawValueToValue(rawValue);
+        bytes32 signHash = sha256(abi.encodePacked(address(this), input, output, c, payTo, value));
+
+        //step 2: check the validity of parameters
+        bytes32 nf = input[0];
+        bytes32 anchor = input[1];
+        require(nullifiers[nf] == 0, &quot;The note has already been spent!&quot;);
+        require(roots[anchor] != 0, &quot;The anchor must exist!&quot;);
+
+        require(output.length &lt;= 1, &quot;Output number cannot exceed 1!&quot;);
+        require(output.length == c.length, &quot;Output number must be equal to length of c!&quot;);
+
+        //step 3: check the zk-SNARK proof 
+        if (output.length == 0) {
+            (bool result) = verifyBurnProof(input, spendAuthoritySignature, value, bindingSignature, signHash);
+            require(result, &quot;The proof and signature have not been verified by the contract!&quot;);
+
+        } else {
+            transferInBurn(input, spendAuthoritySignature, value, bindingSignature, signHash, output, c);
+        }
+
+        //step 4: store nullifier in the contract
+        nullifiers[nf] = nf;
+
+        //step 5: transfer TRC-20 token from this contract to the nominated address
+        bool transferResult = address(trc20Token).safeTransferFrom(address(this), payTo, rawValue);
+        require(transferResult, &quot;safeTransferFrom failed!&quot;);
+        emit TokenBurn(payTo, rawValue, burnCipher);
+    }
+</code></pre></div>
+<p>The <code>burn</code> includes the five steps:</p>
+<p>(1) Scale the shielded token value to TRC-20 value by <code>scalingFactor</code>. The input of the signed hash includes shielded contract address <code>this</code> , <code>input</code>, <code>output</code>, <code>c</code>, <code>payTO</code> and the scaled <code>value</code>.  <code>input</code>  includes <code>nullifier</code>, <code>anchor</code>, <code>value_commitment</code>, <code>rk</code>, <code>zkproof</code>. <code>output</code> includes <code>note_commitment</code>, <code>value_commitment</code>,<code>epk</code>, <code>zkproof</code>. <code>c</code> includes <code>c_enc</code> and <code>c_out</code>. <code>payTo</code> is the recipient address. </p>
+<div class="highlight"><pre><span></span><code>bytes32 signHash = sha256(abi.encodePacked(address(this), input, output, c, payTo, value));
+</code></pre></div>
+<p>(2) check the validity of  <code>value</code>, <code>nullifier</code> and  <code>anchor</code>.</p>
+<p>(3) verify the proof to check the validity of <code>note_commitment</code>. There are two situations. If there is no shielded output, it calls the <a href="https://github.com/tronprotocol/tips/blob/master/tip-137.md">verifyBurnProof</a> instruction. If there is one shielded output, it calls the <code>transferInBurn</code> function.</p>
+<div class="highlight"><pre><span></span><code>    function transferInBurn(bytes32[10] memory input, bytes32[2] memory spendAuthoritySignature, uint64 value, bytes32[2] memory bindingSignature, bytes32 signHash, bytes32[9][] memory output, bytes32[21][] memory c) private {
+        bytes32 cm = output[0][0];
+        require(noteCommitment[cm] == 0, &quot;Duplicate noteCommitment!&quot;);
+        bytes32[10][] memory inputs = new bytes32[10][](1);
+        inputs[0] = input;
+        bytes32[2][] memory spendAuthoritySignatures = new bytes32[2][](1);
+        spendAuthoritySignatures[0] = spendAuthoritySignature;
+        (bytes32[] memory ret) = verifyTransferProof(inputs, spendAuthoritySignatures, output, bindingSignature, signHash, value, frontier, leafCount);
+        uint256 result = uint256(ret[0]);
+        require(result == 1, &quot;The proof and signature have not been verified by the contract!&quot;);
+
+        uint256 slot = uint256(ret[1]);
+        uint256 nodeIndex = leafCount + 2 ** 32 - 1;
+        tree[nodeIndex] = cm;
+        if (slot == 0) {
+            frontier[0] = cm;
+        }
+        for (uint256 i = 1; i &lt; slot + 1; i++) {
+            nodeIndex = (nodeIndex - 1) / 2;
+            tree[nodeIndex] = ret[i + 1];
+            if (i == slot) {
+                frontier[slot] = tree[nodeIndex];
+            }
+        }
+        latestRoot = ret[slot + 2];
+        roots[latestRoot] = latestRoot;
+        noteCommitment[cm] = cm;
+        leafCount ++;
+
+        emit BurnNewLeaf(leafCount - 1, cm, output[0][1], output[0][2], c[0]);
+    }
+</code></pre></div>
+<p>(4) store  the <code>nullifier</code> in the contract.</p>
+<p>(5) transfer the TRC-20 token from the shielded TRC-20 contract to <code>payTo</code> address by <code>safeTransferFrom</code> function.</p>
+<p><strong>getPath</strong></p>
+<p>In order to make it convenient for users to construct zk-SNARK proof, the shielded TRC-20 contract provides <code>getPath</code> function to return the latest root and merkle tree path for the given <code>note_commitment</code> with <code>position</code> parameter.</p>
+<div class="highlight"><pre><span></span><code>    function getPath(uint256 position) public view returns (bytes32, bytes32[32] memory) {
+        ...
+    }
+</code></pre></div>
+<p>For more technical details of Merkle tree implementation, please refer <a href="https://github.com/EYBlockchain/timber/blob/master/README.md">timber</a>.</p>
+<h3 id="privacy-protection">Privacy Protection<a class="headerlink" href="#privacy-protection" title="Permanent link">&para;</a></h3>
+<p>The shielded TRC-20 contract aims to provide users better privacy of token ownership and transactions. The <code>transfer</code> function can completely hide the source address, the destination address, and the amount for shielded token transactions. But it still has some limitations. For <code>mint</code>(<code>burn</code>) function, the TRC-20 source (destination) address and amount are public, it may leak some information. Furthermore, triggering the contract involves the public address, which may leak the ownership of <code>note_commitment</code>. To solve the problem, triggering the contract can be delegated to a third party (refer <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1077.md">EIP-1077</a>) or GSN (Gas Station Network, refer <a href="https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1613.md">EIP-1613</a>).      </p>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<p>Transaction privacy protection is quite important for blockchain. Providing the shielded TRC-20 contract will help to attract more users because it can provide better privacy for token transactions and promotes the widespread adoption of TRC-20 token and related DApps.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>https://github.com/Federico2014/java-tron/blob/feature/shieldedUSDT/deploy/ShieldedTRC20.sol</li>
+<li>https://github.com/tronprotocol/java-tron/blob/master/actuator/src/main/java/org/tron/core/vm/PrecompiledContracts.java</li>
+</ul>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

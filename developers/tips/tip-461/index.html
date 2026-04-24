@@ -1,0 +1,1960 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="ray.wu <ray.wu@tron.network>">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Optimize data consistency for system abnormals - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Optimize data consistency for system abnormals
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Optimize data consistency for system abnormals</h1>
+
+<div class="highlight"><pre><span></span><code>tip: 461
+title: Optimize data consistency for system abnormals
+author: ray.wu &lt;ray.wu@tron.network&gt;
+discussions to: https://github.com/tronprotocol/tips/issues/461
+status: Final
+type: Standards Track 
+category: Core
+created: 2022-09-02
+</code></pre></div>
+<h2 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h2>
+<p>This TIP proposes a solution to TRON database inconsistent when the system is shut down ungracefully.</p>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>At present, most public chains in the industry use embedded databases as their underlying storage, and TRON is no exception. Currently, TRON supports LevelDB and RocksDB two kinds of KV storage, and LevelDB is the default configuration, which is also the storage solution adopted by most nodes. However, there is a problem when using LevelDB as storage at present: when the machine goes down abnormally, there is a certain chance that the database will be inconsistent. This article will describe the causes of database corruption and the corresponding solutions.</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>TRON adopts DPoS as the consensus mechanism. Unlike PoW, which is a probabilistic block finality consensus, DPoS has a clear block finality logic. At present, TRON has 27 SR nodes. Only when a block is approved by 2/3+1 SRs can it be considered that the block can be changed to the finality state, and at the database level, it is expressed as: block storage without finality In the in-memory database, blocks marked as Finality need to be written to the underlying database (LevelDB) in time.</p>
+<p>At present, TRON adopts the memory + LevelDB multi-layer storage architecture. Different types of data correspond to different LevelDB instances, and the block data without Finality is stored in the in-memory database. When the block is Finality, the data in the in-memory database is flushed to the corresponding LevelDB database, but LevelDB does not support batch atomic write operations of multiple instances, so when the system exits abnormally during the writing process, it is likely to cause data inconsistency.</p>
+<p>In order to solve this problem, TRON introduced the V2 version of the database, which added the Checkpoint mechanism in V2. Before flushing the in-memory database to LevelDB, a Checkpoint is created. The Checkpoint contains all the data of the finality of this block, and the <code>writeBatch</code> function of LevelDB is used to ensure that The data is written atomically. After the checkpoint is successfully written, the flush operation of the databases is performed.</p>
+<p>When the database is written, the system may be abnormally down. When the node restarts, it will automatically check whether the Checkpoint exists. If it exists, the data in the Checkpoint will be written back to the database again. This way, the problem of data inconsistency can be solved.</p>
+<p>But there is currently a problem: in order to ensure the write performance, all LevelDB libraries currently use the asynchronous write mode. In this mode, even if the <code>writeBatch</code> function returns normally, it cannot guarantee that the Checkpoint data must be successfully placed on the disk, because at this time The Checkpoint may still be cached in the OS page cache. If the program exits normally, the OS will persist the Checkpoint after a certain time interval to ensure data consistency. However, if the program exits abnormally (such as machine downtime), it cannot be guaranteed that the Checkpoint data must be flushed to the disk. At this time, there is a certain probability that the data in the business databases may be inconsistent.</p>
+<p>Therefore, the current problems can be summarized as follows:</p>
+<ul>
+<li>Checkpoint cannot cover missing data in all databases<ul>
+<li>Some databases are slow to be placed in the disk and are more than two checkpoints data behind</li>
+<li>Checkpoint flush is slow, and it lags behind some business databases</li>
+</ul>
+</li>
+<li>The checkpoint is empty, the data cannot be recovered</li>
+</ul>
+<p>Goal: Solve the problem of inconsistency of databases data caused by OS downtime</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<ul>
+<li>LevelDB: Embedded high-performance kv database implemented by google</li>
+<li>RocksDB: A high-performance kv database, based on the LevelDB model and many optimizations have been made on this basis</li>
+<li>Checkpoint: Saves all changed data of block data to ensure data consistency</li>
+<li>writeBatch: LevelDB atomic writebatch interface</li>
+</ul>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<p>To ensure that the checkpoint set can cover all missing data in the database by retaining multiple checkpoints, the following two conditions must be met:</p>
+<ol>
+<li>The block height of the earliest checkpoint data &lt;= the lowest block height of the data in the business database</li>
+<li>The block height of the latest checkpoint data &gt;= the highest block height of the data in the business database</li>
+</ol>
+<p><strong>Condition 1</strong>:
+At present, under the default configuration of mainstream OS, the data in the page cache will be synced to the disk after a maximum of 35s. Therefore, checkpoint needs to retain data changes generated within at least 35s.</p>
+<p><strong>Condition 2</strong>:
+A potential requirement of Condition 2 is that for the data of the same block height, the checkpoint must be flushed before the databases. Usually, the file is written to the OS page cache first and then flushed to the disk according to the policy. However, to meet the above condition, the checkpoint needs to force writing to the disk, but this method will cause performance loss.</p>
+<p>However, considering that the data size of a single checkpoint is controllable, and the LevelDB is tested with <code>writeSync</code> as <code>true</code> and <code>false</code> respectively, the performance gap is about 3~4ms, the impact on the overall performance is controllable, so the configuration parameter <code>checkpoint.sync</code> is added:</p>
+<ul>
+<li><code>sync</code> = true: Forcibly call the underlying DB writeSync(true) every time when a checkpoint is created to ensure that the checkpoint is successfully flushed.</li>
+<li><code>sync</code> = false: It is consistent with the original logic and has better performance, but it may lose the latest checkpoint data, which may cause recovery failure when the machine is down.</li>
+</ul>
+<p>Users can choose one of them according to their own needs.</p>
+<h3 id="comparison-of-old-and-new-versions">Comparison of old and new versions<a class="headerlink" href="#comparison-of-old-and-new-versions" title="Permanent link">&para;</a></h3>
+<p><img width="1103" alt="image" src="https://user-images.githubusercontent.com/31307926/188078872-2622d934-f29e-4412-bc5b-caffda1251b9.png"></p>
+<h3 id="checkpoint-data-structure">checkpoint data structure<a class="headerlink" href="#checkpoint-data-structure" title="Permanent link">&para;</a></h3>
+<p><img alt="image" src="https://user-images.githubusercontent.com/31307926/188075878-dee43599-b6f9-4415-ac72-69596b02701f.png" /></p>
+<p>The old version of the checkpoint is stored in the <code>tmp</code> database uniformly, and the corresponding database prefix is added to the key of each data, so that the data can be easily recovered to the corresponding database. The new version of checkpoint keeps multiple copies of the old checkpoint, which are distinguished by subdirectories. Subdirectory names are named with <code>timestamp</code> + <code>block number</code>.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>For compatibility, the original checkpoint logic is retained, and the checkpoint v2 logic is added, and the checkpoint version is selected through the configuration file. The recovery logic of a single checkpoint in the v2 version is consistent with the v1 version. On this basis, multiple copies are created, and different database directories are used to distinguish them. The main logic pseudocode:</p>
+<div class="highlight"><pre><span></span><code>private void createCheckpointV2() {
+    CheckPointV2Store checkPointV2Store = null;
+    try {
+      Map&lt;WrappedByteArray, WrappedByteArray&gt; batch = new HashMap&lt;&gt;();
+      for (Chainbase db : dbs) {
+        Snapshot head = db.getHead();
+        if (Snapshot.isRoot(head)) {
+          return;
+        }
+        String dbName = db.getDbName();
+        Snapshot next = head.getRoot();
+        for (int i = 0; i &lt; flushCount; ++i) {
+          next = next.getNext();
+          SnapshotImpl snapshot = (SnapshotImpl) next;
+          DB&lt;Key, Value&gt; keyValueDB = snapshot.getDb();
+          for (Map.Entry&lt;Key, Value&gt; e : keyValueDB) {
+            Key k = e.getKey();
+            Value v = e.getValue();
+            batch.put(WrappedByteArray.of(Bytes.concat(simpleEncode(dbName), k.getBytes())),
+                WrappedByteArray.of(v.encode()));
+            if (&quot;block&quot;.equals(db.getDbName())) {
+              currentBlockNum = new BlockCapsule(v.getBytes()).getNum();
+            }
+          }
+        }
+      }
+
+      if (currentBlockNum == -1) {
+        logger.error(&quot;create checkpoint failed, currentBlockNum: {}&quot;, currentBlockNum);
+        System.exit(-1);
+      }
+      String dbName = System.currentTimeMillis() + &quot;_&quot; + currentBlockNum;
+      checkPointV2Store = getCheckpointDB(dbName);
+      checkPointV2Store.getDbSource().updateByBatch(batch.entrySet().stream()
+              .map(e -&gt; Maps.immutableEntry(e.getKey().getBytes(), e.getValue().getBytes()))
+              .collect(HashMap::new, (m, k) -&gt; m.put(k.getKey(), k.getValue()), HashMap::putAll),
+          WriteOptionsWrapper.getInstance().sync(CommonParameter
+              .getInstance().getStorage().isCheckpointSync()));
+
+    } catch ( Exception e) {
+      throw new TronDBException(e);
+    } finally {
+      if (checkPointV2Store != null) {
+        checkPointV2Store.close();
+      }
+    }
+  }
+</code></pre></div>
+<h3 id="checkpoint-prune">checkpoint prune<a class="headerlink" href="#checkpoint-prune" title="Permanent link">&para;</a></h3>
+<p>The checkpoints will continue to increase over time, and a strategy needs to be adopted to clear the expired checkpoints. The number of checkpoints reserved can cover the maximum interval of OS page flush. The current checkpoint expiration time is set to 2min.</p>
+<p>For the sake of robustness and startup version checking, the checkpoint directory needs to retain at least one checkpoint. In order to prevent the deletion mechanism from clearing all checkpoint directories, the minimum number of checkpoints needs to be set, which is currently tentatively set to 3.</p>
+<p>The cleaning strategy adopts a scheduling task, traverses the checkpoint directory and judges according to the above strategy. If the threshold is exceeded, data cleaning is performed.</p>
+<p>Part of the pseudocode:</p>
+<div class="highlight"><pre><span></span><code>public void init() {
+    // prune checkpoint
+    pruneCheckpointThread.scheduleWithFixedDelay(() -&gt; {
+      try {
+        if (isV2Open() &amp;&amp; !unChecked) {
+          pruneCheckpoint();
+        }
+      } catch (Throwable t) {
+        logger.error(&quot;Exception in prune checkpoint&quot;, t);
+      }
+    }, 10000, 3600, TimeUnit.MILLISECONDS);
+}
+
+private void pruneCheckpoint() {
+    if (unChecked) {
+      return;
+    }
+    List&lt;String&gt; cpList = getCheckpointList();
+    if (cpList == null) {
+      return;
+    }
+    if (cpList.size() &lt; 3) {
+      return;
+    }
+    for (String cp: cpList.subList(0,3)) {
+      long timestamp = Long.parseLong(cp.split(&quot;_&quot;)[0]);
+      long blockNumber = Long.parseLong(cp.split(&quot;_&quot;)[1]);
+      if (System.currentTimeMillis() - timestamp &lt; ONE_MINUTE_MILLS*2) {
+        break;
+      }
+      String checkpointPath = Paths.get(StorageUtils.getOutputDirectoryByDbName(CHECKPOINT_V2_DIR),
+          CommonParameter.getInstance().getStorage().getDbDirectory(), CHECKPOINT_V2_DIR).toString();
+      if (!FileUtil.recursiveDelete(Paths.get(checkpointPath, cp).toString())) {
+        logger.error(&quot;checkpoint prune failed, number: {}&quot;, blockNumber);
+        return;
+      }
+      logger.debug(&quot;checkpoint prune success, number: {}&quot;, blockNumber);
+    }
+  }
+</code></pre></div>
+<h3 id="configuration-parameters">Configuration parameters<a class="headerlink" href="#configuration-parameters" title="Permanent link">&para;</a></h3>
+<p>The user can choose whether to use the v1 or v2 checkpoint mode, and at the same time, user can choose whether to force flush the checkpoint.</p>
+<div class="highlight"><pre><span></span><code>// config.conf
+storage {
+  ....
+  checkpoint.version = 2
+  checkpoint.sync = true
+}
+
+// code
+ public void check() {
+    if (!isV2Open()) {
+      if (checkPointV2Store.getDbSource().allKeys().size() &gt; 0) {
+        logger.error(&quot;db check failed, can&#39;t convert checkpoint from v2 to v1&quot;);
+        System.exit(-1);
+      }
+      checkV1();
+    } else {
+      checkV2();
+    }
+  }
+
+  public void flush() {
+    ...
+    if (shouldBeRefreshed()) {
+      try {
+        long start = System.currentTimeMillis();
+        if (!isV2Open()) {
+          deleteCheckpoint();
+          createCheckpoint();
+        } else {
+          createCheckpointV2();
+        }
+        ...
+      } 
+    }
+  }
+</code></pre></div>
+<h3 id="version-compatible">version compatible<a class="headerlink" href="#version-compatible" title="Permanent link">&para;</a></h3>
+<p>In order to ensure the smooth upgrade of the program, it is necessary to meet the compatibility of the old and new versions, and checkpoint version switching through configuration.</p>
+<p>key point:</p>
+<ol>
+<li>The function of v1 is retained, and the code is not deleted</li>
+<li>Added checkpoint database as data storage for v2 version</li>
+<li>A new checkpoint configuration item is added to the configuration file, allowing users to specify the checkpoint version</li>
+<li>When starting the check, check the current checkpoint version according to the configuration file, and select the corresponding version logic</li>
+<li>When creating a checkpoint, select the corresponding <code>createCheckpoint</code> logic according to the configuration version</li>
+<li>When starting with v2, it is not allowed to switch back to v1</li>
+</ol>
+<p>Pseudo code of v2 check logic part:</p>
+<div class="highlight"><pre><span></span><code> private void checkV2() {
+    logger.info(&quot;checkpoint version: {}&quot;, CommonParameter.getInstance().getStorage().getCheckpointVersion());
+    logger.info(&quot;checkpoint sync: {}&quot;, CommonParameter.getInstance().getStorage().isCheckpointSync());
+    List&lt;String&gt; cpList = getCheckpointList();
+    if (cpList == null || cpList.size() == 0) {
+      logger.info(&quot;checkpoint size is 0, using v1 recover&quot;);
+      checkV1();
+      deleteCheckpoint();
+      return;
+    }
+    ...... // recover logic
+}
+</code></pre></div>
+<p>When the v2 version is used for the first time to start, the following situations exist:</p>
+<ul>
+<li>Node with block height = 0: <ul>
+<li>both the <code>tmp</code> directory and the <code>checkpoint</code> directory are empty</li>
+</ul>
+</li>
+<li>Nodes with block height &gt; 0:<ul>
+<li><code>tmp</code> is not empty, <code>checkpoint</code> is empty</li>
+<li><code>tmp</code> is empty because of delete operation and <code>checkpoint</code> is empty</li>
+</ul>
+</li>
+</ul>
+<p>In order to facilitate unified processing, whether it is a node synchronized from 0 or a node that is synchronizing or synchronized, when the checkpoint is empty, use the <code>tmp</code> database to restore data, and return directly after this operation is completed.</p>
+<p>In addition: Because <code>checkV1()</code> and <code>deleteCheckpoint()</code> in the above logic are not an atomic operation, there is a possible probability that after the execution of the two, the machine may be down, the data in the <code>checkV1()</code> logic is not completely flushed, but <code>deleteCheckpoint()</code> has deleted the data on the disk, so the database damage cannot be repaired after restarting. When the first start or a crash when executing <code>checkV1()</code>, there may be data corruption. This situation is not considered. </p>
+<h2 id="future">Future<a class="headerlink" href="#future" title="Permanent link">&para;</a></h2>
+<p>In the future, we will consider adding functions such as data consistency check.</p>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

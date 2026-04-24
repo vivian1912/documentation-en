@@ -1,0 +1,2308 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="yanghang8612@163.com">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Multi Token Standard - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Multi Token Standard
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Multi Token Standard</h1>
+
+<div class="highlight"><pre><span></span><code>tip: 1155
+title: Multi Token Standard
+author: yanghang8612@163.com
+discussions to: https://github.com/tronprotocol/TIPs/issues/404
+status: Final
+type: Standards Track
+category: TRC
+created: 2022-07-25
+</code></pre></div>
+<h2 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h2>
+<p>A standard interface for contracts that manage multiple token types. A single deployed contract may include any combination of fungible tokens, non-fungible tokens or other configurations (e.g. semi-fungible tokens).</p>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>This TIP is compatible with <a href="https://eips.ethereum.org/EIPS/eip-1155">EIP-1155</a>.</p>
+<p>This standard outlines a smart contract interface that can represent any number of fungible and non-fungible token types. Existing standards such as TRC-20 require deployment of separate contracts per token type. The TRC-721 standard's token ID is a single non-fungible index and the group of these non-fungibles is deployed as a single contract with settings for the entire collection. In contrast, the TRC-1155 Multi Token Standard allows for each token ID to represent a new configurable token type, which may have its own metadata, supply and other attributes.</p>
+<p>The <code>_id</code> argument contained in each function's argument set indicates a specific token or token type in a transaction.</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>Tokens standards like TRC-20 and TRC-721 require a separate contract to be deployed for each token type or collection. This places a lot of redundant bytecode on the TRON blockchain and limits certain functionality by the nature of separating each token contract into its own permissioned address. With the rise of blockchain games and platforms like Enjin Coin, game developers may be creating thousands of token types, and a new type of token standard is needed to support them. However, TRC-1155 is not specific to games and many other applications can benefit from this flexibility.</p>
+<p>New functionality is possible with this design such as transferring multiple token types at once, saving on transaction costs. Trading (escrow / atomic swaps) of multiple tokens can be built on top of this standard and it removes the need to "approve" individual token contracts separately. It is also easy to describe and mix multiple fungible or non-fungible token types in a single contract.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.</p>
+<p><strong>Smart contracts implementing the TRC-1155 standard MUST implement all of the functions in the <code>TRC1155</code> interface.</strong></p>
+<p><strong>Smart contracts implementing the TRC-1155 standard MUST implement the TRC-165 <code>supportsInterface</code> function and MUST return the constant value <code>true</code> if <code>0xd9b67a26</code> is passed through the <code>interfaceID</code> argument.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.5.9</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">    @title TRC-1155 Multi Token Standard</span>
+<span class="cm">    Note: The TRC-165 identifier for this interface is 0xd9b67a26.</span>
+<span class="cm"> */</span>
+interface<span class="w"> </span>TRC1155<span class="w"> </span><span class="cm">/* is TRC165 */</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @dev Either `TransferSingle` or `TransferBatch` MUST emit when tokens are transferred, including zero value transfers as well as minting or burning (see &quot;Safe Transfer Rules&quot; section of the standard).</span>
+<span class="cm">        The `_operator` argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).</span>
+<span class="cm">        The `_from` argument MUST be the address of the holder whose balance is decreased.</span>
+<span class="cm">        The `_to` argument MUST be the address of the recipient whose balance is increased.</span>
+<span class="cm">        The `_id` argument MUST be the token type being transferred.</span>
+<span class="cm">        The `_value` argument MUST be the number of tokens the holder balance is decreased by and match what the recipient balance is increased by.</span>
+<span class="cm">        When minting/creating tokens, the `_from` argument MUST be set to `0x0` (i.e. zero address).</span>
+<span class="cm">        When burning/destroying tokens, the `_to` argument MUST be set to `0x0` (i.e. zero address).        </span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">TransferSingle</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_operator<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_from<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_to<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_value</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @dev Either `TransferSingle` or `TransferBatch` MUST emit when tokens are transferred, including zero value transfers as well as minting or burning (see &quot;Safe Transfer Rules&quot; section of the standard).      </span>
+<span class="cm">        The `_operator` argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).</span>
+<span class="cm">        The `_from` argument MUST be the address of the holder whose balance is decreased.</span>
+<span class="cm">        The `_to` argument MUST be the address of the recipient whose balance is increased.</span>
+<span class="cm">        The `_ids` argument MUST be the list of tokens being transferred.</span>
+<span class="cm">        The `_values` argument MUST be the list of number of tokens (matching the list and order of tokens specified in _ids) the holder balance is decreased by and match what the recipient balance is increased by.</span>
+<span class="cm">        When minting/creating tokens, the `_from` argument MUST be set to `0x0` (i.e. zero address).</span>
+<span class="cm">        When burning/destroying tokens, the `_to` argument MUST be set to `0x0` (i.e. zero address).                </span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">TransferBatch</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_operator<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_from<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_to<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>_ids<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>_values<span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @dev MUST emit when approval for a second party/operator address to manage all tokens for an owner address is enabled or disabled (absence of an event assumes disabled).        </span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">ApprovalForAll</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_owner<span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_operator<span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nv">_approved</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @dev MUST emit when the URI is updated for a token ID.</span>
+<span class="cm">        URIs are defined in RFC 3986.</span>
+<span class="cm">        The URI MUST point to a JSON file that conforms to the &quot;TRC-1155 Metadata URI JSON Schema&quot;.</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">URI</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">_value</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">indexed</span><span class="w"> </span>_id<span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Transfers `_value` amount of an `_id` from the `_from` address to the `_to` address specified (with safety call).</span>
+<span class="cm">        @dev Caller must be approved to manage the tokens being transferred out of the `_from` account (see &quot;Approval&quot; section of the standard).</span>
+<span class="cm">        MUST revert if `_to` is the zero address.</span>
+<span class="cm">        MUST revert if balance of holder for token `_id` is lower than the `_value` sent.</span>
+<span class="cm">        MUST revert on any other error.</span>
+<span class="cm">        MUST emit the `TransferSingle` event to reflect the balance change (see &quot;Safe Transfer Rules&quot; section of the standard).</span>
+<span class="cm">        After the above conditions are met, this function MUST check if `_to` is a smart contract (e.g. code size &gt; 0). If so, it MUST call `onERC1155Received` on `_to` and act appropriately (see &quot;Safe Transfer Rules&quot; section of the standard).        </span>
+<span class="cm">        @param _from    Source address</span>
+<span class="cm">        @param _to      Target address</span>
+<span class="cm">        @param _id      ID of the token type</span>
+<span class="cm">        @param _value   Transfer amount</span>
+<span class="cm">        @param _data    Additional data with no specified format, MUST be sent unaltered in call to `onERC1155Received` on `_to`</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">safeTransferFrom</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_from</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_value</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">calldata</span><span class="w"> </span>_data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Transfers `_values` amount(s) of `_ids` from the `_from` address to the `_to` address specified (with safety call).</span>
+<span class="cm">        @dev Caller must be approved to manage the tokens being transferred out of the `_from` account (see &quot;Approval&quot; section of the standard).</span>
+<span class="cm">        MUST revert if `_to` is the zero address.</span>
+<span class="cm">        MUST revert if length of `_ids` is not the same as length of `_values`.</span>
+<span class="cm">        MUST revert if any of the balance(s) of the holder(s) for token(s) in `_ids` is lower than the respective amount(s) in `_values` sent to the recipient.</span>
+<span class="cm">        MUST revert on any other error.        </span>
+<span class="cm">        MUST emit `TransferSingle` or `TransferBatch` event(s) such that all the balance changes are reflected (see &quot;Safe Transfer Rules&quot; section of the standard).</span>
+<span class="cm">        Balance changes and events MUST follow the ordering of the arrays (_ids[0]/_values[0] before _ids[1]/_values[1], etc).</span>
+<span class="cm">        After the above conditions for the transfer(s) in the batch are met, this function MUST check if `_to` is a smart contract (e.g. code size &gt; 0). If so, it MUST call the relevant `TRC1155TokenReceiver` hook(s) on `_to` and act appropriately (see &quot;Safe Transfer Rules&quot; section of the standard).                      </span>
+<span class="cm">        @param _from    Source address</span>
+<span class="cm">        @param _to      Target address</span>
+<span class="cm">        @param _ids     IDs of each token type (order and length must match _values array)</span>
+<span class="cm">        @param _values  Transfer amounts per token type (order and length must match _ids array)</span>
+<span class="cm">        @param _data    Additional data with no specified format, MUST be sent unaltered in call to the `TRC1155TokenReceiver` hook(s) on `_to`</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">safeBatchTransferFrom</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_from</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_ids<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_values<span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">calldata</span><span class="w"> </span>_data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Get the balance of an account&#39;s tokens.</span>
+<span class="cm">        @param _owner  The address of the token holder</span>
+<span class="cm">        @param _id     ID of the token</span>
+<span class="cm">        @return        The _owner&#39;s balance of the token type requested</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">balanceOf</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_owner</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_id</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Get the balance of multiple account/token pairs</span>
+<span class="cm">        @param _owners The addresses of the token holders</span>
+<span class="cm">        @param _ids    ID of the tokens</span>
+<span class="cm">        @return        The _owner&#39;s balance of the token types requested (i.e. balance for each (owner, id) pair)</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">balanceOfBatch</span><span class="p">(</span><span class="kt">address</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_owners<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_ids<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span><span class="kt">memory</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Enable or disable approval for a third party (&quot;operator&quot;) to manage all of the caller&#39;s tokens.</span>
+<span class="cm">        @dev MUST emit the ApprovalForAll event on success.</span>
+<span class="cm">        @param _operator  Address to add to the set of authorized operators</span>
+<span class="cm">        @param _approved  True if the operator is approved, false to revoke approval</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setApprovalForAll</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_operator</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nv">_approved</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Queries the approval status of an operator for a given owner.</span>
+<span class="cm">        @param _owner     The owner of the tokens</span>
+<span class="cm">        @param _operator  Address of authorized operator</span>
+<span class="cm">        @return           True if the operator is approved, false if not</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">isApprovedForAll</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_owner</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_operator</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="trc-1155-token-receiver">TRC-1155 Token Receiver<a class="headerlink" href="#trc-1155-token-receiver" title="Permanent link">&para;</a></h3>
+<p><strong>In order to provide compatibility with <code>EIP-1155</code>, we decided to follow the definition of <code>ERC1155TokenReceiver</code> defined in <code>EIP-1155</code> without any modifications.</strong></p>
+<p><strong>Smart contracts MUST implement all of the functions in the <code>TRC1155TokenReceiver</code> interface to accept transfers. See "Safe Transfer Rules" for further detail.</strong></p>
+<p><strong>Smart contracts MUST implement the TRC-165 <code>supportsInterface</code> function and signify support for the <code>TRC1155TokenReceiver</code> interface to accept transfers. See "TRC1155TokenReceiver TRC-165 rules" for further detail.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.5.9</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">    Note: The TRC-165 identifier for this interface is 0x4e2312e0.</span>
+<span class="cm">*/</span>
+interface<span class="w"> </span>TRC1155TokenReceiver<span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Handle the receipt of a single TRC1155 token type.</span>
+<span class="cm">        @dev An TRC1155-compliant smart contract MUST call this function on the token recipient contract, at the end of a `safeTransferFrom` after the balance has been updated.        </span>
+<span class="cm">        This function MUST return `bytes4(keccak256(&quot;onERC1155Received(address,address,uint256,uint256,bytes)&quot;))` (i.e. 0xf23a6e61) if it accepts the transfer.</span>
+<span class="cm">        This function MUST revert if it rejects the transfer.</span>
+<span class="cm">        Return of any other value than the prescribed keccak256 generated value MUST result in the transaction being reverted by the caller.</span>
+<span class="cm">        @param _operator  The address which initiated the transfer (i.e. msg.sender)</span>
+<span class="cm">        @param _from      The address which previously owned the token</span>
+<span class="cm">        @param _id        The ID of the token being transferred</span>
+<span class="cm">        @param _value     The amount of tokens being transferred</span>
+<span class="cm">        @param _data      Additional data with no specified format</span>
+<span class="cm">        @return           `bytes4(keccak256(&quot;onERC1155Received(address,address,uint256,uint256,bytes)&quot;))`</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">onERC1155Received</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_operator</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_id</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_value</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">calldata</span><span class="w"> </span>_data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span>bytes4<span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice Handle the receipt of multiple TRC1155 token types.</span>
+<span class="cm">        @dev An TRC1155-compliant smart contract MUST call this function on the token recipient contract, at the end of a `safeBatchTransferFrom` after the balances have been updated.        </span>
+<span class="cm">        This function MUST return `bytes4(keccak256(&quot;onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)&quot;))` (i.e. 0xbc197c81) if it accepts the transfer(s).</span>
+<span class="cm">        This function MUST revert if it rejects the transfer(s).</span>
+<span class="cm">        Return of any other value than the prescribed keccak256 generated value MUST result in the transaction being reverted by the caller.</span>
+<span class="cm">        @param _operator  The address which initiated the batch transfer (i.e. msg.sender)</span>
+<span class="cm">        @param _from      The address which previously owned the token</span>
+<span class="cm">        @param _ids       An array containing ids of each token being transferred (order and length must match _values array)</span>
+<span class="cm">        @param _values    An array containing amounts of each token being transferred (order and length must match _ids array)</span>
+<span class="cm">        @param _data      Additional data with no specified format</span>
+<span class="cm">        @return           `bytes4(keccak256(&quot;onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)&quot;))`</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">onERC1155BatchReceived</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_operator</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_ids<span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>_values<span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">calldata</span><span class="w"> </span>_data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span>bytes4<span class="p">);</span><span class="w">       </span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="safe-transfer-rules">Safe Transfer Rules<a class="headerlink" href="#safe-transfer-rules" title="Permanent link">&para;</a></h3>
+<p>To be more explicit about how the standard <code>safeTransferFrom</code> and <code>safeBatchTransferFrom</code> functions MUST operate with respect to the <code>TRC1155TokenReceiver</code> hook functions, a list of scenarios and rules follows.</p>
+<h4 id="scenarios">Scenarios<a class="headerlink" href="#scenarios" title="Permanent link">&para;</a></h4>
+<p><strong><em>Scenario#1 :</em></strong> The recipient is not a contract.
+* <code>onERC1155Received</code> and <code>onERC1155BatchReceived</code> MUST NOT be called on an EOA (Externally Owned Account).</p>
+<p><strong><em>Scenario#2 :</em></strong> The transaction is not a mint/transfer of a token.
+* <code>onERC1155Received</code> and <code>onERC1155BatchReceived</code> MUST NOT be called outside of a mint or transfer process.</p>
+<p><strong><em>Scenario#3 :</em></strong> The receiver does not implement the necessary <code>TRC1155TokenReceiver</code> interface function(s).
+* The transfer MUST be reverted with the one caveat below.
+    - If the token(s) being sent are part of a hybrid implementation of another standard, that particular standard's rules on sending to a contract MAY now be followed instead. See "Backwards Compatibility" section.</p>
+<p><strong><em>Scenario#4 :</em></strong> The receiver implements the necessary <code>TRC1155TokenReceiver</code> interface function(s) but returns an unknown value.
+* The transfer MUST be reverted.</p>
+<p><strong><em>Scenario#5 :</em></strong> The receiver implements the necessary <code>TRC1155TokenReceiver</code> interface function(s) but throws an error.
+* The transfer MUST be reverted.</p>
+<p><strong><em>Scenario#6 :</em></strong> The receiver implements the <code>TRC1155TokenReceiver</code> interface and is the recipient of one and only one balance change (e.g. <code>safeTransferFrom</code> called).
+* The balances for the transfer MUST have been updated before the <code>TRC1155TokenReceiver</code> hook is called on a recipient contract.
+* The transfer event MUST have been emitted to reflect the balance changes before the <code>TRC1155TokenReceiver</code> hook is called on the recipient contract.
+* One of <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> MUST be called on the recipient contract.
+* The <code>onERC1155Received</code> hook SHOULD be called on the recipient contract and its rules followed.
+    - See "onERC1155Received rules" for further rules that MUST be followed.
+* The <code>onERC1155BatchReceived</code> hook MAY be called on the recipient contract and its rules followed.
+    - See "onERC1155BatchReceived rules" for further rules that MUST be followed.</p>
+<p><strong><em>Scenario#7 :</em></strong> The receiver implements the <code>TRC1155TokenReceiver</code> interface and is the recipient of more than one balance change (e.g. <code>safeBatchTransferFrom</code> called).
+* All balance transfers that are referenced in a call to an <code>TRC1155TokenReceiver</code> hook MUST be updated before the <code>TRC1155TokenReceiver</code> hook is called on the recipient contract.
+* All transfer events MUST have been emitted to reflect current balance changes before an <code>TRC1155TokenReceiver</code> hook is called on the recipient contract.
+* <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> MUST be called on the recipient as many times as necessary such that every balance change for the recipient in the scenario is accounted for.
+    - The return magic value for every hook call MUST be checked and acted upon as per "onERC1155Received rules" and "onERC1155BatchReceived rules".
+* The <code>onERC1155BatchReceived</code> hook SHOULD be called on the recipient contract and its rules followed.  <br />
+    - See "onERC1155BatchReceived rules" for further rules that MUST be followed.
+* The <code>onERC1155Received</code> hook MAY be called on the recipient contract and its rules followed.  <br />
+    - See "onERC1155Received rules" for further rules that MUST be followed.</p>
+<p><strong><em>Scenario#8 :</em></strong> You are the creator of a contract that implements the <code>TRC1155TokenReceiver</code> interface and you forward the token(s) onto another address in one or both of <code>onERC1155Received</code> and <code>onERC1155BatchReceived</code>.
+* Forwarding should be considered acceptance and then initiating a new <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code> in a new context.
+    - The prescribed keccak256 acceptance value magic for the receiver hook being called MUST be returned after forwarding is successful.
+* The <code>_data</code> argument MAY be re-purposed for the new context.
+* If forwarding fails the transaction MAY be reverted.
+    - If the contract logic wishes to keep the ownership of the token(s) itself in this case it MAY do so.</p>
+<p><strong><em>Scenario#9 :</em></strong> You are transferring tokens via a non-standard API call i.e. an implementation specific API and NOT <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code>.
+* In this scenario all balance updates and events output rules are the same as if a standard transfer function had been called.
+    - i.e. an external viewer MUST still be able to query the balance via a standard function and it MUST be identical to the balance as determined by <code>TransferSingle</code> and <code>TransferBatch</code> events alone.
+* If the receiver is a contract the <code>TRC1155TokenReceiver</code> hooks still need to be called on it and the return values respected the same as if a standard transfer function had been called. 
+    - However while the <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code> functions MUST revert if a receiving contract does not implement the <code>TRC1155TokenReceiver</code> interface, a non-standard function MAY proceed with the transfer.
+    - See "Implementation specific transfer API rules".</p>
+<h4 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
+<p><strong><em>safeTransferFrom rules:</em></strong>
+* Caller must be approved to manage the tokens being transferred out of the <code>_from</code> account (see "Approval" section).
+* MUST revert if <code>_to</code> is the zero address.
+* MUST revert if balance of holder for token <code>_id</code> is lower than the <code>_value</code> sent to the recipient.
+* MUST revert on any other error.
+* MUST emit the <code>TransferSingle</code> event to reflect the balance change (see "TransferSingle and TransferBatch event rules" section).
+* After the above conditions are met, this function MUST check if <code>_to</code> is a smart contract (e.g. code size &gt; 0). If so, it MUST call <code>onERC1155Received</code> on <code>_to</code> and act appropriately (see "onERC1155Received rules" section).
+    - The <code>_data</code> argument provided by the sender for the transfer MUST be passed with its contents unaltered to the <code>onERC1155Received</code> hook function via its <code>_data</code> argument.</p>
+<p><strong><em>safeBatchTransferFrom rules:</em></strong>
+* Caller must be approved to manage all the tokens being transferred out of the <code>_from</code> account (see "Approval" section).
+* MUST revert if <code>_to</code> is the zero address.
+* MUST revert if length of <code>_ids</code> is not the same as length of <code>_values</code>.
+* MUST revert if any of the balance(s) of the holder(s) for token(s) in <code>_ids</code> is lower than the respective amount(s) in <code>_values</code> sent to the recipient.
+* MUST revert on any other error.
+* MUST emit <code>TransferSingle</code> or <code>TransferBatch</code> event(s) such that all the balance changes are reflected (see "TransferSingle and TransferBatch event rules" section).
+* The balance changes and events MUST occur in the array order they were submitted (_ids[0]/_values[0] before _ids[1]/_values[1], etc).
+* After the above conditions are met, this function MUST check if <code>_to</code> is a smart contract (e.g. code size &gt; 0). If so, it MUST call <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> on <code>_to</code> and act appropriately (see "onERC1155Received and onERC1155BatchReceived rules" section).
+    - The <code>_data</code> argument provided by the sender for the transfer MUST be passed with its contents unaltered to the <code>TRC1155TokenReceiver</code> hook function(s) via their <code>_data</code> argument.</p>
+<p><strong><em>TransferSingle and TransferBatch event rules:</em></strong>
+* <code>TransferSingle</code> SHOULD be used to indicate a single balance transfer has occurred between a <code>_from</code> and <code>_to</code> pair.
+    - It MAY be emitted multiple times to indicate multiple balance changes in the transaction, but note that <code>TransferBatch</code> is designed for this to reduce gas consumption.
+    - The <code>_operator</code> argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).
+    - The <code>_from</code> argument MUST be the address of the holder whose balance is decreased.
+    - The <code>_to</code> argument MUST be the address of the recipient whose balance is increased.
+    - The <code>_id</code> argument MUST be the token type being transferred.
+    - The <code>_value</code> argument MUST be the number of tokens the holder balance is decreased by and match what the recipient balance is increased by.
+    - When minting/creating tokens, the <code>_from</code> argument MUST be set to <code>0x0</code> (i.e. zero address). See "Minting/creating and burning/destroying rules".
+    - When burning/destroying tokens, the <code>_to</code> argument MUST be set to <code>0x0</code> (i.e. zero address). See "Minting/creating and burning/destroying rules".
+* <code>TransferBatch</code> SHOULD be used to indicate multiple balance transfers have occurred between a <code>_from</code> and <code>_to</code> pair.
+    - It MAY be emitted with a single element in the list to indicate a singular balance change in the transaction, but note that <code>TransferSingle</code> is designed for this to reduce gas consumption.
+    - The <code>_operator</code> argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).
+    - The <code>_from</code> argument MUST be the address of the holder whose balance is decreased for each entry pair in <code>_ids</code> and <code>_values</code>.
+    - The <code>_to</code> argument MUST be the address of the recipient whose balance is increased for each entry pair in <code>_ids</code> and <code>_values</code>.
+    - The <code>_ids</code> array argument MUST contain the ids of the tokens being transferred.
+    - The <code>_values</code> array argument MUST contain the number of token to be transferred for each corresponding entry in <code>_ids</code>.
+    - <code>_ids</code> and <code>_values</code> MUST have the same length.
+    - When minting/creating tokens, the <code>_from</code> argument MUST be set to <code>0x0</code> (i.e. zero address). See "Minting/creating and burning/destroying rules".
+    - When burning/destroying tokens, the <code>_to</code> argument MUST be set to <code>0x0</code> (i.e. zero address). See "Minting/creating and burning/destroying rules".
+* The total value transferred from address <code>0x0</code> minus the total value transferred to <code>0x0</code> observed via the <code>TransferSingle</code> and <code>TransferBatch</code> events MAY be used by clients and exchanges to determine the "circulating supply" for a given token ID.
+* To broadcast the existence of a token ID with no initial balance, the contract SHOULD emit the <code>TransferSingle</code> event from <code>0x0</code> to <code>0x0</code>, with the token creator as <code>_operator</code>, and a <code>_value</code> of 0.
+* All <code>TransferSingle</code> and <code>TransferBatch</code> events MUST be emitted to reflect all the balance changes that have occurred before any call(s) to <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code>.
+    - To make sure event order is correct in the case of valid re-entry (e.g. if a receiver contract forwards tokens on receipt) state balance and events balance MUST match before calling an external contract.</p>
+<p><strong><em>onERC1155Received rules:</em></strong>
+- The <code>_operator</code> argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).
+* The <code>_from</code> argument MUST be the address of the holder whose balance is decreased.
+    - <code>_from</code> MUST be 0x0 for a mint.
+* The <code>_id</code> argument MUST be the token type being transferred.
+* The <code>_value</code> argument MUST be the number of tokens the holder balance is decreased by and match what the recipient balance is increased by.
+* The <code>_data</code> argument MUST contain the information provided by the sender for the transfer with its contents unaltered.
+    - i.e. it MUST pass on the unaltered <code>_data</code> argument sent via the <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code> call for this transfer.
+* The recipient contract MAY accept an increase of its balance by returning the acceptance magic value <code>bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))</code>
+    - If the return value is <code>bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))</code> the transfer MUST be completed or MUST revert if any other conditions are not met for success.
+* The recipient contract MAY reject an increase of its balance by calling revert.
+    - If the recipient contract throws/reverts the transaction MUST be reverted.
+* If the return value is anything other than <code>bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))</code> the transaction MUST be reverted.
+* <code>onERC1155Received</code> (and/or <code>onERC1155BatchReceived</code>) MAY be called multiple times in a single transaction and the following requirements must be met:
+    - All callbacks represent mutually exclusive balance changes.
+    - The set of all calls to <code>onERC1155Received</code> and <code>onERC1155BatchReceived</code> describes all balance changes that occurred during the transaction in the order submitted.
+* A contract MAY skip calling the <code>onERC1155Received</code> hook function if the transfer operation is transferring the token to itself.</p>
+<p><strong><em>onERC1155BatchReceived rules:</em></strong>
+- The <code>_operator</code> argument MUST be the address of an account/contract that is approved to make the transfer (SHOULD be msg.sender).
+* The <code>_from</code> argument MUST be the address of the holder whose balance is decreased.
+    - <code>_from</code> MUST be 0x0 for a mint.  <br />
+* The <code>_ids</code> argument MUST be the list of tokens being transferred.
+* The <code>_values</code> argument MUST be the list of number of tokens (matching the list and order of tokens specified in <code>_ids</code>) the holder balance is decreased by and match what the recipient balance is increased by.
+* The <code>_data</code> argument MUST contain the information provided by the sender for the transfer with its contents unaltered.
+    - i.e. it MUST pass on the unaltered <code>_data</code> argument sent via the <code>safeBatchTransferFrom</code> call for this transfer.
+* The recipient contract MAY accept an increase of its balance by returning the acceptance magic value <code>bytes4(keccak256("onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"))</code>
+    - If the return value is <code>bytes4(keccak256("onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"))</code> the transfer MUST be completed or MUST revert if any other conditions are not met for success.
+* The recipient contract MAY reject an increase of its balance by calling revert.
+    - If the recipient contract throws/reverts the transaction MUST be reverted.
+* If the return value is anything other than <code>bytes4(keccak256("onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"))</code> the transaction MUST be reverted.
+* <code>onERC1155BatchReceived</code> (and/or <code>onERC1155Received</code>) MAY be called multiple times in a single transaction and the following requirements must be met:
+    - All callbacks represent mutually exclusive balance changes.
+    - The set of all calls to <code>onERC1155Received</code> and <code>onERC1155BatchReceived</code> describes all balance changes that occurred during the transaction in the order submitted.
+* A contract MAY skip calling the <code>onERC1155BatchReceived</code> hook function if the transfer operation is transferring the token(s) to itself.</p>
+<p><strong><em>TRC1155TokenReceiver TRC-165 rules:</em></strong>
+* The implementation of the TRC-165 <code>supportsInterface</code> function SHOULD be as follows:
+    <div class="highlight"><pre><span></span><code><span class="kt">function</span><span class="w"> </span><span class="nv">supportsInterface</span><span class="p">(</span>bytes4<span class="w"> </span>interfaceID<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">return</span><span class="w">  </span>interfaceID<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x01ffc9a7</span><span class="w"> </span><span class="o">||</span><span class="w">    </span><span class="c1">// TRC-165 support (i.e. `bytes4(keccak256(&#39;supportsInterface(bytes4)&#39;))`).</span>
+<span class="w">            </span>interfaceID<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">0x4e2312e0</span><span class="p">;</span><span class="w">      </span><span class="c1">// TRC-1155 `TRC1155TokenReceiver` support (i.e. `bytes4(keccak256(&quot;onERC1155Received(address,address,uint256,uint256,bytes)&quot;)) ^ bytes4(keccak256(&quot;onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)&quot;))`).</span>
+<span class="p">}</span>
+</code></pre></div>
+* The implementation MAY differ from the above but:
+  - It MUST return the constant value <code>true</code> if <code>0x01ffc9a7</code> is passed through the <code>interfaceID</code> argument. This signifies TRC-165 support.
+  - It MUST return the constant value <code>true</code> if <code>0x4e2312e0</code> is passed through the <code>interfaceID</code> argument. This signifies TRC-1155 <code>TRC1155TokenReceiver</code> support.
+  - It MUST NOT consume more than 10,000 gas.
+    - This keeps it below the TRC-165 requirement of 30,000 gas, reduces the gas reserve needs and minimises possible side-effects of gas exhaustion during the call.</p>
+<p><strong><em>Implementation specific transfer API rules:</em></strong>
+* If an implementation specific API function is used to transfer TRC-1155 token(s) to a contract, the <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code> (as appropriate) rules MUST still be followed if the receiver implements the <code>TRC1155TokenReceiver</code> interface. If it does not the non-standard implementation SHOULD revert but MAY proceed.  <br />
+* An example:
+    1. An approved user calls a function such as <code>function myTransferFrom(address _from, address _to, uint256[] calldata _ids, uint256[] calldata _values);</code>.
+    2. <code>myTransferFrom</code> updates the balances for <code>_from</code> and <code>_to</code> addresses for all <code>_ids</code> and <code>_values</code>.
+    3. <code>myTransferFrom</code> emits <code>TransferBatch</code> with the details of what was transferred from address <code>_from</code> to address <code>_to</code>.
+    4. <code>myTransferFrom</code> checks if <code>_to</code> is a contract address and determines that it is so (if not, then the transfer can be considered successful).
+    5. <code>myTransferFrom</code> calls <code>onERC1155BatchReceived</code> on <code>_to</code> and it reverts or returns an unknown value (if it had returned <code>bytes4(keccak256("onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)"))</code> the transfer can be considered successful).  <br />
+    6. At this point <code>myTransferFrom</code> SHOULD revert the transaction immediately as receipt of the token(s) was not explicitly accepted by the <code>onERC1155BatchReceived</code> function.          <br />
+    7. If however <code>myTransferFrom</code> wishes to continue it MUST call <code>supportsInterface(0x4e2312e0)</code> on <code>_to</code> and if it returns the constant value <code>true</code> the transaction MUST be reverted, as it is now known to be a valid receiver and the previous acceptance step failed. 
+        - NOTE: You could have called <code>supportsInterface(0x4e2312e0)</code> at a previous step if you wanted to gather and act upon that information earlier, such as in a hybrid standards scenario.
+    8. If the above call to <code>supportsInterface(0x4e2312e0)</code> on <code>_to</code> reverts or returns a value other than the constant value <code>true</code> the <code>myTransferFrom</code> function MAY consider this transfer successful.
+        - <strong>NOTE</strong>: this MAY result in unrecoverable tokens if sent to an address that does not expect to receive TRC-1155 tokens.
+* The above example is not exhaustive but illustrates the major points (and shows that most are shared with <code>safeTransferFrom</code> and <code>safeBatchTransferFrom</code>):
+    - Balances that are updated MUST have equivalent transfer events emitted.
+    - A receiver address has to be checked if it is a contract and if so relevant <code>TRC1155TokenReceiver</code> hook function(s) have to be called on it. 
+    - Balances (and events associated) that are referenced in a call to an <code>TRC1155TokenReceiver</code> hook MUST be updated (and emitted) before the <code>TRC1155TokenReceiver</code> hook is called.
+    - The return values of the <code>TRC1155TokenReceiver</code> hook functions that are called MUST be respected if they are implemented.  <br />
+    - Only non-standard transfer functions MAY allow tokens to be sent to a recipient contract that does NOT implement the necessary <code>TRC1155TokenReceiver</code> hook functions. <code>safeTransferFrom</code> and <code>safeBatchTransferFrom</code> MUST revert in that case (unless it is a hybrid standards implementation see "Backwards Compatibility").</p>
+<p><strong><em>Minting/creating and burning/destroying rules:</em></strong>
+* A mint/create operation is essentially a specialized transfer and MUST follow these rules:
+    - To broadcast the existence of a token ID with no initial balance, the contract SHOULD emit the <code>TransferSingle</code> event from <code>0x0</code> to <code>0x0</code>, with the token creator as <code>_operator</code>, and a <code>_value</code> of 0.
+    - The "TransferSingle and TransferBatch event rules" MUST be followed as appropriate for the mint(s) (i.e. singles or batches) however the <code>_from</code> argument MUST be set to <code>0x0</code> (i.e. zero address) to flag the transfer as a mint to contract observers.
+        - <strong>NOTE:</strong> This includes tokens that are given an initial balance in the contract. The balance of the contract MUST also be able to be determined by events alone meaning initial contract balances (for eg. in construction) MUST emit events to reflect those balances too.          <br />
+* A burn/destroy operation is essentially a specialized transfer and MUST follow these rules:
+    - The "TransferSingle and TransferBatch event rules" MUST be followed as appropriate for the burn(s) (i.e. singles or batches) however the <code>_to</code> argument MUST be set to <code>0x0</code> (i.e. zero address) to flag the transfer as a burn to contract observers.         <br />
+    - When burning/destroying you do not have to actually transfer to <code>0x0</code> (that is impl specific), only the <code>_to</code> argument in the event MUST be set to <code>0x0</code> as above.
+* The total value transferred from address <code>0x0</code> minus the total value transferred to <code>0x0</code> observed via the <code>TransferSingle</code> and <code>TransferBatch</code> events MAY be used by clients and exchanges to determine the "circulating supply" for a given token ID.
+* As mentioned above mint/create and burn/destroy operations are specialized transfers and so will likely be accomplished with custom transfer functions rather than <code>safeTransferFrom</code> or <code>safeBatchTransferFrom</code>. If so the "Implementation specific transfer API rules" section would be appropriate. <br />
+    - Even in a non-safe API and/or hybrid standards case the above event rules MUST still be adhered to when minting/creating or burning/destroying.
+* A contract MAY skip calling the <code>TRC1155TokenReceiver</code> hook function(s) if the mint operation is transferring the token(s) to itself. In all other cases the <code>TRC1155TokenReceiver</code> rules MUST be followed as appropriate for the implementation (i.e. safe, custom and/or hybrid). </p>
+<h5 id="a-solidity-example-of-the-keccak256-generated-constants-for-the-various-magic-values-these-may-be-used-by-implementation">A solidity example of the keccak256 generated constants for the various magic values (these MAY be used by implementation):<a class="headerlink" href="#a-solidity-example-of-the-keccak256-generated-constants-for-the-various-magic-values-these-may-be-used-by-implementation" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>bytes4<span class="w"> </span><span class="kt">constant</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>TRC1155_TRC165<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xd9b67a26</span><span class="p">;</span><span class="w"> </span><span class="c1">// TRC-165 identifier for the main token standard.</span>
+bytes4<span class="w"> </span><span class="kt">constant</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>TRC1155_TRC165_TOKENRECEIVER<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x4e2312e0</span><span class="p">;</span><span class="w"> </span><span class="c1">// TRC-165 identifier for the `TRC1155TokenReceiver` support (i.e. `bytes4(keccak256(&quot;onERC1155Received(address,address,uint256,uint256,bytes)&quot;)) ^ bytes4(keccak256(&quot;onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)&quot;))`).</span>
+bytes4<span class="w"> </span><span class="kt">constant</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>TRC1155_ACCEPTED<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xf23a6e61</span><span class="p">;</span><span class="w"> </span><span class="c1">// Return value from `onERC1155Received` call if a contract accepts receipt (i.e `bytes4(keccak256(&quot;onERC1155Received(address,address,uint256,uint256,bytes)&quot;))`).</span>
+bytes4<span class="w"> </span><span class="kt">constant</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>TRC1155_BATCH_ACCEPTED<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xbc197c81</span><span class="p">;</span><span class="w"> </span><span class="c1">// Return value from `onERC1155BatchReceived` call if a contract accepts receipt (i.e `bytes4(keccak256(&quot;onERC1155BatchReceived(address,address,uint256[],uint256[],bytes)&quot;))`).</span>
+</code></pre></div>
+<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h3>
+<p>The URI value allows for ID substitution by clients. If the string <code>{id}</code> exists in any URI, clients MUST replace this with the actual token ID in hexadecimal form. This allows for a large number of tokens to use the same on-chain string by defining a URI once, for that large number of tokens.</p>
+<ul>
+<li>The string format of the substituted hexadecimal ID MUST be lowercase alphanumeric: <code>[0-9a-f]</code> with no 0x prefix.</li>
+<li>The string format of the substituted hexadecimal ID MUST be leading zero padded to 64 hex characters length if necessary.</li>
+</ul>
+<p>Example of such a URI: <code>https://token-cdn-domain/{id}.json</code> would be replaced with <code>https://token-cdn-domain/000000000000000000000000000000000000000000000000000000000004cce0.json</code> if the client is referring to token ID 314592/0x4CCE0.</p>
+<p>We strongly recommend that you use <code>BTFS</code> to identify the url of a token.</p>
+<h4 id="metadata-extensions">Metadata Extensions<a class="headerlink" href="#metadata-extensions" title="Permanent link">&para;</a></h4>
+<p>The optional <code>TRC1155Metadata_URI</code> extension can be identified with the <a href="https://github.com/tronprotocol/tips/blob/master/tip-165.md">TRC-165 Standard Interface Detection</a>.</p>
+<p>If the optional <code>TRC1155Metadata_URI</code> extension is included:
+* The TRC-165 <code>supportsInterface</code> function MUST return the constant value <code>true</code> if <code>0x0e89341c</code> is passed through the <code>interfaceID</code> argument.
+* <em>Changes</em> to the URI MUST emit the <code>URI</code> event if the change can be expressed with an event (i.e. it isn't dynamic/programmatic).
+    - An implementation MAY emit the <code>URI</code> event during a mint operation but it is NOT mandatory. An observer MAY fetch the metadata uri at mint time from the <code>uri</code> function if it was not emitted.  <br />
+* The <code>uri</code> function SHOULD be used to retrieve values if no event was emitted. 
+* The <code>uri</code> function MUST return the same value as the latest event for an <code>_id</code> if it was emitted.
+* The <code>uri</code> function MUST NOT be used to check for the existence of a token as it is possible for an implementation to return a valid string even if the token does not exist.</p>
+<div class="highlight"><pre><span></span><code><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.5.9</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm">    Note: The TRC-165 identifier for this interface is 0x0e89341c.</span>
+<span class="cm">*/</span>
+interface<span class="w"> </span>TRC1155Metadata_URI<span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">        @notice A distinct Uniform Resource Identifier (URI) for a given token.</span>
+<span class="cm">        @dev URIs are defined in RFC 3986.</span>
+<span class="cm">        The URI MUST point to a JSON file that conforms to the &quot;TRC-1155 Metadata URI JSON Schema&quot;.        </span>
+<span class="cm">        @return URI string</span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">uri</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_id</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="trc-1155-metadata-uri-json-schema">TRC-1155 Metadata URI JSON Schema<a class="headerlink" href="#trc-1155-metadata-uri-json-schema" title="Permanent link">&para;</a></h4>
+<p>This JSON schema is loosely based on the "TRC721 Metadata JSON Schema", but includes optional formatting to allow for ID substitution by clients. If the string <code>{id}</code> exists in any JSON value, it MUST be replaced with the actual token ID, by all client software that follows this standard.</p>
+<ul>
+<li>The string format of the substituted hexadecimal ID MUST be lowercase alphanumeric: <code>[0-9a-f]</code> with no 0x prefix.</li>
+<li>The string format of the substituted hexadecimal ID MUST be leading zero padded to 64 hex characters length if necessary.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Token Metadata&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identifies the asset to which this token represents&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The number of decimal places that the token amount should display - e.g. 18, means to divide the token amount by 1000000000000000000 to get its user representation.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Describes the asset to which this token represents&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A URI pointing to a resource with mime type image/* representing the asset to which this token represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrary properties. Values may be strings, numbers, object or arrays.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>An example of an TRC-1155 Metadata JSON file follows. The properties array proposes some SUGGESTED formatting for token-specific display properties and metadata.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Asset Name&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lorem ipsum...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https:\/\/s3.amazonaws.com\/your-bucket\/images\/{id}.png&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;simple_property&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example value&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rich_property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;display_value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123 Example Value&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emphasis&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;css&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;color&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;font-weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bold&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;text-decoration&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;underline&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;array_property&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;emphasis&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="localization">Localization<a class="headerlink" href="#localization" title="Permanent link">&para;</a></h5>
+<p>Metadata localization should be standardized to increase presentation uniformity across all languages. As such, a simple overlay method is proposed to enable localization. If the metadata JSON file contains a <code>localization</code> attribute, its content MAY be used to provide localized values for fields that need it. The <code>localization</code> attribute should be a sub-object with three attributes: <code>uri</code>, <code>default</code> and <code>locales</code>. If the string <code>{locale}</code> exists in any URI, it MUST be replaced with the chosen locale by all client software.</p>
+<h5 id="json-schema">JSON Schema<a class="headerlink" href="#json-schema" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Token Metadata&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Identifies the asset to which this token represents&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;decimals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The number of decimal places that the token amount should display - e.g. 18, means to divide the token amount by 1000000000000000000 to get its user representation.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Describes the asset to which this token represents&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A URI pointing to a resource with mime type image/* representing the asset to which this token represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Arbitrary properties. Values may be strings, numbers, object or arrays.&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;uri&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;locales&quot;</span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The URI pattern to fetch localized data from. This URI should contain the substring `{locale}` which will be replaced with the appropriate locale value before sending the request.&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The locale of the default data within the base JSON&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;array&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The list of locales for which data is available. These locales should conform to those defined in the Unicode Common Locale Data Repository (http://cldr.unicode.org/).&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h5 id="localized-sample">Localized Sample<a class="headerlink" href="#localized-sample" title="Permanent link">&para;</a></h5>
+<p>Base URI:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Advertising Space&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Each token represents a unique Ad space in the city.&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;localization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ipfs://QmWS1VAdMD353A6SDk9wNyvkT14kyCiZrNDYAad4w1tKqT/{locale}.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;locales&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;en&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;es&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;fr&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>es.json:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Espacio Publicitario&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Cada token representa un espacio publicitario único en la ciudad.&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>fr.json:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Espace Publicitaire&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Chaque jeton représente un espace publicitaire unique dans la ville.&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="approval">Approval<a class="headerlink" href="#approval" title="Permanent link">&para;</a></h3>
+<p>The function <code>setApprovalForAll</code> allows an operator to manage one's entire set of tokens on behalf of the approver. To permit approval of a subset of token IDs, an interface such as <a href="./tip-1761.md">TRC-1761 Scoped Approval Interface</a> is suggested.
+The counterpart <code>isApprovedForAll</code> provides introspection into any status set by <code>setApprovalForAll</code>.</p>
+<p>An owner SHOULD be assumed to always be able to operate on their own tokens regardless of approval status, so should SHOULD NOT have to call <code>setApprovalForAll</code> to approve themselves as an operator before they can operate on them.  </p>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<h3 id="metadata-choices">Metadata Choices<a class="headerlink" href="#metadata-choices" title="Permanent link">&para;</a></h3>
+<p>The <code>symbol</code> function (found in the TRC-20 and TRC-721 standards) was not included as we do not believe this is a globally useful piece of data to identify a generic virtual item / asset and are also prone to collisions. Short-hand symbols are used in tickers and currency trading, but they aren't as useful outside of that space.</p>
+<p>The <code>name</code> function (for human-readable asset names, on-chain) was removed from the standard to allow the Metadata JSON to be the definitive asset name and reduce duplication of data. This also allows localization for names, which would otherwise be prohibitively expensive if each language string was stored on-chain, not to mention bloating the standard interface. While this decision may add a small burden on implementers to host a JSON file containing metadata, we believe any serious implementation of TRC-1155 will already utilize JSON Metadata.</p>
+<h3 id="upgrades">Upgrades<a class="headerlink" href="#upgrades" title="Permanent link">&para;</a></h3>
+<p>The requirement to emit <code>TransferSingle</code> or <code>TransferBatch</code> on balance change implies that a valid implementation of TRC-1155 redeploying to a new contract address MUST emit events from the new contract address to replicate the deprecated contract final state. It is valid to only emit a minimal number of events to reflect only the final balance and omit all the transactions that led to that state. The event emit requirement is to ensure that the current state of the contract can always be traced only through events. To alleviate the need to emit events when changing contract address, consider using the proxy pattern, such as described in <a href="./tip-2535.md">TIP-2535</a>. This will also have the added benefit of providing a stable contract address for users.</p>
+<h3 id="design-decision-supporting-non-batch">Design decision: Supporting non-batch<a class="headerlink" href="#design-decision-supporting-non-batch" title="Permanent link">&para;</a></h3>
+<p>The standard supports <code>safeTransferFrom</code> and <code>onERC1155Received</code> functions because they are significantly cheaper for single token-type transfers, which is arguably a common use case.</p>
+<h3 id="design-decision-safe-transfers-only">Design decision: Safe transfers only<a class="headerlink" href="#design-decision-safe-transfers-only" title="Permanent link">&para;</a></h3>
+<p>The standard only supports safe-style transfers, making it possible for receiver contracts to depend on <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> function to be always called at the end of a transfer.</p>
+<h3 id="guaranteed-log-trace">Guaranteed log trace<a class="headerlink" href="#guaranteed-log-trace" title="Permanent link">&para;</a></h3>
+<p>As the Ethereum ecosystem continues to grow, many dapps are relying on traditional databases and explorer API services to retrieve and categorize data. The TRC-1155 standard guarantees that event logs emitted by the smart contract will provide enough data to create an accurate record of all current token balances. A database or explorer may listen to events and be able to provide indexed and categorized searches of every TRC-1155 token in the contract.</p>
+<h3 id="approval_1">Approval<a class="headerlink" href="#approval_1" title="Permanent link">&para;</a></h3>
+<p>The function <code>setApprovalForAll</code> allows an operator to manage one's entire set of tokens on behalf of the approver. It enables frictionless interaction with exchange and trade contracts.</p>
+<p>Restricting approval to a certain set of token IDs, quantities or other rules MAY be done with an additional interface or an external contract. The rationale is to keep the TRC-1155 standard as generic as possible for all use-cases without imposing a specific approval scheme on implementations that may not need it. Standard token approval interfaces can be used, such as the suggested <a href="./tip-1761.md">TRC-1761 Scoped Approval Interface</a> which is compatible with TRC-1155.</p>
+<h2 id="backwards-compatibility">Backwards Compatibility<a class="headerlink" href="#backwards-compatibility" title="Permanent link">&para;</a></h2>
+<p>There have been requirements during the design discussions to have this standard be compatible with existing standards when sending to contract addresses, specifically TRC-721 at time of writing.
+To cater for this scenario, there is some leeway with the revert logic should a contract not implement the <code>TRC1155TokenReceiver</code> as per "Safe Transfer Rules" section above, specifically "Scenario#3 : The receiver does not implement the necessary <code>TRC1155TokenReceiver</code> interface function(s)".</p>
+<p>Hence in a hybrid TRC-1155 contract implementation an extra call MUST be made on the recipient contract and checked before any hook calls to <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> are made.
+Order of operation MUST therefore be:
+1. The implementation MUST call the function <code>supportsInterface(0x4e2312e0)</code> on the recipient contract, providing at least 10,000 gas.
+2. If the function call succeeds and the return value is the constant value <code>true</code> the implementation proceeds as a regular TRC-1155 implementation, with the call(s) to the <code>onERC1155Received</code> or <code>onERC1155BatchReceived</code> hooks and rules associated.
+3. If the function call fails or the return value is NOT the constant value <code>true</code> the implementation can assume the recipient contract is not an <code>ERC1155TokenReceiver</code> and follow its other standard's rules for transfers. </p>
+<p><em><strong>Note that a pure implementation of a single standard is recommended</strong></em> rather than a hybrid solution, but an example of a hybrid TRC-1155/TRC-721 contract is linked in the references section under implementations.</p>
+<p>An important consideration is that even if the tokens are sent with another standard's rules the <em><strong>TRC-1155 transfer events MUST still be emitted.</strong></em> This is so the balances can still be determined via events alone as per TRC-1155 standard rules.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>This standard can be used to represent multiple token types for an entire domain. Both fungible and non-fungible tokens can be stored in the same smart-contract.</p>
+<h3 id="batch-transfers">Batch Transfers<a class="headerlink" href="#batch-transfers" title="Permanent link">&para;</a></h3>
+<p>The <code>safeBatchTransferFrom</code> function allows for batch transfers of multiple token IDs and values. The design of TRC-1155 makes batch transfers possible without the need for a wrapper contract, as with existing token standards. This reduces gas costs when more than one token type is included in a batch transfer, as compared to single transfers with multiple transactions.</p>
+<p>Another advantage of standardized batch transfers is the ability for a smart contract to respond to the batch transfer in a single operation using <code>onERC1155BatchReceived</code>.</p>
+<p>It is RECOMMENDED that clients and wallets sort the token IDs and associated values (in ascending order) when posting a batch transfer, as some TRC-1155 implementations offer significant gas cost savings when IDs are sorted. See <a href="https://github.com/horizon-games/multi-token-standard">Horizon Games - Multi-Token Standard</a> "packed balance" implementation for an example of this.</p>
+<h3 id="batch-balance">Batch Balance<a class="headerlink" href="#batch-balance" title="Permanent link">&para;</a></h3>
+<p>The <code>balanceOfBatch</code> function allows clients to retrieve balances of multiple owners and token IDs with a single call.</p>
+<h3 id="enumerating-from-events">Enumerating from events<a class="headerlink" href="#enumerating-from-events" title="Permanent link">&para;</a></h3>
+<p>In order to keep storage requirements light for contracts implementing TRC-1155, enumeration (discovering the IDs and values of tokens) must be done using event logs. It is RECOMMENDED that clients such as exchanges and blockchain explorers maintain a local database containing the token ID, Supply, and URI at the minimum. This can be built from each TransferSingle, TransferBatch, and URI event, starting from the block the smart contract was deployed until the latest block.</p>
+<p>TRC-1155 contracts must therefore carefully emit <code>TransferSingle</code> or <code>TransferBatch</code> events in any instance where tokens are created, minted, transferred or destroyed.</p>
+<h3 id="non-fungible-tokens">Non-Fungible Tokens<a class="headerlink" href="#non-fungible-tokens" title="Permanent link">&para;</a></h3>
+<p>The following strategies are examples of how you MAY mix fungible and non-fungible tokens together in the same contract. The standard does NOT mandate how an implementation must do this. </p>
+<h5 id="split-id-bits">Split ID bits<a class="headerlink" href="#split-id-bits" title="Permanent link">&para;</a></h5>
+<p>The top 128 bits of the uint256 <code>_id</code> parameter in any TRC-1155 function MAY represent the base token ID, while the bottom 128 bits MAY represent the index of the non-fungible to make it unique.</p>
+<p>Non-fungible tokens can be interacted with using an index based accessor into the contract/token data set. Therefore to access a particular token set within a mixed data contract and a particular non-fungible within that set, <code>_id</code> could be passed as <code>&lt;uint128: base token id&gt;&lt;uint128: index of non-fungible&gt;</code>.</p>
+<p>To identify a non-fungible set/category as a whole (or a fungible) you COULD just pass in the base id via the <code>_id</code> argument as <code>&lt;uint128: base token id&gt;&lt;uint128: zero&gt;</code>. If your implementation uses this technique this naturally means the index of a non-fungible SHOULD be 1-based.</p>
+<p>Inside the contract code the two pieces of data needed to access the individual non-fungible can be extracted with uint128(~0) and the same mask shifted by 128.</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint256</span><span class="w"> </span><span class="nv">baseTokenNFT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">12345</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="m m-Decimal">128</span><span class="p">;</span>
+<span class="kt">uint128</span><span class="w"> </span><span class="nv">indexNFT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">50</span><span class="p">;</span>
+
+<span class="kt">uint256</span><span class="w"> </span><span class="nv">baseTokenFT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">54321</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="m m-Decimal">128</span><span class="p">;</span>
+
+balanceOf<span class="p">(</span>baseTokenNFT<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span><span class="w"> </span><span class="c1">// Get balance of the base token for non-fungible set 12345 (this MAY be used to get balance of the user for all of this token set if the implementation wishes as a convenience).</span>
+balanceOf<span class="p">(</span>baseTokenNFT<span class="w"> </span><span class="o">+</span><span class="w"> </span>indexNFT<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span><span class="w"> </span><span class="c1">// Get balance of the token at index 50 for non-fungible set 12345 (should be 1 if user owns the individual non-fungible token or 0 if they do not).</span>
+balanceOf<span class="p">(</span>baseTokenFT<span class="p">,</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">);</span><span class="w"> </span><span class="c1">// Get balance of the fungible base token 54321.</span>
+</code></pre></div>
+<p>Note that 128 is an arbitrary number, an implementation MAY choose how they would like this split to occur as suitable for their use case. An observer of the contract would simply see events showing balance transfers and mints happening and MAY track the balances using that information alone.
+For an observer to be able to determine type (non-fungible or fungible) from an ID alone they would have to know the split ID bits format on a implementation by implementation basis.</p>
+<p>The <a href="https://github.com/enjin/erc-1155">ERC-1155 Reference Implementation</a> is an example of the split ID bits strategy.</p>
+<h5 id="natural-non-fungible-tokens">Natural Non-Fungible tokens<a class="headerlink" href="#natural-non-fungible-tokens" title="Permanent link">&para;</a></h5>
+<p>Another simple way to represent non-fungibles is to allow a maximum value of 1 for each non-fungible token. This would naturally mirror the real world, where unique items have a quantity of 1 and fungible items have a quantity greater than 1.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p><strong>Standards</strong>
+- <a href="https://github.com/tronprotocol/tips/blob/master/tip-721.md">TRC-721 Non-Fungible Token Standard</a>
+- <a href="https://github.com/tronprotocol/tips/blob/master/tip-165.md">TRC-165 Standard Interface Detection</a>
+- <a href="https://json-schema.org/">JSON Schema</a>
+- <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119 Key words for use in RFCs to Indicate Requirement Levels</a></p>
+<p><strong>Implementations</strong>
+- <a href="https://github.com/enjin/erc-1155">ERC-1155 Reference Implementation</a>
+- <a href="https://github.com/horizon-games/multi-token-standard">Horizon Games - Multi-Token Standard</a>
+- <a href="https://enjincoin.io">Enjin Coin</a> (<a href="https://github.com/enjin">GitHub</a>)
+- <a href="https://github.com/pixowl/thesandbox-contracts/tree/master/src/Asset">The Sandbox - Dual ERC-1155/721 Contract</a></p>
+<p><strong>Articles &amp; Discussions</strong>
+- <a href="https://github.com/tronprotocol/tips/issues/404">GitHub - Original Discussion Thread</a></p>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

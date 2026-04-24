@@ -1,0 +1,1836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="kayle.liu <forfreeday@163.com>">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Optimize the performance of block processing - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Optimize the performance of block processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Optimize the performance of block processing</h1>
+
+<div class="highlight"><pre><span></span><code>tip: 269
+title: Optimize the performance of block processing
+author: kayle.liu &lt;forfreeday@163.com&gt;
+status: Fnial
+type: Standards Track
+category: Core
+created: 2021-05-21
+</code></pre></div>
+<h2 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h2>
+<p>This TIP is to optimize the block processing speed.</p>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>Through the performance analysis of the block processing, it was found that the slower execution time of payStandbyWitness in the block processing is due to the fact that more queries and deserialization operations are taken up by the sorting operation of the witness in the processing block.</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>Nearly 1/3 of the block processing speed is consumed in the block reward method time (payStandbyWitness).
+Optimize the block processing speed, you can improve the block processing speed, reduce the number of queries to the database, the number of queries to the database in the execution of the payStandbyWitness method, reduce to once, can reduce the use of the system on performance.</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="sb">`</span>---<span class="o">[</span><span class="m">387</span>.867829ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:processBlock<span class="o">()</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.265525ms<span class="o">]</span><span class="w"> </span>org.tron.consensus.Consensus:validBlock<span class="o">()</span><span class="w"> </span><span class="c1">#1396</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.003094ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getBalanceTraceStore<span class="o">()</span><span class="w"> </span><span class="c1">#1400</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.004708ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.BalanceTraceStore:initCurrentBlockBalanceTrace<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.002026ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1403</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.007791ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:saveBlockEnergyUsage<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">94</span>.568061ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:preValidateTransactionSign<span class="o">()</span><span class="w"> </span><span class="c1">#1407</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.019178ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionRetCapsule:&lt;init&gt;<span class="o">()</span><span class="w"> </span><span class="c1">#1414</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.021173ms<span class="o">]</span><span class="w"> </span>org.tron.common.zksnark.MerkleContainer:resetCurrentMerkleTree<span class="o">()</span><span class="w"> </span><span class="c1">#1417</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.040949ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:preExecute<span class="o">()</span><span class="w"> </span><span class="c1">#1418</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.002595ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getTransactions<span class="o">()</span><span class="w"> </span><span class="c1">#1419</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001298ms,max<span class="o">=</span><span class="m">0</span>.013595ms,total<span class="o">=</span><span class="m">0</span>.289364ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getNum<span class="o">()</span><span class="w"> </span><span class="c1">#1420</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001379ms,max<span class="o">=</span><span class="m">0</span>.014655ms,total<span class="o">=</span><span class="m">0</span>.29639ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionCapsule:setBlockNum<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001424ms,max<span class="o">=</span><span class="m">0</span>.005147ms,total<span class="o">=</span><span class="m">0</span>.245214ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:preExeTrans<span class="o">()</span><span class="w"> </span><span class="c1">#1424</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.155521ms,max<span class="o">=</span><span class="m">9</span>.70466ms,total<span class="o">=</span><span class="m">187</span>.607083ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:processTransaction<span class="o">()</span><span class="w"> </span><span class="c1">#1425</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.00161ms,max<span class="o">=</span><span class="m">0</span>.007481ms,total<span class="o">=</span><span class="m">0</span>.344484ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionCapsule:getInstance<span class="o">()</span><span class="w"> </span><span class="c1">#1426</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001784ms,max<span class="o">=</span><span class="m">0</span>.022878ms,total<span class="o">=</span><span class="m">0</span>.346678ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:isMultiSignTransaction<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001444ms,max<span class="o">=</span><span class="m">0</span>.01404ms,total<span class="o">=</span><span class="m">0</span>.316956ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:exeTransFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1429</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001993ms,max<span class="o">=</span><span class="m">0</span>.047268ms,total<span class="o">=</span><span class="m">0</span>.485732ms,count<span class="o">=</span><span class="m">146</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionRetCapsule:addTransactionInfo<span class="o">()</span><span class="w"> </span><span class="c1">#1431</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.003836ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:executePushFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1434</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.002098ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:exceptionFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1436</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.202892ms<span class="o">]</span><span class="w"> </span>org.slf4j.Logger:info<span class="o">()</span><span class="w"> </span><span class="c1">#1438</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.00192ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getNum<span class="o">()</span><span class="w"> </span><span class="c1">#1439</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">4</span>.939971ms<span class="o">]</span><span class="w"> </span>org.tron.common.zksnark.MerkleContainer:saveCurrentMerkleTreeAsBestMerkleTree<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.003103ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:setResult<span class="o">()</span><span class="w"> </span><span class="c1">#1440</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.004572ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1441</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.037116ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:getAllowAdaptiveEnergy<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">82</span>.440979ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:payReward<span class="o">()</span><span class="w"> </span><span class="c1">#1448</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.003923ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1450</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.027954ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:getNextMaintenanceTime<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.004259ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getTimeStamp<span class="o">()</span><span class="w"> </span><span class="c1">#1451</span>
+</code></pre></div>
+<p><strong>before optimizing</strong>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sortWitness</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">ByteString</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span>
+<span class="w">         </span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparingLong</span><span class="p">(</span>
+<span class="w">               </span><span class="p">(</span><span class="n">ByteString</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">getWitnessByAddress</span><span class="p">(</span><span class="n">b</span><span class="p">).</span><span class="na">getVoteCount</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="na">reversed</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">thenComparing</span><span class="p">(</span>
+<span class="w">           </span><span class="n">Comparator</span><span class="p">.</span><span class="na">comparingInt</span><span class="p">(</span><span class="n">ByteString</span><span class="p">::</span><span class="n">hashCode</span><span class="p">).</span><span class="na">reversed</span><span class="p">()</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div>
+getWitnessByAddress(b) This method makes more than 4,000 calls to the query, and the main performance consumption is in this method.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<ol>
+<li>avoid querying in the comparison, the witness list will be obtained by a single query</li>
+<li>the maintenance period already has in-order witness can be obtained through DynamicPropertiesStore</li>
+</ol>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<p><strong>Simplify witness queries</strong>
+To get the ordered witness list from dynamicPropertiesStore, you don't need to query the database iteratively, you can get the witness list in just one query.</p>
+<p>This can reduce the database query and the deserialization operation needed after the query, after verification, the optimized payStandbyWitness processing time
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="sb">`</span>---<span class="o">[</span><span class="m">267</span>.667815ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:processBlock<span class="o">()</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.628656ms<span class="o">]</span><span class="w"> </span>org.tron.consensus.Consensus:validBlock<span class="o">()</span><span class="w"> </span><span class="c1">#1396</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.011494ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getBalanceTraceStore<span class="o">()</span><span class="w"> </span><span class="c1">#1400</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.017455ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.BalanceTraceStore:initCurrentBlockBalanceTrace<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.004957ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1403</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.2191ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:saveBlockEnergyUsage<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">85</span>.907494ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:preValidateTransactionSign<span class="o">()</span><span class="w"> </span><span class="c1">#1407</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.03864ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionRetCapsule:&lt;init&gt;<span class="o">()</span><span class="w"> </span><span class="c1">#1414</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.031466ms<span class="o">]</span><span class="w"> </span>org.tron.common.zksnark.MerkleContainer:resetCurrentMerkleTree<span class="o">()</span><span class="w"> </span><span class="c1">#1417</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.064555ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:preExecute<span class="o">()</span><span class="w"> </span><span class="c1">#1418</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.00469ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getTransactions<span class="o">()</span><span class="w"> </span><span class="c1">#1419</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001408ms,max<span class="o">=</span><span class="m">0</span>.003854ms,total<span class="o">=</span><span class="m">0</span>.231615ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getNum<span class="o">()</span><span class="w"> </span><span class="c1">#1420</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001363ms,max<span class="o">=</span><span class="m">0</span>.01463ms,total<span class="o">=</span><span class="m">0</span>.233787ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionCapsule:setBlockNum<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001391ms,max<span class="o">=</span><span class="m">0</span>.013911ms,total<span class="o">=</span><span class="m">0</span>.226157ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:preExeTrans<span class="o">()</span><span class="w"> </span><span class="c1">#1424</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.179635ms,max<span class="o">=</span><span class="m">14</span>.21825ms,total<span class="o">=</span><span class="m">125</span>.068821ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:processTransaction<span class="o">()</span><span class="w"> </span><span class="c1">#1425</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001543ms,max<span class="o">=</span><span class="m">0</span>.003416ms,total<span class="o">=</span><span class="m">0</span>.259153ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionCapsule:getInstance<span class="o">()</span><span class="w"> </span><span class="c1">#1426</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.00164ms,max<span class="o">=</span><span class="m">0</span>.029365ms,total<span class="o">=</span><span class="m">0</span>.342206ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:isMultiSignTransaction<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.001482ms,max<span class="o">=</span><span class="m">0</span>.006611ms,total<span class="o">=</span><span class="m">0</span>.261829ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:exeTransFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1429</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="nv">min</span><span class="o">=</span><span class="m">0</span>.002065ms,max<span class="o">=</span><span class="m">0</span>.034937ms,total<span class="o">=</span><span class="m">0</span>.410742ms,count<span class="o">=</span><span class="m">129</span><span class="o">]</span><span class="w"> </span>org.tron.core.capsule.TransactionRetCapsule:addTransactionInfo<span class="o">()</span><span class="w"> </span><span class="c1">#1431</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.012483ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:executePushFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1434</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.004099ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.accountstate.callback.AccountStateCallBack:exceptionFinish<span class="o">()</span><span class="w"> </span><span class="c1">#1436</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.243828ms<span class="o">]</span><span class="w"> </span>org.slf4j.Logger:info<span class="o">()</span><span class="w"> </span><span class="c1">#1438</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.001956ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getNum<span class="o">()</span><span class="w"> </span><span class="c1">#1439</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">5</span>.168033ms<span class="o">]</span><span class="w"> </span>org.tron.common.zksnark.MerkleContainer:saveCurrentMerkleTreeAsBestMerkleTree<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.009408ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:setResult<span class="o">()</span><span class="w"> </span><span class="c1">#1440</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.005415ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1441</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.047165ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:getAllowAdaptiveEnergy<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">42</span>.898613ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:payReward<span class="o">()</span><span class="w"> </span><span class="c1">#1448</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.00315ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getDynamicPropertiesStore<span class="o">()</span><span class="w"> </span><span class="c1">#1450</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.025559ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.DynamicPropertiesStore:getNextMaintenanceTime<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.007094ms<span class="o">]</span><span class="w"> </span>org.tron.core.capsule.BlockCapsule:getTimeStamp<span class="o">()</span><span class="w"> </span><span class="c1">#1451</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.933923ms<span class="o">]</span><span class="w"> </span>org.tron.consensus.Consensus:applyBlock<span class="o">()</span><span class="w"> </span><span class="c1">#1456</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.856817ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:updateTransHashCache<span class="o">()</span><span class="w"> </span><span class="c1">#1460</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.03403ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:updateRecentBlock<span class="o">()</span><span class="w"> </span><span class="c1">#1461</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.391325ms<span class="o">]</span><span class="w"> </span>org.tron.core.db.Manager:updateDynamicProperties<span class="o">()</span><span class="w"> </span><span class="c1">#1462</span>
+<span class="w">        </span>+---<span class="o">[</span><span class="m">0</span>.003306ms<span class="o">]</span><span class="w"> </span>org.tron.core.ChainBaseManager:getBalanceTraceStore<span class="o">()</span><span class="w"> </span><span class="c1">#1464</span>
+<span class="w">        </span><span class="sb">`</span>---<span class="o">[</span><span class="m">0</span>.007784ms<span class="o">]</span><span class="w"> </span>org.tron.core.store.BalanceTraceStore:resetCurrentBlockTrace<span class="o">()</span><span class="w"> </span><span class="c1">#95</span>
+</code></pre></div></p>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

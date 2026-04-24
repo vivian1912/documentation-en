@@ -1,0 +1,1866 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="317787106@qq.com">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Node Discovery via DNS - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Node Discovery via DNS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>Node Discovery via DNS</h1>
+
+<div class="highlight"><pre><span></span><code>TIP: 548
+Title: Node Discovery via DNS
+Author: 317787106@qq.com
+Status: Final
+Type: Standards Track
+Category: Networking
+Created: 2023-05-22
+</code></pre></div>
+<h2 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h2>
+<p>This document describes a scheme for authenticated, dynamically updated libp2p node lists retrievable via DNS.</p>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>We build two merkle trees using known links and nodes from DHT, and publish it on dns server, so everyone can discover nodes free while no need to run DHT.</p>
+<h2 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h2>
+<p>Many java-tron clients contain hard-coded active node lists. Updating those lists requires a process restart. The current lists are small, giving the client little choice of initial entry point into the java-tron p2p network. It is better to maintain larger node lists containing hundreds of nodes and update them regularly to meet the requirements of the network.</p>
+<p>The scheme described here is a replacement for client active node lists with equivalent security and many additional benefits. Large lists populated by traversing the node discovery DHT can serve as a fallback option for nodes that can’t join the DHT due to restrictive network policy. DNS-based node lists may also be useful to java-tron peering providers because their users can configure the client to use the provider’s list.</p>
+<h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">&para;</a></h2>
+<p>A ‘node list’ is a list of Endpoint of arbitrary length as this:
+<div class="highlight"><pre><span></span><code>message Endpoint {
+  bytes address = 1;
+  int32 port = 2;
+  bytes nodeId = 3;
+  bytes addressIpv6 = 4;
+}
+</code></pre></div>
+Lists may refer to other lists using links. The entire list is signed using a secp256k1 private key. The corresponding public key must be known to the client in order to verify the list.</p>
+<p>To refer to a DNS node list, clients use a URL with ‘tree://’ scheme. The URL contains the DNS name on which the list can be found as well as the public key that signed the list. The public key is contained in the username part of the URL and is the base32 encoding (RFC-4648) of the compressed 32-byte binary public key.</p>
+<p>Example: Suppose to generate a random private key 0xb71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291, then we get a tree:
+<div class="highlight"><pre><span></span><code>tree://APFGGTFOBVE2ZNAB3CSMNNX6RRK3ODIRLP2AA5U4YFAA6MSYZUYTQ@nodes.example.org
+</code></pre></div>
+This URL refers to a node list at the DNS name ‘nodes.example.org’ and is signed by the public key 0xca634cae0d49acb401d8a4c6b6fe8c55b70d115bf400769cc1400f3258cd31387574077f301b421bc84df7266c44e9e6d569fc56be00812904767bf5ccd1fc7f.</p>
+<h3 id="dns-record-structure">DNS Record Structure<a class="headerlink" href="#dns-record-structure" title="Permanent link">&para;</a></h3>
+<p>Let’s serialize a protobuf object and encode it with Base64 to generate a tree root. protobuf is that:
+<div class="highlight"><pre><span></span><code>message DnsRoot {
+  message TreeRoot {
+    bytes eRoot = 1;
+    bytes lRoot = 2;
+    int32 seq = 3;
+  }
+  TreeRoot treeRoot = 1;
+  bytes signature = 2;
+}
+</code></pre></div>
+The nodes in a list are encoded as a merkle tree for distribution via the DNS protocol. Entries of the merkle tree are contained in DNS TXT records. The root of the tree is a TXT record with the following content:
+<div class="highlight"><pre><span></span><code>tree-root-v1:CjgKGkpYUjRWM0M3VDZQTkNWR1k1SkhQVE5YN0RJEhpHNzYzTTUzTU9QWVdVVkpTVzZDR0UyN0dFNBJXbWJkTGtHRk8wbWRRRmdCYlVFVEx1VGxsbUEtNnpEYXZqUWpUMTJXU0phVmZmMUxrMlFkVDBBOGE2Umw0WFpNMHZDRzFzeVUzMm1LR3VDeTY1Nzl0OXhz
+</code></pre></div>
+where
+* eRoot and lRoot refer to the root hashes of subtrees containing nodes and links subtrees
+* seq is the tree’s updated sequence number, a decimal integer
+* signature is a 65-byte secp256k1 EC signature over the keccak256 hash of the treeRoot content, encoded as URL-safe base64 (RFC-4648)</p>
+<p>Further TXT records on subdomains map hashes to one of three entry types. The subdomain name of any entry is the base32 encoding of the (abbreviated) keccak256 hash of its text content.
+* tree-branch:....., is an intermediate tree entry containing hashes of subtree entries.
+* tree://@ is a leaf pointing to a different list located at another fully qualified domain name. Note that this format matches the URL encoding. This type of entry may only appear in the subtree pointed to by lRoot.
+* nodes: is a leaf containing one or more node records. The node record is encoded as a URL-safe base64 string. Note that this type of entry matches EndPoint or repeated EndPoints. It may only appear in the eRoot subtree.</p>
+<p>No particular ordering or structure is defined for the tree. Whenever the tree is updated, its sequence number should increase. The content of any TXT record should be small enough to fit into the 512-byte limit imposed on UDP DNS packets. This limits the number of hashes that can be placed into an entree-branch entry.</p>
+<p>Suppose we have a serialized treeRoot as the following, response to the above tree-root-v1:
+<div class="highlight"><pre><span></span><code>[treeRoot {
+  eRoot: &quot;JXR4V3C7T6PNCVGY5JHPTNX7DI&quot;
+  lRoot: &quot;G763M53MOPYWUVJSW6CGE27GE4&quot;
+  seq: 0
+ }
+ signature: &quot;mbdLkGFO0mdQFgBbUETLuTllmA-6zDavjQjT12WSJaVff1Lk2QdT0A8a6Rl4XZM0vCG1syU32mKGuCy6579t9xs&quot;
+]
+</code></pre></div>
+Encode it using Base64 we get "CjgKGkpYUjRWM0M3VDZQTkNWR1k1SkhQVE5YN0RJEhpHNzYzTTUzTU9QWVdVVkpTVzZDR0UyN0dFNBJXbWJkTGtHRk8wbWRRRmdCYlVFVEx1VGxsbUEtNnpEYXZqUWpUMTJXU0phVmZmMUxrMlFkVDBBOGE2Umw0WFpNMHZDRzFzeVUzMm1LR3VDeTY1Nzl0OXhz", we can also decode it using Base64 to get above DnsRoot in turn.</p>
+<p>Example in zone file format:
+<div class="highlight"><pre><span></span><code>; name                        ttl     class type  content
+nodes.example.org             60      IN    TXT   tree-root-v1:CjgKGkpYUjRWM0M3VDZQTkNWR1k1SkhQVE5YN0RJEhpHNzYzTTUzTU9QWVdVVkpTVzZDR0UyN0dFNBJXbWJkTGtHRk8wbWRRRmdCYlVFVEx1VGxsbUEtNnpEYXZqUWpUMTJXU0phVmZmMUxrMlFkVDBBOGE2Umw0WFpNMHZDRzFzeVUzMm1LR3VDeTY1Nzl0OXhz
+G763M53MOPYWUVJSW6CGE27GE4    86900   IN    TXT   tree-branch:
+LAHEXJDXOPZSS2TDVXTJACCB6Q    86900   IN    TXT   tree-branch:OX22LN2ZUGOPGIPGBUQH35KZU4,XTGCXXQHPK3VUZPQHC6CGJDR3Q,BQLJLB6P5CRXHI37BRVWBWWACY,X4FURUK4SHXW3GVE6XBO3DFD5Y,SIUYMSVBYYXCE6HVW5TSGOFKVQ,2RKY3FUYIQBV4TFIDU7S42EIEU,KSEEGRTUGR4GCCBQ4TYHAWDKME,YGWDS6F6KLTFCC7T3AMAJHXI2A,K4HMVDEHRKOGOFQZXBJ2PSVIMM,NLLRMPWOTS6SP4D7YLCQA42IQQ,BBDLEDOZYAX5CWM6GNAALRVUXY,7NMT4ZISY5F4U6B6CQML2C526E,NVDRYMFHIERJEVGW5TE7QEAS2A
+QR4HMFZU3STBJEXOZIXPDRQTGM    86900   IN    TXT   tree-branch:5ELKMY4HVAV5CBY6KDMXWOFSN4,7PHYT72EXSZJ6MT2IQ7VGUFQHI,AM6BJFCERRNKBG4A5X3MORBDZU,2WOYKPVTNYAY3KVDTDY4CEVOJM,PW5BHSJMPEHVJKRF5QTRXQB4LU,IS4YMOJGD4XPODBAMHZOUTIVMI,NSEE5WE57FWG2EERXI5TBBD32E,GOLZDJTTQ7V2MO2BG45O3Q22XI,4VL7USGBWKW576WM4TX7XIXS4A,GZQSPHDZYS7FXURGOQU3RIDUK4,T7L645CJJKCQVQMUADDO44EGOM,ATPMZZZB4RGYKC6K7QDFC22WIE,57KNNYA4WOKVZAODRCFYK64MBA
+WHCXLEQB3467BFATRY5SMIV62M    86900   IN    TXT   tree-branch:BJF5S37KVATG2SYHO6M7APDCNU,OUB3BDKUZQWXXFX5OSF5JCB6BA,6JZEHDWM6WWQYIEYVZN5QVMUXA,LXNNOBVTTZBPD3N5VTOCPVG7JE,LMWLKDCBT2U3CGSHKR2PYJNV5I,K2SSCP4ZIF7TQI4MRVLELFAQQE,MKR7II3GYETKN7MSCUQOF6MBQ4,FBJ5VFCV37SGUOEYA2SPGO3TLA,6SHSDL7PJCJAER3OS53NYPNDFI,KYU2OQJBU6AU3KJFCUSLOJWKVE,3N6XKDWY3WTBOSBS22YPUAHCFQ,IPEWOISXUGOL7ORZIOXBD24SPI,PCGDGGVEQQQFL4U2FYRXVHVMUM
+JXR4V3C7T6PNCVGY5JHPTNX7DI    86900   IN    TXT   tree-branch:WHCXLEQB3467BFATRY5SMIV62M,LAHEXJDXOPZSS2TDVXTJACCB6Q,QR4HMFZU3STBJEXOZIXPDRQTGM,JZUKVXBOLBPXCELWIE5G6E6UUU
+JZUKVXBOLBPXCELWIE5G6E6UUU    86900   IN    TXT   nodes:ChEKDDE5Mi4xNjguMC40MBCQTg
+K4HMVDEHRKOGOFQZXBJ2PSVIMM    86900   IN    TXT   nodes:ChEKDDE5Mi4xNjguMC4yMhCQTg
+BBDLEDOZYAX5CWM6GNAALRVUXY    86900   IN    TXT   nodes:ChEKDDE5Mi4xNjguMC4yNBCQTg
+PCGDGGVEQQQFL4U2FYRXVHVMUM    86900   IN    TXT   nodes:ChEKDDE5Mi4xNjguMC4xMxCQTg
+...
+PCGDGGVEQQQFL4U2FYRXVHVMUM    86900   IN    TXT   nodes:ChEKDDE5Mi4xNjguMC4xMxCQTg
+</code></pre></div>
+For conciseness, we use G763M53MOPYWUVJSW6CGE27GE4 to refer G763M53MOPYWUVJSW6CGE27GE4.nodes.example.org in DNS TXT record.</p>
+<h3 id="dns-look-up">DNS Look-Up<a class="headerlink" href="#dns-look-up" title="Permanent link">&para;</a></h3>
+<p>Some DNS servers are not always available in some countries because of network restrictions, so it's necessary to provide a list of tested and widely available servers that are compatible with either ipv4 or ipv6.</p>
+<p>We can get TXT records by using the command <code>dig</code>:
+<div class="highlight"><pre><span></span><code>dig nodes.example.org TXT
+</code></pre></div></p>
+<h3 id="build-a-tree-with-two-subtrees">Build a tree with two subtrees<a class="headerlink" href="#build-a-tree-with-two-subtrees" title="Permanent link">&para;</a></h3>
+<p>Every ‘n’ leaf constructs a branch and every ‘n’ branch constructs a parent branch. So we recursively build an ‘n-ary' tree with leaf nodes and branch nodes.</p>
+<p>Suppose we have already collected 40 nodes( EndPoint as above) from DHT, with address 192.168.0.1 ~ 192.168.0.40, port 10000, all nodes' addressIpv6 and nodeId are null. we can build a node tree as the following, each leaf contains a node.
+<div class="highlight"><pre><span></span><code>                                  b  r  a  n  c  h  4
+                   /                 /           \          \
+                /                  /               \           \
+             /                    /                   \            \
+          branch1               branch2              branch3          \
+        /      \              /       \             /       \           \
+      node-01 ~ node-13    node-14 ~ node-26     node-27 ~ node-39    node-40
+</code></pre></div>
+The tree's depth is 3. As the DNS TXT record's length has a 512-byte limit, each branch can contain 13 children at most, namely n = 13. Building a link tree has the same step as a node tree.</p>
+<h3 id="merge-nodes">Merge nodes<a class="headerlink" href="#merge-nodes" title="Permanent link">&para;</a></h3>
+<p>If we have hundreds of nodes and each leaf contains only one node, we may have to sync too many times to get all nodes. It is observed that the length of the node is very short and far from 512, so it is possible to merge several nodes into one leaf to reduce network interactions. If we want to update some nodes, namely delete old nodes and add new nodes, but how to make changes as small as possible? It should be done like this:
+1. Divide these nodes according to the A network segment of the IP address into 256 groups.
+2. Sort nodes in one group by address.
+3. Merge several nodes into a leaf, define maxMergeSize, and default 5 nodes.</p>
+<p>According to the test, we may reduce 70% of DNS requests using maxMergeSize = 5 compared to that maxMergeSize=1 in <a href="http://github.com/ethereum/go-ethereum">go-ethereum</a>.</p>
+<h3 id="client-protocol">Client Protocol<a class="headerlink" href="#client-protocol" title="Permanent link">&para;</a></h3>
+<p>To find nodes at a given DNS name say “<a href="http://mynodes.org/">mynodes.org</a>”:
+1. Resolve the TXT record of the name and check whether it contains a valid “tree-root-v1:” entry. Let’s say the eRoot hash contained in the entry is “JXR4V3C7T6PNCVGY5JHPTNX7DI”.
+2. Verify the signature on the root against the known public key and check whether the sequence number is larger than or equal to any previous number seen for that name.
+3. Resolve the TXT record of the hash subdomain, e.g. “CFZUWDU7JNQR4VTCZVOJZ5ROV4.mynodes.org” and verify whether the content matches the hash.
+4. The next step depends on the entry type found:
+    * for tree-branch: parse the list of hashes and continue resolving them (step 3).
+    * for nodes: decode, verify the node record and import it to local node storage.</p>
+<p>During traversal, the client must track hashes and domains which are already resolved to avoid going into an infinite loop. It’s in the client’s best interest to traverse the tree in random order.</p>
+<p>Client implementations should avoid downloading the entire tree at once during normal operation. It’s much better to request entries via DNS when needed, i.e. at the time when the client is looking for peers.</p>
+<h3 id="publish-dns-periodically">Publish DNS periodically<a class="headerlink" href="#publish-dns-periodically" title="Permanent link">&para;</a></h3>
+<p>DNS nodes from DHT changes dynamically, publish every change is very expensive and low efficient. One task will check the changes periodically, it only publish the changes when change percent is bigger than a threshold. Clients that syncs the whole tree only need to check the root periodically at the same time.</p>
+<h2 id="rationale">Rationale<a class="headerlink" href="#rationale" title="Permanent link">&para;</a></h2>
+<h3 id="why-dns">Why DNS?<a class="headerlink" href="#why-dns" title="Permanent link">&para;</a></h3>
+<p>Choosing DNS as the distribution medium because it is always available, even under restrictive network conditions. The protocol provides low latency and answers to DNS queries can be cached by intermediate resolvers. No custom server software is needed. Node lists can be deployed to any DNS provider such as CloudFlare DNS, Aliyun DNS, and Amazon Route 53 using their respective client libraries. The user only has to implement this interface:
+<div class="highlight"><pre><span></span><code>public interface Publish&lt;T&gt; {
+  void deploy(String domainName, Tree t) throws Exception;
+
+  boolean deleteDomain(String domainName) throws Exception;
+
+  Map&lt;String, T&gt; collectRecords(String domainName) throws Exception;
+}
+</code></pre></div>
+In libp2p, it is implemented with Amazon Route 53 and Aliyun.</p>
+<h3 id="why-is-this-a-merkle-tree">Why is this a merkle tree?<a class="headerlink" href="#why-is-this-a-merkle-tree" title="Permanent link">&para;</a></h3>
+<p>Being a merkle tree, any node list can be authenticated by a single signature on the root. Hash subdomains protect the integrity of the list. At worst intermediate resolvers can block access to the list or disallow updates to it, but cannot corrupt its content. The sequence number prevents replacing the root with an older version.</p>
+<p>Synchronizing updates on the client side can be done incrementally, which matters for large lists. Individual entries of the tree are small enough to fit into a single UDP packet, ensuring compatibility with environments where only basic UDP DNS is available. The tree format also works well with caching resolvers: only the root of the tree needs a short TTL. Intermediate entries and leaves can be cached for days.</p>
+<h3 id="why-does-the-link-subtree-exist">Why does the link subtree exist?<a class="headerlink" href="#why-does-the-link-subtree-exist" title="Permanent link">&para;</a></h3>
+<p>Links between lists enable federation and web-of-trust functionality. The operator of a large list can delegate maintenance to other list providers. If two node lists link to each other, users can use either list and get nodes from both.</p>
+<p>The link subtree is separate from the tree containing nodes. This is done to enable client implementations to sync these trees independently. A client wanting to get as many nodes as possible will sync the link tree first and add all linked names to the sync horizon.</p>
+<h3 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h3>
+<p>Discovery via DNS is less secure than via DHT because it relies on a trusted party to publish the records regularly. The actor could easily eclipse bootstrapping nodes by only publishing node records that it controls.</p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p><a href="https://eips.ethereum.org/EIPS/eip-1459">EIP-1459</a> </p>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>

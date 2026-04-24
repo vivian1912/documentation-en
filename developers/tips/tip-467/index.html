@@ -1,0 +1,2152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="lxcmyf@gmail.com">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Stake 2.0 - A new TRON staking model - java-tron</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#simple-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="java-tron" class="md-header__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            java-tron
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stake 2.0 - A new TRON staking model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting_started/getting_started_with_javatron/" class="md-tabs__link">
+          
+  
+  Getting Started With java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../using_javatron/installing_javatron/" class="md-tabs__link">
+          
+  
+  Using java-tron
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../api/http/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../mechanism-algorithm/dpos/" class="md-tabs__link">
+          
+  
+  Core Protocol
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../java-tron/" class="md-tabs__link">
+          
+  
+  For java-tron Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../contracts/tools/" class="md-tabs__link">
+          
+  
+  For Dapp Developers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../clients/wallet-cli/" class="md-tabs__link">
+          
+  
+  Clients
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../releases/upgrade-instruction/" class="md-tabs__link">
+          
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../glossary/" class="md-tabs__link">
+          
+  
+  Appendix
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="java-tron" class="md-nav__button md-logo" aria-label="java-tron" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    java-tron
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tronprotocol/documentation-en" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started With java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started With java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/getting_started_with_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Using java-tron
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using java-tron
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/installing_javatron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/backup_restore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup and Restore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/litefullnode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lite FullNode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/private_network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Private Network
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/event/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Event Subscription
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/database/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/connecting_to_tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Connection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../using_javatron/toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Node Maintenance Tool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/http/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HTTP API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    gRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api/json-rpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jsonRPC API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Core Protocol
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Core Protocol
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dpos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPoS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/sr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Super Representative
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/resource/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/contract/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Smart Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/system-contracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Contract
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/dex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decentralized Exchange
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mechanism-algorithm/multi-signatures/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account Permission Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For java-tron Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            For java-tron Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java-tron/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TIPs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../issue-workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Issue Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../governance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Governance Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../run-in-idea/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configure the IDE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Development Example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../code-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Core Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For Dapp Developers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            For Dapp Developers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contracts/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clients
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Clients
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../clients/wallet-cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    wallet-cli
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/upgrade-instruction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment Manual for the New Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/signature_verification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrity Check
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../releases/history/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appendix
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendix
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<div class="highlight"><pre><span></span><code>tip: 467
+title: Stake 2.0 - A new TRON staking model 
+author: lxcmyf@gmail.com
+discussions-to: https://github.com/tronprotocol/tips/issues/467
+status: Final
+type: Standards Track 
+category: Core
+created: 2022-09-28
+</code></pre></div>
+<h1 id="simple-summary">Simple Summary<a class="headerlink" href="#simple-summary" title="Permanent link">&para;</a></h1>
+<p>This TIP aims to establish a more flexible stake model, called Stake 2.0, Stake 2.0 can improve the utilization of network resources, and at the same time enhance the stability of the TRON stake system.</p>
+<h1 id="motivation">Motivation<a class="headerlink" href="#motivation" title="Permanent link">&para;</a></h1>
+<p>At present, by staking TRX on the TRON network, you can obtain voting rights called TRON Power, as well as bandwidth or energy as resources. The users need to choose whether to obtain whether energy or bandwidth during the stake operation. The obtained resources can also be delegated to other addresses only if they are specified when staking. Once the staking is completed, it is not allowed to unstake within 3 days. Then, the users can perform the unstake operation and immediately obtain the staked TRX.</p>
+<p>The delegating of resources under the current stake mechanism is hardly flexible, resulting in low resource utilization and complicated user operations. The stake and delegating operation are bound together at present. If you want to alter your resource delegating object, you need to perform unstaking first, then make another staking and designate a new delegating object. Additionally, the unstake operation must wait for 3 days after staking, which means that the resources obtained cannot be re-delegated to others within 3 days. If the user has already voted before unstaking, the unstake operation will also result in the automatic cancellation of the vote. Hence, all these rules greatly reduce the efficiency of resource allocation and incur extremely complicated user operations to stake and delegate at will.</p>
+<p>Since the TVM does not support stake, vote, or delegate commands, the developers are not able to implement related operations in a smart contract, which limits the applications involved staking and delegating, like tokenization and decentralized resource exchange. In addition, the principal will arrive immediately after the stake is released, when the TRX market fluctuates violently, a large number of staking or unstaking operations will be triggered, which will also have a certain impact on the overall stake model.</p>
+<p>Therefore, we need a new stake mechanism to solve these problems, separate low-frequency staking operations and high-frequency resource delegating operations, support resource re-delegating without unstaking, and improve resource utilization. Add stake, delegate, vote, and related commands should be added in the TVM, meanwhile, the new mechanism should implement the delayed arrival of unstaking TRX, improve the stability of the stake model under extreme market conditions, and help network participants to form more stable expectations for the total circulation of the entire network.</p>
+<h2 id="specifications">Specifications<a class="headerlink" href="#specifications" title="Permanent link">&para;</a></h2>
+<p>Based on the description above, a newly designed staking model is shown as below, seven new APIs should be added to the java-tron client:
+- <code>/wallet/freezebalancev2</code>
+- <code>/wallet/unfreezebalancev2</code>
+- <code>/wallet/delegateresource</code>
+- <code>/wallet/undelegateresource</code>
+- <code>/wallet/withdrawexpireunfreeze</code>
+- <code>/wallet/getavailableunfreezecount</code>
+- <code>/wallet/getcanwithdrawunfreezeamount</code>
+- <code>/wallet/getcandelegatedmaxsize</code>
+- <code>/wallet/getdelegatedresourcev2</code>
+- <code>/wallet/getdelegatedresourceaccountindexv2</code></p>
+<p>and six new opcodes should be added to TVM:
+<code>FREEZEBALANCEV2</code>, <code>UNFREEZEBALANCEV2</code>, <code>DELEGATERESOURCE</code>, <code>UNDELEGATERESOURCE</code>, <code>CANCELALLUNFREEZEV2</code>, <code>WITHDRAWEXPIREUNFREEZE</code></p>
+<h2 id="mechanism">Mechanism<a class="headerlink" href="#mechanism" title="Permanent link">&para;</a></h2>
+<p>The mechanism of Stake 2.0 is shown as follows:</p>
+<ul>
+<li>User calls <code>/wallet/freezebalancev2</code> to stake TRX and obtain resources, specifing the type of resource. The corresponding resource goes to the owner address that has staked TRX.</li>
+<li>After staking and obtaining resources, the owner is able to call  <code>/wallet/delegateresource</code> to delegate resources to multiple recipients respectively. The delegating time locker is an optional, if selected, the delegated resources cannot be undelegated within 3 days, if not selected, there will not be lock-up period. When the owner repeat the delegating operation with time lock of same amount to the same receiver address, the lock-up period will be reset to 3 days.</li>
+<li>The owner call <code>/wallet/undelegateresource</code> to cancel the resource delegating for a recipient, supporting partial cancellation by amount.</li>
+<li>Call <code>/wallet/unfreezebalancev2</code> to unstake TRX, partial unstaking is supported, but only for the available part, TRX related to the delegated resources are considered locked and not available, therefore, cannot be unstaked.</li>
+<li>After the owner performs the unstaking operation, he needs to wait <code>N</code> days, then call <code>/wallet/withdrawexpireunfreeze</code> to get back TRX，<code>N</code> is a TRON network parameter.</li>
+</ul>
+<h3 id="specification-in-undelegateresource">Specification in undelegateresource<a class="headerlink" href="#specification-in-undelegateresource" title="Permanent link">&para;</a></h3>
+<p>If the recipient has consumed a part of the resource, after undelegating, this part of resources will still be not available status in the owner account, and needs some time to recover. The owner can only delegate the available resources to others.</p>
+<p>Example：</p>
+<ul>
+<li>Assuming that A has 1000 units of energy, delegate all of them to B. After B used 400 units, A called <code>/wallet/undelegateresource</code> to undelegate all the energy left. Now, A has a balance of 600 units of energy in the account, 400 units are in recovering.</li>
+</ul>
+<h3 id="specification-in-unstake">Specification in unstake<a class="headerlink" href="#specification-in-unstake" title="Permanent link">&para;</a></h3>
+<p>TRX partial unstaking is supported, but a maximum of 32 partial unstaking operations is allowed simultaneously, in other words, there should be no more than 32 delay arrivals of the unstaking assets in progress at the same time.</p>
+<p>Example,</p>
+<ul>
+<li>Assuming N is 3, and the user staked 50 TRX. On day 1, the user unstakes 1 TRX, he needs to wait for 3 days, that is, on day 4, the user will be able to get back 1 TRX. Then on day 2, the user unstakes another 1 TRX, he would be able to get it back on day 5. Each unstaking operation needs to wait for 3 days before redeeming.
+  There could be at most 32 unstaking operations in processing at the same time in the new model.</li>
+</ul>
+<p>Unstaking will first reclaim the idle TRON Power, then the TRON Power that has been used. For the reclaiming of TRON Power that has been used, if vote for multiple SRs, it will revoke votes in proportion.</p>
+<p>Example：</p>
+<ul>
+<li>
+<p>Suppose that a user stakes 2000 TRX and gets 2000 TRON Power, 1,000 TRON Power is idle and 1,000 TRON Power votes for 5 SRs. Each SR gets 200 votes. Now the user unstake 1500 TRX, which means 1500 TRON Power needs to be reclaimed, in this case, the 1000 idle TRON Power will be reclaimed first, then revoke 100 votes from each SR.</p>
+</li>
+<li>
+<p>Revoked votes from SR(A) = (Total revoked votes from all SRs/ Total previous votes to all SRs) * Total previous votes to SR(A)</p>
+</li>
+</ul>
+<h2 id="specification-of-http-apis">Specification of HTTP APIs<a class="headerlink" href="#specification-of-http-apis" title="Permanent link">&para;</a></h2>
+<p><strong>/wallet/freezebalancev2</strong></p>
+<p>Description: stake TRX to obtain TRON Power (voting rights) and bandwidth or energy.</p>
+<p>Params:
+1. <code>owner_address</code> - Address of transaction initiator, data type is string
+2. <code>frozen_balance</code> - Amount of TRX to be staked, unit is <em>sun</em>, data type is uint256
+3. <code>resource</code> - Resource type, "BANDWIDTH" or "ENERGY", data type is string
+4. <code>visible</code> - Whether the address is in Base58 format, data type is bool</p>
+<p>Returns - unsigned transaction, data type is json string</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/freezebalancev2 -d  \
+&#39;{&quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+ &quot;frozen_balance&quot;:1000000,
+ &quot;resource&quot;:&quot;BANDWIDTH&quot;,
+ &quot;visible&quot;:true
+}&#39;
+</code></pre></div></p>
+<p><strong>/wallet/unfreezebalancev2</strong></p>
+<p>Description: Unstake TRX  to release bandwidth and energy and at the same time TRON Power will be reduced and all corresponding votes will be canceled.</p>
+<p>Params:
+1. <code>owner_address</code> - Address of transaction initiator, data type is string
+2. <code>unfreeze_balance</code> - Amount of TRX to be unstaked, unit is <em>sun</em>, data type is uint256
+3. <code>resource</code> - Resource type, "BANDWIDTH" or "ENERGY", data type is string
+4. <code>visible</code> - Whether the address is in base58 format, data type is bool</p>
+<p>Returns - unsigned transaction, data type is json string</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/unfreezebalancev2 -d  \
+&#39;{&quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+ &quot;unfreeze_balance&quot;:1000000,
+ &quot;resource&quot;:&quot;BANDWIDTH&quot;,
+ &quot;visible&quot;:true
+}&#39;
+</code></pre></div></p>
+<p><strong>/wallet/delegateresource</strong></p>
+<p>Description: delegate resource</p>
+<p>Params:
+1. <code>owner_address</code> - Address of transaction initiator, data type is string
+2. <code>receiver_address</code> - Receiver address of resource to be delegated to
+3. <code>balance</code> - Amount of TRX staked for resource to be delegated, unit is <em>sun</em>, data type is unit256
+4. <code>resource</code> - Resource type, "BANDWIDTH" or "ENERGY", data type is string
+5. <code>lock</code> - Whether it is locked, if it is set to <code>true</code>, the delegated resources cannot be undelegated within 3 days.When the lock time is not over, if the owner delegates the same resources using the lock to the same address, the lock time will be reset to 3 days
+6. <code>visible</code> - Whether the address is in base58 format, data type is bool</p>
+<p>Returns - unsigned transaction, data type is json string</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/delegateresource -d  \
+&#39;{&quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+ &quot;receiver_address&quot;:&quot;TQ4gjjpAjLNnE67UFbmK5wVt5fzLfyEVs3&quot;,
+ &quot;balance&quot;:1000000,
+ &quot;resource&quot;:&quot;BANDWIDTH&quot;,
+ &quot;lock&quot;: true,
+ &quot;visible&quot;:true
+}&#39;
+</code></pre></div></p>
+<p><strong>/wallet/undelegateresource</strong></p>
+<p>Description: undelegate API</p>
+<p>Params:
+1. <code>owner_address</code> - Address of transaction initiator, data type is string
+2. <code>receiver_address</code> - Receiver address of resource to be delegated to
+3. <code>balance</code> - Amount of TRX staked for resource to be undelegated, unit is <em>sun</em>, data type is unit256
+4. <code>resource</code> - Resource type, "BANDWIDTH" or "ENERGY", data type is string
+5. <code>visible</code> - Whether the address is in base58 format, data type is bool</p>
+<p>Returns - unsigned transaction, data type is json string</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/undelegateresource -d  \
+&#39;{&quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+ &quot;receiver_address&quot;:&quot;TQ4gjjpAjLNnE67UFbmK5wVt5fzLfyEVs3&quot;,
+ &quot;balance&quot;:1000000,
+ &quot;resource&quot;:&quot;BANDWIDTH&quot;,
+ &quot;visible&quot;:true
+}&#39;
+</code></pre></div>
+<strong>/wallet/withdrawexpireunfreeze</strong></p>
+<p>Description: withdraw unfrozen balance API</p>
+<p>Params:
+1. <code>owner_address</code> - Address of transaction initiator, data type is string
+2. <code>visible</code> - Whether the address is in base58 format, data type is bool</p>
+<p>Returns - unsigned transaction, data type is json string</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/withdrawexpireunfreeze -d  \
+&#39;{
+  &quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;visible&quot;:true
+ }&#39;
+</code></pre></div></p>
+<p><strong>/wallet/getavailableunfreezecount</strong></p>
+<p>Description: remaining times of available unstaking API</p>
+<p>Params:
+1. <code>owner_address</code> - account address, data type is string.
+2. <code>visible</code> - whether the address is in base58 format, data type is bool</p>
+<p>Returns - Remaining times of available unstaking, data type is number.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/getavailableunfreezecount -d  \
+&#39;{
+  &quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;visible&quot;:true
+ }&#39;
+</code></pre></div></p>
+<p><strong>/wallet/getcanwithdrawunfreezeamount</strong>
+Description: query the withdrawable balance at the specified <code>timestamp</code></p>
+<p>Params:
+1. <code>owner_address</code> - account address, data type is string.
+2. <code>timestamp</code> - query cutoff timestamp, in millisecond.
+3. <code>visible</code> - Whether the address is in Base58 format, data type is bool</p>
+<p>Returns - withdrawable balance，unit is sun.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/getcanwithdrawunfreezeamount -d  \
+&#39;{
+  &quot;owner_address&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;timestamp&quot;: 1667977444000
+  &quot;visible&quot;:true
+ }&#39;
+</code></pre></div></p>
+<p><strong>/wallet/getcandelegatedmaxsize</strong>
+Description: query the amount of delegatable resources of the specified resource Type for target address, unit is sun.</p>
+<p>Params:</p>
+<ol>
+<li><code>owner_address</code> - account address, data type is string.</li>
+<li><code>type</code> - resource type，data type is number, 0 is bandwidth, 1 is energy</li>
+<li><code>visible</code> - whether the address is in base58 format, data type is bool</li>
+</ol>
+<p>Returns - the amount of delegatable resource, unit is sun.</p>
+<p>Note: The interface indicates the return of the maximum amount of delegated resources for normal transactions, but there are some special transactions in actual situations, such as multi-signature, memo and other transactions that will deduct a part of the resource usage. At this time, the maximum value of specific resources that can be used may be smaller than the recommended value returned through this interface.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/getcandelegatedmaxsize -d  \
+&#39;{
+  &quot;owner_address&quot;: &quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;type&quot;: 1,
+  &quot;visible&quot;: true
+ }&#39;
+</code></pre></div></p>
+<p><strong>/wallet/getdelegatedresourcev2</strong></p>
+<p>Description: query the amount of resources detail delegated by <code>fromAddress</code> to <code>toAddress</code></p>
+<p>Params:
+1. <code>fromAddress</code> - resource from address, data type is string.
+2. <code>toAddress</code> - resource to address, data type is string.
+3. <code>visible</code> - whether the address is in base58 format, data type is bool</p>
+<p>Returns - Resource delegation information</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/getdelegatedresourcev2 -d  \
+&#39;{
+  &quot;fromAddress&quot;: &quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;toAddress&quot;: &quot;TQ4gjjpAjLNnE67UFbmK5wVt5fzLfyEVs3&quot;,
+  &quot;visible&quot;: true
+ }&#39;
+</code></pre></div>
+<strong>/wallet/getdelegatedresourceaccountindexv2</strong></p>
+<p>Description: query the resource delegation index by an account</p>
+<p>Params:
+1. <code>value</code> - account ddress, data type is string.
+2. <code>visible</code> - whether the address is in base58 format, data type is bool</p>
+<p>Returns - Resource delegation index</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>curl -X POST  http://127.0.0.1:8092/wallet/getdelegatedresourceaccountindexv2 -d  \
+&#39;{
+  &quot;value&quot;:&quot;TJAVcszse667FmSNCwU2fm6DmfM5D4AyDh&quot;,
+  &quot;visible&quot;: true
+ }&#39;
+</code></pre></div></p>
+<h2 id="specification-of-tvm-instructions">Specification of TVM instructions<a class="headerlink" href="#specification-of-tvm-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="0xda-freezebalancev2"><code>0xda</code>: <code>FREEZEBALANCEV2</code><a class="headerlink" href="#0xda-freezebalancev2" title="Permanent link">&para;</a></h3>
+<p>The <code>FREEZEBALANCEV2</code> takes 2 operands pop up from stack:</p>
+<ul>
+<li><code>amount</code>: amount to freeze in SUN.</li>
+<li><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</li>
+</ul>
+<p>If operation succeed, push 1 to stack, otherwise push 0 to stack.</p>
+<h3 id="0xdb-unfreezebalancev2"><code>0xdb</code>: <code>UNFREEZEBALANCEV2</code><a class="headerlink" href="#0xdb-unfreezebalancev2" title="Permanent link">&para;</a></h3>
+<p>The <code>UNFREEZEBALANCEV2</code> takes 2 operands pop up from stack.</p>
+<ul>
+<li><code>amount</code>: amount to unfreeze in SUN.</li>
+<li><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</li>
+</ul>
+<p>If operation succeed, push 1 to stack, otherwise push 0 to stack.</p>
+<h3 id="0xdc-cancelallunfreezev2"><code>0xdc</code>: <code>CANCELALLUNFREEZEV2</code><a class="headerlink" href="#0xdc-cancelallunfreezev2" title="Permanent link">&para;</a></h3>
+<p>The <code>CANCELALLUNFREEZEV2</code> takes no operand pop up from stack.</p>
+<p>If operation succeed, push 1 to stack, otherwise push 0 to stack.</p>
+<h3 id="0xdd-withdrawexpireunfreeze"><code>0xdd</code>: <code>WITHDRAWEXPIREUNFREEZE</code><a class="headerlink" href="#0xdd-withdrawexpireunfreeze" title="Permanent link">&para;</a></h3>
+<p>The <code>WITHDRAWEXPIREUNFREEZE</code> takes no operand pop up from stack.</p>
+<p>If operation succeed, push the actual withdrawal amount to stack, otherwise push 0 to stack.</p>
+<h3 id="0xde-delegateresource"><code>0xde</code>: <code>DELEGATERESOURCE</code><a class="headerlink" href="#0xde-delegateresource" title="Permanent link">&para;</a></h3>
+<p>The <code>DELEGATERESOURCE</code> takes 3 operands pop up from stack:</p>
+<ul>
+<li><code>amount</code>: resource amount to delegate in SUN.</li>
+<li><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</li>
+<li><code>receiver</code>: account address to receive the resource.</li>
+</ul>
+<p>If operation succeed, push 1 to stack, otherwise push 0 to stack.</p>
+<h3 id="0xdf-undelegateresource"><code>0xdf</code>: <code>UNDELEGATERESOURCE</code><a class="headerlink" href="#0xdf-undelegateresource" title="Permanent link">&para;</a></h3>
+<p>The <code>UNDELEGATERESOURCE</code> takes 3 operands pop up from stack:</p>
+<ul>
+<li><code>amount</code>: resource amount to undelegate in SUN.</li>
+<li><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</li>
+<li><code>receiver</code>: account address to return the resource.</li>
+</ul>
+<p>If operation succeed, push 1 to stack, otherwise push 0 to stack.</p>
+<h2 id="specification-of-precompile-contracts">Specification of precompile contracts<a class="headerlink" href="#specification-of-precompile-contracts" title="Permanent link">&para;</a></h2>
+<h3 id="0x100000b-getchainparameter"><code>0x100000b</code>: <code>GetChainParameter</code><a class="headerlink" href="#0x100000b-getchainparameter" title="Permanent link">&para;</a></h3>
+<p>The <code>GetChainParameter</code> takes 1 parameters:</p>
+<p><code>index</code>: index of the parameter to be queried.</p>
+<p>Query the specific chain parameters, and push the query result to stack. The solidity syntax is shown below.</p>
+<ul>
+<li><code>chain.totalNetLimit</code></li>
+<li><code>chain.totalNetWeight</code></li>
+<li><code>chain.totalEnergyCurrentLimit</code></li>
+<li><code>chain.totalEnergyWeight</code></li>
+<li><code>chain.unfreezeDelayDays</code></li>
+</ul>
+<h3 id="0x100000c-availableunfreezev2size"><code>0x100000c</code>: <code>AvailableUnfreezeV2Size</code><a class="headerlink" href="#0x100000c-availableunfreezev2size" title="Permanent link">&para;</a></h3>
+<p>The <code>AvailableUnfreezeV2Size</code> takes 1 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p>Query the size of the available unfreeze queue for <code>target</code> address, and push the query result to stack.</p>
+<h3 id="0x100000d-unfreezablebalancev2"><code>0x100000d</code>: <code>UnfreezableBalanceV2</code><a class="headerlink" href="#0x100000d-unfreezablebalancev2" title="Permanent link">&para;</a></h3>
+<p>The <code>UnfreezableBalanceV2</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the unfreezable balance of a specified <code>resourceType</code> for <code>target</code> address, and push the query result to stack.</p>
+<h3 id="0x100000e-expireunfreezebalancev2"><code>0x100000e</code>: <code>ExpireUnfreezeBalanceV2</code><a class="headerlink" href="#0x100000e-expireunfreezebalancev2" title="Permanent link">&para;</a></h3>
+<p>The <code>ExpireUnfreezeBalanceV2</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>timestamp</code>: query cutoff timestamp.</p>
+<p>Query the withdrawal balance at the specified <code>timestamp</code> for <code>target</code> address, and push the query result to stack.</p>
+<h3 id="0x100000f-delegatableresource"><code>0x100000f</code>: <code>DelegatableResource</code><a class="headerlink" href="#0x100000f-delegatableresource" title="Permanent link">&para;</a></h3>
+<p>The <code>DelegatableResource</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the amount of delegatable resources(unit: SUN) of the specified <code>resourceType</code> for <code>target</code> address, and push the query result to stack.</p>
+<h3 id="0x1000010-resourcev2"><code>0x1000010</code>: <code>ResourceV2</code><a class="headerlink" href="#0x1000010-resourcev2" title="Permanent link">&para;</a></h3>
+<p>The <code>ResourceV2</code> takes 3 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>from</code>: from account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the amount of resources(unit: SUN) of a specific <code>resourceType</code> delegated by <code>from</code> address to <code>target</code> address</p>
+<h3 id="0x1000011-checkundelegateresource"><code>0x1000011</code>: <code>CheckUnDelegateResource</code><a class="headerlink" href="#0x1000011-checkundelegateresource" title="Permanent link">&para;</a></h3>
+<p>The <code>CheckUnDelegateResource</code> takes 3 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>amount</code>: resource amount to undelegate in SUN.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Check whether the contract can recycle the specified <code>amount</code> of resources of a specific <code>resourceType</code> that have been delegated to <code>target</code> address, and push the amount of clean resource(unit: SUN), the amount of dirty resource(unit: SUN) and the restore time to stack.</p>
+<h3 id="0x1000012-resourceusage"><code>0x1000012</code>: <code>ResourceUsage</code><a class="headerlink" href="#0x1000012-resourceusage" title="Permanent link">&para;</a></h3>
+<p>The <code>ResourceUsage</code> takes 2 parametes:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the usage of a specific <code>resourceType</code> of resources for <code>target</code> address, and push the amount of usage(unit: SUN) and the restore time to stack.</p>
+<h3 id="0x1000013-totalresource"><code>0x1000013</code>: <code>TotalResource</code><a class="headerlink" href="#0x1000013-totalresource" title="Permanent link">&para;</a></h3>
+<p>The <code>TotalResource</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the total amount of available resources(unit: SUN) of a specific <code>resourceType</code> for <code>target</code> address, and push the query reslut to stack.</p>
+<h3 id="0x1000014-totaldelegatedresource"><code>0x1000014</code>: <code>TotalDelegatedResource</code><a class="headerlink" href="#0x1000014-totaldelegatedresource" title="Permanent link">&para;</a></h3>
+<p>The <code>TotalDelegatedResource</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the amount of delegated resources of a specific <code>resourceType</code> for <code>target</code> address, and push the query reslut to stack.</p>
+<h3 id="0x1000015-totalacquiredresource"><code>0x1000015</code>: <code>TotalAcquiredResource</code><a class="headerlink" href="#0x1000015-totalacquiredresource" title="Permanent link">&para;</a></h3>
+<p>The <code>TotalAcquiredResource</code> takes 2 parameters:</p>
+<p><code>target</code>: target account address.</p>
+<p><code>resourceType</code>: 0 as bandwidth, 1 as energy, 2 as tron power.</p>
+<p>Query the amount of acquired resources(unit: SUN) of a specific <code>resourceType</code> for <code>tareget</code> address, and push the query reslut to stack.</p>
+<h2 id="solidity-example">Solidity example<a class="headerlink" href="#solidity-example" title="Permanent link">&para;</a></h2>
+<p>Here is an example showing how to call the above TVM instructions in solidity：
+<div class="highlight"><pre><span></span><code><span class="c1">// SPDX-License-Identifier: MIT</span>
+<span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.8.17</span><span class="p">;</span>
+
+<span class="k">contract</span><span class="w"> </span><span class="ni">FreezeV2Example</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">BalanceFreezedV2</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">BalanceUnfreezedV2</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">AllUnFreezeV2Canceled</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">ExpireUnfreezeWithdrew</span><span class="p">(</span><span class="kt">uint</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">ResourceDelegated</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">ResourceUnDelegated</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">constructor</span><span class="p">()</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span>fallback<span class="p">()</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span>receive<span class="p">()</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">freezeBalanceV2</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>freezebalancev2<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">        </span>emit<span class="w"> </span>BalanceFreezedV2<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">unfreezeBalanceV2</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>unfreezebalancev2<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">        </span>emit<span class="w"> </span>BalanceUnfreezedV2<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">cancelAllUnfreezeV2</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>cancelallunfreezev2<span class="p">();</span>
+<span class="w">        </span>emit<span class="w"> </span>AllUnFreezeV2Canceled<span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">withdrawExpireUnfreeze</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>amount<span class="w"> </span><span class="o">=</span><span class="w"> </span>withdrawexpireunfreeze<span class="p">();</span>
+<span class="w">        </span>emit<span class="w"> </span>ExpireUnfreezeWithdrew<span class="p">(</span>amount<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">delegateResource</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>receiver<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>receiver<span class="p">.</span>delegateResource<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">        </span>emit<span class="w"> </span>ResourceDelegated<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">,</span><span class="w"> </span>receiver<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">unDelegateResource</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>receiver<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>receiver<span class="p">.</span>unDelegateResource<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">        </span>emit<span class="w"> </span>ResourceUnDelegated<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">,</span><span class="w"> </span>receiver<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getChainParameters</span><span class="p">()</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>chain<span class="p">.</span>totalNetLimit<span class="p">,</span><span class="w"> </span>chain<span class="p">.</span>totalNetWeight<span class="p">,</span>
+<span class="w">                </span>chain<span class="p">.</span>totalEnergyCurrentLimit<span class="p">,</span><span class="w"> </span>chain<span class="p">.</span>totalEnergyWeight<span class="p">,</span>
+<span class="w">                </span>chain<span class="p">.</span>unfreezeDelayDays<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getAvailableUnfreezeV2Size</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>availableUnfreezeV2Size<span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getUnfreezableBalanceV2</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>unfreezableBalanceV2<span class="p">(</span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getExpireUnfreezeBalanceV2</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">timestamp</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>expireUnfreezeBalanceV2<span class="p">(</span>timestamp<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getDelegatableResource</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>target<span class="p">.</span>delegatableResource<span class="p">(</span>resourceType<span class="p">),</span><span class="w"> </span><span class="k">block.number</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getResourceV2</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>resourceV2<span class="p">(</span>from<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">checkUnDelegateResource</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">clean</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">dirty</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">restoreTime</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>target<span class="p">.</span>checkUnDelegateResource<span class="p">(</span>amount<span class="p">,</span><span class="w"> </span>resourceType<span class="p">);</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>clean<span class="p">,</span><span class="w"> </span>dirty<span class="p">,</span><span class="w"> </span>restoreTime<span class="p">,</span><span class="w"> </span><span class="k">block.number</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getResourceUsage</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">dirty</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">restoreTime</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>target<span class="p">.</span>resourceUsage<span class="p">(</span>resourceType<span class="p">);</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="p">(</span>dirty<span class="p">,</span><span class="w"> </span>restoreTime<span class="p">,</span><span class="w"> </span><span class="k">block.number</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getTotalResource</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>totalResource<span class="p">(</span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getTotalDelegatedResource</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">from</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>from<span class="p">.</span>totalDelegatedResource<span class="p">(</span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">getTotalAcquiredResource</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">target</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">resourceType</span><span class="p">)</span><span class="w"> </span>view<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span>target<span class="p">.</span>totalAcquiredResource<span class="p">(</span>resourceType<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">killme</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>target<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span>selfdestruct<span class="p">(</span>target<span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h1 id="backward-compatibility">Backward Compatibility<a class="headerlink" href="#backward-compatibility" title="Permanent link">&para;</a></h1>
+<p>After the proposal of the new mechanism is opened, it will not affect the previously frozen TRX. For those TRX frozen through the old mechanism, it can be redeemed using the old unstake interface. If needed, the only way to stake in the future is through the new mechanism.</p>
+<h2 id="copyright">Copyright<a class="headerlink" href="#copyright" title="Permanent link">&para;</a></h2>
+<p>Copyright and related rights waived via <a href="../LICENSE/">CC0</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <!--div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div-->
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.annotate", "content.tooltips", "navigation.tabs", "content.tabs.link", "content.code.copy", "tags"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/toc.js"></script>
+      
+        <script src="../../../javascripts/nav-toc.js"></script>
+      
+        <script src="../../../javascripts/mathjax-sri.js"></script>
+      
+    
+  </body>
+</html>
