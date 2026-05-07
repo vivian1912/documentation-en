@@ -120,7 +120,7 @@ search:
 
 ## TRC {: #trc }
 
-**Status:**&nbsp;&nbsp;[Draft](#trc-draft) `|` [Last Call](#trc-last-call) `|` [Final](#trc-final) `|` [Deferred](#trc-deferred)
+**Status:**&nbsp;&nbsp;[Draft](#trc-draft) | [Last Call](#trc-last-call) | [Final](#trc-final) | [Deferred](#trc-deferred)
 
 ### Draft {: #trc-draft }
 
@@ -185,7 +185,7 @@ search:
 
 ## VM {: #vm }
 
-**Status:**&nbsp;&nbsp;[Draft](#vm-draft) `|` [Last Call](#vm-last-call) `|` [Final](#vm-final)
+**Status:**&nbsp;&nbsp;[Draft](#vm-draft) | [Last Call](#vm-last-call) | [Final](#vm-final)
 
 ### Draft {: #vm-draft }
 
