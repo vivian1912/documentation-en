@@ -262,6 +262,7 @@ nav:
     - For java-tron Developers:
         - Developer Guide: developers/java-tron.md
         - TIPs Workflow: developers/tips.md
+        - TIPs: developers/TRON_TIPs_Static.md
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
