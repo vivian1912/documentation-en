@@ -1,40 +1,34 @@
 name: Publish Document
 
 on:
+  push:
+    branches:
+      - master 
   workflow_dispatch: # Allows manual trigger from GitHub UI
-
-permissions:
-  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
       with:
         persist-credentials: false
-        fetch-depth: 0  # Full history required by mkdocs-git-revision-date-localized-plugin
 
     - name: Prepare build environment
       run: |
         sudo apt install python3-pip python3-dev python3-setuptools
-        sudo pip3 install -U pygments==2.17.2 pymdown-extensions==10.14.3
-        sudo pip3 install mkdocs-exclude==1.0.2
+        sudo pip3 install -U pygments==2.17.2 pymdown-extensions
+        sudo pip3 install mkdocs-exclude
         sudo pip3 install mkdocs-material==9.6.8
-        sudo pip3 install mkdocs-git-revision-date-localized-plugin==1.5.1
-
-    - name: Audit dependencies
-      run: |
-        sudo pip3 install pip-audit==2.10.0
-        pip-audit
+        sudo pip3 install jieba==0.42.1
 
     - name: Build the document
       run: mkdocs build
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
         FOLDER: site # The folder the action should deploy.
