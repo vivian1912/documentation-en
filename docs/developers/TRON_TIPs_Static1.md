@@ -5,13 +5,13 @@ search:
 
 # TRON Improvement Proposals (TIPs)
 
-**Categories:**&nbsp;&nbsp;[Core](#core) `|` [Networking](#networking) `|` [Interface](#interface) `|` [TRC](#trc) `|` [VM](#vm) `|` [Informational](#informational)
+**Categories:**&nbsp;&nbsp;[Core](#core) | [Networking](#networking) | [Interface](#interface) | [TRC](#trc) | [VM](#vm) | [Informational](#informational)
 
 ---
 
 ## Core {: #core }
 
-**Status:**&nbsp;&nbsp;[Draft](#core-draft) `|` [Last Call](#core-last-call) `|` [Final](#core-final) `|` [Unknown](#core-unknown)
+**Status:**&nbsp;&nbsp;[Draft](#core-draft) | [Last Call](#core-last-call) | [Final](#core-final) | [Unknown](#core-unknown)
 
 ### Draft {: #core-draft }
 
