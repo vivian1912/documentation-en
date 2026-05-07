@@ -31,7 +31,7 @@ search:
 | :--- | :--- | :--- | :--- |
 | 836 | [harden exchange transaction calculations](https://github.com/tronprotocol/tips/blob/master/./tip-836.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
 | 833 | [Harden ResourceProcessor Resource Window Calculations](https://github.com/tronprotocol/tips/blob/master/./tip-833.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
-| 128 | [TIP128 Lite Fullnode support](https://github.com/tronprotocol/tips/blob/master/./tip-128.md) | ray.wu <ray.wu@tron.network> | Core |
+| 128 | [TIP128 Lite Fullnode support](https://github.com/tronprotocol/tips/blob/master/./tip-128.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |
 
 ### Final {: #core-final }
 
@@ -47,12 +47,12 @@ search:
 | 541 | [Support canceling unstaking in Stake 2.0](https://github.com/tronprotocol/tips/blob/master/./tip-541.md) | CooperDepp([@CooperDepp](https://github.com/CooperDepp)) | Core |
 | 534 | [Remove Vulnerable APIs](https://github.com/tronprotocol/tips/blob/master/./tip-534.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |
 | 467 | [Stake 2.0 - A new TRON staking model](https://github.com/tronprotocol/tips/blob/master/./tip-467.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |
-| 491 | [Dynamic Energy Model](https://github.com/tronprotocol/tips/blob/master/./tip-491.md) | daniel.cao@tron.network | Core |
-| 465 | [new reward calculation algorithm](https://github.com/tronprotocol/tips/blob/master/./tip-465.md) | bladehan@163.com | Core |
+| 491 | [Dynamic Energy Model](https://github.com/tronprotocol/tips/blob/master/./tip-491.md) | kongchi([@kongchi-ken](https://github.com/kongchi-ken)) | Core |
+| 465 | [new reward calculation algorithm](https://github.com/tronprotocol/tips/blob/master/./tip-465.md) | bladehan1([@bladehan1](https://github.com/bladehan1)) | Core |
 | 476 | [Delegate Data Structure Optimization](https://github.com/tronprotocol/tips/blob/master/./tip-476.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |
-| 461 | [Optimize data consistency for system abnormals](https://github.com/tronprotocol/tips/blob/master/./tip-461.md) | ray.wu <ray.wu@tron.network> | Core |
+| 461 | [Optimize data consistency for system abnormals](https://github.com/tronprotocol/tips/blob/master/./tip-461.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |
 | 428 | [Increase the probability that the block processing thread acquires the lock](https://github.com/tronprotocol/tips/blob/master/./tip-428.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |
-| 440 | [Transaction cache optimization](https://github.com/tronprotocol/tips/blob/master/./tip-440.md) | jell7@163.com | Core |
+| 440 | [Transaction cache optimization](https://github.com/tronprotocol/tips/blob/master/./tip-440.md) | Andy([@zhang0125](https://github.com/zhang0125)) | Core |
 | 388 | [Optimize light node synchronization logic](https://github.com/tronprotocol/tips/blob/master/./tip-388.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |
 | 383 | [Optimize transaction cache loading](https://github.com/tronprotocol/tips/blob/master/./tip-383.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |
 | 382 | [Optimize the data structure of account assets](https://github.com/tronprotocol/tips/blob/master/./tip-382.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |
@@ -112,11 +112,11 @@ search:
 | :--- | :--- | :--- | :--- |
 | 544 | [Add `data` to the http interfaces interacting with smart contract](https://github.com/tronprotocol/tips/blob/master/./tip-544.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | Interface |
 | 712 | [TRON typed structured data hashing and signing](https://github.com/tronprotocol/tips/blob/master/./tip-712.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | Interface |
-| 387 | [Transaction memo fee](https://github.com/tronprotocol/tips/blob/master/./tip-387.md) | Andy <jell7@163.com> | Interface |
+| 387 | [Transaction memo fee](https://github.com/tronprotocol/tips/blob/master/./tip-387.md) | Andy([@zhang0125](https://github.com/zhang0125)) | Interface |
 | 3326 | [Wallet Switch TRON Chain Method](https://github.com/tronprotocol/tips/blob/master/./tip-3326.md) | EllenWhitmore([@EllenWhitmore](https://github.com/EllenWhitmore)) | Interface |
 | 1193 | [TRON Provider JavaScript API](https://github.com/tronprotocol/tips/blob/master/./tip-1193.md) | EllenWhitmore([@EllenWhitmore](https://github.com/EllenWhitmore)) | Interface |
 | 1102 | [Opt-in account exposure](https://github.com/tronprotocol/tips/blob/master/./tip-1102.md) | EllenWhitmore([@EllenWhitmore](https://github.com/EllenWhitmore)) | Interface |
-| 51 | [TRC-51 rate limit of API traffic](https://github.com/tronprotocol/tips/blob/master/./tip-51.md) | shydesky<shydesky@gmail.com> | Interface |
+| 51 | [TRC-51 rate limit of API traffic](https://github.com/tronprotocol/tips/blob/master/./tip-51.md) | Michael Sun([@shydesky](https://github.com/shydesky)) | Interface |
 
 ---
 
@@ -134,9 +134,9 @@ search:
 
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
-| 7007 | [Verifiable AI-Generated Content Token](https://github.com/tronprotocol/tips/blob/master/./tip-7007.md) | yanghang8612@gmail.com | TRC |
-| 4626 | [Tokenized Vaults](https://github.com/tronprotocol/tips/blob/master/./tip-4626.md) | yanghang8612@gmail.com | TRC |
-| 1271 | [Standard Signature Validation Method for Contracts](https://github.com/tronprotocol/tips/blob/master/./tip-1271.md) | yanghang8612@gmail.com | TRC |
+| 7007 | [Verifiable AI-Generated Content Token](https://github.com/tronprotocol/tips/blob/master/./tip-7007.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 4626 | [Tokenized Vaults](https://github.com/tronprotocol/tips/blob/master/./tip-4626.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
+| 1271 | [Standard Signature Validation Method for Contracts](https://github.com/tronprotocol/tips/blob/master/./tip-1271.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
 | 104 | [Data Signing Specification](https://github.com/tronprotocol/tips/blob/master/./tip-104.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 102 | [Hierarchical Deterministic Wallet](https://github.com/tronprotocol/tips/blob/master/./tip-102.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 101 | [Wallet Keystore Specification](https://github.com/tronprotocol/tips/blob/master/./tip-101.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
@@ -146,7 +146,7 @@ search:
 | TIP | Title | Author | Category |
 | :--- | :--- | :--- | :--- |
 | 484 | [Smart Contract Standard for TRX liquidity staking and resource market](https://github.com/tronprotocol/tips/blob/master/./tip-484.md) | raymondliu0711([@raymondliu0711](https://github.com/raymondliu0711)) | TRC |
-| 8004 | [Trustless Agents - Discover agents and establish trust through reputation and validation](https://github.com/tronprotocol/tips/blob/master/./tip-8004.md) | bankofai.io <team@bankofai.io> | TRC |
+| 8004 | [Trustless Agents - Discover agents and establish trust through reputation and validation](https://github.com/tronprotocol/tips/blob/master/./tip-8004.md) | team-bankofai([@team-bankofai](https://github.com/team-bankofai)) | TRC |
 | 4907 | [Fork from ERC-4907 Rental NFT](https://github.com/tronprotocol/tips/blob/master/./tip-4907.md) | lopeed([@lopeed](https://github.com/lopeed)) | TRC |
 | 222 | [Improve transaction execution speed](https://github.com/tronprotocol/tips/blob/master/./tip-222.md) | lvs007([@lvs007](https://github.com/lvs007)) | TRC |
 | 1155 | [Multi Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-1155.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |
@@ -158,24 +158,24 @@ search:
 | 120 | [ECDSA Signature Encoding Specification](https://github.com/tronprotocol/tips/blob/master/./tip-120.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 105 | [Multi-signature Permission Operation](https://github.com/tronprotocol/tips/blob/master/./tip-105.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |
 | 53 | [Optimize the current TRON delegation mechanism](https://github.com/tronprotocol/tips/blob/master/./tip-53.md) | ffkissyou([@lvs007](https://github.com/lvs007)) | TRC |
-| 31 | [TRC-31 Trigger constant contract](https://github.com/tronprotocol/tips/blob/master/./tip-31.md) | llwslc<llwslc@gmail.com> | TRC |
-| 30 | [TRC-30 Code hash instructions](https://github.com/tronprotocol/tips/blob/master/./tip-30.md) | llwslc<llwslc@gmail.com> | TRC |
+| 31 | [TRC-31 Trigger constant contract](https://github.com/tronprotocol/tips/blob/master/./tip-31.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
+| 30 | [TRC-30 Code hash instructions](https://github.com/tronprotocol/tips/blob/master/./tip-30.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
 | 23 | [TRC-23 Add the account world status tree root to the block header](https://github.com/tronprotocol/tips/blob/master/./tip-23.md) | lvs007([@lvs007](https://github.com/lvs007)) | TRC |
 | 29 | [Bitwise shifting instructions in Tron](https://github.com/tronprotocol/tips/blob/master/./tip-29.md) | yinshucheng([@yinshucheng](https://github.com/yinshucheng)) | TRC |
 | 26 | [Add a contract creation function called CREATE2](https://github.com/tronprotocol/tips/blob/master/./tip-26.md) | Unknown | TRC |
 | 41 | [Optimize transactionHistoryStore occupancy space#40](https://github.com/tronprotocol/tips/blob/master/./tip-41.md) | wubin1<wubin1@tron.network> | TRC |
-| 32 | [TRC-32 Clear the ABI of contract](https://github.com/tronprotocol/tips/blob/master/./tip-32.md) | llwslc<llwslc@gmail.com> | TRC |
+| 32 | [TRC-32 Clear the ABI of contract](https://github.com/tronprotocol/tips/blob/master/./tip-32.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
 | 54 | [TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract](https://github.com/tronprotocol/tips/blob/master/./tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |
 | 37 | [TRC-37: forbid using TransferContract & TransferAssetContract  for contract account](https://github.com/tronprotocol/tips/blob/master/./tip-37.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | TRC |
 | 43 | [TRC-43: Precompiled contract function for signature parallel verification](https://github.com/tronprotocol/tips/blob/master/./tip-43.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | TRC |
-| 44 | [TRC-44 Address.isContract instructions](https://github.com/tronprotocol/tips/blob/master/./tip-44.md) | llwslc<llwslc@gmail.com> | TRC |
-| 24 | [Implement DB storage with RocksDB](https://github.com/tronprotocol/tips/blob/master/./tip-24.md) | @shydesky <shydesky@gmail.com> | TRC |
-| 16 | [Account Multi-signature](https://github.com/tronprotocol/tips/blob/master/./tip-16.md) | Marcus Zhao(@zhaohong ) <zhaohong229@gmail.com> | TRC |
+| 44 | [TRC-44 Address.isContract instructions](https://github.com/tronprotocol/tips/blob/master/./tip-44.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |
+| 24 | [Implement DB storage with RocksDB](https://github.com/tronprotocol/tips/blob/master/./tip-24.md) | Michael Sun([@shydesky](https://github.com/shydesky)) | TRC |
+| 16 | [Account Multi-signature](https://github.com/tronprotocol/tips/blob/master/./tip-16.md) | hzhao([@zhaohong](https://github.com/zhaohong)) | TRC |
 | 12 | [TRC-12 Tron event subscribes model](https://github.com/tronprotocol/tips/blob/master/./tip-12.md) | jiangyy0824([@jiangyy0824](https://github.com/jiangyy0824)) | TRC |
 | 17 | [Adaptive Energy Limit Model](https://github.com/tronprotocol/tips/blob/master/./tip-17.md) | nanfengpo([@nanfengpo](https://github.com/nanfengpo)) | TRC |
-| 13 | [Account System Standard](https://github.com/tronprotocol/tips/blob/master/./tip-13.md) | Justin Sun(@justintron) <justin@tron.network> | TRC |
+| 13 | [Account System Standard](https://github.com/tronprotocol/tips/blob/master/./tip-13.md) | Justin([@justintron](https://github.com/justintron)) | TRC |
 | 20 | [TRC-20 Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-20.md) | zhaohong([@zhaohong](https://github.com/zhaohong)) | TRC |
-| 10 | [TRC-10 Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-10.md) | Marcus Zhao<zhaohong229@gmail.com> | TRC |
+| 10 | [TRC-10 Token Standard](https://github.com/tronprotocol/tips/blob/master/./tip-10.md) | hzhao([@zhaohong](https://github.com/zhaohong)) | TRC |
 
 ### Deferred {: #trc-deferred }
 
