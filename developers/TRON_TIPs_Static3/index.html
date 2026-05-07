@@ -8651,213 +8651,998 @@
 
 
 <h1 id="tron-improvement-proposals-tips">TRON Improvement Proposals (TIPs)<a class="headerlink" href="#tron-improvement-proposals-tips" title="Permanent link">&para;</a></h1>
-<p>=== "Core"</p>
-<div class="codehilite"><pre><span></span><code><span class="o">===</span><span class="w"> </span><span class="s">&quot;Draft&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">178</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TOKENISSUE</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">UPDATEASSET</span><span class="w"> </span><span class="n">Instruction</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">TVM</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-178.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">171</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">STAKE</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">TVM</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-171.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">156</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Vote</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">TVM</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-156.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">tron</span><span class="w"> </span><span class="n">mix</span><span class="w"> </span><span class="n">consensus</span><span class="w"> </span><span class="n">Analytics</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-64.md) | billtron([@billtron](https://github.com/billtron)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Tron</span><span class="w"> </span><span class="n">consensus</span><span class="w"> </span><span class="n">algorithm</span><span class="w"> </span><span class="n">introduction</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-62.md) | billtron([@billtron](https://github.com/billtron)) | Core |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Last Call&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">836</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">harden</span><span class="w"> </span><span class="n">exchange</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">calculations</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-836.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">833</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Harden</span><span class="w"> </span><span class="n">ResourceProcessor</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="n">Window</span><span class="w"> </span><span class="n">Calculations</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-833.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">128</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TIP128</span><span class="w"> </span><span class="n">Lite</span><span class="w"> </span><span class="n">Fullnode</span><span class="w"> </span><span class="n">support</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-128.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Final&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">767</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Transitioning</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="n">expire</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">Chain</span><span class="w"> </span><span class="n">Governance</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-767.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">694</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Enhance</span><span class="w"> </span><span class="n">Verification</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">Transaction</span><span class="w"> </span><span class="n">Limitation</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">Consensus</span><span class="w"> </span><span class="n">Layer</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-694.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">697</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Migrate</span><span class="w"> </span><span class="n">Floating</span><span class="o">-</span><span class="n">Point</span><span class="w"> </span><span class="n">Calculations</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">Math</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">StrictMath</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-697.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">635</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">Reward</span><span class="w"> </span><span class="n">Withdrawal</span><span class="w"> </span><span class="n">To</span><span class="w"> </span><span class="n">Improve</span><span class="w"> </span><span class="n">TPS</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-635.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">586</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">GRPC</span><span class="w"> </span><span class="n">Implementation</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Resource</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="n">Interfaces</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-586.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">555</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Network</span><span class="w"> </span><span class="n">upgrade</span><span class="w"> </span><span class="n">logic</span><span class="w"> </span><span class="n">optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-555.md) | jwrct([@jwrct](https://github.com/jwrct)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">542</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Resource</span><span class="w"> </span><span class="n">delegating</span><span class="w"> </span><span class="n">supports</span><span class="w"> </span><span class="n">customizable</span><span class="w"> </span><span class="n">lock</span><span class="w"> </span><span class="n">period</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-542.md) | tronenergymarket([@tronenergymarket](https://github.com/tronenergymarket)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">541</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Support</span><span class="w"> </span><span class="n">canceling</span><span class="w"> </span><span class="n">unstaking</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Stake</span><span class="w"> </span><span class="mf">2.0</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-541.md) | CooperDepp([@CooperDepp](https://github.com/CooperDepp)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">534</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Remove</span><span class="w"> </span><span class="n">Vulnerable</span><span class="w"> </span><span class="n">APIs</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-534.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">467</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Stake</span><span class="w"> </span><span class="mf">2.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">TRON</span><span class="w"> </span><span class="n">staking</span><span class="w"> </span><span class="n">model</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-467.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">491</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Dynamic</span><span class="w"> </span><span class="n">Energy</span><span class="w"> </span><span class="n">Model</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-491.md) | kongchi([@kongchi-ken](https://github.com/kongchi-ken)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">465</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">new</span><span class="w"> </span><span class="n">reward</span><span class="w"> </span><span class="n">calculation</span><span class="w"> </span><span class="n">algorithm</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-465.md) | bladehan1([@bladehan1](https://github.com/bladehan1)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">476</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Delegate</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">Structure</span><span class="w"> </span><span class="n">Optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-476.md) | lxcmyf([@lxcmyf](https://github.com/lxcmyf)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">461</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">consistency</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">abnormals</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-461.md) | guoquan-wu([@guoquan-wu](https://github.com/guoquan-wu)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">428</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Increase</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">probability</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">processing</span><span class="w"> </span><span class="kr">thread</span><span class="w"> </span><span class="n">acquires</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">lock</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-428.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">440</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Transaction</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-440.md) | Andy([@zhang0125](https://github.com/zhang0125)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">388</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">light</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">synchronization</span><span class="w"> </span><span class="n">logic</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-388.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">383</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">loading</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-383.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">382</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">structure</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">assets</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-382.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">370</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Node</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">conditionalized</span><span class="w"> </span><span class="n">stop</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-370.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">369</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Node</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">prometheus</span><span class="w"> </span><span class="n">metrics</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-369.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">362</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimized</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">broadcast</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">caching</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-362.md) | Kayle([@forfreeday](https://github.com/forfreeday)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">366</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TIP</span><span class="mi">-366</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">startup</span><span class="w"> </span><span class="n">optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-366.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">343</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TIP</span><span class="mi">-343</span><span class="w"> </span><span class="n">Refine</span><span class="w"> </span><span class="n">Write</span><span class="w"> </span><span class="n">Parameters</span><span class="w"> </span><span class="n">For</span><span class="w"> </span><span class="n">Leveldb</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-343.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">290</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Dynamic</span><span class="w"> </span><span class="n">store</span><span class="w"> </span><span class="n">optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-290.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">289</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Block</span><span class="w"> </span><span class="n">Broadcast</span><span class="w"> </span><span class="n">Optimization</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-289.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">285</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">cache</span><span class="w"> </span><span class="n">initialization</span><span class="w"> </span><span class="n">logic</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-285.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">276</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">verification</span><span class="w"> </span><span class="n">logic</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-276.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">298</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Reformat</span><span class="w"> </span><span class="n">manifest</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-298.md) | halibobo1205([@halibobo1205](https://github.com/halibobo1205)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">295</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">assets</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-295.md) | Kayle([@forfreeday](https://github.com/forfreeday)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">281</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">query</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">database</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-281.md) | Kayle([@forfreeday](https://github.com/forfreeday)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">269</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">performance</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">processing</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-269.md) | Kayle([@forfreeday](https://github.com/forfreeday)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">250</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Include</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">chain</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-250.md) | zhang0125([@zhang0125](https://github.com/zhang0125)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">207</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">A</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">improve</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="n">resources</span><span class="w"> </span><span class="n">model</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-207.md) | renchenchang([@renchenchang](http://github.com/renchenchang)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">196</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Reward</span><span class="w"> </span><span class="n">SRs</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">fees</span><span class="w"> </span><span class="n">charged</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">bandwidth</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">Energy</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-196.md) | renchenchang([@renchenchang](http://github.com/renchenchang)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">127</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Support</span><span class="w"> </span><span class="n">Tron</span><span class="o">-</span><span class="n">DEX</span><span class="w"> </span><span class="n">based</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">system</span><span class="w"> </span><span class="n">contracts</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-127.md) | renchenchang([@renchenchang](http://github.com/renchenchang)) | Core |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-60</span><span class="o">:</span><span class="n">Precompiled</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">multi</span><span class="o">-</span><span class="n">signature</span><span class="w"> </span><span class="n">verification</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-60.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | Core |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Unknown&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Tron</span><span class="w"> </span><span class="n">Wallet</span><span class="w"> </span><span class="n">Proposal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Key</span><span class="w"> </span><span class="n">Derivation</span><span class="w"> </span><span class="n">Methods</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Tron</span><span class="w"> </span><span class="n">Accounts</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">BIP39</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-01.md) | dbuarque([@dbuarque](https://github.com/dbuarque)) | Core |</span>
-</code></pre></div>
-
-<p>=== "Networking"</p>
-<div class="codehilite"><pre><span></span><code><span class="o">===</span><span class="w"> </span><span class="s">&quot;Final&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">621</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Add</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="n">column</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">HelloMessage</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-621.md) | 317787106([@317787106](https://github.com/317787106)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">592</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Supplement</span><span class="w"> </span><span class="n">Disconnect</span><span class="w"> </span><span class="n">Reasons</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Java</span><span class="o">-</span><span class="n">tron</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-592.md) | 317787106([@317787106](https://github.com/317787106)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">549</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">P2P</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="n">IPv6</span><span class="w"> </span><span class="n">protocol</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-549.md) | 317787106([@317787106](https://github.com/317787106)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">548</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Node</span><span class="w"> </span><span class="n">Discovery</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">DNS</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-548.md) | 317787106([@317787106](https://github.com/317787106)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">550</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">P2P</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">snappy</span><span class="w"> </span><span class="n">compression</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-550.md) | jwrct([@jwrct](https://github.com/jwrct)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">547</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Connection</span><span class="w"> </span><span class="n">precheck</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="n">P2P</span><span class="w"> </span><span class="n">communication</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-547.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">425</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Speed</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="n">TCP</span><span class="w"> </span><span class="n">connection</span><span class="w"> </span><span class="n">establishment</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-425.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Networking |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">391</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">fetch</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">process</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-391.md) | Vikingzzu([@Vikingzzu](https://github.com/Vikingzzu)) | Networking |</span>
-</code></pre></div>
-
-<p>=== "Interface"</p>
-<div class="codehilite"><pre><span></span><code><span class="s s-Atom">===</span> <span class="s2">&quot;Final&quot;</span>
-
-    <span class="p">|</span> <span class="nv">TIP</span> <span class="p">|</span> <span class="nv">Title</span> <span class="p">|</span> <span class="nv">Author</span> <span class="p">|</span> <span class="nv">Category</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">544</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Add</span> <span class="err">`</span><span class="s s-Atom">data</span><span class="err">`</span> <span class="s s-Atom">to</span> <span class="s s-Atom">the</span> <span class="s s-Atom">http</span> <span class="s s-Atom">interfaces</span> <span class="s s-Atom">interacting</span> <span class="s s-Atom">with</span> <span class="s s-Atom">smart</span> <span class="s s-Atom">contract</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">544.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">712</span> <span class="p">|</span> <span class="p">[</span><span class="nv">TRON</span> <span class="s s-Atom">typed</span> <span class="s s-Atom">structured</span> <span class="s s-Atom">data</span> <span class="s s-Atom">hashing</span> <span class="s s-Atom">and</span> <span class="s s-Atom">signing</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">712.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">387</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Transaction</span> <span class="s s-Atom">memo</span> <span class="s s-Atom">fee</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">387.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Andy</span><span class="p">([</span><span class="s s-Atom">@zhang0125</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">zhang0125</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">3326</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Wallet</span> <span class="nv">Switch</span> <span class="nv">TRON</span> <span class="nv">Chain</span> <span class="nv">Method</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">3326.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">EllenWhitmore</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">EllenWhitmore</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">EllenWhitmore</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">1193</span> <span class="p">|</span> <span class="p">[</span><span class="nv">TRON</span> <span class="nv">Provider</span> <span class="nv">JavaScript</span> <span class="nv">API</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">1193.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">EllenWhitmore</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">EllenWhitmore</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">EllenWhitmore</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">1102</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Opt</span><span class="o">-</span><span class="s s-Atom">in</span> <span class="s s-Atom">account</span> <span class="s s-Atom">exposure</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">1102.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">EllenWhitmore</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">EllenWhitmore</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">EllenWhitmore</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">51</span> <span class="p">|</span> <span class="p">[</span><span class="nv">TRC</span><span class="o">-</span><span class="mi">51</span> <span class="s s-Atom">rate</span> <span class="s s-Atom">limit</span> <span class="s s-Atom">of</span> <span class="nv">API</span> <span class="s s-Atom">traffic</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">51.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Michael</span> <span class="nv">Sun</span><span class="p">([</span><span class="s s-Atom">@shydesky</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">shydesky</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Interface</span> <span class="p">|</span>
-</code></pre></div>
-
-<p>=== "TRC"</p>
-<div class="codehilite"><pre><span></span><code><span class="o">===</span><span class="w"> </span><span class="s">&quot;Draft&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">165</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-165</span><span class="w"> </span><span class="n">Standard</span><span class="w"> </span><span class="n">Interface</span><span class="w"> </span><span class="n">Detection</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">Contract</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-165.md) | Timothy([@timothyckw](https://github.com/timothyckw)) | TRC |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Last Call&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">7007</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Verifiable</span><span class="w"> </span><span class="n">AI</span><span class="o">-</span><span class="n">Generated</span><span class="w"> </span><span class="n">Content</span><span class="w"> </span><span class="n">Token</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-7007.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">4626</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Tokenized</span><span class="w"> </span><span class="n">Vaults</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-4626.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">1271</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Standard</span><span class="w"> </span><span class="n">Signature</span><span class="w"> </span><span class="n">Validation</span><span class="w"> </span><span class="n">Method</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Contracts</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-1271.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">104</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Data</span><span class="w"> </span><span class="n">Signing</span><span class="w"> </span><span class="n">Specification</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-104.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">102</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Hierarchical</span><span class="w"> </span><span class="n">Deterministic</span><span class="w"> </span><span class="n">Wallet</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-102.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">101</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Wallet</span><span class="w"> </span><span class="n">Keystore</span><span class="w"> </span><span class="n">Specification</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-101.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Final&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">484</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Smart</span><span class="w"> </span><span class="n">Contract</span><span class="w"> </span><span class="n">Standard</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">TRX</span><span class="w"> </span><span class="n">liquidity</span><span class="w"> </span><span class="n">staking</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="n">market</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-484.md) | raymondliu0711([@raymondliu0711](https://github.com/raymondliu0711)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">8004</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Trustless</span><span class="w"> </span><span class="n">Agents</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Discover</span><span class="w"> </span><span class="n">agents</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">establish</span><span class="w"> </span><span class="n">trust</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">reputation</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">validation</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-8004.md) | team-bankofai([@team-bankofai](https://github.com/team-bankofai)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">4907</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Fork</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">ERC</span><span class="mi">-4907</span><span class="w"> </span><span class="n">Rental</span><span class="w"> </span><span class="n">NFT</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-4907.md) | lopeed([@lopeed](https://github.com/lopeed)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">222</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Improve</span><span class="w"> </span><span class="n">transaction</span><span class="w"> </span><span class="n">execution</span><span class="w"> </span><span class="n">speed</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-222.md) | lvs007([@lvs007](https://github.com/lvs007)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">1155</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Multi</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-1155.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">191</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Signed</span><span class="w"> </span><span class="n">Data</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-191.md) | Asuka([@yanghang8612](https://github.com/yanghang8612)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">293</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="n">limit</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-293.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">292</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">proposal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">adjust</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">free</span><span class="w"> </span><span class="n">net</span><span class="w"> </span><span class="n">limit</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">account</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-292.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">721</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-721</span><span class="w"> </span><span class="n">Non</span><span class="o">-</span><span class="n">Fungible</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-721.md) | Timothy([@timothyckw](https://github.com/timothyckw)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">135</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Shielded</span><span class="w"> </span><span class="n">TRC</span><span class="mi">-20</span><span class="w"> </span><span class="n">Contract</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-135.md) | Federico2014([@Federico2014](https://github.com/Federico2014)), Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">120</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">ECDSA</span><span class="w"> </span><span class="n">Signature</span><span class="w"> </span><span class="n">Encoding</span><span class="w"> </span><span class="n">Specification</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-120.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">105</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Multi</span><span class="o">-</span><span class="n">signature</span><span class="w"> </span><span class="n">Permission</span><span class="w"> </span><span class="n">Operation</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-105.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">53</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="n">TRON</span><span class="w"> </span><span class="n">delegation</span><span class="w"> </span><span class="n">mechanism</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-53.md) | ffkissyou([@lvs007](https://github.com/lvs007)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">31</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-31</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="n">constant</span><span class="w"> </span><span class="n">contract</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-31.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-30</span><span class="w"> </span><span class="n">Code</span><span class="w"> </span><span class="n">hash</span><span class="w"> </span><span class="n">instructions</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-30.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">23</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-23</span><span class="w"> </span><span class="n">Add</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">world</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">block</span><span class="w"> </span><span class="n">header</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-23.md) | lvs007([@lvs007](https://github.com/lvs007)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">29</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Bitwise</span><span class="w"> </span><span class="n">shifting</span><span class="w"> </span><span class="n">instructions</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">Tron</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-29.md) | yinshucheng([@yinshucheng](https://github.com/yinshucheng)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">26</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Add</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">creation</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">called</span><span class="w"> </span><span class="n">CREATE2</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-26.md) | Unknown | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">41</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Optimize</span><span class="w"> </span><span class="n">transactionHistoryStore</span><span class="w"> </span><span class="n">occupancy</span><span class="w"> </span><span class="n">space</span><span class="err">#</span><span class="mi">40</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-41.md) | wubin1&lt;wubin1@tron.network&gt; | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-32</span><span class="w"> </span><span class="n">Clear</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">ABI</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">contract</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-32.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">54</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-54</span><span class="o">:</span><span class="w"> </span><span class="n">Automatically</span><span class="w"> </span><span class="n">active</span><span class="w"> </span><span class="n">non</span><span class="o">-</span><span class="n">existent</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">transferring</span><span class="w"> </span><span class="n">TRX</span><span class="o">/</span><span class="n">TRC10</span><span class="w"> </span><span class="n">asset</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">smart</span><span class="w"> </span><span class="n">contract</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-54.md) | BlueHoopor([@BlueHoopor](https://github.com/BlueHoopor)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">37</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-37</span><span class="o">:</span><span class="w"> </span><span class="n">forbid</span><span class="w"> </span><span class="n">using</span><span class="w"> </span><span class="n">TransferContract</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">TransferAssetContract</span><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">account</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-37.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">43</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-43</span><span class="o">:</span><span class="w"> </span><span class="n">Precompiled</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">signature</span><span class="w"> </span><span class="n">parallel</span><span class="w"> </span><span class="n">verification</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-43.md) | Julian.Kang([@Sh11thead](https://github.com/Sh11thead)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">44</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-44</span><span class="w"> </span><span class="n">Address</span><span class="p">.</span><span class="n">isContract</span><span class="w"> </span><span class="n">instructions</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-44.md) | llwslc([@llwslc](https://github.com/llwslc)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Implement</span><span class="w"> </span><span class="n">DB</span><span class="w"> </span><span class="n">storage</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">RocksDB</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-24.md) | Michael Sun([@shydesky](https://github.com/shydesky)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">16</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Account</span><span class="w"> </span><span class="n">Multi</span><span class="o">-</span><span class="n">signature</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-16.md) | hzhao([@zhaohong](https://github.com/zhaohong)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-12</span><span class="w"> </span><span class="n">Tron</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="n">subscribes</span><span class="w"> </span><span class="n">model</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-12.md) | jiangyy0824([@jiangyy0824](https://github.com/jiangyy0824)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Adaptive</span><span class="w"> </span><span class="n">Energy</span><span class="w"> </span><span class="n">Limit</span><span class="w"> </span><span class="n">Model</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-17.md) | nanfengpo([@nanfengpo](https://github.com/nanfengpo)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">13</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">Account</span><span class="w"> </span><span class="n">System</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-13.md) | Justin([@justintron](https://github.com/justintron)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-20</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-20.md) | zhaohong([@zhaohong](https://github.com/zhaohong)) | TRC |</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-10</span><span class="w"> </span><span class="n">Token</span><span class="w"> </span><span class="n">Standard</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-10.md) | hzhao([@zhaohong](https://github.com/zhaohong)) | TRC |</span>
-
-<span class="o">===</span><span class="w"> </span><span class="s">&quot;Deferred&quot;</span>
-
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">TIP</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Title</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Author</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">:---</span><span class="w"> </span><span class="o">|</span>
-<span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">19</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="n">TRC</span><span class="mi">-19</span><span class="w"> </span><span class="n">Deferred</span><span class="w"> </span><span class="n">transaction</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/tronprotocol/tips/blob/master/./tip-19.md) | jiangyy0824([@jiangyy0824](https://github.com/jiangyy0824)) | TRC |</span>
-</code></pre></div>
-
-<p>=== "VM"</p>
-<div class="codehilite"><pre><span></span><code><span class="s s-Atom">===</span> <span class="s2">&quot;Draft&quot;</span>
-
-    <span class="p">|</span> <span class="nv">TIP</span> <span class="p">|</span> <span class="nv">Title</span> <span class="p">|</span> <span class="nv">Author</span> <span class="p">|</span> <span class="nv">Category</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">241</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adaptation</span> <span class="s s-Atom">to</span> <span class="s s-Atom">solidity</span><span class="o">-</span><span class="s s-Atom">v0</span><span class="mf">.5.16</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">241.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-
-<span class="s s-Atom">===</span> <span class="s2">&quot;Last Call&quot;</span>
-
-    <span class="p">|</span> <span class="nv">TIP</span> <span class="p">|</span> <span class="nv">Title</span> <span class="p">|</span> <span class="nv">Author</span> <span class="p">|</span> <span class="nv">Category</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">176</span> <span class="p">|</span> <span class="p">[</span><span class="s s-Atom">altbn128</span> <span class="s s-Atom">operation</span> <span class="s s-Atom">energy</span> <span class="s s-Atom">reduction</span> <span class="s s-Atom">in</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">176.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">taihaofu</span><span class="p">([</span><span class="s s-Atom">@taihaofu</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">taihaofu</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-
-<span class="s s-Atom">===</span> <span class="s2">&quot;Final&quot;</span>
-
-    <span class="p">|</span> <span class="nv">TIP</span> <span class="p">|</span> <span class="nv">Title</span> <span class="p">|</span> <span class="nv">Author</span> <span class="p">|</span> <span class="nv">Category</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">6780</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Implement</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">6780</span><span class="o">:</span> <span class="nv">SELFDESTRUCT</span> <span class="s s-Atom">only</span> <span class="s s-Atom">in</span> <span class="s s-Atom">same</span> <span class="s s-Atom">transaction</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">6780.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">raymondliu0711</span><span class="p">([</span><span class="s s-Atom">@raymondliu0711</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">raymondliu0711</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">651</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Implement</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">5656</span> <span class="nv">MCOPY</span> <span class="o">-</span> <span class="nv">Memory</span> <span class="s s-Atom">copying</span> <span class="s s-Atom">instruction</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">651.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">650</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Implement</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">1153</span> <span class="nv">Transient</span> <span class="s s-Atom">storage</span> <span class="s s-Atom">opcodes</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">650.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">745</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Introduce</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">4844</span> <span class="s s-Atom">and</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">7516</span> <span class="s s-Atom">instructions</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">745.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">raymondliu0711</span><span class="p">([</span><span class="s s-Atom">@raymondliu0711</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">raymondliu0711</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">652</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Announce</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">6049</span> <span class="nv">Deprecate</span> <span class="nv">SELFDESTRUCT</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">652.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">653</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adjust</span> <span class="s s-Atom">energy</span> <span class="s s-Atom">cost</span> <span class="s s-Atom">of</span> <span class="nv">SUICIDE</span> <span class="s s-Atom">and</span> <span class="nv">VOTEWITNESS</span> <span class="s s-Atom">opcodes</span> <span class="s s-Atom">in</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">653.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">543</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Implement</span> <span class="nv">EIP</span><span class="o">-</span><span class="mi">3855</span> <span class="nv">PUSH0</span> <span class="s s-Atom">instruction</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">543.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">474</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Optimize</span> <span class="s s-Atom">the</span> <span class="s s-Atom">return</span> <span class="nb">val</span><span class="s s-Atom">ue</span> <span class="s s-Atom">of</span> <span class="s s-Atom">chainid</span> <span class="s s-Atom">opcode</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">474.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">397</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Raise</span> <span class="s s-Atom">limit</span> <span class="s s-Atom">of</span> <span class="s s-Atom">the</span> <span class="mi">13</span><span class="s s-Atom">th</span> <span class="s s-Atom">network</span> <span class="s s-Atom">parameter</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">397.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">344</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Optimize</span> <span class="s s-Atom">instruction</span> <span class="s s-Atom">execution</span> <span class="s s-Atom">for</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">344.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">272</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Compatible</span> <span class="s s-Atom">with</span> <span class="nv">EVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">272.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">318</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adapt</span> <span class="s s-Atom">to</span> <span class="nv">Ethereum</span> <span class="nv">London</span> <span class="nv">Upgrade</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">318.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Lredhdx</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">Lredhdx</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">Lredhdx</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">306</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adapt</span> <span class="s s-Atom">to</span> <span class="s s-Atom">solidity_0</span><span class="mf">.8.4</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">306.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Lredhdx</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">Lredhdx</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">Lredhdx</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">271</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Vote</span> <span class="s s-Atom">for</span> <span class="nv">SR</span> <span class="s s-Atom">in</span> <span class="nv">Smart</span> <span class="nv">Contract</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">271.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">268</span> <span class="p">|</span> <span class="p">[</span><span class="nv">SmartContract</span> <span class="nv">ABI</span> <span class="s s-Atom">optimization</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">268.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">204</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Make</span> <span class="nv">MAX_FEE_LIMIT</span> <span class="s s-Atom">configurable</span> <span class="s s-Atom">as</span> <span class="s s-Atom">a</span> <span class="s s-Atom">chain</span> <span class="s s-Atom">property</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">204.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">203</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adaptation</span> <span class="s s-Atom">to</span> <span class="s s-Atom">solidity</span><span class="o">-</span><span class="s s-Atom">v0</span><span class="mf">.5.15</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">203.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Asuka</span><span class="p">([</span><span class="s s-Atom">@yanghang8612</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">yanghang8612</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">209</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Adapt</span> <span class="s s-Atom">to</span> <span class="nv">Solidity</span> <span class="mf">0.6.0</span><span class="p">.](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">209.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Lredhdx</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">Lredhdx</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">Lredhdx</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">175</span> <span class="p">|</span> <span class="p">[</span><span class="nv">SELFBALANCE</span> <span class="s s-Atom">instructions</span> <span class="s s-Atom">in</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">175.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">taihaofu</span><span class="p">([</span><span class="s s-Atom">@taihaofu</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">taihaofu</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">174</span> <span class="p">|</span> <span class="p">[</span><span class="nv">CHAINID</span> <span class="s s-Atom">instructions</span> <span class="s s-Atom">in</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">174.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">taihaofu</span><span class="p">([</span><span class="s s-Atom">@taihaofu</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">taihaofu</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">157</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Freeze</span> <span class="s s-Atom">instructions</span> <span class="s s-Atom">in</span> <span class="nv">TVM</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">157.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">taihaofu</span><span class="p">([</span><span class="s s-Atom">@taihaofu</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">taihaofu</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">138</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Pedersen</span> <span class="s s-Atom">hash</span> <span class="s s-Atom">function</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">138.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Federico2014</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">Federico2014</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">Federico2014</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">137</span> <span class="p">|</span> <span class="p">[</span><span class="nv">Zero</span><span class="o">-</span><span class="s s-Atom">knowledge</span> <span class="nv">Proof</span> <span class="nv">Verification</span> <span class="s s-Atom">functions</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">137.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Federico2014</span><span class="p">([</span><span class="s s-Atom">@</span><span class="nv">Federico2014</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">Federico2014</span><span class="p">))</span> <span class="p">|</span> <span class="nv">VM</span> <span class="p">|</span>
-</code></pre></div>
-
-<p>=== "Informational"</p>
-<div class="codehilite"><pre><span></span><code><span class="s s-Atom">===</span> <span class="s2">&quot;Final&quot;</span>
-
-    <span class="p">|</span> <span class="nv">TIP</span> <span class="p">|</span> <span class="nv">Title</span> <span class="p">|</span> <span class="nv">Author</span> <span class="p">|</span> <span class="nv">Category</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span> <span class="o">:-</span><span class="s s-Atom">--</span> <span class="p">|</span>
-    <span class="p">|</span> <span class="mi">28</span> <span class="p">|</span> <span class="p">[</span><span class="nv">TRC</span><span class="o">-</span><span class="mi">28</span> <span class="nv">Built</span><span class="o">-</span><span class="s s-Atom">in</span> <span class="s s-Atom">message</span> <span class="s s-Atom">queue</span> <span class="s s-Atom">for</span> <span class="s s-Atom">event</span> <span class="s s-Atom">subscribe</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">tronprotocol</span><span class="o">/</span><span class="s s-Atom">tips</span><span class="o">/</span><span class="s s-Atom">blob</span><span class="o">/</span><span class="s s-Atom">master/./tip</span><span class="o">-</span><span class="mf">28.</span><span class="s s-Atom">md</span><span class="p">)</span> <span class="p">|</span> <span class="nf">jiangyy0824</span><span class="p">([</span><span class="s s-Atom">@jiangyy0824</span><span class="p">](</span><span class="s s-Atom">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">jiangyy0824</span><span class="p">))</span> <span class="p">|</span> <span class="nv">Informational</span> <span class="p">|</span>
-</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Core</label><label for="__tabbed_1_2">Networking</label><label for="__tabbed_1_3">Interface</label><label for="__tabbed_1_4">TRC</label><label for="__tabbed_1_5">VM</label><label for="__tabbed_1_6">Informational</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Draft</label><label for="__tabbed_2_2">Last Call</label><label for="__tabbed_2_3">Final</label><label for="__tabbed_2_4">Unknown</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">178</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-178.md">TOKENISSUE and UPDATEASSET Instruction in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">171</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-171.md">STAKE instructions in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">156</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-156.md">Vote instructions in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">64</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-64.md">tron mix consensus Analytics</a></td>
+<td style="text-align: left;">billtron(<a href="https://github.com/billtron">@billtron</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">62</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-62.md">Tron consensus algorithm introduction</a></td>
+<td style="text-align: left;">billtron(<a href="https://github.com/billtron">@billtron</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">836</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-836.md">harden exchange transaction calculations</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">833</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-833.md">Harden ResourceProcessor Resource Window Calculations</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">128</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-128.md">TIP128 Lite Fullnode support</a></td>
+<td style="text-align: left;">guoquan-wu(<a href="https://github.com/guoquan-wu">@guoquan-wu</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">767</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-767.md">Transitioning proposal expire time configuration to Chain Governance</a></td>
+<td style="text-align: left;">lxcmyf(<a href="https://github.com/lxcmyf">@lxcmyf</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">694</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-694.md">Enhance Verification of Transaction Limitation at Consensus Layer</a></td>
+<td style="text-align: left;">lxcmyf(<a href="https://github.com/lxcmyf">@lxcmyf</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">697</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-697.md">Migrate Floating-Point Calculations from Math to StrictMath</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">635</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-635.md">Optimize Reward Withdrawal To Improve TPS</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">586</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-586.md">GRPC Implementation for Resource Price Interfaces</a></td>
+<td style="text-align: left;">lxcmyf(<a href="https://github.com/lxcmyf">@lxcmyf</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">555</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-555.md">Network upgrade logic optimization</a></td>
+<td style="text-align: left;">jwrct(<a href="https://github.com/jwrct">@jwrct</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">542</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-542.md">Resource delegating supports customizable lock period</a></td>
+<td style="text-align: left;">tronenergymarket(<a href="https://github.com/tronenergymarket">@tronenergymarket</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">541</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-541.md">Support canceling unstaking in Stake 2.0</a></td>
+<td style="text-align: left;">CooperDepp(<a href="https://github.com/CooperDepp">@CooperDepp</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">534</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-534.md">Remove Vulnerable APIs</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">467</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-467.md">Stake 2.0 - A new TRON staking model</a></td>
+<td style="text-align: left;">lxcmyf(<a href="https://github.com/lxcmyf">@lxcmyf</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">491</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-491.md">Dynamic Energy Model</a></td>
+<td style="text-align: left;">kongchi(<a href="https://github.com/kongchi-ken">@kongchi-ken</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">465</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-465.md">new reward calculation algorithm</a></td>
+<td style="text-align: left;">bladehan1(<a href="https://github.com/bladehan1">@bladehan1</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">476</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-476.md">Delegate Data Structure Optimization</a></td>
+<td style="text-align: left;">lxcmyf(<a href="https://github.com/lxcmyf">@lxcmyf</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">461</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-461.md">Optimize data consistency for system abnormals</a></td>
+<td style="text-align: left;">guoquan-wu(<a href="https://github.com/guoquan-wu">@guoquan-wu</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">428</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-428.md">Increase the probability that the block processing thread acquires the lock</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">440</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-440.md">Transaction cache optimization</a></td>
+<td style="text-align: left;">Andy(<a href="https://github.com/zhang0125">@zhang0125</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">388</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-388.md">Optimize light node synchronization logic</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">383</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-383.md">Optimize transaction cache loading</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">382</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-382.md">Optimize the data structure of account assets</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">370</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-370.md">Node support conditionalized stop</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">369</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-369.md">Node support prometheus metrics</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">362</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-362.md">Optimized node broadcast data caching</a></td>
+<td style="text-align: left;">Kayle(<a href="https://github.com/forfreeday">@forfreeday</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">366</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-366.md">TIP-366 Node startup optimization</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">343</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-343.md">TIP-343 Refine Write Parameters For Leveldb</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">290</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-290.md">Dynamic store optimization</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">289</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-289.md">Block Broadcast Optimization</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">285</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-285.md">Optimize transaction cache initialization logic</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">276</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-276.md">Optimize block verification logic</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">298</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-298.md">Reformat manifest</a></td>
+<td style="text-align: left;">halibobo1205(<a href="https://github.com/halibobo1205">@halibobo1205</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">295</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-295.md">Optimize account assets</a></td>
+<td style="text-align: left;">Kayle(<a href="https://github.com/forfreeday">@forfreeday</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">281</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-281.md">Optimize the query of database</a></td>
+<td style="text-align: left;">Kayle(<a href="https://github.com/forfreeday">@forfreeday</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">269</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-269.md">Optimize the performance of block processing</a></td>
+<td style="text-align: left;">Kayle(<a href="https://github.com/forfreeday">@forfreeday</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">250</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-250.md">Include transaction results on the chain</a></td>
+<td style="text-align: left;">zhang0125(<a href="https://github.com/zhang0125">@zhang0125</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">207</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-207.md">A proposal to improve network resources model</a></td>
+<td style="text-align: left;">renchenchang(<a href="http://github.com/renchenchang">@renchenchang</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">196</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-196.md">Reward SRs with the transaction fees charged for bandwidth and Energy</a></td>
+<td style="text-align: left;">renchenchang(<a href="http://github.com/renchenchang">@renchenchang</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">127</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-127.md">Support Tron-DEX based on system contracts</a></td>
+<td style="text-align: left;">renchenchang(<a href="http://github.com/renchenchang">@renchenchang</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+<tr>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-60.md">TRC-60:Precompiled contract function for multi-signature verification</a></td>
+<td style="text-align: left;">Julian.Kang(<a href="https://github.com/Sh11thead">@Sh11thead</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-01.md">Tron Wallet Proposal - Key Derivation Methods for Tron Accounts with BIP39</a></td>
+<td style="text-align: left;">dbuarque(<a href="https://github.com/dbuarque">@dbuarque</a>)</td>
+<td style="text-align: left;">Core</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Final</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">621</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-621.md">Add code version column to HelloMessage</a></td>
+<td style="text-align: left;">317787106(<a href="https://github.com/317787106">@317787106</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">592</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-592.md">Supplement Disconnect Reasons in Java-tron</a></td>
+<td style="text-align: left;">317787106(<a href="https://github.com/317787106">@317787106</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">549</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-549.md">P2P support IPv6 protocol</a></td>
+<td style="text-align: left;">317787106(<a href="https://github.com/317787106">@317787106</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">548</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-548.md">Node Discovery via DNS</a></td>
+<td style="text-align: left;">317787106(<a href="https://github.com/317787106">@317787106</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">550</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-550.md">P2P message snappy compression</a></td>
+<td style="text-align: left;">jwrct(<a href="https://github.com/jwrct">@jwrct</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">547</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-547.md">Connection precheck before P2P communication</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">425</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-425.md">Speed up TCP connection establishment</a></td>
+<td style="text-align: left;">xxo1shine(<a href="https://github.com/xxo1shine">@xxo1shine</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+<tr>
+<td style="text-align: left;">391</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-391.md">Optimize fetch block process</a></td>
+<td style="text-align: left;">Vikingzzu(<a href="https://github.com/Vikingzzu">@Vikingzzu</a>)</td>
+<td style="text-align: left;">Networking</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Final</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">544</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-544.md">Add <code>data</code> to the http interfaces interacting with smart contract</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">712</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-712.md">TRON typed structured data hashing and signing</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">387</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-387.md">Transaction memo fee</a></td>
+<td style="text-align: left;">Andy(<a href="https://github.com/zhang0125">@zhang0125</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">3326</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-3326.md">Wallet Switch TRON Chain Method</a></td>
+<td style="text-align: left;">EllenWhitmore(<a href="https://github.com/EllenWhitmore">@EllenWhitmore</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">1193</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-1193.md">TRON Provider JavaScript API</a></td>
+<td style="text-align: left;">EllenWhitmore(<a href="https://github.com/EllenWhitmore">@EllenWhitmore</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">1102</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-1102.md">Opt-in account exposure</a></td>
+<td style="text-align: left;">EllenWhitmore(<a href="https://github.com/EllenWhitmore">@EllenWhitmore</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+<tr>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-51.md">TRC-51 rate limit of API traffic</a></td>
+<td style="text-align: left;">Michael Sun(<a href="https://github.com/shydesky">@shydesky</a>)</td>
+<td style="text-align: left;">Interface</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Draft</label><label for="__tabbed_5_2">Last Call</label><label for="__tabbed_5_3">Final</label><label for="__tabbed_5_4">Deferred</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">165</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-165.md">TRC-165 Standard Interface Detection In Contract</a></td>
+<td style="text-align: left;">Timothy(<a href="https://github.com/timothyckw">@timothyckw</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">7007</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-7007.md">Verifiable AI-Generated Content Token</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">4626</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-4626.md">Tokenized Vaults</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">1271</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-1271.md">Standard Signature Validation Method for Contracts</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">104</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-104.md">Data Signing Specification</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">102</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-102.md">Hierarchical Deterministic Wallet</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">101</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-101.md">Wallet Keystore Specification</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">484</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-484.md">Smart Contract Standard for TRX liquidity staking and resource market</a></td>
+<td style="text-align: left;">raymondliu0711(<a href="https://github.com/raymondliu0711">@raymondliu0711</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">8004</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-8004.md">Trustless Agents - Discover agents and establish trust through reputation and validation</a></td>
+<td style="text-align: left;">team-bankofai(<a href="https://github.com/team-bankofai">@team-bankofai</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">4907</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-4907.md">Fork from ERC-4907 Rental NFT</a></td>
+<td style="text-align: left;">lopeed(<a href="https://github.com/lopeed">@lopeed</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">222</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-222.md">Improve transaction execution speed</a></td>
+<td style="text-align: left;">lvs007(<a href="https://github.com/lvs007">@lvs007</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">1155</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-1155.md">Multi Token Standard</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">191</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-191.md">Signed Data Standard</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">293</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-293.md">Add a proposal to adjust the total net limit</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">292</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-292.md">Add a proposal to adjust the free net limit in an account</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">721</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-721.md">TRC-721 Non-Fungible Token Standard</a></td>
+<td style="text-align: left;">Timothy(<a href="https://github.com/timothyckw">@timothyckw</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">135</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-135.md">Shielded TRC-20 Contract</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>), Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">120</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-120.md">ECDSA Signature Encoding Specification</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">105</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-105.md">Multi-signature Permission Operation</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">53</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-53.md">Optimize the current TRON delegation mechanism</a></td>
+<td style="text-align: left;">ffkissyou(<a href="https://github.com/lvs007">@lvs007</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-31.md">TRC-31 Trigger constant contract</a></td>
+<td style="text-align: left;">llwslc(<a href="https://github.com/llwslc">@llwslc</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-30.md">TRC-30 Code hash instructions</a></td>
+<td style="text-align: left;">llwslc(<a href="https://github.com/llwslc">@llwslc</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">23</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-23.md">TRC-23 Add the account world status tree root to the block header</a></td>
+<td style="text-align: left;">lvs007(<a href="https://github.com/lvs007">@lvs007</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">29</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-29.md">Bitwise shifting instructions in Tron</a></td>
+<td style="text-align: left;">yinshucheng(<a href="https://github.com/yinshucheng">@yinshucheng</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">26</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-26.md">Add a contract creation function called CREATE2</a></td>
+<td style="text-align: left;">Unknown</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-41.md">Optimize transactionHistoryStore occupancy space#40</a></td>
+<td style="text-align: left;">wubin1<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#117;&#98;&#105;&#110;&#49;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;">&#119;&#117;&#98;&#105;&#110;&#49;&#64;&#116;&#114;&#111;&#110;&#46;&#110;&#101;&#116;&#119;&#111;&#114;&#107;</a></td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-32.md">TRC-32 Clear the ABI of contract</a></td>
+<td style="text-align: left;">llwslc(<a href="https://github.com/llwslc">@llwslc</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-54.md">TRC-54: Automatically active non-existent account when transferring TRX/TRC10 asset in a smart contract</a></td>
+<td style="text-align: left;">BlueHoopor(<a href="https://github.com/BlueHoopor">@BlueHoopor</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-37.md">TRC-37: forbid using TransferContract &amp; TransferAssetContract  for contract account</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-43.md">TRC-43: Precompiled contract function for signature parallel verification</a></td>
+<td style="text-align: left;">Julian.Kang(<a href="https://github.com/Sh11thead">@Sh11thead</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-44.md">TRC-44 Address.isContract instructions</a></td>
+<td style="text-align: left;">llwslc(<a href="https://github.com/llwslc">@llwslc</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-24.md">Implement DB storage with RocksDB</a></td>
+<td style="text-align: left;">Michael Sun(<a href="https://github.com/shydesky">@shydesky</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-16.md">Account Multi-signature</a></td>
+<td style="text-align: left;">hzhao(<a href="https://github.com/zhaohong">@zhaohong</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-12.md">TRC-12 Tron event subscribes model</a></td>
+<td style="text-align: left;">jiangyy0824(<a href="https://github.com/jiangyy0824">@jiangyy0824</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-17.md">Adaptive Energy Limit Model</a></td>
+<td style="text-align: left;">nanfengpo(<a href="https://github.com/nanfengpo">@nanfengpo</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-13.md">Account System Standard</a></td>
+<td style="text-align: left;">Justin(<a href="https://github.com/justintron">@justintron</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-20.md">TRC-20 Token Standard</a></td>
+<td style="text-align: left;">zhaohong(<a href="https://github.com/zhaohong">@zhaohong</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-10.md">TRC-10 Token Standard</a></td>
+<td style="text-align: left;">hzhao(<a href="https://github.com/zhaohong">@zhaohong</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-19.md">TRC-19 Deferred transaction</a></td>
+<td style="text-align: left;">jiangyy0824(<a href="https://github.com/jiangyy0824">@jiangyy0824</a>)</td>
+<td style="text-align: left;">TRC</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Draft</label><label for="__tabbed_6_2">Last Call</label><label for="__tabbed_6_3">Final</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">241</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-241.md">Adaptation to solidity-v0.5.16</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">176</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-176.md">altbn128 operation energy reduction in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">6780</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-6780.md">Implement EIP-6780: SELFDESTRUCT only in same transaction</a></td>
+<td style="text-align: left;">raymondliu0711(<a href="https://github.com/raymondliu0711">@raymondliu0711</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">651</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-651.md">Implement EIP-5656 MCOPY - Memory copying instruction</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">650</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-650.md">Implement EIP-1153 Transient storage opcodes</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">745</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-745.md">Introduce EIP-4844 and EIP-7516 instructions</a></td>
+<td style="text-align: left;">raymondliu0711(<a href="https://github.com/raymondliu0711">@raymondliu0711</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">652</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-652.md">Announce EIP-6049 Deprecate SELFDESTRUCT</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">653</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-653.md">Adjust energy cost of SUICIDE and VOTEWITNESS opcodes in TVM</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">543</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-543.md">Implement EIP-3855 PUSH0 instruction</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">474</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-474.md">Optimize the return value of chainid opcode</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">397</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-397.md">Raise limit of the 13th network parameter</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">344</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-344.md">Optimize instruction execution for TVM</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">272</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-272.md">Compatible with EVM</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">318</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-318.md">Adapt to Ethereum London Upgrade</a></td>
+<td style="text-align: left;">Lredhdx(<a href="https://github.com/Lredhdx">@Lredhdx</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">306</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-306.md">Adapt to solidity_0.8.4</a></td>
+<td style="text-align: left;">Lredhdx(<a href="https://github.com/Lredhdx">@Lredhdx</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">271</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-271.md">Vote for SR in Smart Contract</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">268</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-268.md">SmartContract ABI optimization</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">204</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-204.md">Make MAX_FEE_LIMIT configurable as a chain property</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">203</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-203.md">Adaptation to solidity-v0.5.15</a></td>
+<td style="text-align: left;">Asuka(<a href="https://github.com/yanghang8612">@yanghang8612</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">209</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-209.md">Adapt to Solidity 0.6.0.</a></td>
+<td style="text-align: left;">Lredhdx(<a href="https://github.com/Lredhdx">@Lredhdx</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">175</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-175.md">SELFBALANCE instructions in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">174</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-174.md">CHAINID instructions in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">157</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-157.md">Freeze instructions in TVM</a></td>
+<td style="text-align: left;">taihaofu(<a href="https://github.com/taihaofu">@taihaofu</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">138</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-138.md">Pedersen hash function</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+<tr>
+<td style="text-align: left;">137</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-137.md">Zero-knowledge Proof Verification functions</a></td>
+<td style="text-align: left;">Federico2014(<a href="https://github.com/Federico2014">@Federico2014</a>)</td>
+<td style="text-align: left;">VM</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Final</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">TIP</th>
+<th style="text-align: left;">Title</th>
+<th style="text-align: left;">Author</th>
+<th style="text-align: left;">Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">28</td>
+<td style="text-align: left;"><a href="https://github.com/tronprotocol/tips/blob/master/./tip-28.md">TRC-28 Built-in message queue for event subscribe</a></td>
+<td style="text-align: left;">jiangyy0824(<a href="https://github.com/jiangyy0824">@jiangyy0824</a>)</td>
+<td style="text-align: left;">Informational</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
