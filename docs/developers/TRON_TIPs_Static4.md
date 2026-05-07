@@ -1,13 +1,4 @@
----
-search:
-  boost: 2
----
-
 # TRON Improvement Proposals (TIPs)
-
-**Categories:**&nbsp;&nbsp;[Core](#core) | [Networking](#networking) | [Interface](#interface) | [TRC](#trc) | [VM](#vm) | [Informational](#informational)
-
----
 
 ## Core
 
@@ -77,8 +68,6 @@ search:
     | :--- | :--- | :--- | :--- |
     | 1 | [Tron Wallet Proposal - Key Derivation Methods for Tron Accounts with BIP39](https://github.com/tronprotocol/tips/blob/master/./tip-01.md) | dbuarque([@dbuarque](https://github.com/dbuarque)) | Core |
 
----
-
 ## Networking
 
 === "Final"
@@ -94,8 +83,6 @@ search:
     | 425 | [Speed up TCP connection establishment](https://github.com/tronprotocol/tips/blob/master/./tip-425.md) | xxo1shine([@xxo1shine](https://github.com/xxo1shine)) | Networking |
     | 391 | [Optimize fetch block process](https://github.com/tronprotocol/tips/blob/master/./tip-391.md) | Vikingzzu([@Vikingzzu](https://github.com/Vikingzzu)) | Networking |
 
----
-
 ## Interface
 
 === "Final"
@@ -109,8 +96,6 @@ search:
     | 1193 | [TRON Provider JavaScript API](https://github.com/tronprotocol/tips/blob/master/./tip-1193.md) | EllenWhitmore([@EllenWhitmore](https://github.com/EllenWhitmore)) | Interface |
     | 1102 | [Opt-in account exposure](https://github.com/tronprotocol/tips/blob/master/./tip-1102.md) | EllenWhitmore([@EllenWhitmore](https://github.com/EllenWhitmore)) | Interface |
     | 51 | [TRC-51 rate limit of API traffic](https://github.com/tronprotocol/tips/blob/master/./tip-51.md) | Michael Sun([@shydesky](https://github.com/shydesky)) | Interface |
-
----
 
 ## TRC
 
@@ -173,8 +158,6 @@ search:
     | :--- | :--- | :--- | :--- |
     | 19 | [TRC-19 Deferred transaction](https://github.com/tronprotocol/tips/blob/master/./tip-19.md) | jiangyy0824([@jiangyy0824](https://github.com/jiangyy0824)) | TRC |
 
----
-
 ## VM
 
 === "Draft"
@@ -216,8 +199,6 @@ search:
     | 157 | [Freeze instructions in TVM](https://github.com/tronprotocol/tips/blob/master/./tip-157.md) | taihaofu([@taihaofu](https://github.com/taihaofu)) | VM |
     | 138 | [Pedersen hash function](https://github.com/tronprotocol/tips/blob/master/./tip-138.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | VM |
     | 137 | [Zero-knowledge Proof Verification functions](https://github.com/tronprotocol/tips/blob/master/./tip-137.md) | Federico2014([@Federico2014](https://github.com/Federico2014)) | VM |
-
----
 
 ## Informational
 

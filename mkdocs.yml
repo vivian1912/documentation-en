@@ -264,7 +264,9 @@ nav:
         - TIPs Workflow: developers/tips.md
         - TIPs: developers/TRON_TIPs_Static.md
         - TIPs1: developers/TRON_TIPs_Static1.md
-        - TIPs2: developers/TRON_TIPs_Static2.md 
+        - TIPs2: developers/TRON_TIPs_Static2.md
+        - TIPs3: developers/TRON_TIPs_Static3.md
+        - TIPs4: developers/TRON_TIPs_Static4.md 
         - Issue Workflow: developers/issue-workflow.md
         - Governance Workflow: developers/governance.md
         - Configure the IDE: developers/run-in-idea.md
